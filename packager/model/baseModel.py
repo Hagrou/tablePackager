@@ -6,12 +6,15 @@ from packager.pincab.pinupSystem import PinUpSystem
 from packager.model.packageEditorModel import PackageEditorModel
 from packager.model.packagedTablesModel import *
 
+
 class BaseModel:
     def __init__(self, logger, config):
         self.__config=config
         self.__tmp_path=config.get('working_dir')+'/tmp'
         self.__package_path=config.get('working_dir')+'/packages'
         self.__logger=logger
+
+
         self.__installedTablesModel=InstalledTablesModel(self)
         self.__packagedTablesModel = PackagedTablesModel(self)
         self.__packageEditorModel=PackageEditorModel(self)
@@ -20,13 +23,20 @@ class BaseModel:
         self.__vpinMame=VPinMame(self.logger, self)
         self.__pinballX = PinballX(self.logger, self)
 
+
     @property
     def logger(self):
         return self.__logger
 
     @property
+    def btEditImage(self):
+        return self.__btEditImage
+
+    @property
     def installedTablesModel(self):
         return self.__installedTablesModel
+
+
 
     @property
     def packagedTablesModel(self):

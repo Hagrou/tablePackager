@@ -1,4 +1,5 @@
 import logging
+from packager.tools.toolTip import *
 from tkinter import *
 from tkinter import messagebox
 
@@ -11,6 +12,9 @@ class PackagedTablesView(Frame, Observer):
         Observer.__init__(self, baseModel.packagedTablesModel)
 
         self.__mainWindow=mainWindow
+        self.__btEditImage = PhotoImage(file="images/btEdit.png")
+        self.__btAddImage = PhotoImage(file="images/btAdd.png")
+        self.__btDelImage = PhotoImage(file="images/btDel.png")
         self.__packagedTablesModel = baseModel.packagedTablesModel
         self.__baseModel= baseModel
         self.__label = Label(self, text="Packaged Tables")
@@ -18,11 +22,14 @@ class PackagedTablesView(Frame, Observer):
         self.__label.pack(side=TOP)
 
         frameBt=Frame(self)
-        self.__btEdit = Button(frameBt, text="Edit", command=self.editOnClick, state=DISABLED)
+        self.__btEdit = Button(frameBt, image=self.__btEditImage, command=self.editOnClick, state=DISABLED)
         self.__btEdit.pack(side=LEFT)
-        self.__btDel = Button(frameBt, text="Del", command=self.delOnClick, state=DISABLED)
+        self.__btEditToolTip=CreateToolTip(self.__btEdit,'Edit a package')
+        self.__btDel = Button(frameBt, image=self.__btDelImage, command=self.delOnClick, state=DISABLED)
+        self.__btDelToolTip = CreateToolTip(self.__btDel, 'Delete package(s)')
         self.__btDel.pack(side=LEFT)
-        self.__btNew = Button(frameBt, text="New", command=self.newOnClick, state=NORMAL)
+        self.__btNew = Button(frameBt, image=self.__btAddImage, command=self.newOnClick, state=NORMAL)
+        self.__btNewToolTip = CreateToolTip(self.__btNew, 'Create empty package')
         self.__btNew.pack(side=LEFT)
 
         frameBt.pack(side=BOTTOM)

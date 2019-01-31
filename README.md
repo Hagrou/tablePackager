@@ -6,7 +6,7 @@ SM Lib - Proclame la bonne parole de sieurs Sam et Max
 ========================================================
 
 Ce module proclame la bonne parole de sieurs Sam et Max. Puissent-t-ils
-retrouver une totale liberté de pensée cosmique vers un nouvel age
+retrouver une totale libertï¿½ de pensï¿½e cosmique vers un nouvel age
 reminiscent.
 
 Vous pouvez l'installer avec pip:
@@ -35,7 +35,7 @@ TODO:
 Production d'un package
 =======================
 
-Prérequis : cx_freeze
+PrÃ©requis : cx_freeze
 
     > python setup.py bdist_msi
 
@@ -68,11 +68,11 @@ TODO
 
 + Fonction check package:
     * Visual Pinball
-        - 1 seul fichier vpx présent
-        - directb2s présent
+        - 1 seul fichier vpx prÃ©sent
+        - directb2s prÃ©sent
         
 Whish
 =====
-- stockage de manifest deployés + merging si import installed packaged table
+- stockage de manifest deployÃ©s + merging si import installed packaged table
 
 

@@ -39,7 +39,14 @@ class MainWindow(Observer):
         self.__cbExPinballX     = Checkbutton(self.__extractFrame, text='Pinball X')
         self.__cbExPinballX.grid(column=0, row=3, sticky='NW')
 
-        self.__btExtract = Button(self.__extractFrame, text="-- extract -->", command=self.extractOnClick, state=DISABLED)
+        self.__btExtractImage = PhotoImage(file="images/btExtract.png")
+        self.__btInstallImage = PhotoImage(file="images/btInstall.png")
+
+
+        #self.__btExtract = Button(self.__extractFrame, text="-- extract -->", command=self.extractOnClick, state=DISABLED)
+        self.__btExtract = Button(self.__extractFrame, image=self.__btExtractImage, command=self.extractOnClick,
+                                 state=DISABLED)
+
         self.__btExtract.grid(column=1, row=0, rowspan=4, sticky='NW')
 
         self.__installFrame = Frame(self.__window, width=2, relief=GROOVE, borderwidth=4)
@@ -54,11 +61,12 @@ class MainWindow(Observer):
 
 
 
-        #self.__btImage = PhotoImage(file="images/baseButton.png")
+
         #bt = Button(self.__window, image=self.__btImage, state=NORMAL)
         #bt.grid(row=2, column=1)
-        self.__btInstall = Button(self.__installFrame, text="<-- install --", command=self.installOnClick, state=DISABLED)
-
+        #self.__btInstall = Button(self.__installFrame, text="<-- install --", command=self.installOnClick, state=DISABLED)
+        self.__btInstall = Button(self.__installFrame, image= self.__btInstallImage, command=self.installOnClick,
+                                  state=DISABLED)
 
         self.__btInstall.grid(column=1, row=4, rowspan=4, sticky='NW', padx=2, pady=2)
 
