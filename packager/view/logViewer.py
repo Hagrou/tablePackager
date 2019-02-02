@@ -9,7 +9,7 @@ class LogViewer(Frame):
 
         self.__logHandler=logHandler
         # Create a ScrolledText wdiget
-        self.scrolled_text = st.ScrolledText(self, state='disabled', height=12)
+        self.scrolled_text = st.ScrolledText(self, state='disabled', height=10, width  = 99)
         self.scrolled_text.grid(row=0, column=0, sticky=(N, S, W, E))
         self.scrolled_text.configure(font='TkFixedFont')
         self.scrolled_text.tag_config('INFO', foreground='black')

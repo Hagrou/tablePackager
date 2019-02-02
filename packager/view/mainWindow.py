@@ -18,7 +18,19 @@ class MainWindow(Observer):
         self.__baseModel=baseModel
         self.__window=Tk()
 
-        self.__window.configure()
+        # create a toplevel menu
+        menubar = Menu(self.__window)
+        menubar.add_command(label="Options", command=self.onOptionMenu)
+
+        helpMenu = Menu(menubar, tearoff=0)
+        helpMenu.add_command(label="Getting Start", command=self.onHelpMenu)
+        helpMenu.add_separator()
+        helpMenu.add_command(label="About", command=self.onHelpMenu)
+        menubar.add_cascade(label="Help", menu=helpMenu)
+
+
+        # display the menu
+        self.__window.configure(menu=menubar)
         self.__window.title("Pincab Table Packager")
         self.__separator=Separator(self.__window, orient=HORIZONTAL)
 
@@ -75,11 +87,11 @@ class MainWindow(Observer):
         self.__logViewer = LogViewer(self.__separator, logHandler)
 
         self.__installedTablesView.grid(row=0, column=0, sticky=N + S)
-        self.__extractFrame.grid(row=0, column=1, sticky=N)
-        self.__installFrame.grid(row=0, column=1, sticky=S)
+        self.__extractFrame.grid(row=0, column=1, sticky=N, pady=22)
+        self.__installFrame.grid(row=0, column=1, sticky=S, pady=37)
         self.__packagedTablesView.grid(row=0, column=2, sticky=N + S)
         self.__separator.grid(row=1, column=0,  columnspan=3, padx=5, pady=5, sticky='ns')
-        self.__logViewer.grid(row=2, column=0, columnspan=3, sticky=S)
+        self.__logViewer.grid(row=2, column=0, columnspan=3, sticky=S+E+W)
         self.__progressBar.grid(row=3, column=0, columnspan=3, stick=S+E+W)
         self.__packageEditorViewer = PackageEditorViewer(self.__window, self.__baseModel)
         self.__baseModel.packageEditorModel.attach(self)
@@ -90,6 +102,12 @@ class MainWindow(Observer):
             self.__window.mainloop()
         except Exception as Err:
             print(Err)
+
+    def onOptionMenu(self):
+        print("onMenuOption")
+
+    def onHelpMenu(self):
+        print("onHelpMenu")
 
     def extractOnClick(self):
         self.__baseModel.installedTablesModel.extract_tables()

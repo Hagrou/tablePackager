@@ -42,10 +42,8 @@ Prérequis : cx_freeze
 
 TODO
 ====
+X Ajouter selection produits extraction/install
 
-- Edition Authors de chaque fichier
-    => Affichage + edition sur double click
-      
 - commencer menu
     - Options   => sauvegarde configuration json
         - PinballX Path
@@ -53,8 +51,12 @@ TODO
     
     - Aide => Test html + image
 
+- Edition Authors de chaque fichier
+    => Affichage + edition sur double click
+      
 
-- Ajouter selection produits extraction/install
+
+
 
 - Traiter les cas de UltraDMD
 
@@ -76,3 +78,6 @@ Whish
 - stockage de manifest deployés + merging si import installed packaged table
 
 
+Licenses
+
+https://commons.wikimedia.org/wiki/GNOME_Desktop_icons

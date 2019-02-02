@@ -37,7 +37,7 @@ class PackagedTablesView(Frame, Observer):
         scrollbar = Scrollbar(self, orient="vertical")
         scrollbar.pack(side=RIGHT, fill=Y)
 
-        self.__listPackages = Listbox(self, width=20, selectmode=EXTENDED, yscrollcommand=scrollbar.set, font=("Helvetica", 10))
+        self.__listPackages = Listbox(self, width=30, height=15, selectmode=EXTENDED, yscrollcommand=scrollbar.set, font=("Helvetica", 10))
         self.__listPackages.pack(expand=True, fill=Y)
         self.__listPackages.bind('<<ListboxSelect>>', self.on_select)
         scrollbar.config(command=self.__listPackages.yview)

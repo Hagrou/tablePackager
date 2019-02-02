@@ -5,6 +5,7 @@ from tkinter import *
 from tkinter.ttk import *
 from packager.tools.observer import *
 from packager.tools.toolbox import *
+from packager.tools.toolTip import *
 
 class PackageEditorViewer(Frame, Observer):
     def __init__(self,window,baseModel, **kwargs):
@@ -15,6 +16,8 @@ class PackageEditorViewer(Frame, Observer):
         self.__packageEditorModel=baseModel.packageEditorModel
         self.__root=window
         self.__backupState = {'btAddFile': 'disable', 'btDelFile': 'disable','btRename':'disable'}
+        self.__btAddFileImage = PhotoImage(file="images/btAddFile.png")
+        self.__btDelFileImage = PhotoImage(file="images/btDelFile.png")
         self.__topLevel=None
         self.__visible = False
 
@@ -115,9 +118,14 @@ class PackageEditorViewer(Frame, Observer):
 
         self.__tree.grid(row=2, column=0, sticky=E + W)
         scrollbar.grid(row=2, column=1, sticky=N + S)
-        self.__btAddFile = Button(self.__contentFrame, text="+", command=self.on_addFile, state='disable')
+
+
+
+        self.__btAddFile = Button(self.__contentFrame, image=self.__btAddFileImage, command=self.on_addFile, state='disable')
+        self.__btAddFileTip = CreateToolTip(self.__btAddFile, 'Add a file to package')
         self.__btAddFile.grid(row=1, column=2, sticky=N )
-        self.__btDelFile = Button(self.__contentFrame, text="-", command=self.on_delFile, state='disable')
+        self.__btDelFile = Button(self.__contentFrame, image=self.__btDelFileImage, command=self.on_delFile, state='disable')
+        self.__btDelFileTip = CreateToolTip(self.__btAddFile, 'Delete a file from package')
         self.__btDelFile.grid(row=2, column=2, sticky=N)
 
 
