@@ -56,12 +56,18 @@ class PackagedTablesModel(Observable):
         for packageInfo in self.__selectedPackage:
             self.logger.info("--[Deploy '%s']------------------" % (packageInfo['name']))
             package = Package(self.baseModel, packageInfo['name'])
-            package.unpack()
 
+            package.unpack()
             self.baseModel.visualPinball.deploy(package)
             self.baseModel.vpinMame.deploy(package) #TODO: give the product choice
             self.baseModel.pinupSystem.deploy(package,'visual pinball')
-            clean_dir(self.baseModel.tmp_path)
+
+            print("copy %s->%s" % (self.baseModel.tmp_path+'/'+packageInfo['name']+'/'+packageInfo['name']+'.manifest.json',
+                                   self.baseModel.installed_path))
+
+            shutil.copyfile(self.baseModel.tmp_path+'/'+packageInfo['name']+'/'+packageInfo['name']+'.manifest.json',
+                            self.baseModel.installed_path+'/'+packageInfo['name']+'.manifest.json')
+
 
             self.logger.info("--['%s' Done]------------------" % (packageInfo['name']))
         clean_dir(self.baseModel.tmp_path)

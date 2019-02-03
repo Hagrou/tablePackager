@@ -12,6 +12,7 @@ class BaseModel:
         self.__config=config
         self.__tmp_path=config.get('working_dir')+'/tmp'
         self.__package_path=config.get('working_dir')+'/packages'
+        self.__installed_path=config.get('working_dir')+'/installed'
         self.__logger=logger
 
         self.__installedTablesModel=InstalledTablesModel(self)
@@ -70,6 +71,12 @@ class BaseModel:
         if not os.path.exists(self.__package_path):
             os.makedirs(self.__package_path, exist_ok=True)
         return self.__package_path
+
+    @property
+    def installed_path(self):
+        if not os.path.exists(self.__installed_path):
+            os.makedirs(self.__installed_path, exist_ok=True)
+        return self.__installed_path
 
     @property
     def package_extension(self):

@@ -292,20 +292,3 @@ class Package:
 
     def exists_file(self, typePath, filename):
         return self.manifest.exists_file(typePath, filename)
-
-"""
-logging.basicConfig(
-        level=logging.DEBUG,
-        format="%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s",
-        handlers=[
-            #logging.FileHandler("{0}/{1}.log".format(logPath, fileName)),
-            logging.StreamHandler()
-        ])
-logger = logging.getLogger(__name__)
-
-package1=Package(logger, "test")
-package1.new('C:/Users/philippe/tablePackager/tmp')
-package1.set_field('visual pinball/info/romName','rom')
-package1.add_file('C:/Visual Pinball/Tables/24 (Stern 2009).vpx','visual pinball/tables')
-package1.add_file('C:/Visual Pinball/Tables/24 (Stern 2009).directb2s', 'visual pinball/tables')
-"""

@@ -28,12 +28,7 @@ class ConfigViewer(Frame):
 
         #=================================================================
         self.__infoFrame=Frame(self.__topLevel)
-        """
-        'working_dir': os.path.expanduser("~/tablePackager"),
-            'visual_pinball_path':'c:/visual pinball',
-            'pinballX_path':'c:/pinballX',
-            'pinupSystem_path':'c:/PinUPSystem',
-            """
+
         self.__visualPinballPathLabel=Label(self.__infoFrame, text="visual pinball path: ")
         self.__visualPinballPathLabel.grid(column=0, row=0, sticky='W',padx=2, pady=2)
         self.__visualPinballPathEntry = Entry(self.__infoFrame)
