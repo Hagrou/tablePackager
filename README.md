@@ -42,12 +42,13 @@ Prérequis : cx_freeze
 
 TODO
 ====
+X Ajouter repertoire "installed" contenant les manifests des tables 
+  installées
+  
 X Ajouter selection produits extraction/install
 
 - commencer menu
-    - Options   => sauvegarde configuration json
-        - PinballX Path
-        - etc.
+        - 
     
     - Aide => Test html + image
 
@@ -55,7 +56,9 @@ X Ajouter selection produits extraction/install
     => Affichage + edition sur double click
       
 
-
+- Config:
+    - Mise à jour de update file en cas de changement de configuration
+    - fenetre config en dessous!!!
 
 
 - Traiter les cas de UltraDMD

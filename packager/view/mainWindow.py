@@ -7,6 +7,7 @@ from packager.view.installedTablesView import *
 from packager.view.packagedTablesView import *
 from packager.view.packageEditorViewer import *
 from packager.view.logViewer import *
+from packager.view.configViewer import *
 
 
 class MainWindow(Observer):
@@ -35,7 +36,7 @@ class MainWindow(Observer):
         self.__separator=Separator(self.__window, orient=HORIZONTAL)
 
         self.__installedTablesView=InstalledTablesView(self.__window, self.__baseModel.installedTablesModel)
-
+        self.__configViewer=ConfigViewer(self.__window, self.__baseModel)
         self.__progressBar = ttk.Progressbar(self.__window,orient ="horizontal", mode ="indeterminate")
         self.__progressBar["value"] = 0
         self.__progressBar["maximum"]=800
@@ -54,8 +55,6 @@ class MainWindow(Observer):
         self.__btExtractImage = PhotoImage(file="images/btExtract.png")
         self.__btInstallImage = PhotoImage(file="images/btInstall.png")
 
-
-        #self.__btExtract = Button(self.__extractFrame, text="-- extract -->", command=self.extractOnClick, state=DISABLED)
         self.__btExtract = Button(self.__extractFrame, image=self.__btExtractImage, command=self.extractOnClick,
                                  state=DISABLED)
 
@@ -72,11 +71,6 @@ class MainWindow(Observer):
         self.__cbInsPinballX.grid(column=0, row=7, sticky='NW')
 
 
-
-
-        #bt = Button(self.__window, image=self.__btImage, state=NORMAL)
-        #bt.grid(row=2, column=1)
-        #self.__btInstall = Button(self.__installFrame, text="<-- install --", command=self.installOnClick, state=DISABLED)
         self.__btInstall = Button(self.__installFrame, image= self.__btInstallImage, command=self.installOnClick,
                                   state=DISABLED)
 
@@ -105,6 +99,7 @@ class MainWindow(Observer):
 
     def onOptionMenu(self):
         print("onMenuOption")
+        self.__configViewer.show()
 
     def onHelpMenu(self):
         print("onHelpMenu")

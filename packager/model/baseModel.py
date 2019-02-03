@@ -14,7 +14,6 @@ class BaseModel:
         self.__package_path=config.get('working_dir')+'/packages'
         self.__logger=logger
 
-
         self.__installedTablesModel=InstalledTablesModel(self)
         self.__packagedTablesModel = PackagedTablesModel(self)
         self.__packageEditorModel=PackageEditorModel(self)
@@ -23,6 +22,10 @@ class BaseModel:
         self.__vpinMame=VPinMame(self.logger, self)
         self.__pinballX = PinballX(self.logger, self)
 
+
+    @property
+    def config(self):
+        return self.__config
 
     @property
     def logger(self):
