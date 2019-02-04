@@ -1,3 +1,4 @@
+import os
 from packager.model.installedTablesModel import *
 from packager.pincab.visualPinball import VisualPinball
 from packager.pincab.vpinMame import VPinMame
@@ -9,6 +10,11 @@ from packager.model.packagedTablesModel import *
 
 class BaseModel:
     def __init__(self, logger, config):
+        if Path(os.getcwd()).name=='packager':  # running from IDE
+            self.__baseDir=''
+        else: # running from exe
+            self.__baseDir = 'lib/packager/'
+
         self.__config=config
         self.__tmp_path=config.get('working_dir')+'/tmp'
         self.__package_path=config.get('working_dir')+'/packages'
@@ -23,6 +29,10 @@ class BaseModel:
         self.__vpinMame=VPinMame(self.logger, self)
         self.__pinballX = PinballX(self.logger, self)
 
+
+    @property
+    def baseDir(self):
+        return self.__baseDir
 
     @property
     def config(self):

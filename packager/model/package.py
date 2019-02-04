@@ -145,6 +145,7 @@ class Manifesto:
         file['sha1'] = sha1sum(srcFile)
         file['author(s)'] = ''
         file['version'] = ''
+        file['url']=''
         file['lastmod'] = mtime2IsoStr(os.path.getmtime(srcFile))  # last modification date
 
         field_list = field_path.split('/')

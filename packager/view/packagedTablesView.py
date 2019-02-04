@@ -12,9 +12,9 @@ class PackagedTablesView(Frame, Observer):
         Observer.__init__(self, baseModel.packagedTablesModel)
 
         self.__mainWindow=mainWindow
-        self.__btEditImage = PhotoImage(file="images/btEdit.png")
-        self.__btAddImage = PhotoImage(file="images/btAdd.png")
-        self.__btDelImage = PhotoImage(file="images/btDel.png")
+        self.__btEditImage = PhotoImage(file=baseModel.baseDir+"images/btEdit.png")
+        self.__btAddImage = PhotoImage(file=baseModel.baseDir+"images/btAdd.png")
+        self.__btDelImage = PhotoImage(file=baseModel.baseDir+"images/btDel.png")
         self.__packagedTablesModel = baseModel.packagedTablesModel
         self.__baseModel= baseModel
         self.__label = Label(self, text="Packaged Tables")

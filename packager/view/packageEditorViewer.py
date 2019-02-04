@@ -16,8 +16,8 @@ class PackageEditorViewer(Frame, Observer):
         self.__packageEditorModel=baseModel.packageEditorModel
         self.__root=window
         self.__backupState = {'btAddFile': 'disable', 'btDelFile': 'disable','btRename':'disable'}
-        self.__btAddFileImage = PhotoImage(file="images/btAddFile.png")
-        self.__btDelFileImage = PhotoImage(file="images/btDelFile.png")
+        self.__btAddFileImage = PhotoImage(file=baseModel.baseDir+"images/btAddFile.png")
+        self.__btDelFileImage = PhotoImage(file=baseModel.baseDir+"images/btDelFile.png")
         self.__topLevel=None
         self.__visible = False
 
@@ -55,39 +55,39 @@ class PackageEditorViewer(Frame, Observer):
         self.__creationDateValueLabel.grid(column=1, row=1, sticky='W',padx=2, pady=2)
 
         self.__lastModificationDateLabel = Label(self.__infoFrame, text="Last Modification: ")
-        self.__lastModificationDateLabel.grid(column=2, row=1, sticky='W',padx=2, pady=2)
+        self.__lastModificationDateLabel.grid(column=0, row=2, sticky='W',padx=2, pady=2)
         lastModDate = self.packageEditorModel.package.get_field('info/lastmod')
         self.__lastModificationDateValueLabel = Label(self.__infoFrame, text=utcTime2Str(strIsoUTCTime2DateTime(lastModDate)))
-        self.__lastModificationDateValueLabel.grid(column=3, row=1,padx=2, pady=2)
+        self.__lastModificationDateValueLabel.grid(column=1, sticky='W', row=2,padx=2, pady=2)
 
         self.__packageVersionLabel = Label(self.__infoFrame, text="Version: ")
-        self.__packageVersionLabel.grid(column=4, row=1, sticky='W', padx=2, pady=2)
+        self.__packageVersionLabel.grid(column=0, row=3, sticky='W', padx=2, pady=2)
         self.__packageVersionEntry = Entry(self.__infoFrame)
-        self.__packageVersionEntry.grid(column=5, row=1, padx=2, pady=2)
+        self.__packageVersionEntry.grid(column=1, row=3, sticky='W', padx=2, pady=2)
         self.__packageVersionEntry.insert(END, self.packageEditorModel.package.get_field('info/package version'))
 
         self.__tableNameLabel = Label(self.__infoFrame, text="Table Name: ")
-        self.__tableNameLabel.grid(column=0, row=2, sticky='W',padx=2, pady=2)
+        self.__tableNameLabel.grid(column=0, row=4, sticky='W',padx=2, pady=2)
         self.__tableNameEntry = Entry(self.__infoFrame,width=50)
-        self.__tableNameEntry.grid(column=1, row=2,padx=2, pady=2)
+        self.__tableNameEntry.grid(column=1, row=4,padx=2, pady=2)
         self.__tableNameEntry.insert(END, self.packageEditorModel.package.get_field('info/table name'))
 
         self.__tableDesignerLabel= Label(self.__infoFrame, text="Table Designer: ")
-        self.__tableDesignerLabel.grid(column=0, row=3, sticky='W',padx=2, pady=2)
+        self.__tableDesignerLabel.grid(column=0, row=5, sticky='W',padx=2, pady=2)
         self.__tableDesignerEntry = Entry(self.__infoFrame,width=50)
-        self.__tableDesignerEntry.grid(column=1, row=3,padx=2, pady=2)
+        self.__tableDesignerEntry.grid(column=1, row=5,padx=2, pady=2)
         self.__tableDesignerEntry.insert(END, self.packageEditorModel.package.get_field('info/table designer(s)'))
 
         self.__tableYearLabel = Label(self.__infoFrame, text="Year: ")
-        self.__tableYearLabel.grid(column=2, row=3, sticky='W',padx=2, pady=2)
+        self.__tableYearLabel.grid(column=0, row=6, sticky='W',padx=2, pady=2)
         self.__tableYearEntry = Entry(self.__infoFrame)
-        self.__tableYearEntry.grid(column=3, row=3,padx=2, pady=2)
+        self.__tableYearEntry.grid(column=1, row=6,sticky='W',padx=2, pady=2)
         self.__tableYearEntry.insert(END, self.packageEditorModel.package.get_field('info/year'))
 
         self.__themeLabel=Label(self.__infoFrame, text="Theme: ")
-        self.__themeLabel.grid(column=0, row=4, sticky='NW',padx=2, pady=2)
+        self.__themeLabel.grid(column=0, row=7, sticky='NW',padx=2, pady=2)
         self.__themeLabelText = Text(self.__infoFrame, width=44, height=2)
-        self.__themeLabelText.grid(column=1, row=4, sticky='NW',columnspan=4,padx=2, pady=2)
+        self.__themeLabelText.grid(column=1, row=7, sticky='NW',columnspan=4,padx=2, pady=2)
         self.__themeLabelText.insert(END, self.packageEditorModel.package.get_field('info/theme'))
 
         #=================================================================
@@ -110,7 +110,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__tree.heading("2", text="Last Modification", anchor=W)
         self.__tree.heading("3", text="Author(s)", anchor=W)
         self.__tree.heading("4", text="Version", anchor=W)
-        self.__tree.heading("5", text="sha1", anchor=W)
+        self.__tree.heading("5", text="url", anchor=W)
         self.__tree.tag_configure('info', foreground='grey')
         scrollbar = Scrollbar(self.__contentFrame, orient="vertical")
         scrollbar.config(command=self.__tree.yview)
@@ -123,7 +123,7 @@ class PackageEditorViewer(Frame, Observer):
 
         self.__btAddFile = Button(self.__contentFrame, image=self.__btAddFileImage, command=self.on_addFile, state='disable')
         self.__btAddFileTip = CreateToolTip(self.__btAddFile, 'Add a file to package')
-        self.__btAddFile.grid(row=1, column=2, sticky=N )
+        self.__btAddFile.grid(row=1, column=2, sticky=N)
         self.__btDelFile = Button(self.__contentFrame, image=self.__btDelFileImage, command=self.on_delFile, state='disable')
         self.__btDelFileTip = CreateToolTip(self.__btAddFile, 'Delete a file from package')
         self.__btDelFile.grid(row=2, column=2, sticky=N)
@@ -249,7 +249,7 @@ class PackageEditorViewer(Frame, Observer):
                                 file=element['file']
                                 lastMod =  file['lastmod']
                                 self.__tree.insert(categoryFolder, "end", text=file['name'], tag=['file',product+'/'+category],
-                                                   values=(convert_size(file['size']),  utcTime2Str(strIsoUTCTime2DateTime(lastMod)), 'author','1.0', file['sha1']))
+                                                   values=(convert_size(file['size']),  utcTime2Str(strIsoUTCTime2DateTime(lastMod)), 'author','1.0', file['url']))
 
 
         # => tags=['roms'] <= sous element de roms

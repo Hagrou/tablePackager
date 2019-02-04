@@ -4,12 +4,13 @@ from packager.tools.observer import Observer
 from packager.tools.toolTip import *
 
 class InstalledTablesView(Frame, Observer):
-    def __init__(self, window, installedTablesModel, **kwargs):
+    def __init__(self, window, baseModel, **kwargs):
         Frame.__init__(self, window, width=200, height=100, **kwargs)
-        Observer.__init__(self, installedTablesModel)
+        Observer.__init__(self, baseModel.installedTablesModel)
 
-        self.__btDelTableImage = PhotoImage(file="images/btDelTable.png")
-        self.__installedTablesModel=installedTablesModel
+        self.__baseModel=baseModel
+        self.__btDelTableImage = PhotoImage(file=self.__baseModel.baseDir+"images/btDelTable.png")
+        self.__installedTablesModel=self.__baseModel.installedTablesModel
         self.__label = Label(self, text="Installed Tables")
         self.__label.pack(side=TOP)
 

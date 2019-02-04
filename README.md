@@ -2,57 +2,32 @@
 Pincab Table Packager
 
 
-SM Lib - Proclame la bonne parole de sieurs Sam et Max
 ========================================================
 
-Ce module proclame la bonne parole de sieurs Sam et Max. Puissent-t-ils
-retrouver une totale libert� de pens�e cosmique vers un nouvel age
-reminiscent.
+Génération d'une distribution
+-----------------------------
 
-Vous pouvez l'installer avec pip:
+Pour simplifier l'installation et l'utilisation de tablePackager, celui-ci 
+est distribué sous la forme d'un fichier d'installation Windows (_tablePackager-x.y-amd64.msi_).
 
-    pip install sm_lib
+La génération de ce fichier .msi nécessite d'installer dans le virtuel env la librairie cx_freeze:
 
-Exemple d'usage:
+    > pip install cx_freeze
 
-    >>> from sm_lib import proclamer
-    >>> proclamer()
+Il faut ensuite exécuter la commande :
+    
+    (venv) C:\tablePackager>python setup.py bdist_msi
+    
+Ce qui lance la production du fichier .msi qui va se trouver dans le répertoire `tablePackager\dist`.
 
-Ce code est sous licence WTFPL.
-
-Installation:
-python setup.py install
-
-Suppression du package
-pip uninstall tablePackager
-
-TODO:
-
-
-- Popup Processing
-- 
-
-Production d'un package
-=======================
-
-Prérequis : cx_freeze
-
-    > python setup.py bdist_msi
-
-
-TODO
+Todo
 ====
-X Ajouter repertoire "installed" contenant les manifests des tables 
-  installées
-  
-X Ajouter selection produits extraction/install
 
 - commencer menu
-        - 
-    
     - Aide => Test html + image
 
-- Edition Authors de chaque fichier
+
+- Edition Authors de chaque fichier + url
     => Affichage + edition sur double click
       
 

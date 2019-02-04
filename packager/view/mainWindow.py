@@ -35,7 +35,7 @@ class MainWindow(Observer):
         self.__window.title("Pincab Table Packager")
         self.__separator=Separator(self.__window, orient=HORIZONTAL)
 
-        self.__installedTablesView=InstalledTablesView(self.__window, self.__baseModel.installedTablesModel)
+        self.__installedTablesView=InstalledTablesView(self.__window, self.__baseModel)
         self.__configViewer=ConfigViewer(self.__window, self.__baseModel)
         self.__progressBar = ttk.Progressbar(self.__window,orient ="horizontal", mode ="indeterminate")
         self.__progressBar["value"] = 0
@@ -66,8 +66,8 @@ class MainWindow(Observer):
 
         self.__cbExPinballX.grid(column=0, row=3, sticky='NW')
 
-        self.__btExtractImage = PhotoImage(file="images/btExtract.png")
-        self.__btInstallImage = PhotoImage(file="images/btInstall.png")
+        self.__btExtractImage = PhotoImage(file=baseModel.baseDir+"images/btExtract.png")
+        self.__btInstallImage = PhotoImage(file=baseModel.baseDir+"images/btInstall.png")
 
         self.__btExtract = Button(self.__extractFrame, image=self.__btExtractImage, command=self.extractOnClick,
                                  state=DISABLED)

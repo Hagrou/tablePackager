@@ -5,10 +5,10 @@ from packager.model.config import *
 from packager.model.baseModel import *
 from packager.tools.logHandler import *
 
-version='0.3'
+version='0.4'
 
 #https://datastudio.google.com/reporting/13ua5g7jmoyHovP4hrqk48HBYGeQbpJ1Z/page/55yX
-#https://pythonprogramming.net/threading-tutorial-python/?completed=/tkinter-adding-text-images/
+
 def main():
     logging.basicConfig(
         level=logging.DEBUG,
@@ -31,6 +31,7 @@ def main():
     baseModel.packagedTablesModel.update()
     mainWindow.mainLoop()
 
+import os
 
 if __name__ == '__main__':
     main()
