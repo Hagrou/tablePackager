@@ -46,9 +46,9 @@ class InstalledTablesModel(Observable):
         self.__selectedTable = []
         self.notify_all(self, events=['<<TABLE UNSELECTED>>'])  # update listeners
 
-    def extract_tables(self):
+    def extract_tables(self, appChoice):
         self.notify_all(self, events=['<<DISABLE_ALL>>','<<BEGIN_ACTION>>'], tables=self.__selectedTable)  # update listeners
-        extractThread = AsynRun(self.extract_tables_begin, self.extract_tables_end)
+        extractThread = AsynRun(self.extract_tables_begin, self.extract_tables_end,context=appChoice)
         extractThread.start()
 
     def extract_tables_begin(self,context=None):
@@ -70,9 +70,15 @@ class InstalledTablesModel(Observable):
             package=Package(self.baseModel, table['name'])
             package.new(self.baseModel.tmp_path)
 
-            self.baseModel.visualPinball.extract(package)
-            self.baseModel.vpinMame.extract(package)
-            self.baseModel.pinballX.extract(table['name'], package)
+            if context['visual_pinball'].get():
+                self.baseModel.visualPinball.extract(package)
+                self.baseModel.vpinMame.extract(package)
+            if context['pinballX'].get():
+                self.baseModel.pinballX.extract(table['name'], package)
+            if context['futurPinball'].get():
+                self.logger.warning("extract from futurPinball is not yet implemented")
+            if context['pinupSystem'].get():
+                self.logger.warning("extract from pinupSystem is not yet implemented")
 
             package.save()
             package.pack() # zip package

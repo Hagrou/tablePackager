@@ -38,7 +38,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__infoFrame=Frame(self.__topLevel)
         self.__packageNameLabel=Label(self.__infoFrame, text="Package Name: ")
         self.__packageNameLabel.grid(column=0, row=0, sticky='W',padx=2, pady=2)
-        self.__packageNameEntry = Entry(self.__infoFrame)
+        self.__packageNameEntry = Entry(self.__infoFrame,width=50)
         self.__packageNameEntry.bind('<KeyRelease>', self.tableNameKeyEvent)
         self.__packageNameEntry.grid(column=1, row=0,padx=2, pady=2)
         self.__packageNameEntry.insert(END, self.packageEditorModel.currentPackage['name'])
@@ -68,13 +68,13 @@ class PackageEditorViewer(Frame, Observer):
 
         self.__tableNameLabel = Label(self.__infoFrame, text="Table Name: ")
         self.__tableNameLabel.grid(column=0, row=2, sticky='W',padx=2, pady=2)
-        self.__tableNameEntry = Entry(self.__infoFrame)
+        self.__tableNameEntry = Entry(self.__infoFrame,width=50)
         self.__tableNameEntry.grid(column=1, row=2,padx=2, pady=2)
         self.__tableNameEntry.insert(END, self.packageEditorModel.package.get_field('info/table name'))
 
         self.__tableDesignerLabel= Label(self.__infoFrame, text="Table Designer: ")
         self.__tableDesignerLabel.grid(column=0, row=3, sticky='W',padx=2, pady=2)
-        self.__tableDesignerEntry = Entry(self.__infoFrame)
+        self.__tableDesignerEntry = Entry(self.__infoFrame,width=50)
         self.__tableDesignerEntry.grid(column=1, row=3,padx=2, pady=2)
         self.__tableDesignerEntry.insert(END, self.packageEditorModel.package.get_field('info/table designer(s)'))
 

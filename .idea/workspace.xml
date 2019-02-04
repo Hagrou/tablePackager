@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/packager/model/baseModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/baseModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/package.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/package.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/model/installedTablesModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/installedTablesModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packager/model/packagedTablesModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packagedTablesModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/view/configViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/configViewer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/mainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/mainWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,10 +17,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/view/configViewer.py">
+        <entry file="file://$PROJECT_DIR$/packager/model/baseModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="1224">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packager/model/packagedTablesModel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="71" column="81" selection-start-line="71" selection-start-column="81" selection-end-line="71" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packager/view/mainWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="85" column="63" selection-start-line="85" selection-start-column="63" selection-end-line="85" selection-end-column="63" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -28,28 +47,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/model/baseModel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="78" selection-start-line="78" selection-end-line="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/packager/model/packagedTablesModel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packager/tools/toolbox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="153" selection-start-line="153" selection-end-line="153" />
+            <state relative-caret-position="320">
+              <caret line="146" column="8" selection-start-line="146" selection-start-column="8" selection-end-line="146" selection-end-column="8" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
                 <marker date="1548797775699" expanded="true" signature="3011:3013" ph="..." />
@@ -59,36 +60,39 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://C:/Program Files/Python36/Lib/threading.py">
+        <entry file="file://$PROJECT_DIR$/packager/model/installedTablesModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="908" lean-forward="true" selection-start-line="908" selection-end-line="908" />
+            <state relative-caret-position="282">
+              <caret line="80" column="86" lean-forward="true" selection-start-line="72" selection-start-column="11" selection-end-line="80" selection-end-column="86" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/tablePackager.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+            <state relative-caret-position="385">
+              <caret line="76" column="67" selection-start-line="76" selection-start-column="67" selection-end-line="76" selection-end-column="67" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+                <marker date="1549303252587" expanded="true" signature="7793:7794" ph="..." />
+                <marker date="1549303252587" expanded="true" signature="7826:7857" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/model/packageEditorModel.py">
+        <entry file="file://$PROJECT_DIR$/packager/view/packagedTablesView.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-634">
-              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+            <state relative-caret-position="527">
+              <caret line="31" column="81" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="81" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
-                <marker date="1548797806551" expanded="true" signature="457:502" ph="..." />
-                <marker date="1548797806551" expanded="true" signature="579:652" ph="..." />
-                <marker date="1548797806551" expanded="true" signature="616:652" ph="..." />
+                <element signature="e#0#14#0" expanded="true" />
+                <marker date="1549112135616" expanded="true" signature="2403:2550" ph="..." />
               </folding>
             </state>
           </provider>
@@ -97,8 +101,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packager/model/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="153">
+              <caret line="9" column="48" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="9" selection-end-column="48" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -110,7 +114,7 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="317">
+              <first_editor relative-caret-position="1020">
                 <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
               </first_editor>
               <second_editor />
@@ -121,7 +125,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packager/model/package.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="1394">
               <caret line="93" column="66" selection-start-line="93" selection-start-column="45" selection-end-line="93" selection-end-column="66" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -197,39 +201,38 @@
         <option value="$PROJECT_DIR$/packager/pincab/vpinMame.py" />
         <option value="$PROJECT_DIR$/sandbox/fields.py" />
         <option value="$PROJECT_DIR$/sandbox/kwarg.py" />
-        <option value="$PROJECT_DIR$/packager/model/installedTablesModel.py" />
         <option value="$PROJECT_DIR$/packager/pincab/pinballX.py" />
         <option value="$PROJECT_DIR$/sandbox/date.py" />
         <option value="$PROJECT_DIR$/packager/tools/toolbox.py" />
         <option value="$PROJECT_DIR$/packager/model/packageEditorModel.py" />
         <option value="$PROJECT_DIR$/sandbox/loadImage.py" />
         <option value="$PROJECT_DIR$/packager/tools/toolTip.py" />
-        <option value="$PROJECT_DIR$/packager/view/packageEditorViewer.py" />
         <option value="$PROJECT_DIR$/packager/view/packagedTablesView.py" />
         <option value="$PROJECT_DIR$/packager/view/logViewer.py" />
         <option value="$PROJECT_DIR$/packager/view/installedTablesView.py" />
-        <option value="$PROJECT_DIR$/packager/view/mainWindow.py" />
         <option value="$PROJECT_DIR$/packager/model/config.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/packager/view/configViewer.py" />
         <option value="$PROJECT_DIR$/packager/model/baseModel.py" />
         <option value="$PROJECT_DIR$/packager/model/package.py" />
+        <option value="$PROJECT_DIR$/packager/model/installedTablesModel.py" />
         <option value="$PROJECT_DIR$/packager/model/packagedTablesModel.py" />
+        <option value="$PROJECT_DIR$/packager/view/mainWindow.py" />
+        <option value="$PROJECT_DIR$/packager/view/packageEditorViewer.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="198" />
-    <option name="y" value="62" />
-    <option name="width" value="1541" />
-    <option name="height" value="954" />
+    <option name="x" value="265" />
+    <option name="y" value="30" />
+    <option name="width" value="1659" />
+    <option name="height" value="952" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -264,6 +267,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -439,14 +443,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="198" y="62" width="1541" height="954" extended-state="0" />
+    <frame x="265" y="30" width="1659" height="952" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.42" visible="true" weight="0.22488357" />
-      <window_info id="Structure" order="1" sideWeight="0.58" side_tool="true" weight="0.26319936" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.41774192" visible="true" weight="0.20851326" />
+      <window_info id="Structure" order="1" sideWeight="0.58225805" side_tool="true" visible="true" weight="0.20851326" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905483" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.499002" weight="0.24360536" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.499002" visible="true" weight="0.24297924" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49966735" weight="0.3276492" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -621,13 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/installedTablesModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-901">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sandbox/kwarg.py" />
     <entry file="file://$PROJECT_DIR$/packager/pincab/tables.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -676,27 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/packagedTablesView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-279">
-          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1549112135616" expanded="true" signature="2403:2550" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/mainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="100" selection-start-line="100" selection-end-line="100" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packager/view/logViewer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-68">
@@ -717,51 +694,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="156" column="60" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1549057776914" expanded="true" signature="7766:7767" ph="..." />
-            <marker date="1549057776914" expanded="true" signature="7799:7830" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/tablePackager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="317">
-            <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packager/view/configViewer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
+        <state relative-caret-position="391">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
@@ -769,34 +704,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/tools/toolbox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="153" selection-start-line="153" selection-end-line="153" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1548797775699" expanded="true" signature="3011:3013" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files/Python36/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="908" lean-forward="true" selection-start-line="908" selection-end-line="908" />
+        <state relative-caret-position="15334">
+          <caret line="908" selection-start-line="908" selection-end-line="908" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/baseModel.py">
+    <entry file="file://$PROJECT_DIR$/packager/tablePackager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/packager/model/packageEditorModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-634">
+        <state relative-caret-position="1071">
           <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
@@ -807,9 +734,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1020">
+            <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/packager/model/package.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="1394">
           <caret line="93" column="66" selection-start-line="93" selection-start-column="45" selection-end-line="93" selection-end-column="66" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -829,10 +766,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/packager/model/baseModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/model/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="48" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="9" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/tools/toolbox.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="146" column="8" selection-start-line="146" selection-start-column="8" selection-end-line="146" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1548797775699" expanded="true" signature="3011:3013" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/view/packagedTablesView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="81" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1549112135616" expanded="true" signature="2403:2550" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/model/installedTablesModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="80" column="86" lean-forward="true" selection-start-line="72" selection-start-column="11" selection-end-line="80" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/packager/model/packagedTablesModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+        <state relative-caret-position="362">
+          <caret line="71" column="81" selection-start-line="71" selection-start-column="81" selection-end-line="71" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/view/mainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="85" column="63" selection-start-line="85" selection-start-column="63" selection-end-line="85" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="76" column="67" selection-start-line="76" selection-start-column="67" selection-end-line="76" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1549303252587" expanded="true" signature="7793:7794" ph="..." />
+            <marker date="1549303252587" expanded="true" signature="7826:7857" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

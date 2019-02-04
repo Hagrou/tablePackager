@@ -45,9 +45,9 @@ class PackagedTablesModel(Observable):
         self.__selectedPackage = []
         self.notify_all(self, events=['<<PACKAGE UNSELECTED>>'])  # update listeners
 
-    def deployPackage(self):
+    def deployPackage(self,appChoice):
         self.notify_all(self, events=['<<DISABLE_ALL>>','<<BEGIN_ACTION>>'])  # update listeners
-        deployThread = AsynRun(self.deploy_tables_begin, self.deploy_tables_end)
+        deployThread = AsynRun(self.deploy_tables_begin, self.deploy_tables_end, context=appChoice)
         deployThread.start()
 
     def deploy_tables_begin(self,context=None):
@@ -58,12 +58,16 @@ class PackagedTablesModel(Observable):
             package = Package(self.baseModel, packageInfo['name'])
 
             package.unpack()
-            self.baseModel.visualPinball.deploy(package)
-            self.baseModel.vpinMame.deploy(package) #TODO: give the product choice
-            self.baseModel.pinupSystem.deploy(package,'visual pinball')
+            if context['visual_pinball'].get():
+                self.baseModel.visualPinball.deploy(package)
+                self.baseModel.vpinMame.deploy(package)  # TODO: give the product choice
+            if context['pinballX'].get():
+                self.logger.warning("deploy to pinballX is not yet implemented")
 
-            print("copy %s->%s" % (self.baseModel.tmp_path+'/'+packageInfo['name']+'/'+packageInfo['name']+'.manifest.json',
-                                   self.baseModel.installed_path))
+            if context['futurPinball'].get():
+                self.logger.warning("deploy to futur Pinball is not yet implemented")
+            if context['pinupSystem'].get():
+                self.baseModel.pinupSystem.deploy(package,'visual pinball')
 
             shutil.copyfile(self.baseModel.tmp_path+'/'+packageInfo['name']+'/'+packageInfo['name']+'.manifest.json',
                             self.baseModel.installed_path+'/'+packageInfo['name']+'.manifest.json')
