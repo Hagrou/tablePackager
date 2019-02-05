@@ -1,11 +1,18 @@
 import logging
+import tkinter as tk
+
 from pprint import pprint
-from tkinter import filedialog
-from tkinter import *
-from tkinter.ttk import *
+#from tkinter import filedialog
+#from tkinter import *
+#from tkinter.ttk import *
+import PIL.Image
+import PIL.ImageTk
+
+
 from packager.tools.observer import *
 from packager.tools.toolbox import *
 from packager.tools.toolTip import *
+from packager.view.fileInfoViewer import *
 
 class PackageEditorViewer(Frame, Observer):
     def __init__(self,window,baseModel, **kwargs):
@@ -15,10 +22,12 @@ class PackageEditorViewer(Frame, Observer):
         self.__baseModel=baseModel
         self.__packageEditorModel=baseModel.packageEditorModel
         self.__root=window
-        self.__backupState = {'btAddFile': 'disable', 'btDelFile': 'disable','btRename':'disable'}
+        self.__backupState = {'btAddFile': 'disable', 'btDelFile': 'disable','btRename':'disable','btSave':'normal', 'btCancel':'normal'}
         self.__btAddFileImage = PhotoImage(file=baseModel.baseDir+"images/btAddFile.png")
         self.__btDelFileImage = PhotoImage(file=baseModel.baseDir+"images/btDelFile.png")
         self.__topLevel=None
+        self.__fileInfoViewer=FileInfoViewer(self, baseModel)
+        self.__fileInfoViewer.attach(self)
         self.__visible = False
 
     @property
@@ -90,14 +99,17 @@ class PackageEditorViewer(Frame, Observer):
         self.__themeLabelText.grid(column=1, row=7, sticky='NW',columnspan=4,padx=2, pady=2)
         self.__themeLabelText.insert(END, self.packageEditorModel.package.get_field('info/theme'))
 
+        self.__imageViewer=Canvas(self.__infoFrame,width=300, height=300,bg="grey")
+        #self.__imageViewer = Label(self.__infoFrame, text='X')
+        self.__imageViewer.grid(column=3, row=0, columnspan=4, rowspan=7, sticky='NW',padx=2, pady=2)
+
         #=================================================================
         self.__contentFrame = Frame(self.__topLevel, width=200, height=50)
-
-
         self.__label = Label(self.__contentFrame, text="Content")
         self.__label.grid(row=1, column=0, sticky=E + W + N)
         self.__tree = Treeview(self.__contentFrame)
         self.__tree.bind('<ButtonRelease-1>', self.on_select)
+        self.__tree.bind('<Double-1>', self.on_doubleClick)
         self.__tree["columns"] = ("1", "2", "3","4","5")
         self.__tree.column("#0", width=270, minwidth=270)
         self.__tree.column("1", width=70, minwidth=50)
@@ -119,16 +131,12 @@ class PackageEditorViewer(Frame, Observer):
         self.__tree.grid(row=2, column=0, sticky=E + W)
         scrollbar.grid(row=2, column=1, sticky=N + S)
 
-
-
         self.__btAddFile = Button(self.__contentFrame, image=self.__btAddFileImage, command=self.on_addFile, state='disable')
         self.__btAddFileTip = CreateToolTip(self.__btAddFile, 'Add a file to package')
         self.__btAddFile.grid(row=1, column=2, sticky=N)
         self.__btDelFile = Button(self.__contentFrame, image=self.__btDelFileImage, command=self.on_delFile, state='disable')
         self.__btDelFileTip = CreateToolTip(self.__btAddFile, 'Delete a file from package')
         self.__btDelFile.grid(row=2, column=2, sticky=N)
-
-
 
         #=====================================================================
         self.__infoFrame.grid(row=0, column=0, sticky=E + W)
@@ -171,10 +179,24 @@ class PackageEditorViewer(Frame, Observer):
     def on_closing(self):
         self.__packageEditorModel.cancel_edition()
 
+    def preview(self, file, path):
+        extension=Path(file).suffix
+        filePath=self.__packageEditorModel.package.directory+'/'+\
+                 self.__packageEditorModel.package.name+'/'+\
+                 path+'/'+file
+
+        if extension=='.jpg' or extension=='.png':
+            print("preview [%s]" % (filePath))
+
+            pilImage=PIL.Image.open(filePath)
+            #picture.thumbnail((300, 300), PIL.Image.ANTIALIAS)
+            tkImage=PIL.ImageTk.PhotoImage(pilImage)
+
+            #self.__imageViewer.configure(image=pImage) #.create_image(300,300,image=picture)
+            self.__imageViewer.create_image(300,300,image=tkImage)
 
     def on_select(self,evt):
         item=self.__tree.item(self.__tree.focus())
-        print(item)
         if  'info' in item['tags']:
             self.__btAddFile['state'] = 'disable'
             self.__btDelFile['state'] = 'disable'
@@ -183,10 +205,20 @@ class PackageEditorViewer(Frame, Observer):
                 self.__btAddFile['state'] = 'normal'
             if 'file' in item['tags']:
                 self.__btDelFile['state'] = 'normal'
+                self.preview(item['text'], item['tags'][-1])
+
             if 'product' in item['tags']:
                 self.__btAddFile['state'] = 'disable'
             if 'product' in item['tags'] or 'category' in item['tags']:
                 self.__btDelFile['state'] = 'disable'
+
+    def on_doubleClick(self,evt):
+        item = self.__tree.item(self.__tree.focus())
+        print("on double click [%s]" % item)
+        if 'file' in item['tags']:
+            self.__fileInfoViewer.show(self.__packageEditorModel.package,
+                                       item['tags'][-1],
+                                       self.__packageEditorModel.get_fileInfo(self.__topLevel, item['tags'][-1], item['text']))
 
     def on_addFile(self):
         item = self.__tree.item(self.__tree.focus())
@@ -249,7 +281,7 @@ class PackageEditorViewer(Frame, Observer):
                                 file=element['file']
                                 lastMod =  file['lastmod']
                                 self.__tree.insert(categoryFolder, "end", text=file['name'], tag=['file',product+'/'+category],
-                                                   values=(convert_size(file['size']),  utcTime2Str(strIsoUTCTime2DateTime(lastMod)), 'author','1.0', file['url']))
+                                                   values=(convert_size(file['size']),  utcTime2Str(strIsoUTCTime2DateTime(lastMod)), file['author(s)'],file['version'], file['url']))
 
 
         # => tags=['roms'] <= sous element de roms
@@ -257,24 +289,29 @@ class PackageEditorViewer(Frame, Observer):
 
     def update(self, observable, *args, **kwargs):
         events = kwargs['events']
-        logging.debug('VisualPinballEditor: rec event [%s]' % events)
+        logging.debug('PackageEditorViewer: rec event [%s]' % events)
         for event in events:
             if '<<VIEW EDITOR>>' in event:
                 self.show()
             elif '<<HIDE EDITOR>>' in event:
                 self.hide()
-            elif '<<UPDATE VIEW>>' in event:
-                print("UDATE VIEW")
             elif '<<DISABLE_ALL>>' in event:
                 if self.__visible:
                     self.__backupState['btAddFile'] = self.__btAddFile['state']
                     self.__btAddFile['state'] = 'disabled'
                     self.__backupState['btDelFile'] = self.__btDelFile['state']
                     self.__btDelFile['state'] = 'disabled'
+                    self.__backupState['btSave'] = self.__btSave['state']
+                    self.__btSave['state'] = 'disabled'
+                    self.__backupState['btCancel'] = self.__btCancel['state']
+                    self.__btCancel['state'] = 'disabled'
+
             elif '<<ENABLE_ALL>>' in event:
                 if self.__visible:
                     self.__btAddFile['state'] = self.__backupState['btAddFile']
                     self.__btDelFile['state'] = self.__backupState['btDelFile']
+                    self.__btSave['state']    = self.__backupState['btSave']
+                    self.__btCancel['state']  = self.__backupState['btCancel']
             elif '<<UPDATE_EDITOR>>':
                 if self.__visible:
                     self.refresh_files()

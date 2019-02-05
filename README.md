@@ -1,7 +1,10 @@
 # tablePackager
 Pincab Table Packager
 
+Dependances :
 
+    pip install Pillow
+    
 ========================================================
 
 Génération d'une distribution
@@ -27,9 +30,10 @@ Todo
     - Aide => Test html + image
 
 
-- Edition Authors de chaque fichier + url
-    => Affichage + edition sur double click
-      
+O Edition Authors de chaque fichier + url
+    - Disable editView
+    - viewer image ne fonctionne pas!?
+    
 
 - Config:
     - Mise à jour de update file en cas de changement de configuration

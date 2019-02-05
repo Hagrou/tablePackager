@@ -143,3 +143,10 @@ class PackageEditorModel(Observable):
             self.update_package()
         except Exception as e:
             messagebox.showerror('Delete File Error', e.strerror, parent=viewer)
+
+    def get_fileInfo(self, viewer, dataPath, srcFile):
+        return self.package.manifest.get_file(dataPath, srcFile)
+
+    def edit_file(self, viewer, dataPath, srcFile):
+        fileInfo=self.package.manifest.get_file(dataPath, srcFile)
+        print(fileInfo)
