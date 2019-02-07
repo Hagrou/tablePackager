@@ -12,6 +12,7 @@ import time
 import math
 import datetime
 import time
+import numpy as np
 from pathlib import Path
 
 def clean_dir(dir):
@@ -47,42 +48,6 @@ def extract_string_from_binary_file(vpx_file, pattern):
         logging.debug("\tstring found %s" % m.group(0))
         return m.group(1).decode('ascii')
 
-"""
-def mkdir_and_copy_file(logger, src,target,dest,content):
-    os.makedirs(target+'/'+dest, exist_ok=True)
-    shutil.copy(src, target+'/'+dest+'/%s' % (src.name))
-    file={}
-    file['name']=src.name
-    file['size'] = os.path.getsize(src)
-    file['sha1']=sha1sum(target+'/'+dest+'/%s' % (src.name))
-    file['author(s)'] = ''
-    file['version'] = ''
-    file['lastmod']=mtime2IsoStr(os.path.getmtime(src)) # last modification date
-
-    if content.get(dest) is None:
-        content[dest] = [{'file':file}]
-    else:
-        content[dest].append({'file':file})
-    logger.info('+ copy "%s"' % (src.name))
-
-def mkdir_and_rename(logger, src,dst, target,dest_path, content):
-    os.makedirs(target+'/'+dest_path, exist_ok=True)
-    shutil.copy(src, target+'/'+dest_path+'/%s' % (dst))
-
-    file = {}
-    file['name'] = src.name
-    file['size'] = os.path.getsize(src)
-    file['sha1'] = sha1sum(src)
-    file['author(s)'] = ''
-    file['version'] = ''
-    file['lastmod'] = mtime2IsoStr(os.path.getmtime(src))  # last modification date
-
-    if content.get(dest_path) is None:
-        content[dest_path] = [{'file':file}]
-    else:
-        content[dest_path].append({'file':file})
-    logger.info('+ copy "%s"' % (dst))
-"""
 def sha1sum(filename):
     h  = hashlib.sha1()
     b  = bytearray(128*1024)
@@ -142,6 +107,41 @@ def mtime2IsoStr(mtime):
 def utcTime2Str(utcTime):
     return utcTime.strftime("%Y-%m-%d %H:%M:%S")
 
+
+
+def searchSentenceInString(string, sentence):
+    score = 0.0
+    words = sentence.split(' ')
+    for word in words:
+        if string.find(word) >= 0:
+            score = score + 1.0
+    return score/len(words)
+
+#https://stackabuse.com/levenshtein-distance-and-text-similarity-in-python/
+def levenshtein(seq1, seq2):
+    size_x = len(seq1) + 1
+    size_y = len(seq2) + 1
+    matrix = np.zeros ((size_x, size_y))
+    for x in range(size_x):
+        matrix [x, 0] = x
+    for y in range(size_y):
+        matrix [0, y] = y
+
+    for x in range(1, size_x):
+        for y in range(1, size_y):
+            if seq1[x-1] == seq2[y-1]:
+                matrix [x,y] = min(
+                    matrix[x-1, y] + 1,
+                    matrix[x-1, y-1],
+                    matrix[x, y-1] + 1
+                )
+            else:
+                matrix [x,y] = min(
+                    matrix[x-1,y] + 1,
+                    matrix[x-1,y-1] + 1,
+                    matrix[x,y-1] + 1
+                )
+    return (matrix[size_x - 1, size_y - 1])
 
 class AsynRun(threading.Thread):
     def __init__ (self, method_begin, method_end, context=None):

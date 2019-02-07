@@ -30,6 +30,11 @@ class PackageEditorViewer(Frame, Observer):
         self.__fileInfoViewer.attach(self)
         self.__visible = False
 
+
+    @property
+    def baseModel(self):
+        return self.__baseModel
+
     @property
     def packageEditorModel(self):
         return self.__packageEditorModel
@@ -46,62 +51,67 @@ class PackageEditorViewer(Frame, Observer):
         #=================================================================
         self.__infoFrame=Frame(self.__topLevel)
         self.__packageNameLabel=Label(self.__infoFrame, text="Package Name: ")
-        self.__packageNameLabel.grid(column=0, row=0, sticky='W',padx=2, pady=2)
+        self.__packageNameLabel.grid(column=0, row=0, sticky='W',padx=2, pady=0)
         self.__packageNameEntry = Entry(self.__infoFrame,width=50)
         self.__packageNameEntry.bind('<KeyRelease>', self.tableNameKeyEvent)
-        self.__packageNameEntry.grid(column=1, row=0,padx=2, pady=2)
+        self.__packageNameEntry.grid(column=1, sticky='W', row=0,padx=2, pady=0)
         self.__packageNameEntry.insert(END, self.packageEditorModel.currentPackage['name'])
         self.__btRename= Button(self.__infoFrame, text="Rename", command=self.renameOnClick, state='disable')
-        self.__btRename.grid(column=2, row=0,padx=0, pady=2)
+        self.__btRename.grid(column=2, row=0,padx=0, pady=0)
 
         self.__creationDateLabel = Label(self.__infoFrame, text="Creation date: ")
-        self.__creationDateLabel.grid(column=0, row=1, sticky='W',padx=2, pady=2)
+        self.__creationDateLabel.grid(column=0, row=1, sticky='NW',padx=2, pady=0)
 
         creationDate=self.packageEditorModel.package.get_field('info/creation date')
         self.__creationDateValueLabel = Label(self.__infoFrame,
                                               text=utcTime2Str(strIsoUTCTime2DateTime(creationDate)))
 
-        self.__creationDateValueLabel.grid(column=1, row=1, sticky='W',padx=2, pady=2)
+        self.__creationDateValueLabel.grid(column=1, row=1, sticky='NW',padx=2, pady=0)
 
         self.__lastModificationDateLabel = Label(self.__infoFrame, text="Last Modification: ")
-        self.__lastModificationDateLabel.grid(column=0, row=2, sticky='W',padx=2, pady=2)
+        self.__lastModificationDateLabel.grid(column=0, row=2, sticky='NW',padx=2, pady=0)
         lastModDate = self.packageEditorModel.package.get_field('info/lastmod')
         self.__lastModificationDateValueLabel = Label(self.__infoFrame, text=utcTime2Str(strIsoUTCTime2DateTime(lastModDate)))
-        self.__lastModificationDateValueLabel.grid(column=1, sticky='W', row=2,padx=2, pady=2)
+        self.__lastModificationDateValueLabel.grid(column=1, sticky='NW', row=2,padx=2, pady=0)
 
         self.__packageVersionLabel = Label(self.__infoFrame, text="Version: ")
-        self.__packageVersionLabel.grid(column=0, row=3, sticky='W', padx=2, pady=2)
+        self.__packageVersionLabel.grid(column=0, row=3, sticky='NW', padx=2, pady=0)
         self.__packageVersionEntry = Entry(self.__infoFrame)
-        self.__packageVersionEntry.grid(column=1, row=3, sticky='W', padx=2, pady=2)
+        self.__packageVersionEntry.grid(column=1, row=3, sticky='NW', padx=2, pady=0)
         self.__packageVersionEntry.insert(END, self.packageEditorModel.package.get_field('info/package version'))
 
         self.__tableNameLabel = Label(self.__infoFrame, text="Table Name: ")
-        self.__tableNameLabel.grid(column=0, row=4, sticky='W',padx=2, pady=2)
+        self.__tableNameLabel.grid(column=0, row=4, sticky='NW',padx=2, pady=0)
         self.__tableNameEntry = Entry(self.__infoFrame,width=50)
-        self.__tableNameEntry.grid(column=1, row=4,padx=2, pady=2)
+        self.__tableNameEntry.grid(column=1, row=4,padx=2, pady=0)
         self.__tableNameEntry.insert(END, self.packageEditorModel.package.get_field('info/table name'))
 
         self.__tableDesignerLabel= Label(self.__infoFrame, text="Table Designer: ")
-        self.__tableDesignerLabel.grid(column=0, row=5, sticky='W',padx=2, pady=2)
+        self.__tableDesignerLabel.grid(column=0, row=5, sticky='NW',padx=2, pady=0)
         self.__tableDesignerEntry = Entry(self.__infoFrame,width=50)
-        self.__tableDesignerEntry.grid(column=1, row=5,padx=2, pady=2)
+        self.__tableDesignerEntry.grid(column=1, row=5,padx=2, pady=0)
         self.__tableDesignerEntry.insert(END, self.packageEditorModel.package.get_field('info/table designer(s)'))
 
         self.__tableYearLabel = Label(self.__infoFrame, text="Year: ")
-        self.__tableYearLabel.grid(column=0, row=6, sticky='W',padx=2, pady=2)
+        self.__tableYearLabel.grid(column=0, row=6, sticky='NW',padx=2, pady=0)
         self.__tableYearEntry = Entry(self.__infoFrame)
-        self.__tableYearEntry.grid(column=1, row=6,sticky='W',padx=2, pady=2)
+        self.__tableYearEntry.grid(column=1, row=6,sticky='NW',padx=2, pady=0)
         self.__tableYearEntry.insert(END, self.packageEditorModel.package.get_field('info/year'))
 
         self.__themeLabel=Label(self.__infoFrame, text="Theme: ")
-        self.__themeLabel.grid(column=0, row=7, sticky='NW',padx=2, pady=2)
-        self.__themeLabelText = Text(self.__infoFrame, width=44, height=2)
-        self.__themeLabelText.grid(column=1, row=7, sticky='NW',columnspan=4,padx=2, pady=2)
+        self.__themeLabel.grid(column=0, row=7, sticky='NW',padx=2, pady=0)
+        self.__themeLabelText = Text(self.__infoFrame, width=44, height=0)
+        self.__themeLabelText.grid(column=1, row=7, sticky='NW',columnspan=4,padx=2, pady=0)
         self.__themeLabelText.insert(END, self.packageEditorModel.package.get_field('info/theme'))
 
-        self.__imageViewer=Canvas(self.__infoFrame,width=300, height=300,bg="grey")
-        #self.__imageViewer = Label(self.__infoFrame, text='X')
-        self.__imageViewer.grid(column=3, row=0, columnspan=4, rowspan=7, sticky='NW',padx=2, pady=2)
+        self.__imageCanvasViewer=Canvas(self.__infoFrame,width=300, height=300,bg="grey", borderwidth=2)
+        self.__imageCanvasViewer.grid(column=3, row=0, columnspan=4, rowspan=7, sticky='NW',padx=50, pady=10)
+
+        #======================================
+        pilImage = PIL.Image.open(self.baseModel.baseDir + "images/Super Orbit (Gottlieb 1983).jpg")
+        pilImage.thumbnail((300, 300), PIL.Image.ANTIALIAS)
+        tkImage = PIL.ImageTk.PhotoImage(pilImage)
+        self.__tkImagePreview = self.__imageCanvasViewer.create_image(150, 150, image=tkImage)
 
         #=================================================================
         self.__contentFrame = Frame(self.__topLevel, width=200, height=50)
@@ -185,15 +195,14 @@ class PackageEditorViewer(Frame, Observer):
                  self.__packageEditorModel.package.name+'/'+\
                  path+'/'+file
 
-        if extension=='.jpg' or extension=='.png':
-            print("preview [%s]" % (filePath))
+        if extension=='.jpg' or extension=='.png' or extension=='.gif':
+            pilImage = PIL.Image.open(filePath)
+            pilImage.thumbnail((300, 300), PIL.Image.ANTIALIAS)
+            tkImage = PIL.ImageTk.PhotoImage(pilImage)
+            self.__imageCanvasViewer.itemconfig(self.__tkImagePreview, image=tkImage)
+            self.__imageCanvasViewer.image=tkImage
 
-            pilImage=PIL.Image.open(filePath)
-            #picture.thumbnail((300, 300), PIL.Image.ANTIALIAS)
-            tkImage=PIL.ImageTk.PhotoImage(pilImage)
 
-            #self.__imageViewer.configure(image=pImage) #.create_image(300,300,image=picture)
-            self.__imageViewer.create_image(300,300,image=tkImage)
 
     def on_select(self,evt):
         item=self.__tree.item(self.__tree.focus())

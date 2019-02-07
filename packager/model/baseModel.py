@@ -4,6 +4,7 @@ from packager.pincab.visualPinball import VisualPinball
 from packager.pincab.vpinMame import VPinMame
 from packager.pincab.pinballX import PinballX
 from packager.pincab.pinupSystem import PinUpSystem
+from packager.pincab.ultraDMD import UltraDMD
 from packager.model.packageEditorModel import PackageEditorModel
 from packager.model.packagedTablesModel import *
 
@@ -28,7 +29,7 @@ class BaseModel:
         self.__pinupSystem=PinUpSystem(self.logger, self)
         self.__vpinMame=VPinMame(self.logger, self)
         self.__pinballX = PinballX(self.logger, self)
-
+        self.__ultraDMD= UltraDMD(self.logger,self)
 
     @property
     def baseDir(self):
@@ -107,3 +108,7 @@ class BaseModel:
     @property
     def pinupSystem(self):
         return self.__pinupSystem
+
+    @property
+    def ultraDMD(self):
+        return self.__ultraDMD

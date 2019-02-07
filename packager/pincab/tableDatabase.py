@@ -47,7 +47,7 @@ class TableDatabase:
             'Table %s not found in database, try with %s' % (name, dbTable.get('Table Name (Manufacturer Year)')))
         return dbTable
 
-    #https: // stackabuse.com / levenshtein - distance - and -text - similarity - in -python /
+#https: // stackabuse.com / levenshtein - distance - and -text - similarity - in -python /
     def levenshtein(self, seq1, seq2):
         size_x = len(seq1) + 1
         size_y = len(seq2) + 1

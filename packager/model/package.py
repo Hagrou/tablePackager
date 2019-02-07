@@ -50,6 +50,9 @@ class Manifesto:
         self.content['visual pinball']['info'] = collections.OrderedDict()
         self.content['visual pinball']['info']['romName']=''
 
+        self.content['UltraDMD'] = collections.OrderedDict()
+        self.content['UltraDMD']['content'] = []
+
         self.content['VPinMAME'] = collections.OrderedDict()
         self.content['VPinMAME']['cfg']=[]
         self.content['VPinMAME']['nvram'] = []

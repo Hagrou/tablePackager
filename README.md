@@ -4,6 +4,8 @@ Pincab Table Packager
 Dependances :
 
     pip install Pillow
+    pip install numpy
+    
     
 ========================================================
 
@@ -25,14 +27,11 @@ Ce qui lance la production du fichier .msi qui va se trouver dans le répertoire
 
 Todo
 ====
-
+- Import Ultra DMD
+    => Deploy UltraDMD
+    
 - commencer menu
     - Aide => Test html + image
-
-
-O Edition Authors de chaque fichier + url
-    - Disable editView
-    - viewer image ne fonctionne pas!?
     
 
 - Config:
@@ -40,7 +39,7 @@ O Edition Authors de chaque fichier + url
     - fenetre config en dessous!!!
 
 
-- Traiter les cas de UltraDMD
+
 
 - support vp9 / future pinball
 
@@ -54,10 +53,15 @@ O Edition Authors de chaque fichier + url
     * Visual Pinball
         - 1 seul fichier vpx présent
         - directb2s présent
-        
+ 
+Bug:
+  - disable newPackage  
+  - vertical scrobare (InstalledTable)
+
+     
 Whish
 =====
-- stockage de manifest deployés + merging si import installed packaged table
+- merging si import installed packaged table
 
 
 Licenses

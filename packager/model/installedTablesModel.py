@@ -6,8 +6,6 @@ from packager.model.package import *
 from packager.tools.observer import Observable
 from packager.tools.toolbox import *
 
-
-
 class InstalledTablesModel(Observable):
     def __init__(self, baseModel):
         super().__init__()
@@ -73,6 +71,7 @@ class InstalledTablesModel(Observable):
             if context['visual_pinball'].get():
                 self.baseModel.visualPinball.extract(package)
                 self.baseModel.vpinMame.extract(package)
+                self.baseModel.ultraDMD.extract(table['name'],package)
             if context['pinballX'].get():
                 self.baseModel.pinballX.extract(table['name'], package)
             if context['futurPinball'].get():
