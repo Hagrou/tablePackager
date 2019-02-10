@@ -38,9 +38,6 @@ Todo
     - Mise à jour de update file en cas de changement de configuration
     - fenetre config en dessous!!!
 
-
-
-
 - support vp9 / future pinball
 
 

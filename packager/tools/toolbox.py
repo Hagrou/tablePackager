@@ -12,7 +12,7 @@ import time
 import math
 import datetime
 import time
-import numpy as np
+
 from pathlib import Path
 
 def clean_dir(dir):
@@ -116,8 +116,12 @@ def searchSentenceInString(string, sentence):
         if string.find(word) >= 0:
             score = score + 1.0
     return score/len(words)
-
+"""
 #https://stackabuse.com/levenshtein-distance-and-text-similarity-in-python/
+import numpy as np
+import numpy.core._methods
+import numpy.lib.format
+
 def levenshtein(seq1, seq2):
     size_x = len(seq1) + 1
     size_y = len(seq2) + 1
@@ -142,6 +146,7 @@ def levenshtein(seq1, seq2):
                     matrix[x,y-1] + 1
                 )
     return (matrix[size_x - 1, size_y - 1])
+"""
 
 class AsynRun(threading.Thread):
     def __init__ (self, method_begin, method_end, context=None):

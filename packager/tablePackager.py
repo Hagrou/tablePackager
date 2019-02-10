@@ -1,7 +1,7 @@
 import logging
 
 from packager.view.mainWindow import *
-from packager.model.config import *
+
 from packager.model.baseModel import *
 from packager.tools.logHandler import *
 
@@ -23,9 +23,9 @@ def main():
     formatter = logging.Formatter('%(asctime)s: %(message)s')
     logHandler.setFormatter(formatter)
     logger.addHandler(logHandler)
-    config=Config()
+
     logger.info('Started')
-    baseModel=BaseModel(logger, config)
+    baseModel=BaseModel(logger)
     mainWindow = MainWindow(baseModel, logHandler)
     baseModel.installedTablesModel.update()
     baseModel.packagedTablesModel.update()

@@ -22,8 +22,13 @@ class Config:
         self.__data[var_name]=value
 
     def load(self):
-        path=self.get('working_dir')+ '/config.json'
 
+
+        working_dir=self.get('working_dir')
+        if not os.path.exists(working_dir):
+            os.makedirs(working_dir, exist_ok=True)
+
+        path = working_dir + '/config.json'
         if not os.path.exists(path): # no config? write it with default values
             self.save()
             return

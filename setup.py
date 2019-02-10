@@ -33,6 +33,7 @@ bdist_msi_options = {'data': msi_data}
 
 options = {
     'build_exe': {
+        'include_msvcr' : True,
         'include_files':[
             os.path.join(PYTHON_INSTALL_DIR, 'DLLs', 'tk86t.dll'),
             os.path.join(PYTHON_INSTALL_DIR, 'DLLs', 'tcl86t.dll'),
@@ -40,7 +41,6 @@ options = {
     },
     'bdist_msi': bdist_msi_options,
 }
-
 
 executables = [
     Executable('packager/tablePackager.py',
