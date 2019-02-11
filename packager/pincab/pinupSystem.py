@@ -72,3 +72,13 @@ class PinUpSystem:
         copytree(self.logger,
                  self.baseModel.tmp_path + "/" + package.name + "/Media/Flyers Back",
                  self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/GameInfo')
+
+    def delete(self, table_name,product):
+        self.logger.info("* Delete PinUp Media")
+
+        popMedia=self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product)
+        if not Path(popMedia).exists():
+            raise ValueError('Path not found (%s)' % popMedia + "/" + table_name)
+
+        for file in Path(popMedia).glob('**/%s.*' % table_name):
+            self.logger.info("- delete file %s" % file)

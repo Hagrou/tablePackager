@@ -44,9 +44,9 @@ class InstalledTablesModel(Observable):
         self.__selectedTable = []
         self.notify_all(self, events=['<<TABLE UNSELECTED>>'])  # update listeners
 
-    def extract_tables(self, appChoice):
+    def extract_tables(self, tableChoice):
         self.notify_all(self, events=['<<DISABLE_ALL>>','<<BEGIN_ACTION>>'], tables=self.__selectedTable)  # update listeners
-        extractThread = AsynRun(self.extract_tables_begin, self.extract_tables_end,context=appChoice)
+        extractThread = AsynRun(self.extract_tables_begin, self.extract_tables_end,context=tableChoice)
         extractThread.start()
 
     def extract_tables_begin(self,context=None):
@@ -91,5 +91,39 @@ class InstalledTablesModel(Observable):
         self.notify_all(self, events=['<<END_ACTION>>','<<ENABLE_ALL>>'], tables=self.__selectedTable)  # update listeners
         self.baseModel.packagedTablesModel.update()
 
+    def delete_Tables(self, viewer):
+        self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
+        tables=', '.join(p['name'] for p in self.__selectedTable)
+        delConfirmed=messagebox.askokcancel("Delete Table(s)", "Are you sure you want to delete table(s) '%s'" % (tables),
+                               parent=viewer)
+        if not delConfirmed:
+            self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
+            return
 
+        deleteTableThread = AsynRun(self.delete_tables_begin, self.delete_tables_end)
+        deleteTableThread.start()
+
+
+    def delete_tables_begin(self,context=None):
+        if not self.__selectedTable: # empty selection
+            raise ValueError('No selected table')
+
+        self.logger.info("--[Delete Table(s)]------------------")
+        for table in self.__selectedTable:
+            self.logger.info("--[Working on '%s']------------------" % (table['name']))
+
+            romName=self.baseModel.visualPinball.getRomName(table['name']) # use package.manifest if exists
+            self.baseModel.visualPinball.delete(table['name'])
+            self.baseModel.vpinMame.delete(table['name'],romName)
+            self.baseModel.ultraDMD.delete(table['name']) # use package.manifest if exists
+            self.baseModel.pinballX.delete(table['name'])
+            self.baseModel.pinupSystem.delete(table['name'],'visual pinball')
+            """
+            self.logger.warning("extract from futurPinball is not yet implemented")
+            """
+
+    def delete_tables_end(self,context=None):
+        self.logger.info("--[Done]------------------")
+        self.update()
+        self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
 

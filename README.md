@@ -35,6 +35,12 @@ from [here](https://www.microsoft.com/en-in/download/details.aspx?id=48145) and 
 
 Todo
 ====
+
+X Delete Installed Table
+    - Add product choice
+    - Unlink/rmdir
+    - Cas d'un package installé
+    
 - Import Ultra DMD
     => Deploy UltraDMD
     
@@ -51,8 +57,11 @@ Todo
 
 - extraction des media avec PinUp System
 - cas si le nom est invalide
+ 
+  
 + Test Extract/deploy+edit sha1)
 - traiter le cas du package invalid
+    => ou version incompatible
 
 + Fonction check package:
     * Visual Pinball
@@ -61,6 +70,7 @@ Todo
  
 Bug: 
     
+ - Bug: delete table enabled after a deletion!
  - preciser:
     flyer.back => GameInfo
                     xxx.flyer_back.jpg

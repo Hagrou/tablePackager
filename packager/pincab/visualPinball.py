@@ -23,6 +23,13 @@ class VisualPinball:
     def visual_pinball_path(self):
         return self.baseModel.visual_pinball_path
 
+    def getRomName(self,tableName):
+        if not os.path.exists(self.visual_pinball_path):
+            raise ValueError('Visual Pinball not found(%s)' % self.visual_pinball_path)
+
+        vpx_file = Path(self.visual_pinball_path + '/tables/' + tableName + '.vpx')
+        return self.extract_rom_name(vpx_file)
+
     def extract(self, package):
         if not os.path.exists(self.visual_pinball_path):
             raise ValueError('Visual Pinball not found(%s)' % self.visual_pinball_path)
@@ -62,6 +69,23 @@ class VisualPinball:
                  self.baseModel.tmp_path+ "/" + package.name+ "/visual pinball/tables",
                  self.baseModel.visual_pinball_path+"/tables")
         return True
+
+    def delete(self, tableName):
+        if not os.path.exists(self.visual_pinball_path):
+            raise ValueError('Visual Pinball not found(%s)' % self.visual_pinball_path)
+
+        self.logger.info("* Visual Pinball X files")
+        vpx_file        = Path(self.visual_pinball_path + '/tables/' + tableName + '.vpx')
+        directb2s_file  = Path(self.visual_pinball_path + "/tables/" + vpx_file.stem + '.directb2s')
+        music_file      = Path(self.visual_pinball_path + "/Music/" + vpx_file.stem + '.mp3') # TODO: store music into media/Audio?
+
+        if vpx_file.exists():
+            self.logger.info("- remove %s file" % vpx_file)
+        if directb2s_file.exists():
+            self.logger.info("- remove %s file" % directb2s_file)
+        if music_file.exists():
+            self.logger.info("- remove %s file" % music_file)
+
 
     """
     def remove_table_file(self, table_file, target_dir, content): # TODO: deprecated?

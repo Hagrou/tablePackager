@@ -37,7 +37,8 @@ class VPinMame:
                 self.logger.error("New Case!!! [%s]" % rom_file)
                 exit(1)  # TODO: remove it
 
-    def deploy(self,package):
+
+    def deploy(self,package): # TODO: give the choice of product
         self.logger.info("* VPinMame files")
         if not Path(self.baseModel.tmp_path + "/" + package.name).exists():
             raise ValueError('path not found (%s)' % (self.baseModel.tmp_path + "/" + package.name))
@@ -45,3 +46,11 @@ class VPinMame:
         copytree(self.logger,
                  self.baseModel.tmp_path + "/" + package.name + "/VPinMAME",
                  self.baseModel.visual_pinball_path + "/VPinMAME")
+
+    def delete(self, tableName, romName): # TODO: give the choice of product
+        if romName == '': # nothing to do
+            return
+        self.logger.info("* VPinMame files '%s'" % romName)
+
+        for rom_file in Path(self.visual_pinball_path+'/VPinMAME').glob('**/*%s*' % romName):
+            self.logger.info("- remove %s file" % rom_file)

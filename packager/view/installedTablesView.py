@@ -1,3 +1,4 @@
+import logging
 from tkinter import *
 
 from packager.tools.observer import Observer
@@ -9,6 +10,7 @@ class InstalledTablesView(Frame, Observer):
         Observer.__init__(self, baseModel.installedTablesModel)
 
         self.__baseModel=baseModel
+        self.__backupState = {}
         self.__btDelTableImage = PhotoImage(file=self.__baseModel.baseDir+"images/btDelTable.png")
         self.__installedTablesModel=self.__baseModel.installedTablesModel
         self.__label = Label(self, text="Installed Tables")
@@ -21,7 +23,6 @@ class InstalledTablesView(Frame, Observer):
         self.__btDelTable.pack(side=LEFT)
         frameBt.pack(side=BOTTOM)
 
-
         scrollbar = Scrollbar(self, orient="vertical")
         scrollbar.pack(side=RIGHT, fill=Y)
 
@@ -31,24 +32,28 @@ class InstalledTablesView(Frame, Observer):
         scrollbar.config(command=self.__listTables.yview)
         self.__listTables.config(yscrollcommand=scrollbar.set)
 
+    def on_select(self,evt):
+        selection=self.__listTables.curselection()
+        if len(selection)==0:  # no selection
+            self.__installedTablesModel.unSelectTable()
+            self.__btDelTable['state'] = 'disabled'
+            return
+        self.__installedTablesModel.selectTable(selection)
+        self.__btDelTable['state'] = 'normal'
 
+    def on_deleteTable(self):
+        self.__installedTablesModel.delete_Tables(self)
 
     def update(self, observable, *args, **kwargs):
         events=kwargs['events']
+        logging.debug('InstalledTablesView: rec event [%s] from %s' % (events,observable))
         for event in events:
             if '<<UPDATE TABLES>>' in event:
                 self.__listTables.delete(0, END)
                 for table in kwargs['tables']:
                     self.__listTables.insert(END, table['name'])
-
-
-    def on_select(self,evt):
-        selection=self.__listTables.curselection()
-        if len(selection)==0:  # no selection
-            self.__installedTablesModel.unSelectTable()
-            return
-        self.__installedTablesModel.selectTable(selection)
-
-
-    def on_deleteTable(self):
-        print("on_deleteTable")
+            elif '<<DISABLE_ALL>>' in event:
+                self.__backupState['__btDelTable']=self.__btDelTable['state']
+                self.__btDelTable['state']='disabled'
+            elif '<<ENABLE_ALL>>' in event:
+                self.__btDelTable['state']=self.__backupState['__btDelTable']

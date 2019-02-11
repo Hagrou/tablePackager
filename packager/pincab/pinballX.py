@@ -14,14 +14,16 @@ class PinballX:
     def pinballX_path(self):
         return self.__baseModel.pinballX_path
 
+    def getProductPath(self, product):
+        if product=='visual pinball':
+            return 'Visual Pinball'
+        return 'Visual Pinball'
+
     def extract(self, table_name, package):
         if not os.path.exists(self.pinballX_path):
             raise ValueError('PinballX not found (%s)' % self.pinballX_path)
 
         self.logger.info("* Pinball X files")
-        #target_dir = dest_dir + '/' + table_name + '/Media'
-        #shutil.rmtree(target_dir, ignore_errors=True)
-
         for file in Path(self.pinballX_path).glob('**/*%s*' % table_name):
             if "Flyer Images\\Back" in str(file.parent):
                 package.add_file(file, 'media/Flyers Back', dstFile=file.stem + ".back" + file.suffix)
@@ -74,3 +76,11 @@ class PinballX:
             else:
                 self.logger.error("New Case! [%s]" % file)
                 break
+
+    def delete(self, table_name):
+        if not os.path.exists(self.pinballX_path):
+            raise ValueError('PinballX not found (%s)' % self.pinballX_path)
+
+        self.logger.info("* Pinball X files")
+        for file in Path(self.pinballX_path).glob('**/%s.*' % table_name):
+            self.logger.info("- delete file %s" % file)
