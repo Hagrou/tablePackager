@@ -60,11 +60,6 @@ Todo
         - directb2s présent
  
 Bug: 
-   
-  - Edition proprietes + save 
-    => pas de mise a jour de l'arbre 
-    => pas de close au save
-    
     
  - preciser:
     flyer.back => GameInfo

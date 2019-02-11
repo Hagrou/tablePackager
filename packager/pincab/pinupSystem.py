@@ -64,19 +64,11 @@ class PinUpSystem:
                  self.baseModel.tmp_path + "/" + package.name + "/Media/TableVideos",
                  self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/TableVideos')
         copytree(self.logger,
-                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyer Inside",
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyers Inside",
                  self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/GameInfo')
         copytree(self.logger,
-                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyer Front",
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyers Front",
                  self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/GameInfo')
         copytree(self.logger,
-                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyer Back",
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyers Back",
                  self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/GameInfo')
-
-
-
-        """
-        copytree(self.logger,
-                 self.baseModel.tmp_path + "/" + package.name + "/Media",
-                 self.baseModel.pinupSystem_path+"/POPMedia/"+self.getProductPath(product))
-        """
