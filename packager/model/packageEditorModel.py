@@ -56,7 +56,7 @@ class PackageEditorModel(Observable):
 
     def save_package(self,info):
         self.logger.info("--[Save Package]-----------------------")
-        self.notify_all(self, events=['<<BEGIN_ACTION>>'])  # update listeners
+        self.notify_all(self, events=['<<BEGIN_ACTION>>', '<<HIDE EDITOR>>'])  # update listeners
         packThread = AsynRun(self.pack_package_begin, self.pack_package_end, context=info)
         packThread.start()
 
@@ -72,7 +72,7 @@ class PackageEditorModel(Observable):
 
     def pack_package_end(self,context=None):
         self.logger.info("--[Edition '%s' Done]------------------" % (self.package.name))
-        self.notify_all(self, events=['<<END_ACTION>>','<<PACKAGE UNSELECTED>>', '<<HIDE EDITOR>>'])  # update listeners
+        self.notify_all(self, events=['<<END_ACTION>>','<<PACKAGE UNSELECTED>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
 
     def rename_package(self, newPackageName):
