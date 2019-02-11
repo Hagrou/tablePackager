@@ -64,8 +64,8 @@ Bug:
   - Edition proprietes + save 
     => pas de mise a jour de l'arbre 
     => pas de close au save
- - rename package
-    => disable save et cancel
+
+ 
  - save 
     => long => disable save et cancel
     

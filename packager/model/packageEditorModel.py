@@ -77,7 +77,7 @@ class PackageEditorModel(Observable):
 
     def rename_package(self, newPackageName):
         self.logger.info("--[Rename Package to '%s']----------" % newPackageName )
-        self.notify_all(self, events=['<<BEGIN_ACTION>>'])  # update listeners
+        self.notify_all(self, events=['<<DISABLE_ALL>>'])  # update listeners
         renameThread = AsynRun(self.rename_package_begin, self.rename_package_end, context={'newPackageName':newPackageName})
         renameThread.start()
 
@@ -90,7 +90,7 @@ class PackageEditorModel(Observable):
 
     def rename_package_end(self,context=None):
         self.logger.info("--[Rename '%s' Done]------------------" % (self.package.name))
-        self.notify_all(self, events=['<<END_ACTION>>'])  # update listeners
+        self.notify_all(self, events=['<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
 
 

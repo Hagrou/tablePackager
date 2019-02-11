@@ -307,7 +307,7 @@ class PackageEditorViewer(Frame, Observer):
 
     def update(self, observable, *args, **kwargs):
         events = kwargs['events']
-        logging.debug('PackageEditorViewer: rec event [%s]' % events)
+        logging.debug('PackageEditorViewer: rec event [%s] from %s' % (events,observable))
         for event in events:
             if '<<VIEW EDITOR>>' in event:
                 self.show()
