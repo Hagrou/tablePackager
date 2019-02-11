@@ -64,10 +64,6 @@ Bug:
   - Edition proprietes + save 
     => pas de mise a jour de l'arbre 
     => pas de close au save
-
- 
- - save 
-    => long => disable save et cancel
     
     
  - preciser:

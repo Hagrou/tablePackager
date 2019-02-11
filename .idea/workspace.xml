@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/packager/model/packageEditorModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packageEditorModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,19 +17,19 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="202">
-                <caret line="62" column="3" lean-forward="true" selection-start-line="62" selection-start-column="3" selection-end-line="62" selection-end-column="3" />
+              <first_editor relative-caret-position="253">
+                <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55">
-              <caret line="309" column="89" selection-start-line="309" selection-start-column="89" selection-end-line="309" selection-end-column="89" />
+            <state relative-caret-position="370">
+              <caret line="334" lean-forward="true" selection-start-line="334" selection-end-line="334" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -66,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packager/model/packageEditorModel.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
@@ -192,16 +193,16 @@
         <option value="$PROJECT_DIR$/packager/pincab/pinballX.py" />
         <option value="$PROJECT_DIR$/packager/pincab/pinupSystem.py" />
         <option value="$PROJECT_DIR$/packager/model/packagedTablesModel.py" />
-        <option value="$PROJECT_DIR$/packager/view/packageEditorViewer.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/packager/model/packageEditorModel.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/packager/view/packageEditorViewer.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="199" />
-    <option name="y" value="57" />
-    <option name="width" value="1483" />
+    <option name="x" value="21" />
+    <option name="y" value="61" />
+    <option name="width" value="1777" />
     <option name="height" value="953" />
   </component>
   <component name="ProjectView">
@@ -460,15 +461,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="199" y="57" width="1483" height="953" extended-state="0" />
+    <frame x="21" y="61" width="1777" height="953" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.68012923" visible="true" weight="0.19377163" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.68012923" visible="true" weight="0.16101208" />
       <window_info id="Structure" order="1" sideWeight="0.31987077" side_tool="true" weight="0.2105919" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905483" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.499002" visible="true" weight="0.2695122" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.499002" visible="true" weight="0.2695122" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49966735" weight="0.20853658" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -541,12 +542,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packager/view/packageEditorViewer.py</url>
-          <line>234</line>
+          <line>233</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packager/view/packageEditorViewer.py</url>
-          <line>192</line>
+          <line>193</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
       </breakpoints>
@@ -850,16 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="309" column="89" selection-start-line="309" selection-start-column="89" selection-end-line="309" selection-end-column="89" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packager/view/mainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
@@ -867,16 +858,6 @@
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="202">
-            <caret line="62" column="3" lean-forward="true" selection-start-line="62" selection-start-column="3" selection-end-line="62" selection-end-column="3" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -889,6 +870,26 @@
             <marker date="1549922441171" expanded="true" signature="457:502" ph="..." />
             <marker date="1549922441171" expanded="true" signature="579:652" ph="..." />
             <marker date="1549922441171" expanded="true" signature="616:652" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="253">
+            <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="334" lean-forward="true" selection-start-line="334" selection-end-line="334" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

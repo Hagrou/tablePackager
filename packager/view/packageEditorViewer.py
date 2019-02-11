@@ -164,6 +164,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__btSave.grid(row=2, column=0, sticky=E)
         self.__btCancel.grid(row=2, column=0, sticky=W)
         self.__visible = True
+
         self.refresh_files()
 
     def askokcancel(self, title, message):
@@ -211,8 +212,6 @@ class PackageEditorViewer(Frame, Observer):
             tkImage = PIL.ImageTk.PhotoImage(pilImage)
             self.__imageCanvasViewer.itemconfig(self.__tkImagePreview, image=tkImage)
             self.__imageCanvasViewer.image=tkImage
-
-
 
     def on_select(self,evt):
         item=self.__tree.item(self.__tree.focus())
@@ -323,13 +322,17 @@ class PackageEditorViewer(Frame, Observer):
                     self.__btSave['state'] = 'disabled'
                     self.__backupState['btCancel'] = self.__btCancel['state']
                     self.__btCancel['state'] = 'disabled'
-
+                    self.__tree.unbind('<ButtonRelease-1>')
+                    self.__tree.unbind('<Double-1>')
             elif '<<ENABLE_ALL>>' in event:
                 if self.__visible:
                     self.__btAddFile['state'] = self.__backupState['btAddFile']
                     self.__btDelFile['state'] = self.__backupState['btDelFile']
                     self.__btSave['state']    = self.__backupState['btSave']
                     self.__btCancel['state']  = self.__backupState['btCancel']
+                    self.__tree.bind('<ButtonRelease-1>', self.on_select)
+                    self.__tree.bind('<Double-1>', self.on_doubleClick)
+
             elif '<<UPDATE_EDITOR>>':
                 if self.__visible:
                     self.refresh_files()
