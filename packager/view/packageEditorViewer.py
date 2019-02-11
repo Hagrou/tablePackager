@@ -83,14 +83,16 @@ class PackageEditorViewer(Frame, Observer):
         self.__tableNameLabel = Label(self.__infoFrame, text="Table Name: ")
         self.__tableNameLabel.grid(column=0, row=4, sticky='NW',padx=2, pady=0)
         self.__tableNameEntry = Entry(self.__infoFrame,width=50)
-        self.__tableNameEntry.grid(column=1, row=4,padx=2, pady=0)
+        self.__tableNameEntry.grid(column=1, row=4,padx=2, pady=0, sticky='NW')
         self.__tableNameEntry.insert(END, self.packageEditorModel.package.get_field('info/table name'))
 
-        self.__tableDesignerLabel= Label(self.__infoFrame, text="Table Designer: ")
-        self.__tableDesignerLabel.grid(column=0, row=5, sticky='NW',padx=2, pady=0)
-        self.__tableDesignerEntry = Entry(self.__infoFrame,width=50)
-        self.__tableDesignerEntry.grid(column=1, row=5,padx=2, pady=0)
-        self.__tableDesignerEntry.insert(END, self.packageEditorModel.package.get_field('info/table designer(s)'))
+        self.__tableManufacturerLabel = Label(self.__infoFrame, text="Manufacturer: ")
+        self.__tableManufacturerLabel.grid(column=0, row=5, sticky='NW', padx=2, pady=0)
+        self.__tableManufacturerEntry = Entry(self.__infoFrame, width=50)
+        self.__tableManufacturerEntry.grid(column=1, row=5, padx=2,sticky='NW', pady=0)
+        self.__tableManufacturerEntry.insert(END, self.packageEditorModel.package.get_field('info/manufacturer'))
+
+
 
         self.__tableYearLabel = Label(self.__infoFrame, text="Year: ")
         self.__tableYearLabel.grid(column=0, row=6, sticky='NW',padx=2, pady=0)
@@ -98,14 +100,20 @@ class PackageEditorViewer(Frame, Observer):
         self.__tableYearEntry.grid(column=1, row=6,sticky='NW',padx=2, pady=0)
         self.__tableYearEntry.insert(END, self.packageEditorModel.package.get_field('info/year'))
 
+        self.__tableDesignerLabel = Label(self.__infoFrame, text="Table Designer: ")
+        self.__tableDesignerLabel.grid(column=0, row=7, sticky='NW', padx=2, pady=0)
+        self.__tableDesignerEntry = Entry(self.__infoFrame, width=50)
+        self.__tableDesignerEntry.grid(column=1, row=7, padx=2, pady=0, sticky='NW')
+        self.__tableDesignerEntry.insert(END, self.packageEditorModel.package.get_field('info/table designer(s)'))
+
         self.__themeLabel=Label(self.__infoFrame, text="Theme: ")
-        self.__themeLabel.grid(column=0, row=7, sticky='NW',padx=2, pady=0)
-        self.__themeLabelText = Text(self.__infoFrame, width=44, height=0)
-        self.__themeLabelText.grid(column=1, row=7, sticky='NW',columnspan=4,padx=2, pady=0)
+        self.__themeLabel.grid(column=0, row=8, sticky='NW',padx=2, pady=0)
+        self.__themeLabelText = Text(self.__infoFrame, width=44, height=0, font=("Helvetica", 10))
+        self.__themeLabelText.grid(column=1, row=8, sticky='NW',columnspan=2,padx=2, pady=0)
         self.__themeLabelText.insert(END, self.packageEditorModel.package.get_field('info/theme'))
 
         self.__imageCanvasViewer=Canvas(self.__infoFrame,width=300, height=300,bg="grey", borderwidth=2)
-        self.__imageCanvasViewer.grid(column=3, row=0, columnspan=4, rowspan=7, sticky='NW',padx=50, pady=10)
+        self.__imageCanvasViewer.grid(column=3, row=0, columnspan=4, rowspan=8, sticky='NSW',padx=50, pady=10)
 
         #======================================
         pilImage = PIL.Image.open(self.baseModel.baseDir + "images/Super Orbit (Gottlieb 1983).jpg")
@@ -150,7 +158,7 @@ class PackageEditorViewer(Frame, Observer):
 
         #=====================================================================
         self.__infoFrame.grid(row=0, column=0, sticky=E + W)
-        self.__contentFrame.grid(row=1, column=0, sticky=E + W)
+        self.__contentFrame.grid(row=1, column=0, sticky=E + W,padx=2, pady=10)
         self.__btSave = Button(self.__topLevel, text="Save", command=self.saveOnClick)
         self.__btCancel = Button(self.__topLevel, text="Cancel", command=self.cancelOnClick)
         self.__btSave.grid(row=2, column=0, sticky=E)
@@ -161,9 +169,6 @@ class PackageEditorViewer(Frame, Observer):
     def askokcancel(self, title, message):
         return messagebox.askokcancel(title, message, parent=self.__topLevel)
 
-    #    def refreshTree(self): # TODO : deprecated?
-    #    content=self.packageEditorModel.manifest.content
-
     def tableNameKeyEvent(self,event):
         if self.packageEditorModel.package.name !=  self.__packageNameEntry.get():
             self.__btRename['state'] = 'enable'
@@ -173,6 +178,7 @@ class PackageEditorViewer(Frame, Observer):
 
     def saveOnClick(self):
         info={'info/table name': self.__tableNameEntry.get(),
+              'info/manufacturer': self.__tableManufacturerEntry.get(),
               'info/table designer(s)': self.__tableDesignerEntry.get(),
               'info/year': self.__tableYearEntry.get(),
               'info/theme': self.__themeLabelText.get('1.0','end'),
@@ -184,6 +190,10 @@ class PackageEditorViewer(Frame, Observer):
         self.__packageEditorModel.cancel_edition()
 
     def renameOnClick(self):
+        if (self.baseModel.packagedTablesModel.isExists(self.__packageNameEntry.get())):
+            if not self.askokcancel("Rename Conflict",
+                                    "The Package '%s' already exists. Do you want to continue (Only apply on Save) ?" % self.__packageNameEntry.get()):
+                return
         self.__packageEditorModel.rename_package(self.__packageNameEntry.get())
 
     def on_closing(self):
@@ -223,7 +233,6 @@ class PackageEditorViewer(Frame, Observer):
 
     def on_doubleClick(self,evt):
         item = self.__tree.item(self.__tree.focus())
-        print("on double click [%s]" % item)
         if 'file' in item['tags']:
             self.__fileInfoViewer.show(self.__packageEditorModel.package,
                                        item['tags'][-1],

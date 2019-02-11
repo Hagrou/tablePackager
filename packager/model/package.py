@@ -40,7 +40,9 @@ class Manifesto:
         self.content['info']['package version'] = '1.0'
         self.content['info']['creation date']=utcTime2IsoStr()
         self.content['info']['lastmod']=self.content['info']['creation date']
+
         self.content['info']['table designer(s)'] = ''
+        self.content['info']['manufacturer'] = ''
         self.content['info']['table name'] = ''
         self.content['info']['year'] = ''
         self.content['info']['theme'] = ''
@@ -60,18 +62,20 @@ class Manifesto:
         self.content['VPinMAME']['memcard'] = []
 
         self.content['media'] = collections.OrderedDict()
-        self.content['media']['GameInfo']=[]
-        self.content['media']['GameHelp'] = []
+        self.content['media']['Flyers Front']=[]
+        self.content['media']['Flyers Back'] = []
+        self.content['media']['Flyers Inside'] = []
+        self.content['media']['Instruction Cards'] = []
         self.content['media']['HighScores'] = []
         self.content['media']['Backglass'] = []
+        self.content['media']['PlayField'] = []
+        self.content['media']['Wheel'] = []
         self.content['media']['DMD'] = []
         self.content['media']['DMDVideos'] = []
         self.content['media']['TableVideos'] = []
         self.content['media']['Audio'] = []
         self.content['media']['AudioLaunch'] = []
         self.content['media']['Topper'] = []
-        self.content['media']['PlayField'] = []
-        self.content['media']['Wheel'] = []
         self.content['media']['ScreenGrabs'] = []
 
     def open(self, path):

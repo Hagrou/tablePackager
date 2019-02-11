@@ -28,5 +28,55 @@ class PinUpSystem:
             raise ValueError('Path not found (%s)' % self.baseModel.tmp_path + "/" + package.name)
 
         copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Audio",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product)+'/Audio')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/AudioLaunch",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/AudioLaunch')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/BackGlass",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/BackGlass')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/DMD",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/DMD')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/DMDVideos",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/DMDVideos')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/HighScores",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/HighScores')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Instruction Cards",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/GameHelp')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/PlayField",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/PlayField')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Topper",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/Topper')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Wheel",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/Wheel')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/ScreenGrabs",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/ScreenGrabs')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/TableVideos",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/TableVideos')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyer Inside",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/GameInfo')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyer Front",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/GameInfo')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyer Back",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/GameInfo')
+
+
+
+        """
+        copytree(self.logger,
                  self.baseModel.tmp_path + "/" + package.name + "/Media",
                  self.baseModel.pinupSystem_path+"/POPMedia/"+self.getProductPath(product))
+        """

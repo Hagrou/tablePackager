@@ -60,7 +60,6 @@ Todo
         - directb2s présent
  
 Bug: 
-  - vertical scrobare (InstalledTable)
    
   - Edition proprietes + save 
     => pas de mise a jour de l'arbre 
@@ -76,7 +75,8 @@ Bug:
                     xxx.flyer_back.jpg
                     xxx.flyer_front.jpg
                     
-     
+
+    
 Whish
 =====
 - merging si import installed packaged table

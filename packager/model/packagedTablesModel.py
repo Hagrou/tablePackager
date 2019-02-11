@@ -35,6 +35,12 @@ class PackagedTablesModel(Observable):
         self.__packages.sort(key=lambda package: package['name'].upper())
         self.notify_all(self, events=['<<UPDATE PACKAGES>>','<<PACKAGE UNSELECTED>>'], packages=self.__packages) # update listeners
 
+    def isExists(self, packageName):
+        for packages_file in Path(self.baseModel.package_path).glob('**/*'+self.baseModel.package_extension):
+            if packageName==packages_file.stem:
+                return True
+        return False
+
     def selectPackages(self, selection):
         self.__selectedPackage=[]
         for index in selection:
