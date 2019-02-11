@@ -10,9 +10,10 @@ from packager.view.logViewer import *
 from packager.view.configViewer import *
 
 
-class MainWindow(Observer):
+class MainWindow(Observer,Observable):
     def __init__(self, baseModel, logHandler):
         Observer.__init__(self, baseModel.installedTablesModel)
+        Observable.__init__(self)
 
         baseModel.packagedTablesModel.attach(self)
         self.__backupState={}
@@ -20,18 +21,18 @@ class MainWindow(Observer):
         self.__window=Tk()
 
         # create a toplevel menu
-        menubar = Menu(self.__window)
-        menubar.add_command(label="Options", command=self.onOptionMenu)
+        self.__menubar = Menu(self.__window)
+        self.__menubar.add_command(label="Options", command=self.onOptionMenu)
 
-        helpMenu = Menu(menubar, tearoff=0)
-        helpMenu.add_command(label="Getting Start", command=self.onHelpMenu)
-        helpMenu.add_separator()
-        helpMenu.add_command(label="About", command=self.onHelpMenu)
-        menubar.add_cascade(label="Help", menu=helpMenu)
+        self.__helpMenu = Menu(self.__menubar, tearoff=0)
+        self.__helpMenu.add_command(label="Getting Start", command=self.onHelpMenu)
+        self.__helpMenu.add_separator()
+        self.__helpMenu.add_command(label="About", command=self.onHelpMenu)
+        self.__menubar.add_cascade(label="Help", menu=self.__helpMenu)
 
 
         # display the menu
-        self.__window.configure(menu=menubar)
+        self.__window.configure(menu=self.__menubar)
         self.__window.title("Pincab Table Packager")
         self.__separator=Separator(self.__window, orient=HORIZONTAL)
 
@@ -104,6 +105,7 @@ class MainWindow(Observer):
 
         self.__packagedTablesView = PackagedTablesView(self, self.__window, self.__baseModel)
 
+
         self.__logViewer = LogViewer(self.__separator, logHandler)
 
         self.__installedTablesView.grid(row=0, column=0, sticky=N + S)
@@ -116,6 +118,8 @@ class MainWindow(Observer):
         self.__packageEditorViewer = PackageEditorViewer(self.__window, self.__baseModel)
         self.__baseModel.packageEditorModel.attach(self)
         self.__baseModel.packageEditorModel.attach(self.__packagedTablesView)
+
+        self.attach(self.__packagedTablesView)
 
     def mainLoop(self):
         try:
@@ -139,7 +143,7 @@ class MainWindow(Observer):
 
     def update(self, observable, *args, **kwargs):
         events=kwargs['events']
-        logging.debug('MainWindow: rec event [%s]' % events)
+        logging.debug('MainWindow: rec event [%s] from %s' % (events,observable))
         for event in events:
             if '<<TABLE SELECTED>>' in event:
                 self.__btExtract['state'] = 'normal'
@@ -154,9 +158,14 @@ class MainWindow(Observer):
                 self.__backupState['btInstall']=self.__btInstall['state']
                 self.__btExtract['state']='disabled'
                 self.__btInstall['state']='disabled'
+                self.notify_all(self, events=['<<DISABLE_ALL>>'])
+                self.__menubar.entryconfig('Options', state='disabled')
+                self.__menubar.entryconfig('Help', state='disabled')
             if '<<ENABLE_ALL>>' in event:
                 self.__btExtract['state']=self.__backupState['btExtract']
                 self.__btInstall['state']=self.__backupState['btInstall']
+                self.__menubar.entryconfig('Options', state='normal')
+                self.__menubar.entryconfig('Help', state='normal')
             if '<<BEGIN_ACTION>>' in event:
                 self.__progressBar.start()
             if '<<END_ACTION>>' in event:

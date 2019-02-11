@@ -25,6 +25,14 @@ Il faut ensuite exécuter la commande :
     
 Ce qui lance la production du fichier .msi qui va se trouver dans le répertoire `tablePackager\dist`.
 
+Installation 
+============
+
+##Pre requis pour Windows 7
+
+To install Python successfully, download Visual C++ Redistributable 
+from [here](https://www.microsoft.com/en-in/download/details.aspx?id=48145) and install it and Reboot the system.
+
 Todo
 ====
 - Import Ultra DMD
@@ -51,10 +59,23 @@ Todo
         - 1 seul fichier vpx présent
         - directb2s présent
  
-Bug:
-  - disable newPackage  
+Bug: 
   - vertical scrobare (InstalledTable)
-
+   
+  - Edition proprietes + save 
+    => pas de mise a jour de l'arbre 
+    => pas de close au save
+ - rename package
+    => disable save et cancel
+ - save 
+    => long => disable save et cancel
+    
+    
+ - preciser:
+    flyer.back => GameInfo
+                    xxx.flyer_back.jpg
+                    xxx.flyer_front.jpg
+                    
      
 Whish
 =====

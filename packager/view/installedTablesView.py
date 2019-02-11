@@ -14,24 +14,24 @@ class InstalledTablesView(Frame, Observer):
         self.__label = Label(self, text="Installed Tables")
         self.__label.pack(side=TOP)
 
-        scrollbar = Scrollbar(self, orient="vertical")
-        scrollbar.pack(side=RIGHT, fill=Y)
-        scrollbar.pack(side=RIGHT, fill=Y)
-
-        self.__listTables = Listbox(self, width=30, height=15, selectmode=EXTENDED, yscrollcommand=scrollbar.set, font=("Helvetica", 10))
-        self.__listTables.pack(expand=True, fill=Y)
-        self.__listTables.bind('<<ListboxSelect>>', self.on_select)
-
-        self.__listTables.config(yscrollcommand=scrollbar.set)
-
         frameBt = Frame(self)
+
         self.__btDelTable = Button(frameBt, image=self.__btDelTableImage, command=self.on_deleteTable, state=DISABLED)
         self.__btDelTableTip = CreateToolTip(self.__btDelTable, 'Delete installed table or package')
         self.__btDelTable.pack(side=LEFT)
         frameBt.pack(side=BOTTOM)
 
+
+        scrollbar = Scrollbar(self, orient="vertical")
+        scrollbar.pack(side=RIGHT, fill=Y)
+
+        self.__listTables = Listbox(self, width=30, height=15, selectmode=EXTENDED, yscrollcommand=scrollbar.set, font=("Helvetica", 10))
+        self.__listTables.pack(expand=True, fill=Y)
+        self.__listTables.bind('<<ListboxSelect>>', self.on_select)
         scrollbar.config(command=self.__listTables.yview)
         self.__listTables.config(yscrollcommand=scrollbar.set)
+
+
 
     def update(self, observable, *args, **kwargs):
         events=kwargs['events']
