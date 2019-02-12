@@ -62,11 +62,12 @@ class PackagedTablesModel(Observable):
         for packageInfo in self.__selectedPackage:
             self.logger.info("--[Deploy '%s']------------------" % (packageInfo['name']))
             package = Package(self.baseModel, packageInfo['name'])
-
             package.unpack()
+            package.open(self.baseModel.tmp_path)
             if context['visual_pinball'].get():
                 self.baseModel.visualPinball.deploy(package)
-                self.baseModel.vpinMame.deploy(package)  # TODO: give the product choice
+                self.baseModel.vpinMame.deploy(package)
+                self.baseModel.ultraDMD.deploy(package)
             if context['pinballX'].get():
                 self.logger.warning("deploy to pinballX is not yet implemented")
 
@@ -77,13 +78,10 @@ class PackagedTablesModel(Observable):
 
             shutil.copyfile(self.baseModel.tmp_path+'/'+packageInfo['name']+'/'+packageInfo['name']+'.manifest.json',
                             self.baseModel.installed_path+'/'+packageInfo['name']+'.manifest.json')
-
-
-            self.logger.info("--['%s' Done]------------------" % (packageInfo['name']))
         clean_dir(self.baseModel.tmp_path)
 
     def deploy_tables_end(self,context=None):
-        self.baseModel.logger.info("Extraction Ended")
+        self.logger.info("--[Done]------------------")
         self.notify_all(self, events=['<<END_ACTION>>','<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.installedTablesModel.update()
 

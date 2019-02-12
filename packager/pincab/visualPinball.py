@@ -81,21 +81,18 @@ class VisualPinball:
 
         if vpx_file.exists():
             self.logger.info("- remove %s file" % vpx_file)
+            os.remove(vpx_file)
         if directb2s_file.exists():
             self.logger.info("- remove %s file" % directb2s_file)
+            os.remove(directb2s_file)
         if music_file.exists():
             self.logger.info("- remove %s file" % music_file)
+            os.remove(music_file)
 
 
-    """
-    def remove_table_file(self, table_file, target_dir, content): # TODO: deprecated?
-        path=target_dir+'/visual pinball/tables/'+table_file
-        os.remove(path)
-    """
     def extract_ultraDMD(self, vpx_file): # TODO: deprecated?
         str=extract_string_from_binary_file(vpx_file, br'cAssetsFolder[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
         str =extract_string_from_binary_file(vpx_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
-        # cAssetsFolder
 
     def extract_rom_name(self,vpx_file):
         return extract_string_from_binary_file(vpx_file, br'cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')

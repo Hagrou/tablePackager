@@ -43,6 +43,7 @@ class PackageEditorModel(Observable):
         self.package.open(self.baseModel.tmp_path)
 
     def edit_package_end(self,context=None):
+        self.logger.info("* Unpack Done")
         self.notify_all(self, events=['<<END_ACTION>>','<<VIEW EDITOR>>'])  # update listeners
 
     def new_package(self):

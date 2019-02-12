@@ -84,3 +84,4 @@ class PinballX:
         self.logger.info("* Pinball X files")
         for file in Path(self.pinballX_path).glob('**/%s.*' % table_name):
             self.logger.info("- delete file %s" % file)
+            os.remove(file)

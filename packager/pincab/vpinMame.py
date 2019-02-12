@@ -54,3 +54,4 @@ class VPinMame:
 
         for rom_file in Path(self.visual_pinball_path+'/VPinMAME').glob('**/*%s*' % romName):
             self.logger.info("- remove %s file" % rom_file)
+            os.remove(rom_file)

@@ -34,14 +34,32 @@ class UltraDMD:
 
                     path=tablePath.joinpath(ultraDMDItem)
                     for file in tablePath.joinpath(ultraDMDItem).glob('**/*'):
-                        print("File: %s\n" % file)
                         package.add_file(file, 'UltraDMD/content')
 
-    def delete(self, tableName, ultraDMD=None):
+    def deploy(self, package):
+        if not os.path.exists(self.baseModel.visual_pinball_path):
+            raise ValueError('Visual Pinball not found(%s)' % self.baseModel.visual_pinball_path)
+
+        if not Path(self.baseModel.tmp_path+ "/" + package.name).exists():
+            raise ValueError('Package Tree not found (%s)' % (self.baseModel.tmp_path+ "/" + package.name))
+
+        if not package.exists_field('visual pinball/info/ultraDMD'):
+            self.logger.info("* No Ultra DMD files")
+            return True
+
+        self.logger.info("* Ultra DMD files")
+        ultraDMD=package.get_field('visual pinball/info/ultraDMD')
+
+        copytree(self.logger,
+                 self.baseModel.tmp_path+ "/" + package.name+ "/UltraDMD/content",
+                 self.baseModel.visual_pinball_path+"/tables/"+ultraDMD+".UltraDMD")
+        return True
+
+    def delete(self, tableName, dirName=None):
         tablePath = Path(self.baseModel.visual_pinball_path + "/tables")  # TODO: give product choice
         self.logger.info("* UltraDMD files")
 
-        if ultraDMD is None:
+        if dirName is None:
             for ultraDMDItem in tablePath.glob('**/*.UltraDMD'):
                 ultraDMDDir = str(Path(ultraDMDItem).stem)
                 score = searchSentenceInString(ultraDMDDir, tableName)
@@ -51,8 +69,10 @@ class UltraDMD:
                                                     "Found %s.UltraDMD directory, delete it ?" % Path(ultraDMDItem).stem)
                     if result:
                         self.logger.info("- Remove Ultra DMD dir '%s'" % ultraDMDDir)
-                        # TODO: delete dir
+                        shutil.rmtree(dirName)
         else:
-            self.logger.info("- Remove Ultra DMD dir '%s'" % ultraDMDDir)
-            #TODO: delete dir
+            self.logger.info("- Remove Ultra DMD dir '%s'" % dirName)
+            delPath=self.baseModel.visual_pinball_path + '/tables/'+dirName+'.UltraDMD'
+            shutil.rmtree(delPath)
+
 

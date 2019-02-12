@@ -83,11 +83,11 @@ class InstalledTablesModel(Observable):
             package.pack() # zip package
             shutil.move(self.baseModel.tmp_path + '/' + table['name'] + self.baseModel.package_extension,
                         self.baseModel.package_path)
-            self.logger.info("--['%s' Done]------------------" % (table['name']))
+
         clean_dir(self.baseModel.tmp_path)
 
     def extract_tables_end(self,context=None):
-        self.baseModel.logger.info("End Extraction")
+        self.logger.info("--[Done]------------------")
         self.notify_all(self, events=['<<END_ACTION>>','<<ENABLE_ALL>>'], tables=self.__selectedTable)  # update listeners
         self.baseModel.packagedTablesModel.update()
 
@@ -112,15 +112,32 @@ class InstalledTablesModel(Observable):
         for table in self.__selectedTable:
             self.logger.info("--[Working on '%s']------------------" % (table['name']))
 
-            romName=self.baseModel.visualPinball.getRomName(table['name']) # use package.manifest if exists
+            ultraDMD=''
+            romName=''
+            isPackage=False
+            manifest=Manifest(table['name'])
+            try:
+                manifest.open(self.baseModel.installed_path, installed=True)
+                isPackage=True
+                if manifest.exists_field('visual pinball/info/romName'):
+                    romName=manifest.get_field('visual pinball/info/romName')
+                if manifest.exists_field('visual pinball/info/ultraDMD'):
+                    ultraDMD=manifest.get_field('visual pinball/info/ultraDMD')
+            except:
+                romName=self.baseModel.visualPinball.getRomName(table['name']) # use package.manifest if exists
+
             self.baseModel.visualPinball.delete(table['name'])
+
             self.baseModel.vpinMame.delete(table['name'],romName)
-            self.baseModel.ultraDMD.delete(table['name']) # use package.manifest if exists
+            if isPackage:
+                if ultraDMD!='':
+                    self.baseModel.ultraDMD.delete(table['name'],dirName=ultraDMD)  # use package.manifest if exists
+            else:
+                self.baseModel.ultraDMD.delete(table['name']) # use package.manifest if exists
             self.baseModel.pinballX.delete(table['name'])
             self.baseModel.pinupSystem.delete(table['name'],'visual pinball')
-            """
-            self.logger.warning("extract from futurPinball is not yet implemented")
-            """
+            self.logger.warning("delete on futurPinball is not yet implemented")
+
 
     def delete_tables_end(self,context=None):
         self.logger.info("--[Done]------------------")

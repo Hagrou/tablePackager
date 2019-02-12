@@ -10,7 +10,6 @@ class InstalledTablesView(Frame, Observer):
         Observer.__init__(self, baseModel.installedTablesModel)
 
         self.__baseModel=baseModel
-        self.__backupState = {}
         self.__btDelTableImage = PhotoImage(file=self.__baseModel.baseDir+"images/btDelTable.png")
         self.__installedTablesModel=self.__baseModel.installedTablesModel
         self.__label = Label(self, text="Installed Tables")
@@ -53,7 +52,4 @@ class InstalledTablesView(Frame, Observer):
                 for table in kwargs['tables']:
                     self.__listTables.insert(END, table['name'])
             elif '<<DISABLE_ALL>>' in event:
-                self.__backupState['__btDelTable']=self.__btDelTable['state']
                 self.__btDelTable['state']='disabled'
-            elif '<<ENABLE_ALL>>' in event:
-                self.__btDelTable['state']=self.__backupState['__btDelTable']

@@ -35,14 +35,6 @@ from [here](https://www.microsoft.com/en-in/download/details.aspx?id=48145) and 
 
 Todo
 ====
-
-X Delete Installed Table
-    - Add product choice
-    - Unlink/rmdir
-    - Cas d'un package installé
-    
-- Import Ultra DMD
-    => Deploy UltraDMD
     
 - commencer menu
     - Aide => Test html + image

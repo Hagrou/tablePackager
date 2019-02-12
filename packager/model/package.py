@@ -13,7 +13,7 @@ from packager.tools.toolbox import *
 
 #from packager.tablePackager import version
 version='1.0'
-class Manifesto:
+class Manifest:
     def __init__(self, name):
         self.__content=collections.OrderedDict()
         self.__name=name
@@ -78,14 +78,19 @@ class Manifesto:
         self.content['media']['Topper'] = []
         self.content['media']['ScreenGrabs'] = []
 
-    def open(self, path):
+    def open(self, path, installed=False):
         if not os.path.exists(path):
             raise PackageException("Manifest not found at %s" % path)
         try:
-            with open(path+'/'+self.name+'/'+self.filename) as data_file:
-                self.__content = json.load(data_file,object_pairs_hook=collections.OrderedDict)
+            if installed:
+                manifestPath=path+'/'+self.filename
+            else:
+                manifestPath=path+'/'+self.name+'/'+self.filename
+            with open(manifestPath) as data_file:
+                    self.__content = json.load(data_file,object_pairs_hook=collections.OrderedDict)
         except:
             raise PackageException("Manifest not found at %s" % (path+'/'+self.name+'/'+self.filename))
+
 
     def save(self, path):
         self.set_field('info/lastmod',utcTime2IsoStr()) # update last modification date
@@ -121,6 +126,15 @@ class Manifesto:
         for field in field_list[:-1]:
             content = content[field]
         return content[field_list[-1]]
+
+    def exists_field(self, field_path):
+        content = self.__content
+        field_list = field_path.split('/')
+        for field in field_list[:-1]:
+            if not content.get(field):
+                return False
+            content = content[field]
+        return True
 
     def get_file(self, field_path, filename):
         content = self.__content
@@ -190,7 +204,7 @@ class Package:
 
     def new(self, packageDir):
         self.__directory=packageDir
-        self.__manifest=Manifesto(self.name)
+        self.__manifest=Manifest(self.name)
         self.__manifest.new() # create empty package
         self.build_tree(self.directory+'/'+self.name, self.manifest.content)
         self.__manifest.save(self.directory)
@@ -202,7 +216,7 @@ class Package:
         if not os.path.exists(baseDir):
             raise PackageException("Package not found at %s" % baseDir)
         self.__directory=baseDir
-        self.__manifest=Manifesto(self.__name)
+        self.__manifest=Manifest(self.__name)
         self.manifest.open(self.__directory)
 
     def update(self):
@@ -258,6 +272,8 @@ class Package:
     def get_field(self, field_path):
         return self.manifest.get_field(field_path)
 
+    def exists_field(self, field_path):
+        return self.manifest.exists_field(field_path)
 
     def add_file(self, srcFile, field_path, dstFile=None):
         try:

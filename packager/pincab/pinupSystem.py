@@ -82,3 +82,4 @@ class PinUpSystem:
 
         for file in Path(popMedia).glob('**/%s.*' % table_name):
             self.logger.info("- delete file %s" % file)
+            os.remove(file)
