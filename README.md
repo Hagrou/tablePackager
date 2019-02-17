@@ -55,11 +55,6 @@ Todo
 - support vp9 / future pinball
 
 
-- extraction des media avec PinUp System
-- cas si le nom est invalide
- 
-  
-+ Test Extract/deploy+edit sha1)
 - traiter le cas du package invalid
     => ou version incompatible
 
@@ -68,6 +63,14 @@ Todo
         - 1 seul fichier vpx présent
         - directb2s présent
  
++ Extraction
+    * Extraction des media avec PinUp System
+    * Prendre Meta si installé
+    
++ Edition
+    * Afficher 1 image en édition si presente
+    * Rename extension possible d'un fichier
+    
 Bug: 
     
  - preciser:
@@ -78,12 +81,10 @@ Bug:
  - View image: PNG !
     
  - Typo des champs texts
- 
-Whish
-=====
-- merging si import installed packaged table
+
 
 
 Licenses
+=========
 
 https://commons.wikimedia.org/wiki/GNOME_Desktop_icons
