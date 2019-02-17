@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/packageEditorModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packageEditorModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/model/package.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/package.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,31 +14,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/pincab/tableDatabase.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-323">
-              <caret line="23" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="23" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/pincab/pinupSystem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1373">
-              <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/packager/model/packageEditorModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="93" column="58" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
+            <state relative-caret-position="420">
+              <caret line="97" column="18" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
                 <marker date="1550438721654" expanded="true" signature="457:502" ph="..." />
@@ -65,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packager/model/packagedTablesModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="267">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
             </state>
           </provider>
         </entry>
@@ -80,6 +58,27 @@
                 <element signature="e#0#14#0" expanded="true" />
                 <marker date="1549709027256" expanded="true" signature="1785:1787" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packager/model/installedTablesModel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="119" selection-start-line="119" selection-end-line="119" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packager/pincab/pinballX.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="84" selection-start-line="84" selection-end-line="84" />
             </state>
           </provider>
         </entry>
@@ -106,33 +105,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/tkinter/__init__.py">
+        <entry file="file://$PROJECT_DIR$/packager/pincab/ultraDMD.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="1282" selection-start-line="1282" selection-end-line="1282" />
+            <state relative-caret-position="246">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/packager/model/package.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="199">
+              <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1550009451947" expanded="true" signature="636:680" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="4064:4185" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="6494:6526" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="6701:6744" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="7031:7083" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="7366:7543" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="7558:9028" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="7656:8553" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="8579:9028" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="9389:9541" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="10812:10818" ph="..." />
-                <marker date="1550009451947" expanded="true" signature="10948:10953" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="636:680" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="4064:4185" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="6489:6521" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="6696:6739" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="7026:7078" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="7361:7538" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="7553:9023" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="7651:8548" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="8574:9023" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="9384:9536" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="10807:10813" ph="..." />
+                <marker date="1550440364477" expanded="true" signature="10943:10948" ph="..." />
               </folding>
             </state>
           </provider>
@@ -207,12 +209,12 @@
         <option value="$PROJECT_DIR$/packager/pincab/pinupSystem.py" />
         <option value="$PROJECT_DIR$/packager/view/installedTablesView.py" />
         <option value="$PROJECT_DIR$/packager/model/packagedTablesModel.py" />
-        <option value="$PROJECT_DIR$/packager/model/package.py" />
         <option value="$PROJECT_DIR$/packager/model/installedTablesModel.py" />
         <option value="$PROJECT_DIR$/packager/pincab/ultraDMD.py" />
         <option value="$PROJECT_DIR$/packager/sandbox/tkHtml.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/packager/model/packageEditorModel.py" />
+        <option value="$PROJECT_DIR$/packager/model/package.py" />
       </list>
     </option>
   </component>
@@ -481,16 +483,16 @@
     <frame x="438" y="14" width="1414" height="1030" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.68012923" visible="true" weight="0.20348836" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.68012923" visible="true" weight="0.20348836" />
       <window_info id="Structure" order="1" sideWeight="0.31987077" side_tool="true" weight="0.2105919" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905483" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.499002" weight="0.20178372" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49966735" visible="true" weight="0.39018953" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49966735" visible="true" weight="0.39018953" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32844934" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3277592" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49925926" weight="0.33333334" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50074077" side_tool="true" weight="0.33429396" />
@@ -553,24 +555,9 @@
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packager/pincab/pinballX.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packager/model/installedTablesModel.py</url>
-          <line>119</line>
-          <option name="timeStamp" value="98" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packager/model/packagedTablesModel.py</url>
-          <line>69</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packager/model/packagedTablesModel.py</url>
-          <line>35</line>
-          <option name="timeStamp" value="104" />
+          <url>file://$PROJECT_DIR$/packager/model/package.py</url>
+          <line>131</line>
+          <option name="timeStamp" value="106" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -739,13 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/pinballX.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="86" column="26" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packager/view/installedTablesView.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -791,32 +771,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/installedTablesModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1989">
-          <caret line="123" column="66" selection-start-line="123" selection-start-column="66" selection-end-line="123" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packager/pincab/visualPinball.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
           <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/ultraDMD.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="70" column="59" selection-start-line="70" selection-start-column="58" selection-end-line="70" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -873,35 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/package.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1550009451947" expanded="true" signature="636:680" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="4064:4185" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="6494:6526" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="6701:6744" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="7031:7083" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="7366:7543" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="7558:9028" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="7656:8553" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="8579:9028" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="9389:9541" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="10812:10818" ph="..." />
-            <marker date="1550009451947" expanded="true" signature="10948:10953" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/packagedTablesModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -914,13 +845,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/packager/model/packageEditorModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="93" column="58" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
+        <state relative-caret-position="420">
+          <caret line="97" column="18" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
             <marker date="1550438721654" expanded="true" signature="457:502" ph="..." />
             <marker date="1550438721654" expanded="true" signature="579:652" ph="..." />
             <marker date="1550438721654" expanded="true" signature="616:652" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/model/packagedTablesModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/model/installedTablesModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/pincab/pinballX.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/pincab/ultraDMD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/model/package.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1550440364477" expanded="true" signature="636:680" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="4064:4185" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="6489:6521" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="6696:6739" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="7026:7078" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="7361:7538" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="7553:9023" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="7651:8548" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="8574:9023" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="9384:9536" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="10807:10813" ph="..." />
+            <marker date="1550440364477" expanded="true" signature="10943:10948" ph="..." />
           </folding>
         </state>
       </provider>

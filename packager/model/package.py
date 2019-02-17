@@ -130,7 +130,7 @@ class Manifest:
     def exists_field(self, field_path):
         content = self.__content
         field_list = field_path.split('/')
-        for field in field_list[:-1]:
+        for field in field_list:
             if not content.get(field):
                 return False
             content = content[field]
