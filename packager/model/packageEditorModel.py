@@ -91,9 +91,8 @@ class PackageEditorModel(Observable):
 
     def rename_package_end(self,context=None):
         self.logger.info("--[Rename '%s' Done]------------------" % (self.package.name))
-        self.notify_all(self, events=['<<ENABLE_ALL>>'])  # update listeners
+        self.notify_all(self, events=['<<UPDATE_EDITOR>>','<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
-
 
     def cancel_edition(self):
         if not self.__currentPackage:  # empty selection
