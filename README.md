@@ -67,6 +67,8 @@ Todo
     * Extraction des media avec PinUp System
     * Prendre Meta si installé
     
++ Ajouter bouton refresh installedTable+Package
+
 + Edition
     * Afficher 1 image en édition si presente
     * Rename extension possible d'un fichier

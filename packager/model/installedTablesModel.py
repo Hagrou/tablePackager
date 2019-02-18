@@ -72,12 +72,14 @@ class InstalledTablesModel(Observable):
                 self.baseModel.visualPinball.extract(package)
                 self.baseModel.vpinMame.extract(package)
                 self.baseModel.ultraDMD.extract(table['name'],package)
+                if context['pinupSystem'].get():
+                    self.baseModel.pinupSystem.extract(package,'visual pinball')
             if context['pinballX'].get():
                 self.baseModel.pinballX.extract(table['name'], package)
             if context['futurPinball'].get():
                 self.logger.warning("extract from futurPinball is not yet implemented")
-            if context['pinupSystem'].get():
-                self.logger.warning("extract from pinupSystem is not yet implemented")
+                if context['pinupSystem'].get():
+                    self.logger.warning("extract from pinupSystem is not yet implemented")
 
             package.save()
             package.pack() # zip package

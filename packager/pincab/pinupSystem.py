@@ -22,6 +22,32 @@ class PinUpSystem:
             return 'Visual Pinball X'
         return 'Visual Pinball X'
 
+
+    def extractFile(self, package, product, media, dataPath, extension=''):
+        for file in Path(self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/'+ media).glob('**/%s%s*' % (package.name, extension)):
+            package.add_file(file, dataPath)  # Add vpx file
+
+    def extract(self, package, product):
+        if not os.path.exists(self.pinupSystem_path):
+            raise ValueError('PinupSystem not found(%s)' % self.pinupSystem_path)
+
+        self.logger.info("* PinupSystem files")
+        self.extractFile(package, product,'Audio','media/Audio')
+        self.extractFile(package, product, 'AudioLaunch', 'media/AudioLaunch')
+        self.extractFile(package, product, 'BackGlass', 'media/Backglass')
+        self.extractFile(package, product, 'DMD', 'media/DMD')
+        self.extractFile(package, product, 'DMDVideos', 'media/DMDVideos')
+        self.extractFile(package, product, 'HighScores', 'media/HighScores')
+        self.extractFile(package, product, 'GameHelp', 'media/Instruction Cards')
+        self.extractFile(package, product, 'PlayField', 'media/PlayField')
+        self.extractFile(package, product, 'Topper', 'media/Topper')
+        self.extractFile(package, product, 'Wheel', 'media/Wheel')
+        self.extractFile(package, product, 'ScreenGrabs', 'media/ScreenGrabs')
+        self.extractFile(package, product, 'TableVideos', 'media/TableVideos')
+        self.extractFile(package, product, 'GameInfo', 'media/Flyers Inside', extension='.inside')
+        self.extractFile(package, product, 'GameInfo', 'media/Flyers Front', extension='.front')
+        self.extractFile(package, product, 'GameInfo', 'media/Flyers Back', extension='.back')
+
     def deploy(self, package, product):
         self.logger.info("* Deploy PinUp Media")
         if not Path(self.baseModel.tmp_path + "/" + package.name).exists():
