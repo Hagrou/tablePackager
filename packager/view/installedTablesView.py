@@ -11,6 +11,7 @@ class InstalledTablesView(Frame, Observer):
 
         self.__baseModel=baseModel
         self.__btDelTableImage = PhotoImage(file=self.__baseModel.baseDir+"images/btDelTable.png")
+        self.__btRefreshTableImage = PhotoImage(file=self.__baseModel.baseDir + "images/btRefreshTable.png")
         self.__installedTablesModel=self.__baseModel.installedTablesModel
         self.__label = Label(self, text="Installed Tables")
         self.__label.pack(side=TOP)
@@ -20,6 +21,10 @@ class InstalledTablesView(Frame, Observer):
         self.__btDelTable = Button(frameBt, image=self.__btDelTableImage, command=self.on_deleteTable, state=DISABLED)
         self.__btDelTableTip = CreateToolTip(self.__btDelTable, 'Delete installed table or package')
         self.__btDelTable.pack(side=LEFT)
+
+        self.__btRefreshTables= Button(frameBt, image=self.__btRefreshTableImage,  command=self.on_refreshTable, state=NORMAL)
+        self.__btRefreshTip = CreateToolTip(self.__btRefreshTables, 'Refresh Installed Table')
+        self.__btRefreshTables.pack(side=RIGHT)
         frameBt.pack(side=BOTTOM)
 
         scrollbar = Scrollbar(self, orient="vertical")
@@ -43,6 +48,10 @@ class InstalledTablesView(Frame, Observer):
     def on_deleteTable(self):
         self.__installedTablesModel.delete_Tables(self)
 
+    def on_refreshTable(self):
+        self.__installedTablesModel.update()
+
+
     def update(self, observable, *args, **kwargs):
         events=kwargs['events']
         logging.debug('InstalledTablesView: rec event [%s] from %s' % (events,observable))
@@ -51,5 +60,8 @@ class InstalledTablesView(Frame, Observer):
                 self.__listTables.delete(0, END)
                 for table in kwargs['tables']:
                     self.__listTables.insert(END, table['name'])
+            elif '<<ENABLE_ALL>>' in event:
+                self.__btRefreshTables['state'] = 'normal'
             elif '<<DISABLE_ALL>>' in event:
                 self.__btDelTable['state']='disabled'
+                self.__btRefreshTables['state']='disabled'

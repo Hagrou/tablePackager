@@ -15,6 +15,7 @@ class PackagedTablesView(Frame, Observer):
         self.__btEditImage = PhotoImage(file=baseModel.baseDir+"images/btEdit.png")
         self.__btAddImage = PhotoImage(file=baseModel.baseDir+"images/btAdd.png")
         self.__btDelImage = PhotoImage(file=baseModel.baseDir+"images/btDel.png")
+        self.__btRefreshImage = PhotoImage(file=baseModel.baseDir + "images/btRefresh.png")
         self.__packagedTablesModel = baseModel.packagedTablesModel
         self.__baseModel= baseModel
         self.__label = Label(self, text="Packaged Tables")
@@ -31,6 +32,10 @@ class PackagedTablesView(Frame, Observer):
         self.__btNew = Button(frameBt, image=self.__btAddImage, command=self.newOnClick, state=NORMAL)
         self.__btNewToolTip = CreateToolTip(self.__btNew, 'Create empty package')
         self.__btNew.pack(side=LEFT)
+
+        self.__btUpdateView=Button(frameBt, image=self.__btRefreshImage , command=self.refreshViewOnClick, state=NORMAL)
+        self.__btUpdateTip = CreateToolTip(self.__btUpdateView, 'Refresh Package View')
+        self.__btUpdateView.pack(side=LEFT)
 
         frameBt.pack(side=BOTTOM)
 
@@ -55,6 +60,9 @@ class PackagedTablesView(Frame, Observer):
     def delOnClick(self):
         self.__packagedTablesModel.deletePackages(self)
 
+    def refreshViewOnClick(self):
+        self.__packagedTablesModel.update()
+
     def on_select(self,evt):
         selection=self.__listPackages.curselection()
         if len(selection)==0:  # no selection
@@ -77,10 +85,12 @@ class PackagedTablesView(Frame, Observer):
                 self.__btNew['state'] = 'disabled'
                 self.__backupState['btDel'] = self.__btDel['state']
                 self.__btDel['state'] = 'disabled'
+                self.__btUpdateView['state']='disabled'
             elif '<<ENABLE_ALL>>' in event:
                 self.__btEdit['state']=self.__backupState['btEdit']
                 self.__btNew['state'] = self.__backupState['btNew']
                 self.__btDel['state'] = self.__backupState['btDel']
+                self.__btUpdateView['state'] = 'normal'
             elif '<<PACKAGE SELECTED>>' in event:
                 self.__btEdit['state'] = 'normal'
                 self.__btDel['state'] = 'normal'

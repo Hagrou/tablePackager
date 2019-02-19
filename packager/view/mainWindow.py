@@ -120,6 +120,7 @@ class MainWindow(Observer,Observable):
         self.__baseModel.packageEditorModel.attach(self.__packagedTablesView)
 
         self.attach(self.__packagedTablesView)
+        self.attach(self.__installedTablesView)
 
     def mainLoop(self):
         try:
@@ -164,6 +165,7 @@ class MainWindow(Observer,Observable):
             if '<<ENABLE_ALL>>' in event:
                 self.__btExtract['state']=self.__backupState['btExtract']
                 self.__btInstall['state']=self.__backupState['btInstall']
+                self.notify_all(self, events=['<<ENABLE_ALL>>'])
                 self.__menubar.entryconfig('Options', state='normal')
                 self.__menubar.entryconfig('Help', state='normal')
             if '<<BEGIN_ACTION>>' in event:

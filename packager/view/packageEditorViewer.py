@@ -25,6 +25,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__backupState = {'btAddFile': 'disable', 'btDelFile': 'disable','btRename':'disable','btSave':'normal', 'btCancel':'normal'}
         self.__btAddFileImage = PhotoImage(file=baseModel.baseDir+"images/btAddFile.png")
         self.__btDelFileImage = PhotoImage(file=baseModel.baseDir+"images/btDelFile.png")
+        self.__btRenameFileImage = PhotoImage(file=baseModel.baseDir + "images/btRenameFile.png")
         self.__topLevel=None
         self.__fileInfoViewer=FileInfoViewer(self, baseModel)
         self.__fileInfoViewer.attach(self)
@@ -124,7 +125,7 @@ class PackageEditorViewer(Frame, Observer):
         #=================================================================
         self.__contentFrame = Frame(self.__topLevel, width=200, height=50)
         self.__label = Label(self.__contentFrame, text="Content")
-        self.__label.grid(row=1, column=0, sticky=E + W + N)
+        self.__label.grid(row=0, column=0, sticky=E + W + N)
         self.__tree = Treeview(self.__contentFrame)
         self.__tree.bind('<ButtonRelease-1>', self.on_select)
         self.__tree.bind('<Double-1>', self.on_doubleClick)
@@ -146,15 +147,21 @@ class PackageEditorViewer(Frame, Observer):
         scrollbar.config(command=self.__tree.yview)
         self.__tree.config(yscrollcommand=scrollbar.set)
 
-        self.__tree.grid(row=2, column=0, sticky=E + W)
-        scrollbar.grid(row=2, column=1, sticky=N + S)
+        self.__tree.grid(row=1, column=0, rowspan=3, sticky=E + W)
+        scrollbar.grid(row=1, column=1, rowspan=3, sticky=N + S)
 
         self.__btAddFile = Button(self.__contentFrame, image=self.__btAddFileImage, command=self.on_addFile, state='disable')
         self.__btAddFileTip = CreateToolTip(self.__btAddFile, 'Add a file to package')
         self.__btAddFile.grid(row=1, column=2, sticky=N)
         self.__btDelFile = Button(self.__contentFrame, image=self.__btDelFileImage, command=self.on_delFile, state='disable')
         self.__btDelFileTip = CreateToolTip(self.__btAddFile, 'Delete a file from package')
-        self.__btDelFile.grid(row=2, column=2, sticky=N)
+        self.__btDelFile.grid(row=1, column=2, sticky=S)
+
+        self.__btRenameFile = Button(self.__contentFrame, image=self.__btRenameFileImage, command=self.on_renameFile,
+                                  state='disable')
+        self.__btRenameFileTip = CreateToolTip(self.__btAddFile, 'Rename a file into package')
+        self.__btRenameFile.grid(row=2, column=2, sticky=N)
+
 
         #=====================================================================
         self.__infoFrame.grid(row=0, column=0, sticky=E + W)
@@ -218,17 +225,20 @@ class PackageEditorViewer(Frame, Observer):
         if  'info' in item['tags']:
             self.__btAddFile['state'] = 'disable'
             self.__btDelFile['state'] = 'disable'
+            self.__btRenameFile['state'] = 'disable'
         else:
             if 'file' in item['tags'] or 'category' in item['tags']:
                 self.__btAddFile['state'] = 'normal'
             if 'file' in item['tags']:
                 self.__btDelFile['state'] = 'normal'
+                self.__btRenameFile['state']='normal'
                 self.preview(item['text'], item['tags'][-1])
 
             if 'product' in item['tags']:
                 self.__btAddFile['state'] = 'disable'
             if 'product' in item['tags'] or 'category' in item['tags']:
                 self.__btDelFile['state'] = 'disable'
+                self.__btRenameFile['state'] = 'disable'
 
     def on_doubleClick(self,evt):
         item = self.__tree.item(self.__tree.focus())
@@ -274,10 +284,14 @@ class PackageEditorViewer(Frame, Observer):
         item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.del_file(self.__topLevel, item['tags'][-1], item['text'])
 
+    def on_renameFile(self):
+        print("on_renameFile")
 
     def refresh_files(self):
         self.__btAddFile['state'] = 'disabled'
         self.__btDelFile['state'] = 'disabled'
+        self.__btRenameFile['state']='disabled'
+
         content = self.__packageEditorModel.package.manifest.content
         self.__tree.delete(*self.__tree.get_children())
 
@@ -318,6 +332,8 @@ class PackageEditorViewer(Frame, Observer):
                     self.__btAddFile['state'] = 'disabled'
                     self.__backupState['btDelFile'] = self.__btDelFile['state']
                     self.__btDelFile['state'] = 'disabled'
+                    self.__backupState['btRenameFile'] = self.__btRenameFile['state']
+                    self.__btRenameFile['state'] = 'disabled'
                     self.__backupState['btSave'] = self.__btSave['state']
                     self.__btSave['state'] = 'disabled'
                     self.__backupState['btCancel'] = self.__btCancel['state']
@@ -328,6 +344,7 @@ class PackageEditorViewer(Frame, Observer):
                 if self.__visible:
                     self.__btAddFile['state'] = self.__backupState['btAddFile']
                     self.__btDelFile['state'] = self.__backupState['btDelFile']
+                    self.__btRename['state'] = self.__backupState['btRename']
                     self.__btSave['state']    = self.__backupState['btSave']
                     self.__btCancel['state']  = self.__backupState['btCancel']
                     self.__tree.bind('<ButtonRelease-1>', self.on_select)
