@@ -2,13 +2,14 @@ import logging
 
 from tkinter import ttk
 from tkinter import *
-
+import webbrowser
+from os import path as os_path
 from packager.view.installedTablesView import *
 from packager.view.packagedTablesView import *
 from packager.view.packageEditorViewer import *
 from packager.view.logViewer import *
 from packager.view.configViewer import *
-
+from packager.view.helpViewer import *
 
 class MainWindow(Observer,Observable):
     def __init__(self, baseModel, logHandler):
@@ -19,6 +20,8 @@ class MainWindow(Observer,Observable):
         self.__backupState={}
         self.__baseModel=baseModel
         self.__window=Tk()
+
+        #self.__helpViewer = HelpViewer(self.__window, self.__baseModel) # TODO: del?
 
         # create a toplevel menu
         self.__menubar = Menu(self.__window)
@@ -133,7 +136,12 @@ class MainWindow(Observer,Observable):
         self.__configViewer.show()
 
     def onHelpMenu(self):
-        print("onHelpMenu")
+        #url = 'file://C:/Users/philippe/Documents/Atelier/flipper/tablePackager/packager/help/help.html'
+        path=os_path.abspath(os_path.split(__file__)[0])
+
+        url = 'file://%s/../help/help.html' % path
+        webbrowser.open_new_tab(url)
+
 
     def extractOnClick(self):
         self.__baseModel.installedTablesModel.extract_tables(self.__extractAppChoice)

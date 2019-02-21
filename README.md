@@ -5,7 +5,8 @@ Dependances :
 
     pip install Pillow
     pip install numpy
-    pip install tkinterhtml
+    pip install tkinterhtml  ??
+    pip install markdown
     
     
     
@@ -31,7 +32,10 @@ Il faut ensuite exécuter la commande :
 Ce qui lance la production du fichier .msi qui va se trouver dans le répertoire `tablePackager\dist`.
 En fonction du virtual env, une cible 32 ou 64 bit sera générée
     
+Génération de l'aide HTML
+-------------------------
 
+    (venv) c:\tablePackager>python -m markdown packager/help/help.md > packager/help/help.html
 
 Installation 
 ============
