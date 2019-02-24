@@ -84,7 +84,7 @@ class PackageEditorModel(Observable):
 
     def rename_package_begin(self,context=None):
         try:
-            self.package.rename(context['newPackageName'])
+            self.package.rename_package(context['newPackageName'])
         except Exception as e:
             print(e)
             #essagebox.showerror('Add File Error', e.strerror, parent=viewer)

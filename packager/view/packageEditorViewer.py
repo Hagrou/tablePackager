@@ -2,9 +2,9 @@ import logging
 import tkinter as tk
 
 from pprint import pprint
-#from tkinter import filedialog
-#from tkinter import *
-#from tkinter.ttk import *
+from tkinter import filedialog
+from tkinter import simpledialog
+
 import PIL.Image
 import PIL.ImageTk
 
@@ -13,6 +13,7 @@ from packager.tools.observer import *
 from packager.tools.toolbox import *
 from packager.tools.toolTip import *
 from packager.view.fileInfoViewer import *
+from packager.view.renamefileViewer import *
 
 class PackageEditorViewer(Frame, Observer):
     def __init__(self,window,baseModel, **kwargs):
@@ -29,6 +30,9 @@ class PackageEditorViewer(Frame, Observer):
         self.__topLevel=None
         self.__fileInfoViewer=FileInfoViewer(self, baseModel)
         self.__fileInfoViewer.attach(self)
+
+        self.__renameFileViewer=RenameFileViewer(self, baseModel)
+        self.__renameFileViewer.attach(self)
         self.__visible = False
 
 
@@ -285,8 +289,12 @@ class PackageEditorViewer(Frame, Observer):
         self.__packageEditorModel.del_file(self.__topLevel, item['tags'][-1], item['text'])
 
     def on_renameFile(self):
-        print("on_renameFile")
-
+        item = self.__tree.item(self.__tree.focus())
+        if 'file' in item['tags']:
+            self.__renameFileViewer.show(self.__packageEditorModel.package,
+                                       item['tags'][-1],
+                                       self.__packageEditorModel.get_fileInfo(self.__topLevel, item['tags'][-1],
+                                                                              item['text']))
     def refresh_files(self):
         self.__btAddFile['state'] = 'disabled'
         self.__btDelFile['state'] = 'disabled'
@@ -347,6 +355,8 @@ class PackageEditorViewer(Frame, Observer):
                     self.__btRename['state'] = self.__backupState['btRename']
                     self.__btSave['state']    = self.__backupState['btSave']
                     self.__btCancel['state']  = self.__backupState['btCancel']
+                    self.__btRenameFile['state'] = self.__backupState['btRenameFile']
+
                     self.__tree.bind('<ButtonRelease-1>', self.on_select)
                     self.__tree.bind('<Double-1>', self.on_doubleClick)
 

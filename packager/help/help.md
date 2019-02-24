@@ -1,33 +1,19 @@
-##This is a test
+#Table Packager 
 
-Code blocks must be indented by 4 whitespaces.
-Python-Markdown has a auto-guess function which works
-pretty well:
-
-    print("Hello, World")
-    # some comment
-    for letter in "this is a test":
-        print(letter)
-
-In cases where Python-Markdown has problems figuring out which
-programming language we use, we can also add the language-tag
-explicitly. One way to do this would be:
-
-
-    :::python
-    print("Hello, World")
-
-or we can highlight certain lines to
-draw the reader's attention:
-
-    
-
-    :::python hl_lines="1 5"
-    print("highlight me!")
-    # but not me
-    for letter in "this is a test":
-    print(letter)
-    # I want to be highlighted, too!
-    
-Une Image?
 ![alt text](../images/tablePackager.png "table Packager")
+
+The aims of Table Packager is to gather all the files of a pinball table (table, rom, media, etc.) 
+in a single compressed file, a compressed package. You can edit it, add file or info and then 
+deploy it on you pincab or distribute it on the web.
+
+## Installation 
+
+Table Packager is compatible on Windows 7 and more (32 or 64 bits). 
+
+On Windows 7, you must download Visual C++ Redistributable from 
+[here](https://www.microsoft.com/en-in/download/details.aspx?id=48145), install it and Reboot the 
+system.
+
+ 
+
+

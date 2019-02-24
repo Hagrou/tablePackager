@@ -37,13 +37,6 @@ Génération de l'aide HTML
 
     (venv) c:\tablePackager>python -m markdown packager/help/help.md > packager/help/help.html
 
-Installation 
-============
-
-##Pre requis pour Windows 7
-
-To install Python successfully, download Visual C++ Redistributable 
-from [here](https://www.microsoft.com/en-in/download/details.aspx?id=48145) and install it and Reboot the system.
 
 Todo
 ====
@@ -73,6 +66,7 @@ Todo
 + Edition
     * Afficher 1 image en édition si presente
     * Rename extension possible d'un fichier
+    * Tester Ajout d'un fichier déja existant
     
 Bug: 
     

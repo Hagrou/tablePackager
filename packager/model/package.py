@@ -146,14 +146,14 @@ class Manifest:
                 return (file,content)
         return (None,None)
 
-    def exists_file(self, type_path, filename):
-        (file, content)=self.get_file(type_path, filename)
+    def exists_file(self, field_path, filename):
+        (file, content)=self.get_file(field_path, filename)
         if file!=None:
             return True
         return False
 
-    def del_file(self, type_path, filename):
-        (file, content) = self.get_file(type_path, filename)
+    def del_file(self, field_path, filename):
+        (file, content) = self.get_file(field_path, filename)
         if file != None:
             content.remove(file)
             return True
@@ -175,6 +175,12 @@ class Manifest:
             content = content[type]
         content.append({'file':file})
 
+    def rename_file(self, field_path, srcFile, dstFile):
+        (file, content) = self.get_file(field_path, srcFile)
+        if file != None:
+            file['file']['name']=dstFile
+            return True
+        return False
 
 class Package:
     def __init__(self, baseModel, name):
@@ -202,6 +208,7 @@ class Package:
     def logger(self):
         return self.baseModel.logger
 
+    # create empty package
     def new(self, packageDir):
         self.__directory=packageDir
         self.__manifest=Manifest(self.name)
@@ -245,7 +252,7 @@ class Package:
                     if isinstance(item, dict):
                         self.rename_files(newName,path+'/'+key, item)
 
-    def rename(self, newName):
+    def rename_package(self, newName):
         if not os.path.exists(self.directory):
             raise PackageException("Package not found at %s" % self.directory)
 
@@ -297,6 +304,18 @@ class Package:
         try:
             os.unlink(self.directory+'/'+self.name+'/'+field_path + '/'+ srcFile)
             self.manifest.del_file(field_path, srcFile)
+            self.save()
+        except OSError as e:
+            self.logger.error(e.strerror)
+            raise e
+
+    def rename_file(self, srcFile, field_path, dstFile):
+        self.logger.info("+ rename '%s' -> '%s'" % (field_path + '/' + srcFile,
+                                                    field_path + '/' + dstFile))
+        try:
+            os.rename(self.directory + '/' + self.name + '/' + field_path + '/' + srcFile,
+                      self.directory + '/' + self.name + '/' + field_path + '/' + dstFile)
+            self.manifest.rename_file(field_path, srcFile,dstFile)
             self.save()
         except OSError as e:
             self.logger.error(e.strerror)
