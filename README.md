@@ -65,7 +65,6 @@ Todo
    
 + Edition
     * Afficher 1 image en édition si presente
-    * Rename extension possible d'un fichier
     * Tester Ajout d'un fichier déja existant
     
 Bug: 

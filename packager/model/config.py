@@ -43,5 +43,5 @@ class Config:
             with open(self.get('working_dir')+ '/config.json', 'w') as outfile:
                 json.dump(self.__data, outfile)
         except IOError as e:
-            raise Exception("Config write error %s" % e.strerror)
+            raise Exception("Config write error %s" % str(e))
 

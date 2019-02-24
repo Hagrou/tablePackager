@@ -98,7 +98,7 @@ class Manifest:
             with open(path+'/'+self.name+'/'+self.filename, 'w') as outfile:
                 json.dump(self.__content, outfile)
         except IOError as e:
-            raise PackageException("Manifest write error %s" % e.strerror)
+            raise PackageException("Manifest write error %s" % str(e))
 
     def saveAs(self, path,name):
         self.set_field('info/lastmod', utcTime2IsoStr())  # update last modification date
@@ -106,7 +106,7 @@ class Manifest:
             with open(path+'/'+self.name+'/'+name+'.manifest.json', 'w') as outfile:
                 json.dump(self.__content, outfile)
         except IOError as e:
-            raise PackageException("Manifest write error %s" % e.strerror)
+            raise PackageException("Manifest write error %s" % str(e))
 
     def rename(self, path, name):
         os.unlink(path+'/'+self.name+'/'+self.filename)
@@ -296,7 +296,7 @@ class Package:
             self.manifest.add_file(field_path,dstFile)
             self.save()
         except OSError as e:
-            self.logger.error(e.strerror)
+            self.logger.error(str(e))
             raise e
 
     def remove_file(self, srcFile, field_path):
@@ -306,7 +306,7 @@ class Package:
             self.manifest.del_file(field_path, srcFile)
             self.save()
         except OSError as e:
-            self.logger.error(e.strerror)
+            self.logger.error(str(e))
             raise e
 
     def rename_file(self, srcFile, field_path, dstFile):
@@ -318,7 +318,7 @@ class Package:
             self.manifest.rename_file(field_path, srcFile,dstFile)
             self.save()
         except OSError as e:
-            self.logger.error(e.strerror)
+            self.logger.error(str(e))
             raise e
 
     # zip package

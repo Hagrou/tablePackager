@@ -86,8 +86,7 @@ class PackageEditorModel(Observable):
         try:
             self.package.rename_package(context['newPackageName'])
         except Exception as e:
-            print(e)
-            #essagebox.showerror('Add File Error', e.strerror, parent=viewer)
+            messagebox.showerror('rename package Error', str(e), parent=viewer)
 
     def rename_package_end(self,context=None):
         self.logger.info("--[Rename '%s' Done]------------------" % (self.package.name))
@@ -121,7 +120,7 @@ class PackageEditorModel(Observable):
 
             filename = Path(targetFile).name
             if self.package.exists_file(dataPath, filename):
-                if not viewer.askokcancel('File already in Package','overwrite it?',parent=viewer):
+                if not messagebox.askokcancel('File already in Package','overwrite it?',parent=viewer):
                     self.logger.info('* add file canceled')
                     return
 
@@ -135,14 +134,14 @@ class PackageEditorModel(Observable):
             self.update_package()
 
         except Exception as e:
-            messagebox.showerror('Add File Error', e.strerror, parent=viewer)
+            messagebox.showerror('Add File Error', str(e), parent=viewer)
 
     def del_file(self,viewer, dataPath, srcFile):
         try:
             self.package.remove_file(srcFile, dataPath)
             self.update_package()
         except Exception as e:
-            messagebox.showerror('Delete File Error', e.strerror, parent=viewer)
+            messagebox.showerror('Delete File Error', str(e), parent=viewer)
 
     def get_fileInfo(self, viewer, dataPath, srcFile):
         return self.package.manifest.get_file(dataPath, srcFile)
