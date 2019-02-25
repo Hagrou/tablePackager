@@ -71,8 +71,6 @@ Bug:
                     xxx.flyer_back.jpg
                     xxx.flyer_front.jpg
                     
- - View image: PNG !
-    
  - Typo des champs texts
 
 

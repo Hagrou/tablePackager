@@ -215,7 +215,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__packageEditorModel.cancel_edition()
 
     def preview(self, file, path):
-        extension=Path(file).suffix
+        extension=Path(file).suffix.lower()
         filePath=self.__packageEditorModel.package.directory+'/'+\
                  self.__packageEditorModel.package.name+'/'+\
                  path+'/'+file

@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/packager/images/btDownFile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packager/images/btUpFile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/package.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/package.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/packageEditorModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packageEditorModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +20,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="331">
-                <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+              <first_editor relative-caret-position="355">
+                <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
               </first_editor>
               <second_editor />
             </state>
@@ -36,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="158" column="56" lean-forward="true" selection-start-line="158" selection-start-column="56" selection-end-line="158" selection-end-column="56" />
+            <state relative-caret-position="272">
+              <caret line="217" column="43" selection-start-line="217" selection-start-column="43" selection-end-line="217" selection-end-column="43" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -234,15 +229,15 @@
         <option value="$PROJECT_DIR$/packager/view/renamefileViewer.py" />
         <option value="$PROJECT_DIR$/packager/model/config.py" />
         <option value="$PROJECT_DIR$/packager/model/package.py" />
-        <option value="$PROJECT_DIR$/packager/view/packageEditorViewer.py" />
         <option value="$PROJECT_DIR$/packager/model/packageEditorModel.py" />
+        <option value="$PROJECT_DIR$/packager/view/packageEditorViewer.py" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="342" />
-    <option name="y" value="84" />
+    <option name="x" value="431" />
+    <option name="y" value="60" />
     <option name="width" value="1841" />
     <option name="height" value="886" />
   </component>
@@ -546,7 +541,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="342" y="84" width="1841" height="886" extended-state="0" />
+    <frame x="43" y="59" width="1841" height="886" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5743707" visible="true" weight="0.15529673" />
@@ -554,7 +549,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.4256293" side_tool="true" weight="0.1857996" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905483" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.499002" visible="true" weight="0.3492696" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.499002" visible="true" weight="0.14209828" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49966735" weight="0.30411687" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -977,16 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="158" column="56" lean-forward="true" selection-start-line="158" selection-start-column="56" selection-end-line="158" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packager/model/packagedTablesModel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-887">
@@ -1007,11 +992,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="217" column="43" selection-start-line="217" selection-start-column="43" selection-end-line="217" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="331">
-            <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+          <first_editor relative-caret-position="355">
+            <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
           </first_editor>
           <second_editor />
         </state>
