@@ -100,9 +100,9 @@ class PackageEditorModel(Observable):
         clean_dir(self.baseModel.tmp_path)
         self.notify_all(self, events=['<<END_ACTION>>', '<<PACKAGE UNSELECTED>>', '<<HIDE EDITOR>>'])  # update listeners
 
-    def update_package(self):
+    def update_package(self, selection=None):
         self.package.update()
-        self.notify_all(self, events=['<<UPDATE_EDITOR>>'])  # update listeners
+        self.notify_all(self, events=['<<UPDATE_EDITOR>>'],selection_set=selection)  # update listeners
 
     def add_file(self, viewer, dataPath, srcFile, requiredName):
         try:
@@ -149,3 +149,17 @@ class PackageEditorModel(Observable):
     def edit_file(self, viewer, dataPath, srcFile):
         fileInfo=self.package.manifest.get_file(dataPath, srcFile)
         print(fileInfo)
+
+
+    def up_file(self,viewer, dataPath, srcFile):
+        dstDataPath = self.package.manifest.prev_file_datapath(dataPath, srcFile)
+        if dstDataPath!='':
+            self.package.move_file(srcFile, dataPath, dstDataPath)
+            self.update_package(selection=(dstDataPath, srcFile))
+
+
+    def down_file(self,viewer, dataPath, srcFile):
+        dstDataPath = self.package.manifest.next_file_datapath(dataPath, srcFile)
+        if dstDataPath!='':
+            self.package.move_file(srcFile, dataPath, dstDataPath)
+            self.update_package(selection=(dstDataPath, srcFile))

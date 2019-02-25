@@ -146,6 +146,36 @@ class Manifest:
                 return (file,content)
         return (None,None)
 
+    def prev_file_datapath(self, field_path, filename):
+        prev=''
+
+        field_list = field_path.split('/')
+        content = self.__content
+
+        for key1, val1 in content.items():
+            if key1=='info': continue
+            for key2, val2 in content[key1].items():
+                if key1==field_list[0] and key2==field_list[1]:
+                    return prev
+                if key2=='info':continue
+                prev=key1+'/'+key2
+        return prev
+
+    def next_file_datapath(self, field_path, filename):
+        next=''
+
+        field_list = field_path.split('/')
+        content = self.__content
+
+        for key1, val1 in reversed(list(content.items())):
+            if key1=='info': continue
+            for key2, val2 in reversed(list(content[key1].items())):
+                if key1==field_list[0] and key2==field_list[1]:
+                    return next
+                if key2 == 'info': continue
+                next=key1+'/'+key2
+        return next
+
     def exists_file(self, field_path, filename):
         (file, content)=self.get_file(field_path, filename)
         if file!=None:
@@ -174,6 +204,17 @@ class Manifest:
         for type in field_list:
             content = content[type]
         content.append({'file':file})
+
+    def move_file(self, filename, src_field_path, dst_field_path):
+        (file, content) = self.get_file(src_field_path, filename)
+        if file != None:
+            content.remove(file)
+
+            field_list = dst_field_path.split('/')
+            content = self.__content
+            for type in field_list:
+                content = content[type]
+            content.append(file)
 
     def rename_file(self, field_path, srcFile, dstFile):
         (file, content) = self.get_file(field_path, srcFile)
@@ -321,6 +362,20 @@ class Package:
             self.logger.error(str(e))
             raise e
 
+
+    def move_file(self, file, src_field_path, dst_field_path):
+        self.logger.info("+ move '%s' -> '%s'" % (src_field_path + '/' + file,
+                                                 dst_field_path + '/' + file))
+        try:
+            shutil.move(self.directory + '/' + self.name + '/' + src_field_path + '/' + file,
+                        self.directory + '/' + self.name + '/' + dst_field_path + '/' + file)
+
+            self.manifest.move_file(file,src_field_path, dst_field_path)
+            self.save()
+        except OSError as e:
+            self.logger.error(str(e))
+            raise e
+
     # zip package
     def pack(self):
         self.logger.info("* packing table '%s'" % (self.name+ self.baseModel.package_extension))
@@ -335,3 +390,4 @@ class Package:
 
     def exists_file(self, typePath, filename):
         return self.manifest.exists_file(typePath, filename)
+

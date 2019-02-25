@@ -41,10 +41,7 @@ Génération de l'aide HTML
 Todo
 ====
     
-- commencer menu
-    - Aide => Test html + image
-    
-
+   
 - Config:
     - Mise à jour de update file en cas de changement de configuration
     - fenetre config en dessous!!!
@@ -65,7 +62,7 @@ Todo
    
 + Edition
     * Afficher 1 image en édition si presente
-    * Tester Ajout d'un fichier déja existant
+    * Check Package  on save
     
 Bug: 
     
