@@ -60,6 +60,10 @@ Todo
 + Extraction
     * Prendre Meta si installé
    
++ Package Manager
+    + import package
+    + lock/unlock package?
+    
 + Edition
     * Check Package  on save
     

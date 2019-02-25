@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/packager/images/noPreview.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema/buttons.odg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/help/help.md" beforeDir="false" afterPath="$PROJECT_DIR$/packager/help/help.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packager/model/package.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/package.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/packageEditorModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packageEditorModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,12 +18,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="493">
-                <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+              <first_editor relative-caret-position="529">
+                <caret line="64" column="26" lean-forward="true" selection-start-line="62" selection-end-line="64" selection-end-column="26" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/packager/help/help.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="187">
+                <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
               </first_editor>
               <second_editor />
             </state>
@@ -81,22 +91,13 @@
         <entry file="file://$PROJECT_DIR$/packager/model/packageEditorModel.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="548">
-              <caret line="167" column="37" lean-forward="true" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
+              <caret line="167" column="37" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
                 <marker date="1551133233344" expanded="true" signature="457:502" ph="..." />
                 <marker date="1551133233344" expanded="true" signature="579:652" ph="..." />
                 <marker date="1551133233344" expanded="true" signature="616:652" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/view/renamefileViewer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
             </state>
           </provider>
         </entry>
@@ -117,22 +118,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packager/model/package.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="230" column="37" selection-start-line="230" selection-start-column="37" selection-end-line="230" selection-end-column="37" />
+            <state relative-caret-position="170">
+              <caret line="40" column="48" lean-forward="true" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1551134244035" expanded="true" signature="636:680" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="4056:4177" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="8531:8563" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="8738:8808" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="9095:9147" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="9430:9607" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="9622:11100" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="9720:10617" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="10651:11100" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="11461:11613" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="12876:14083" ph="..." />
-                <marker date="1551134244035" expanded="true" signature="14213:14218" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="636:680" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="4105:4226" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="8580:8612" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="8787:8857" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="9144:9196" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="9479:9656" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="9671:11149" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="9769:10666" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="10700:11149" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="11510:11662" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="12925:14132" ph="..." />
+                <marker date="1551135160248" expanded="true" signature="14262:14267" ph="..." />
               </folding>
             </state>
           </provider>
@@ -230,19 +231,19 @@
         <option value="$PROJECT_DIR$/packager/help/help.html" />
         <option value="$PROJECT_DIR$/packager/sandbox/runBrowser.py" />
         <option value="$PROJECT_DIR$/packager/view/mainWindow.py" />
-        <option value="$PROJECT_DIR$/packager/help/help.md" />
         <option value="$PROJECT_DIR$/packager/view/renamefileViewer.py" />
         <option value="$PROJECT_DIR$/packager/model/config.py" />
         <option value="$PROJECT_DIR$/packager/model/packageEditorModel.py" />
         <option value="$PROJECT_DIR$/packager/view/packageEditorViewer.py" />
-        <option value="$PROJECT_DIR$/packager/model/package.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/packager/model/package.py" />
+        <option value="$PROJECT_DIR$/packager/help/help.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="278" />
-    <option name="y" value="14" />
+    <option name="x" value="165" />
+    <option name="y" value="425" />
     <option name="width" value="1624" />
     <option name="height" value="958" />
   </component>
@@ -546,7 +547,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="278" y="14" width="1624" height="958" extended-state="0" />
+    <frame x="-34" y="41" width="1624" height="958" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5743707" visible="true" weight="0.17654477" />
@@ -617,7 +618,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packager/model/package.py</url>
-          <line>363</line>
+          <line>364</line>
           <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -829,16 +830,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/packager/help.html" />
-    <entry file="file://$PROJECT_DIR$/packager/help/help.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="7" selection-start-line="7" selection-end-line="7" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packager/view/mainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1938">
@@ -965,7 +956,7 @@
     <entry file="file://$PROJECT_DIR$/packager/model/packageEditorModel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="548">
-          <caret line="167" column="37" lean-forward="true" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
+          <caret line="167" column="37" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
             <marker date="1551133233344" expanded="true" signature="457:502" ph="..." />
@@ -987,22 +978,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/packager/model/package.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="230" column="37" selection-start-line="230" selection-start-column="37" selection-end-line="230" selection-end-column="37" />
+        <state relative-caret-position="170">
+          <caret line="40" column="48" lean-forward="true" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1551134244035" expanded="true" signature="636:680" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="4056:4177" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="8531:8563" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="8738:8808" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="9095:9147" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="9430:9607" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="9622:11100" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="9720:10617" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="10651:11100" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="11461:11613" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="12876:14083" ph="..." />
-            <marker date="1551134244035" expanded="true" signature="14213:14218" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="636:680" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="4105:4226" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="8580:8612" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="8787:8857" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="9144:9196" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="9479:9656" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="9671:11149" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="9769:10666" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="10700:11149" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="11510:11662" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="12925:14132" ph="..." />
+            <marker date="1551135160248" expanded="true" signature="14262:14267" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1010,8 +1001,18 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="493">
-            <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+          <first_editor relative-caret-position="529">
+            <caret line="64" column="26" lean-forward="true" selection-start-line="62" selection-end-line="64" selection-end-column="26" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packager/help/help.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="187">
+            <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
           </first_editor>
           <second_editor />
         </state>
