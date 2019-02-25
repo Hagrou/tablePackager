@@ -163,3 +163,6 @@ class PackageEditorModel(Observable):
         if dstDataPath!='':
             self.package.move_file(srcFile, dataPath, dstDataPath)
             self.update_package(selection=(dstDataPath, srcFile))
+
+    def get_first_image(self):
+        return self.package.manifest.get_first_image()

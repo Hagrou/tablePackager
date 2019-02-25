@@ -120,10 +120,21 @@ class PackageEditorViewer(Frame, Observer):
         self.__imageCanvasViewer.grid(column=3, row=0, columnspan=4, rowspan=8, sticky='NSW',padx=50, pady=10)
 
         #======================================
-        pilImage = PIL.Image.open(self.baseModel.baseDir + "images/Super Orbit (Gottlieb 1983).jpg")
+        (dataPath,name)=self.packageEditorModel.get_first_image()
+        if (dataPath!=None):
+            imagePreviewPath = self.__packageEditorModel.package.directory + '/' + \
+                       self.__packageEditorModel.package.name + '/' + \
+                       dataPath + '/' + name
+        else:
+            imagePreviewPath=self.baseModel.baseDir+"images/Super Orbit (Gottlieb 1983).jpg"
+
+        pilImage = PIL.Image.open(imagePreviewPath)
         pilImage.thumbnail((300, 300), PIL.Image.ANTIALIAS)
         tkImage = PIL.ImageTk.PhotoImage(pilImage)
         self.__tkImagePreview = self.__imageCanvasViewer.create_image(150, 150, image=tkImage)
+
+        self.__imageCanvasViewer.itemconfig(self.__tkImagePreview, image=tkImage)
+        self.__imageCanvasViewer.image = tkImage
 
         #=================================================================
         self.__contentFrame = Frame(self.__topLevel, width=200, height=50)
@@ -222,10 +233,12 @@ class PackageEditorViewer(Frame, Observer):
 
         if extension=='.jpg' or extension=='.png' or extension=='.gif':
             pilImage = PIL.Image.open(filePath)
-            pilImage.thumbnail((300, 300), PIL.Image.ANTIALIAS)
-            tkImage = PIL.ImageTk.PhotoImage(pilImage)
-            self.__imageCanvasViewer.itemconfig(self.__tkImagePreview, image=tkImage)
-            self.__imageCanvasViewer.image=tkImage
+        else:
+            pilImage = PIL.Image.open('images/noPreview.png')
+        pilImage.thumbnail((300, 300), PIL.Image.ANTIALIAS)
+        tkImage = PIL.ImageTk.PhotoImage(pilImage)
+        self.__imageCanvasViewer.itemconfig(self.__tkImagePreview, image=tkImage)
+        self.__imageCanvasViewer.image = tkImage
 
     def on_select(self,evt):
         item=self.__tree.item(self.__tree.focus())
@@ -307,13 +320,11 @@ class PackageEditorViewer(Frame, Observer):
                                                                               item['text']))
 
     def on_upFile(self):
-        print("on_upFile")
         item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.up_file(self, item['tags'][-1], item['text'])
-        #self.refresh_files()
+
 
     def on_downFile(self):
-        print("on_downFile")
         item = self.__tree.item(self.__tree.focus())
         item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.down_file(self, item['tags'][-1], item['text'])
@@ -350,9 +361,6 @@ class PackageEditorViewer(Frame, Observer):
                                         self.__tree.selection_set(node_id)
                                         self.__tree.focus(node_id)
 
-
-        # => tags=['roms'] <= sous element de roms
-        # => tags=['node'] && text='roms' <= noeud roms
 
     def update(self, observable, *args, **kwargs):
         events = kwargs['events']

@@ -61,7 +61,6 @@ Todo
     * Prendre Meta si installé
    
 + Edition
-    * Afficher 1 image en édition si presente
     * Check Package  on save
     
 Bug: 

@@ -223,6 +223,16 @@ class Manifest:
             return True
         return False
 
+    def get_first_image(self):
+        content = self.__content
+        for key, values in content['media'].items():
+            if key=='info': continue
+            for value in values:
+                if value.get('file'):
+                    if Path(value['file']['name']).suffix=='.png' or Path(value['file']['name']).suffix == '.jpg':
+                        return ('media/'+key, value['file']['name'])
+        return (None, None)
+
 class Package:
     def __init__(self, baseModel, name):
         self.__baseModel=baseModel
@@ -390,4 +400,7 @@ class Package:
 
     def exists_file(self, typePath, filename):
         return self.manifest.exists_file(typePath, filename)
+
+    def get_first_image(self):
+        return self.manifest.get_first_image()
 
