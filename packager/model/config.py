@@ -8,9 +8,8 @@ class Config:
             'visual_pinball_path':'c:/visual pinball',
             'pinballX_path':'c:/pinballX',
             'pinupSystem_path':'c:/PinUPSystem',
-            'font':("Helvetica", 10)
+            'font':('Helvetica', 10)
         }
-
         self.load()
 
     def get(self,var_name):
@@ -22,8 +21,6 @@ class Config:
         self.__data[var_name]=value
 
     def load(self):
-
-
         working_dir=self.get('working_dir')
         if not os.path.exists(working_dir):
             os.makedirs(working_dir, exist_ok=True)

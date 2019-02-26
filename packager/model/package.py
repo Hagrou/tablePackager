@@ -335,15 +335,23 @@ class Package:
         return self.manifest.exists_field(field_path)
 
     def add_file(self, srcFile, field_path, dstFile=None):
+        id=1
         try:
             if not os.path.exists(srcFile):
                 raise PackageException("File not found at '%s'" % srcFile)
+
             if dstFile==srcFile or dstFile==None: # same name
                 self.logger.info("+ add '%s' -> '%s'" % (Path(srcFile).name,field_path))
                 dstFile=self.directory+'/'+self.name + '/' + field_path + '/%s' % (Path(srcFile).name)
             else: # rename file
                 self.logger.info("+ radd '%s' -> '%s'" % (Path(dstFile).name,field_path))
                 dstFile = self.__directory + '/' + self.name + '/' + field_path + '/%s' %(Path(dstFile).name)
+
+            targetFile=dstFile
+            while os.path.exists(dstFile): # check if dst file already exists
+                dstFile=self.__directory + '/' + self.name + '/' + field_path + '/' + Path(targetFile).stem+('.%d' % id)+Path(targetFile).suffix
+                id=id+1
+
             shutil.copy(srcFile, dstFile)
             self.manifest.add_file(field_path,dstFile)
             self.save()

@@ -27,14 +27,15 @@ class InstalledTablesView(Frame, Observer):
         self.__btRefreshTables.pack(side=RIGHT)
         frameBt.pack(side=BOTTOM)
 
-        scrollbar = Scrollbar(self, orient="vertical")
-        scrollbar.pack(side=RIGHT, fill=Y)
+        self.__vScrollbar = Scrollbar(self, orient="vertical")
+        self.__vScrollbar.pack(side=RIGHT, fill=Y)
 
-        self.__listTables = Listbox(self, width=30, height=15, selectmode=EXTENDED, yscrollcommand=scrollbar.set, font=("Helvetica", 10))
+
+        self.__listTables = Listbox(self, width=34, height=15, selectmode=EXTENDED, yscrollcommand=self.__vScrollbar.set, font=baseModel.config.get('font'))
         self.__listTables.pack(expand=True, fill=Y)
         self.__listTables.bind('<<ListboxSelect>>', self.on_select)
-        scrollbar.config(command=self.__listTables.yview)
-        self.__listTables.config(yscrollcommand=scrollbar.set)
+        self.__vScrollbar.config(command=self.__listTables.yview)
+        self.__listTables.config(yscrollcommand=self.__vScrollbar.set)
 
     def on_select(self,evt):
         selection=self.__listTables.curselection()

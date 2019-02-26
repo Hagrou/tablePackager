@@ -1,0 +1,60 @@
+<h1>Table Packager</h1>
+<p><img alt="alt text" src="../images/tablePackager.png" title="table Packager" /></p>
+<p>The aims of Table Packager is to gather all the files of a pinball table (table, rom, media, etc.) 
+in a single compressed file, a compressed package. You can edit it, add file or info and then 
+deploy it on you pincab or distribute it on the web.</p>
+<p>For the moment, you can extract table and media files from Pinball X, PinUp System and Visual Pinball X.</p>
+<p>A package can be installed on Pin Up System and Visual Pinball (Pinballx is not available on installation
+because I don't know how Pinball X links media files with it's internal data)
+<img alt="alt text" src="../images/tablePackagerPrinciple.png" title="table Packager" /></p>
+<p><a href="#Installation">Installation</a></p>
+<p><a href="#Run-Package-Installer">Run Package Installer</a></p>
+<p><a href="#Extract-Package-Table">Extract and Package a Table</a></p>
+<h2><a name="Installation"></a>Installation</h2>
+<p>Table Packager is compatible on Windows 7 and more (32 or 64 bits). </p>
+<pre><code>On Windows 7, you must download Visual C++ Redistributable from 
+https://www.microsoft.com/en-in/download/details.aspx?id=48145, 
+install it and Reboot the system.
+</code></pre>
+<p>To install Table Packager, double click on </p>
+<pre><code>tablePackager-x.y-win32.msi
+</code></pre>
+<p>When the following window open, click "Next"</p>
+<p><img alt="alt text" src="../images/install1.png" /></p>
+<p>Then, accept the request for elevation of windows and wait during installation</p>
+<p><img alt="alt text" src="../images/install2.png" /></p>
+<p>At the end of installation, you should see something like this:</p>
+<p><img alt="alt text" src="../images/install3.png" /></p>
+<p>And this icon on your desktop: </p>
+<p><img alt="alt text" src="../images/install4.png" /></p>
+<h2><a name="Run-Package-Installer"></a>Run Package Installer</h2>
+<p>To launch Table Packager, just double click on the icon:</p>
+<p><img alt="alt text" src="../images/install4.png" /></p>
+<p>Then, you should see an window like this:</p>
+<p><img alt="alt text" src="../images/overview.png" /></p>
+<p>This window is mainly divided into two lists:</p>
+<ul>
+<li>
+<p>the list of "Installed Tables" that contains all the tables found by Table Packager</p>
+</li>
+<li>
+<p>the list of "Packaged Tables" which contains all the packaged tables (empty)</p>
+</li>
+</ul>
+<p>The "Installed Tables" (in red) list contains all table used by Visual Pinball</p>
+<h2><a name="Extract-Package-Table"></a>Extract and Package a Table</h2>
+<p>To transform a table and all associated files (sound, rom, flyers, etc.), simply:</p>
+<ol>
+<li>
+<p>Select the table to extract from the list "tables installed"</p>
+</li>
+<li>
+<p>Click the "Extract" button.</p>
+</li>
+<li>
+<p>Then, Table Packager searches for all the files linked to this table 
+   (you can then see it in the Actions view) and create a file "table package" 
+   (Elvira ad the Party Monsters (Bally 1989).zip) containing all the files and metadata.</p>
+</li>
+</ol>
+<p><img alt="alt text" src="../images/extract1.png" /></p>

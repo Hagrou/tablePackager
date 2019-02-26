@@ -59,7 +59,16 @@ Todo
  
 + Extraction
     * Prendre Meta si installé
+    * Bug:
+        - Si 2 nom fichiers identiques [Elvira Audio]
+            1 est écrasé
+            2 entrées dans les metas!
+            => detecter écrasement et faire un .1.mp3 .2.mp3   
+        - Perte du fichier Visual Pinball/Audio 
    
++ Remove Installed Table
+    * Pas de suppression du manifest
+    
 + Package Manager
     + import package
     + lock/unlock package?
