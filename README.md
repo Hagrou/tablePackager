@@ -59,13 +59,7 @@ Todo
  
 + Extraction
     * Prendre Meta si installé
-    * Bug:
-        - Fusion si 2 fichiers identiques  
-        - Perte du fichier Visual Pinball/Audio 
-   
-   
-+ Editor
-    Bug: File Meta Info => [X] => kill window!
+
 + Remove Installed Table
     * Pas de suppression du manifest
     

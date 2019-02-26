@@ -69,7 +69,7 @@ class FileInfoViewer(Frame,Observable):
     def onClosing(self):
         self.__currentFile = None
         self.__currentPackage = None
-        self.notify_all(self, events=['<<DISABLE_ALL>>'])  # update listeners
+        self.notify_all(self, events=['<<ENABLE_ALL>>'])  # update listeners
         self.hide()
 
     def onSave(self):
