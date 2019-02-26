@@ -60,12 +60,12 @@ Todo
 + Extraction
     * Prendre Meta si installé
     * Bug:
-        - Si 2 nom fichiers identiques [Elvira Audio]
-            1 est écrasé
-            2 entrées dans les metas!
-            => detecter écrasement et faire un .1.mp3 .2.mp3   
+        - Fusion si 2 fichiers identiques  
         - Perte du fichier Visual Pinball/Audio 
    
+   
++ Editor
+    Bug: File Meta Info => [X] => kill window!
 + Remove Installed Table
     * Pas de suppression du manifest
     

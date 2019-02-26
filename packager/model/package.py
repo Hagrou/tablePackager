@@ -191,6 +191,9 @@ class Manifest:
         return False
 
     def add_file(self, field_path, srcFile):
+        if self.exists_file(field_path, Path(srcFile).name):
+            return
+
         file = collections.OrderedDict()
         file['name'] = Path(srcFile).name
         file['size'] = os.path.getsize(srcFile)
@@ -348,8 +351,14 @@ class Package:
                 dstFile = self.__directory + '/' + self.name + '/' + field_path + '/%s' %(Path(dstFile).name)
 
             targetFile=dstFile
+
             while os.path.exists(dstFile): # check if dst file already exists
-                dstFile=self.__directory + '/' + self.name + '/' + field_path + '/' + Path(targetFile).stem+('.%d' % id)+Path(targetFile).suffix
+                sha1a = sha1sum(dstFile)
+                sha2a = sha1sum(srcFile)
+                if sha1sum(dstFile)==sha1sum(srcFile): # same files, overwrite it
+                    break
+                else:
+                    dstFile=self.__directory + '/' + self.name + '/' + field_path + '/' + Path(targetFile).stem+('.%d' % id)+Path(targetFile).suffix
                 id=id+1
 
             shutil.copy(srcFile, dstFile)
