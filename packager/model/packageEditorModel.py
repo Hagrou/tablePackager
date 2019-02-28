@@ -67,8 +67,12 @@ class PackageEditorModel(Observable):
 
         self.package.save()
         self.package.pack()
+        setReadWriteFile(self.baseModel.package_path + '/' + self.package.name + self.baseModel.package_extension)
         shutil.copy(self.baseModel.tmp_path + '/' + self.package.name + self.baseModel.package_extension,
                     self.baseModel.package_path)
+        if self.package.get_field('info/protected')=='True':
+            self.logger.warning("Protect package with Read Only file status")
+            setReadOnlyFile(self.baseModel.package_path+ '/' + self.package.name + self.baseModel.package_extension)
         clean_dir(self.baseModel.tmp_path)
 
     def pack_package_end(self,context=None):

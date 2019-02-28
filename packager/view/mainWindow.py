@@ -136,7 +136,6 @@ class MainWindow(Observer,Observable):
         self.__configViewer.show()
 
     def onHelpMenu(self):
-        #url = 'file://C:/Users/philippe/Documents/Atelier/flipper/tablePackager/packager/help/help.html'
         path=os_path.abspath(os_path.split(__file__)[0])
 
         url = 'file://%s/../help/help.html' % path

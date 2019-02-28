@@ -56,10 +56,18 @@ class InstalledTablesModel(Observable):
         self.baseModel.logger.info("Begin Extraction")
         for table in self.__selectedTable:
             if Path(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension).exists():
+                if (isReadOnlyFile(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension)):
+                    result = messagebox.showerror("Extraction",
+                                                  "A protected table package already exist.");
+                    continue
                 result = messagebox.askokcancel("Extraction",
                                                 "Table package already extracted, would you like to overwrite it ?")
                 if result:
-                    os.remove(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension)
+                    try:
+                        os.remove(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension)
+                    except OSError as e:
+                        self.logger.error(str(e))
+                        continue
                 else:
                     self.logger.info("Extraction canceled")
                     continue

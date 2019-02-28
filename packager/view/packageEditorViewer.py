@@ -65,6 +65,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__btRename= Button(self.__infoFrame, text="Rename", command=self.renameOnClick, state='disable')
         self.__btRename.grid(column=2, row=0,padx=0, pady=0)
 
+
         self.__creationDateLabel = Label(self.__infoFrame, text="Creation date: ")
         self.__creationDateLabel.grid(column=0, row=1, sticky='NW',padx=2, pady=0)
 
@@ -73,6 +74,15 @@ class PackageEditorViewer(Frame, Observer):
                                               text=utcTime2Str(strIsoUTCTime2DateTime(creationDate)))
 
         self.__creationDateValueLabel.grid(column=1, row=1, sticky='NW',padx=2, pady=0)
+
+        self.__btProtectedState = StringVar()
+        self.__btProtectedState.set(self.packageEditorModel.package.get_field('info/protected'))
+        self.__btProtected = Checkbutton(self.__infoFrame, text='Protected', width=12, variable=self.__btProtectedState,
+                                         offvalue='False', onvalue='True',
+                                         command=self.on_protect)
+        self.__btProtectedTip = CreateToolTip(self.__btProtected, 'set package file to read only')
+        self.__btProtected.grid(column=2, row=1, sticky='NW', padx=2, pady=0)
+
 
         self.__lastModificationDateLabel = Label(self.__infoFrame, text="Last Modification: ")
         self.__lastModificationDateLabel.grid(column=0, row=2, sticky='NW',padx=2, pady=0)
@@ -191,6 +201,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__visible = True
 
         self.refresh_files()
+        self.on_protect()
 
     def askokcancel(self, title, message):
         return messagebox.askokcancel(title, message, parent=self.__topLevel)
@@ -319,6 +330,26 @@ class PackageEditorViewer(Frame, Observer):
                                        self.__packageEditorModel.get_fileInfo(self.__topLevel, item['tags'][-1],
                                                                               item['text']))
 
+
+    def on_protect(self):
+        self.packageEditorModel.package.set_field('info/protected',self.__btProtectedState.get())
+        if self.__btProtectedState.get()=='True':
+            self.__btAddFile['state'] = 'disable'
+            self.__btDelFile['state'] = 'disable'
+            self.__btRename['state'] = 'disable'
+            self.__btRenameFile['state'] = 'disable'
+            self.__btSave['state'] = 'disable'
+            self.__btUpFile['state'] = 'disable'
+            self.__btDownFile['state'] = 'disable'
+            self.__tree.unbind('<ButtonRelease-1>')
+            self.__tree.unbind('<Double-1>')
+            self.__packageNameEntry.unbind('<KeyRelease>')
+        else:
+            self.__btSave['state'] = 'normal'
+            self.__tree.bind('<ButtonRelease-1>', self.on_select)
+            self.__tree.bind('<Double-1>', self.on_doubleClick)
+            self.__packageNameEntry.bind('<KeyRelease>', self.tableNameKeyEvent)
+
     def on_upFile(self):
         item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.up_file(self, item['tags'][-1], item['text'])
@@ -409,4 +440,3 @@ class PackageEditorViewer(Frame, Observer):
                     if kwargs.get('selection_set'):
                         selection_set=kwargs['selection_set']
                     self.refresh_files(selection_set)
-

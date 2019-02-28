@@ -46,7 +46,7 @@ class Manifest:
         self.content['info']['table name'] = ''
         self.content['info']['year'] = ''
         self.content['info']['theme'] = ''
-        self.content['info']['protected'] = 'no'
+        self.content['info']['protected'] = 'False'
 
         self.content['visual pinball'] = collections.OrderedDict()
         self.content['visual pinball']['tables']=[]

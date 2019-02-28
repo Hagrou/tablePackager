@@ -92,8 +92,15 @@ class PackagedTablesView(Frame, Observer):
         for event in events:
             if '<<UPDATE PACKAGES>>' in event:
                 self.__listPackages.delete(0, END)
+                index=0
                 for package in kwargs['packages']:
-                    self.__listPackages.insert(END, package['name'])
+                    self.__listPackages.insert(index, package['name'])
+                    if package['protected']:
+                        self.__listPackages.itemconfig(index, {'fg': 'blue'})
+                    else:
+                        self.__listPackages.itemconfig(index, {'fg': 'black'})
+                    index=index+1
+
             elif '<<DISABLE_ALL>>' in event:
                 self.__backupState['btEdit']=self.__btEdit['state']
                 self.__btEdit['state']='disabled'

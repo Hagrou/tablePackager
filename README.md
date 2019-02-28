@@ -41,6 +41,8 @@ Génération de l'aide HTML
 Todo
 ====
     
+=> Check packager version on package
+    
    
 - Config:
     - Mise à jour de update file en cas de changement de configuration
@@ -65,11 +67,14 @@ Todo
     
 + Package Manager
     + import package
+         * Check Package compatibility version
     + lock/unlock package?
     
 + Edition
     * Check Package  on save
+    * Check Package compatibility version
     
+
 Bug: 
     
  - preciser:

@@ -2,6 +2,7 @@ import logging
 import re
 import mmap
 import os
+import stat
 import shutil
 import zipfile
 import threading
@@ -24,6 +25,19 @@ def clean_dir(dir):
     except:
         print("Unexpected error:", sys.exc_info()[0])
 
+def setReadOnlyFile(file):
+    fileAtt = os.stat(file)[0]
+    # File is writeable, so make it read-only
+    os.chmod(file, stat.S_IREAD)
+
+def setReadWriteFile(file):
+    fileAtt = os.stat(file)[0]
+    if (not fileAtt & stat.S_IWRITE):  # File is read-only, so make it writeable
+        os.chmod(file, stat.S_IWRITE)
+
+def isReadOnlyFile(file):
+    fileAtt = os.stat(file)[0]
+    return not fileAtt & stat.S_IWRITE
 
 # https://stackoverflow.com/questions/1868714/how-do-i-copy-an-entire-directory-of-files-into-an-existing-directory-using-pyth
 def copytree(logger, src, dst, symlinks=False, ignore=None):

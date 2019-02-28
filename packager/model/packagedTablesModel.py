@@ -30,8 +30,10 @@ class PackagedTablesModel(Observable):
         # read Packaged Tables
         self.__packages=[]
         for packages_file in Path(self.baseModel.package_path).glob('**/*'+self.baseModel.package_extension):
-            self.__packages.append({'name':packages_file.stem})
-
+            if isReadOnlyFile(packages_file):
+                self.__packages.append({'name':packages_file.stem,'protected':True})
+            else:
+                self.__packages.append({'name': packages_file.stem, 'protected': False})
         self.__packages.sort(key=lambda package: package['name'].upper())
         self.notify_all(self, events=['<<UPDATE PACKAGES>>','<<PACKAGE UNSELECTED>>'], packages=self.__packages) # update listeners
 
@@ -93,7 +95,11 @@ class PackagedTablesModel(Observable):
         if delConfirmed:
             self.logger.info("--[Delete Package(s=]------------------")
             for packageInfo in self.selectedPackage:
-                os.unlink(self.baseModel.package_path + '/' + packageInfo['name'] + self.baseModel.package_extension)
+                try:
+                    os.unlink(self.baseModel.package_path + '/' + packageInfo['name'] + self.baseModel.package_extension)
+                except OSError as e:
+                    self.logger.error(str(e))
+                    continue
                 self.logger.info("+ del %s" % (self.baseModel.package_path+'/'+packageInfo['name']+self.baseModel.package_extension))
             self.logger.info("--[Done]------------------")
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
