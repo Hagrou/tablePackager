@@ -11,8 +11,8 @@ import datetime
 from packager.tools.exception import *
 from packager.tools.toolbox import *
 
-#from packager.tablePackager import version
-version='1.0'
+from packager.tablePackager import version
+
 class Manifest:
     def __init__(self, name):
         self.__content=collections.OrderedDict()
@@ -280,6 +280,8 @@ class Package:
         self.__directory=baseDir
         self.__manifest=Manifest(self.__name)
         self.manifest.open(self.__directory)
+        if not self.isCompatible():
+            raise PackageException("Packager version is too old, please update it to use this packages")
 
     def update(self):
         if not os.path.exists(self.directory):
@@ -319,7 +321,6 @@ class Package:
         os.rename(self.directory + '/' + self.name,
                   self.directory + '/' + newName)
         self.__name=newName
-
 
     def build_tree(self, baseDir, content):
         for item in content:
@@ -390,7 +391,6 @@ class Package:
             self.logger.error(str(e))
             raise e
 
-
     def move_file(self, file, src_field_path, dst_field_path):
         self.logger.info("+ move '%s' -> '%s'" % (src_field_path + '/' + file,
                                                  dst_field_path + '/' + file))
@@ -403,6 +403,13 @@ class Package:
         except OSError as e:
             self.logger.error(str(e))
             raise e
+
+
+    def isCompatible(self):
+        majorVersion=int(version.split('.')[0])
+        majorPackagerVersion=int(self.manifest.get_field('info/packager version').split('.')[0])
+        return majorVersion>=majorPackagerVersion
+
 
     # zip package
     def pack(self):

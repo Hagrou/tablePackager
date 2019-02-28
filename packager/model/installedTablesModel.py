@@ -95,8 +95,9 @@ class InstalledTablesModel(Observable):
                         self.baseModel.package_path)
 
         clean_dir(self.baseModel.tmp_path)
+        return True
 
-    def extract_tables_end(self,context=None):
+    def extract_tables_end(self,context=None,success=True):
         self.logger.info("--[Done]------------------")
         self.notify_all(self, events=['<<END_ACTION>>','<<ENABLE_ALL>>'], tables=self.__selectedTable)  # update listeners
         self.baseModel.packagedTablesModel.update()
@@ -147,9 +148,9 @@ class InstalledTablesModel(Observable):
             self.baseModel.pinballX.delete(table['name'])
             self.baseModel.pinupSystem.delete(table['name'],'visual pinball')
             self.logger.warning("delete on futurPinball is not yet implemented")
+        return True
 
-
-    def delete_tables_end(self,context=None):
+    def delete_tables_end(self,context=None,success=True):
         self.logger.info("--[Done]------------------")
         self.update()
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners

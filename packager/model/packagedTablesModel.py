@@ -61,30 +61,39 @@ class PackagedTablesModel(Observable):
     def deploy_tables_begin(self,context=None):
         if not self.__selectedPackage: # empty selection
             raise ValueError('No selected package')
-        for packageInfo in self.__selectedPackage:
-            self.logger.info("--[Deploy '%s']------------------" % (packageInfo['name']))
-            package = Package(self.baseModel, packageInfo['name'])
-            package.unpack()
-            package.open(self.baseModel.tmp_path)
-            if context['visual_pinball'].get():
-                self.baseModel.visualPinball.deploy(package)
-                self.baseModel.vpinMame.deploy(package)
-                self.baseModel.ultraDMD.deploy(package)
-            if context['pinballX'].get():
-                self.logger.warning("deploy to pinballX is not yet implemented")
+        try:
+            for packageInfo in self.__selectedPackage:
+                self.logger.info("--[Deploy '%s']------------------" % (packageInfo['name']))
+                package = Package(self.baseModel, packageInfo['name'])
+                package.unpack()
+                package.open(self.baseModel.tmp_path)
 
-            if context['futurPinball'].get():
-                self.logger.warning("deploy to futur Pinball is not yet implemented")
-            if context['pinupSystem'].get():
-                self.baseModel.pinupSystem.deploy(package,'visual pinball')
+                if context['visual_pinball'].get():
+                    self.baseModel.visualPinball.deploy(package)
+                    self.baseModel.vpinMame.deploy(package)
+                    self.baseModel.ultraDMD.deploy(package)
+                if context['pinballX'].get():
+                    self.logger.warning("deploy to pinballX is not yet implemented")
 
-            shutil.copyfile(self.baseModel.tmp_path+'/'+packageInfo['name']+'/'+packageInfo['name']+'.manifest.json',
-                            self.baseModel.installed_path+'/'+packageInfo['name']+'.manifest.json')
-        clean_dir(self.baseModel.tmp_path)
+                if context['futurPinball'].get():
+                    self.logger.warning("deploy to futur Pinball is not yet implemented")
+                if context['pinupSystem'].get():
+                    self.baseModel.pinupSystem.deploy(package,'visual pinball')
 
-    def deploy_tables_end(self,context=None):
-        self.logger.info("--[Done]------------------")
-        self.notify_all(self, events=['<<END_ACTION>>','<<ENABLE_ALL>>'])  # update listeners
+                shutil.copyfile(self.baseModel.tmp_path+'/'+packageInfo['name']+'/'+packageInfo['name']+'.manifest.json',
+                                self.baseModel.installed_path+'/'+packageInfo['name']+'.manifest.json')
+            clean_dir(self.baseModel.tmp_path)
+            return True
+        except Exception as e:
+            messagebox.showerror('Deploy Package', str(e))
+            return False
+
+    def deploy_tables_end(self,context=None, success=True):
+        if success:
+            self.logger.info("--[Done]------------------")
+        else:
+            self.logger.error("--[Failed]------------------")
+        self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.installedTablesModel.update()
 
     def deletePackages(self, viewer):

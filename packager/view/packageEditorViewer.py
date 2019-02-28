@@ -90,6 +90,12 @@ class PackageEditorViewer(Frame, Observer):
         self.__lastModificationDateValueLabel = Label(self.__infoFrame, text=utcTime2Str(strIsoUTCTime2DateTime(lastModDate)))
         self.__lastModificationDateValueLabel.grid(column=1, sticky='NW', row=2,padx=2, pady=0)
 
+
+        self.__packagerVersionLabel=Label(self.__infoFrame,
+                                          text="Packager version: %s" % (self.packageEditorModel.package.get_field('info/packager version')))
+
+        self.__packagerVersionLabel.grid(column=2, row=2, sticky='NW',padx=2, pady=0)
+
         self.__packageVersionLabel = Label(self.__infoFrame, text="Version: ")
         self.__packageVersionLabel.grid(column=0, row=3, sticky='NW', padx=2, pady=0)
         self.__packageVersionEntry = Entry(self.__infoFrame)

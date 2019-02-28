@@ -169,7 +169,7 @@ class AsynRun(threading.Thread):
         self.method_begin= method_begin
         self.method_end=method_end
 
-    def run(self) :
-        self.method_begin(self.context)
-        self.method_end(self.context)
+    def run(self):
+        result=self.method_begin(self.context)
+        self.method_end(self.context, result)
 

@@ -38,13 +38,22 @@ class PackageEditorModel(Observable):
 
     def edit_package_begin(self,context=None):
         self.logger.info("--[Edit Package '%s']------------------" % (self.currentPackage['name']))
-        self.__package = Package(self.baseModel, self.currentPackage['name'])
-        self.package.unpack()
-        self.package.open(self.baseModel.tmp_path)
+        try:
+            self.__package = Package(self.baseModel, self.currentPackage['name'])
+            self.package.unpack()
+            self.package.open(self.baseModel.tmp_path)
+        except Exception as e:
+            messagebox.showerror('Edit Package', str(e))
+            return False
+        return True
 
-    def edit_package_end(self,context=None):
-        self.logger.info("* Unpack Done")
-        self.notify_all(self, events=['<<END_ACTION>>','<<VIEW EDITOR>>'])  # update listeners
+    def edit_package_end(self,context=None, success=True):
+        if success:
+            self.logger.info("* Unpack Done")
+            self.notify_all(self, events=['<<END_ACTION>>','<<VIEW EDITOR>>'])  # update listeners
+        else:
+            self.logger.error("* Unpack failed")
+            self.notify_all(self, events=['<<END_ACTION>>'])  # update listeners
 
     def new_package(self):
         self.currentPackage = {'name':'John Doe'}
@@ -74,8 +83,9 @@ class PackageEditorModel(Observable):
             self.logger.warning("Protect package with Read Only file status")
             setReadOnlyFile(self.baseModel.package_path+ '/' + self.package.name + self.baseModel.package_extension)
         clean_dir(self.baseModel.tmp_path)
+        return True
 
-    def pack_package_end(self,context=None):
+    def pack_package_end(self,context=None,success=True):
         self.logger.info("--[Edition '%s' Done]------------------" % (self.package.name))
         self.notify_all(self, events=['<<END_ACTION>>','<<PACKAGE UNSELECTED>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
@@ -89,11 +99,16 @@ class PackageEditorModel(Observable):
     def rename_package_begin(self,context=None):
         try:
             self.package.rename_package(context['newPackageName'])
+            return True
         except Exception as e:
             messagebox.showerror('rename package Error', str(e), parent=viewer)
+            return False
 
-    def rename_package_end(self,context=None):
-        self.logger.info("--[Rename '%s' Done]------------------" % (self.package.name))
+    def rename_package_end(self,context=None,success=True):
+        if success:
+            self.logger.info("--[Rename '%s' Done]------------------" % (self.package.name))
+        else:
+            self.logger.error("--[Rename '%s' Failed]------------------" % (self.package.name))
         self.notify_all(self, events=['<<UPDATE_EDITOR>>','<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
 
