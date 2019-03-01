@@ -76,6 +76,7 @@ class PackageEditorModel(Observable):
 
         self.package.save()
         self.package.pack()
+
         setReadWriteFile(self.baseModel.package_path + '/' + self.package.name + self.baseModel.package_extension)
         shutil.copy(self.baseModel.tmp_path + '/' + self.package.name + self.baseModel.package_extension,
                     self.baseModel.package_path)
@@ -101,7 +102,7 @@ class PackageEditorModel(Observable):
             self.package.rename_package(context['newPackageName'])
             return True
         except Exception as e:
-            messagebox.showerror('rename package Error', str(e), parent=viewer)
+            messagebox.showerror('rename package Error', str(e))
             return False
 
     def rename_package_end(self,context=None,success=True):

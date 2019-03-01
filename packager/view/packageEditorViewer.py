@@ -185,11 +185,11 @@ class PackageEditorViewer(Frame, Observer):
         self.__btAddFileTip = CreateToolTip(self.__btAddFile, 'Add a file to package')
         self.__btAddFile.grid(row=1, column=2, sticky=N)
         self.__btDelFile = Button(self.__contentFrame, image=self.__btDelFileImage, command=self.on_delFile, state='disable')
-        self.__btDelFileTip = CreateToolTip(self.__btAddFile, 'Delete a file from package')
+        self.__btDelFileTip = CreateToolTip(self.__btDelFile, 'Delete a file from package')
         self.__btDelFile.grid(row=2, column=2, sticky=N)
         self.__btRenameFile = Button(self.__contentFrame, image=self.__btRenameFileImage, command=self.on_renameFile,
                                   state='disable')
-        self.__btRenameFileTip = CreateToolTip(self.__btAddFile, 'Rename a file into package')
+        self.__btRenameFileTip = CreateToolTip(self.__btRenameFile, 'Rename a file into package')
         self.__btRenameFile.grid(row=3, column=2, sticky=N)
 
         self.__btUpFile= Button(self.__contentFrame, image=self.__btUpFileImage, command=self.on_upFile, state='disable')

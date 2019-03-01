@@ -71,8 +71,7 @@ Todo
     + lock/unlock package?
     
 + Edition
-    * Check Package  on save
-    * Check Package compatibility version
+    * Bug Rename File: image.1.png => image.1 [.1.PNG]
     
 
 Bug: 

@@ -9,7 +9,6 @@ from packager.view.packagedTablesView import *
 from packager.view.packageEditorViewer import *
 from packager.view.logViewer import *
 from packager.view.configViewer import *
-from packager.view.helpViewer import *
 
 class MainWindow(Observer,Observable):
     def __init__(self, baseModel, logHandler):
@@ -20,8 +19,6 @@ class MainWindow(Observer,Observable):
         self.__backupState={}
         self.__baseModel=baseModel
         self.__window=Tk()
-
-        #self.__helpViewer = HelpViewer(self.__window, self.__baseModel) # TODO: del?
 
         # create a toplevel menu
         self.__menubar = Menu(self.__window)

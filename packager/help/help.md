@@ -14,14 +14,24 @@ because I don't know how Pinball X links media files with it's internal data)
 
 
 
-[Installation](#Installation)
+- [Installation](#Installation)
 
-[Run Package Installer](#Run-Package-Installer)
+- [Run Package Installer](#Run-Package-Installer)
 
-[Extract and Package a Table](#Extract-Package-Table)
+- [Extract and Package a Table](#Extract-Package-Table)
 
-[Edit a Package](#Edit-Package)
+- [Edit a Package](#Edit-Package)
 
+    - [Rename a Package](#Rename-Package)
+    
+    - [Edit Meta Information](#Meta-Information)
+    
+    - [Add a file](#Add-File)
+    
+    - [Delete a file](#Delete-File)
+
+    - [Rename a file](#Rename-File)
+    
 ## <a name="Installation"></a>Installation
 
 
@@ -94,7 +104,62 @@ You can now edit this package to rename it, add information files or multimedia:
 
 ![alt text](../images/edit1.png)
 
-Table Package unpack package in a tmp directory and then open a edition windows:
+Table Package unpack package in a tmp directory and then open an edition windows:
 
 ![alt text](../images/edit2.png)
+
+You can add information on the flipper, rename the package, add a file, etc.
+
+### <a name="Rename-Package"></a>Rename a Package
+
+![alt text](../images/edit3.png)
+
+To rename a package:
+ 
+ 1. modify the package name field 
+ 
+ 2. Click on rename button
+ 
+ 3. All files are renamed 
+ 
+ 4. Click on Save button to save the result or click on cancel otherwise
+ 
+### <a name="Meta-Information"></a>Edit Meta Information
+
+![alt text](../images/edit4.png)
+
+You can add information about each file in a package. For that:
+
+1. Select the file on the treeview and double click on it
+
+2. An meta information window appears, add info and save it
+
+### <a name="Add-File"></a>Add a file
+
+![alt text](../images/edit5.png)
+
+To add a file:
+
+1. Select the file category (Instruction Cards on our example)
+
+2. Click on the 'Add button',
+
+3. Then choose your file with the Select File popup
+
+4. Click on 'Open'
+
+5. If the name of the file to be added is not exactly the same as the name of 
+   the package, a popup proposes to rename the file.
+
+### <a name="Delete-File"></a>Delete a file
+
+![alt text](../images/edit6.png)
+
+To delete a file:
+
+1. Select the file to delete
+
+2. Click on the 'Del button'
+
+### <a name="Rename-File"></a>Rename a file
 
