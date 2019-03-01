@@ -1,6 +1,6 @@
-#Table Packager 
 
-![alt text](../images/tablePackager.png "table Packager")
+
+![alt text](../images/tablePackager-logo.png "table Packager")
 
 The aims of Table Packager is to gather all the files of a pinball table (table, rom, media, etc.) 
 in a single compressed file, a compressed package. You can edit it, add file or info and then 
@@ -31,6 +31,14 @@ because I don't know how Pinball X links media files with it's internal data)
     - [Delete a file](#Delete-File)
 
     - [Rename a file](#Rename-File)
+    
+    - [Move file to another section](#Move-File)
+    
+    - [Save and file Protection](#Save-Protection)
+    
+ - [Deploy a package](#Deploy-Package)
+ 
+ - [Cleanup Table Files](#Clean-Tables)
     
 ## <a name="Installation"></a>Installation
 
@@ -163,3 +171,78 @@ To delete a file:
 
 ### <a name="Rename-File"></a>Rename a file
 
+Except for the rom files, the files must have the same name as the table. 
+However, it is possible to have to differentiate the files by renaming the extensions.
+So you can make two files live together "Elvira and the Party Monsters.png" in the same 
+section by renaming them for example by:
+
+    Elvira and the Party Monsters.1.png
+    Elvira and the Party Monsters.2.png
+
+![alt text](../images/edit7.png)
+
+To rename a file:
+
+1. Select the file,
+
+2. Click on rename button,
+
+3. Change extension name
+
+4. Then click on Apply button
+
+### <a name="Move-File"></a>Move file to another section
+
+![alt text](../images/edit8.png)
+
+You can move a file between sections. For example, to move the file Elivia and the Party Monsters.inside2.jpg to Flyers Back section:
+
+1. Select it
+
+2. Click on the "up file" button
+
+3. To move the same file to Instruction Cards section, click on the "down file" button
+
+### <a name="Save-Protection"></a>Save and file Protection
+
+All changes made in edition will only be applied after the save (button Save).
+
+To avoid overwriting a package by mistake, you can protect 
+it by enabling the "Protected" checkbox, and save the package.
+
+![alt text](../images/edit9.png)
+
+A protected package is marked by a blue color in Package Table List.
+
+![alt text](../images/edit10.png)
+
+You can remove the protection by edit the package and unselect "Protected".
+
+## <a name="Deploy-Package"></a>Deploy a package
+
+![alt text](../images/export1.png)
+
+Your Elvira Package is ready, it's time to install it on your pincab:
+
+1. Select the package
+
+2. Click on Install button
+
+All package files are copied to the different Visual Pinball and PinUp System directories.
+
+You must then import this new pinball into the PinUp System list (run pinUpMenuSetup.exe). 
+You can see that all the media are "green" and ready to work in the "MediaManagerForm" window.
+
+![alt text](../images/export2.png)
+
+## <a name="Clean-Tables"></a>Cleanup Table Files
+
+Many files accumulate in Visual Pinball, VPInMAme, PinUp System, and so on.
+
+You can clean the files of a table by selecting it from the list of tables, 
+then click on the delete button.
+
+TablePackager will browse the files installed for the deletes. It also works 
+with an installed package.
+
+![alt text](../images/delete1.png)

@@ -344,7 +344,6 @@ class PackageEditorViewer(Frame, Observer):
             self.__btDelFile['state'] = 'disable'
             self.__btRename['state'] = 'disable'
             self.__btRenameFile['state'] = 'disable'
-            self.__btSave['state'] = 'disable'
             self.__btUpFile['state'] = 'disable'
             self.__btDownFile['state'] = 'disable'
             self.__tree.unbind('<ButtonRelease-1>')

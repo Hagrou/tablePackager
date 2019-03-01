@@ -40,39 +40,24 @@ Génération de l'aide HTML
 
 Todo
 ====
-    
-=> Check packager version on package
-    
-   
++ Remove Installed Table
+    * BUG:
+        Pas de suppression du manifest
+      
 - Config:
     - Mise à jour de update file en cas de changement de configuration
     - fenetre config en dessous!!!
 
-- support vp9 / future pinball
 
-
-- traiter le cas du package invalid
-    => ou version incompatible
-
-+ Fonction check package:
-    * Visual Pinball
-        - 1 seul fichier vpx présent
-        - directb2s présent
- 
 + Extraction
     * Prendre Meta si installé
 
-+ Remove Installed Table
-    * BUG:
-        Pas de suppression du manifest
+
     
 + Package Manager
     + import package
          * Check Package compatibility version
-    + lock/unlock package?
-    
-+ Edition
-    * Bug Rename File: image.1.png => image.1 [.1.PNG]
+
     
 
 Bug: 
@@ -84,7 +69,21 @@ Bug:
                     
  - Typo des champs texts
 
+Whish
+=====
 
+- support vp9 / future pinball
+
+
+- traiter le cas du package invalid
+    => ou version incompatible
+    
+
++ Fonction check package:
+    * Visual Pinball
+        - 1 seul fichier vpx présent
+        - directb2s présent
+ 
 
 Licenses
 =========

@@ -1,5 +1,4 @@
-<h1>Table Packager</h1>
-<p><img alt="alt text" src="../images/tablePackager.png" title="table Packager" /></p>
+<p><img alt="alt text" src="../images/tablePackager-logo.png" title="table Packager" /></p>
 <p>The aims of Table Packager is to gather all the files of a pinball table (table, rom, media, etc.) 
 in a single compressed file, a compressed package. You can edit it, add file or info and then 
 deploy it on you pincab or distribute it on the web.</p>
@@ -26,7 +25,28 @@ because I don't know how Pinball X links media files with it's internal data)
 <li>
 <p><a href="#Meta-Information">Edit Meta Information</a></p>
 </li>
+<li>
+<p><a href="#Add-File">Add a file</a></p>
+</li>
+<li>
+<p><a href="#Delete-File">Delete a file</a></p>
+</li>
+<li>
+<p><a href="#Rename-File">Rename a file</a></p>
+</li>
+<li>
+<p><a href="#Move-File">Move file to another section</a></p>
+</li>
+<li>
+<p><a href="#Save-Protection">Save and file Protection</a></p>
+</li>
 </ul>
+</li>
+<li>
+<p><a href="#Deploy-Package">Deploy a package</a></p>
+</li>
+<li>
+<p><a href="#Clean-Tables">Cleanup Table Files</a></p>
 </li>
 </ul>
 <h2><a name="Installation"></a>Installation</h2>
@@ -119,3 +139,103 @@ install it and Reboot the system.
 <p>An meta information window appears, add info and save it</p>
 </li>
 </ol>
+<h3><a name="Add-File"></a>Add a file</h3>
+<p><img alt="alt text" src="../images/edit5.png" /></p>
+<p>To add a file:</p>
+<ol>
+<li>
+<p>Select the file category (Instruction Cards on our example)</p>
+</li>
+<li>
+<p>Click on the 'Add button',</p>
+</li>
+<li>
+<p>Then choose your file with the Select File popup</p>
+</li>
+<li>
+<p>Click on 'Open'</p>
+</li>
+<li>
+<p>If the name of the file to be added is not exactly the same as the name of 
+   the package, a popup proposes to rename the file.</p>
+</li>
+</ol>
+<h3><a name="Delete-File"></a>Delete a file</h3>
+<p><img alt="alt text" src="../images/edit6.png" /></p>
+<p>To delete a file:</p>
+<ol>
+<li>
+<p>Select the file to delete</p>
+</li>
+<li>
+<p>Click on the 'Del button'</p>
+</li>
+</ol>
+<h3><a name="Rename-File"></a>Rename a file</h3>
+<p>Except for the rom files, the files must have the same name as the table. 
+However, it is possible to have to differentiate the files by renaming the extensions.
+So you can make two files live together "Elvira and the Party Monsters.png" in the same 
+section by renaming them for example by:</p>
+<pre><code>Elvira and the Party Monsters.1.png
+Elvira and the Party Monsters.2.png
+</code></pre>
+<p><img alt="alt text" src="../images/edit7.png" /></p>
+<p>To rename a file:</p>
+<ol>
+<li>
+<p>Select the file,</p>
+</li>
+<li>
+<p>Click on rename button,</p>
+</li>
+<li>
+<p>Change extension name</p>
+</li>
+<li>
+<p>Then click on Apply button</p>
+</li>
+</ol>
+<h3><a name="Move-File"></a>Move file to another section</h3>
+<p><img alt="alt text" src="../images/edit8.png" /></p>
+<p>You can move a file between sections. For example, to move the file Elivia and the Party Monsters.inside2.jpg to Flyers Back section:</p>
+<ol>
+<li>
+<p>Select it</p>
+</li>
+<li>
+<p>Click on the "up file" button</p>
+</li>
+<li>
+<p>To move the same file to Instruction Cards section, click on the "down file" button</p>
+</li>
+</ol>
+<h3><a name="Save-Protection"></a>Save and file Protection</h3>
+<p>All changes made in edition will only be applied after the save (button Save).</p>
+<p>To avoid overwriting a package by mistake, you can protect 
+it by enabling the "Protected" checkbox, and save the package.</p>
+<p><img alt="alt text" src="../images/edit9.png" /></p>
+<p>A protected package is marked by a blue color in Package Table List.</p>
+<p><img alt="alt text" src="../images/edit10.png" /></p>
+<p>You can remove the protection by edit the package and unselect "Protected".</p>
+<h2><a name="Deploy-Package"></a>Deploy a package</h2>
+<p><img alt="alt text" src="../images/export1.png" /></p>
+<p>Your Elvira Package is ready, it's time to install it on your pincab:</p>
+<ol>
+<li>
+<p>Select the package</p>
+</li>
+<li>
+<p>Click on Install button</p>
+</li>
+</ol>
+<p>All package files are copied to the different Visual Pinball and PinUp System directories.</p>
+<p>You must then import this new pinball into the PinUp System list (run pinUpMenuSetup.exe). 
+You can see that all the media are "green" and ready to work in the "MediaManagerForm" window.</p>
+<p><img alt="alt text" src="../images/export2.png" /></p>
+<h2><a name="Clean-Tables"></a>Cleanup Table Files</h2>
+<p>Many files accumulate in Visual Pinball, VPInMAme, PinUp System, and so on.</p>
+<p>You can clean the files of a table by selecting it from the list of tables, 
+then click on the delete button.</p>
+<p>TablePackager will browse the files installed for the deletes. It also works 
+with an installed package.</p>
+<p><img alt="alt text" src="../images/delete1.png" /></p>

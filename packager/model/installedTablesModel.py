@@ -148,6 +148,8 @@ class InstalledTablesModel(Observable):
             self.baseModel.pinballX.delete(table['name'])
             self.baseModel.pinupSystem.delete(table['name'],'visual pinball')
             self.logger.warning("delete on futurPinball is not yet implemented")
+            os.unlink(self.baseModel.installed_path+'/'+manifest.filename)
+
         return True
 
     def delete_tables_end(self,context=None,success=True):
