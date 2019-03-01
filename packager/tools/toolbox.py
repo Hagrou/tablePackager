@@ -133,6 +133,14 @@ def searchSentenceInString(string, sentence):
         if string.find(word) >= 0:
             score = score + 1.0
     return score/len(words)
+
+def unsuffix(path):
+    path=Path(path).stem
+    while(path!=Path(path).stem):
+        path = Path(path).stem
+    return path
+
+
 """
 #https://stackabuse.com/levenshtein-distance-and-text-similarity-in-python/
 import numpy as np

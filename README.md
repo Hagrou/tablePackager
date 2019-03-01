@@ -63,7 +63,8 @@ Todo
     * Prendre Meta si installé
 
 + Remove Installed Table
-    * Pas de suppression du manifest
+    * BUG:
+        Pas de suppression du manifest
     
 + Package Manager
     + import package

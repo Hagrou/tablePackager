@@ -34,7 +34,8 @@ class RenameFileViewer(Frame,Observable):
         self.__infoFrame=Frame(self.__topLevel)
         self.__fileNameLabel=Label(self.__infoFrame, text="File: ")
         self.__fileNameLabel.grid(column=0, row=0, sticky='W',padx=2, pady=2)
-        self.__fileNameValueLabel=Label(self.__infoFrame, text=dataPath+'/'+Path(self.__currentFile['file']['name']).stem)
+
+        self.__fileNameValueLabel=Label(self.__infoFrame, text=dataPath+'/'+unsuffix(self.__currentFile['file']['name']))
         self.__fileNameValueLabel.grid(column=1, row=0,sticky='W',padx=2, pady=2)
 
         self.__fileNewNameEntry = Entry(self.__infoFrame)
@@ -63,7 +64,7 @@ class RenameFileViewer(Frame,Observable):
             if extension[0]!='.':
                 extension="."+extension
 
-        dstPath=Path(self.__currentFile['file']['name']).stem+extension
+        dstPath=unsuffix(self.__currentFile['file']['name'])+extension
 
         self.__currentPackage.rename_file(self.__currentFile['file']['name'], self.__dataPath, dstPath)
         self.__currentPackage.save()
