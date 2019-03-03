@@ -2,6 +2,7 @@ import logging
 from packager.tools.toolTip import *
 from tkinter import *
 from tkinter import messagebox
+from tkinter import filedialog
 
 from packager.tools.observer import Observer
 
@@ -36,11 +37,11 @@ class PackagedTablesView(Frame, Observer):
         self.__btNew.pack(side=LEFT)
 
         self.__btImport = Button(frameBt, image=self.__btImportImage, command=self.importOnClick, state=NORMAL)
-        self.__btImportToolTip = CreateToolTip(self.__btNew, 'Import a package')
+        self.__btImportToolTip = CreateToolTip(self.__btImport, 'Import a package')
         self.__btImport.pack(side=LEFT)
 
         self.__btExport = Button(frameBt, image=self.__btExportImage, command=self.exportOnClick, state=DISABLED)
-        self.__btExportToolTip = CreateToolTip(self.__btNew, 'Export a package')
+        self.__btExportToolTip = CreateToolTip(self.__btExport, 'Export a package')
         self.__btExport.pack(side=LEFT)
 
         self.__btUpdateView=Button(frameBt, image=self.__btRefreshImage , command=self.refreshViewOnClick, state=NORMAL)
@@ -74,7 +75,10 @@ class PackagedTablesView(Frame, Observer):
         print("importOnClick")
 
     def exportOnClick(self):
-        print("exportOnClick")
+        exportPath = filedialog.askdirectory()
+        if exportPath!='':
+            self.__packagedTablesModel.exportPackages(self, exportPath)
+
 
     def refreshViewOnClick(self):
         self.__packagedTablesModel.update()

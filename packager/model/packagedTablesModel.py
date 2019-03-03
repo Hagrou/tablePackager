@@ -113,3 +113,29 @@ class PackagedTablesModel(Observable):
             self.logger.info("--[Done]------------------")
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
+
+    def exportPackages(self, viewer, exportPath):
+        self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
+        exportThread = AsynRun(self.export_package_begin, self.export_package_end, context={ 'path': exportPath})
+        exportThread.start()
+
+    def export_package_begin(self, context=None):
+        if not self.__selectedPackage:  # empty selection
+            raise ValueError('No selected package')
+        try:
+            self.logger.info("--[Export Package]------------------")
+            for packageInfo in self.__selectedPackage:
+                packageFileName='/' + packageInfo['name'] + self.baseModel.package_extension
+                self.logger.info("+ copy '%s' -> '%s'" % (packageFileName, context['path']))
+                shutil.copyfile(self.baseModel.package_path + '/' + packageFileName,context['path']+ '/' + packageFileName)
+            return True
+        except Exception as e:
+            messagebox.showerror('Export Package', str(e))
+            return False
+
+    def export_package_end(self, context=None, success=True):
+        if success:
+            self.logger.info("--[Done]------------------")
+        else:
+            self.logger.error("--[Failed]------------------")
+        self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
