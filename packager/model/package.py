@@ -190,18 +190,31 @@ class Manifest:
             return True
         return False
 
-    def add_file(self, field_path, srcFile):
+    def add_file(self, field_path, srcFile, mergeManifest=None):
         if self.exists_file(field_path, Path(srcFile).name):
             return
 
+        # looking for an 'installed' manifest info
+        (mFile,mContent)=mergeManifest.get_file(field_path, Path(srcFile).name)
         file = collections.OrderedDict()
         file['name'] = Path(srcFile).name
         file['size'] = os.path.getsize(srcFile)
         file['sha1'] = sha1sum(srcFile)
-        file['author(s)'] = ''
-        file['version'] = ''
-        file['url']=''
-        file['lastmod'] = mtime2IsoStr(os.path.getmtime(srcFile))  # last modification date
+
+        if (mFile!=None):
+            if file['sha1']!=mFile['file']['sha1']:
+                self.logger.warning("! file '%s/%s' changed" % (Path(srcFile).name,field_path))
+                file['lastmod'] = mtime2IsoStr(os.path.getmtime(srcFile))  # last modification date
+            else:
+                file['lastmod'] = mFile['file']['lastmod']
+            file['author(s)'] = mFile['file']['author(s)']
+            file['version'] = mFile['file']['version']
+            file['url'] = mFile['file']['url']
+        else:
+            file['author(s)'] = ''
+            file['version'] = ''
+            file['url']=''
+            file['lastmod'] = mtime2IsoStr(os.path.getmtime(srcFile))  # last modification date
 
         field_list = field_path.split('/')
         content = self.__content
@@ -243,6 +256,7 @@ class Package:
         self.__name=name
         self.__directory=None
         self.__manifest=None
+        self.__mergeManifest=None
 
     @property
     def manifest(self):
@@ -282,6 +296,23 @@ class Package:
         self.manifest.open(self.__directory)
         if not self.isCompatible():
             raise PackageException("Packager version is too old, please update it to use this packages")
+
+
+    def merge(self, installed=False):
+        # read installed manifest
+        self.__mergeManifest=Manifest(self.__name)
+        self.__mergeManifest.open(self.__baseModel.installed_path, installed)
+
+        # build new manifest
+        self.manifest.set_field('info/package version', self.__mergeManifest.get_field('info/package version'))
+        self.manifest.set_field('info/creation date',  self.__mergeManifest.get_field('info/creation date'))
+        self.manifest.set_field('info/lastmod', utcTime2IsoStr())
+
+        self.manifest.set_field('info/table designer(s)',  self.__mergeManifest.get_field('info/table designer(s)'))
+        self.manifest.set_field('info/manufacturer',  self.__mergeManifest.get_field('info/manufacturer'))
+        self.manifest.set_field('info/table name',  self.__mergeManifest.get_field('info/table name'))
+        self.manifest.set_field('info/year',        self.__mergeManifest.get_field('info/year'))
+        self.manifest.set_field('info/theme',       self.__mergeManifest.get_field('info/theme'))
 
     def update(self):
         if not os.path.exists(self.directory):
@@ -323,6 +354,8 @@ class Package:
         self.__name=newName
 
     def build_tree(self, baseDir, content):
+        if type(content) is list:
+            return
         for item in content:
             if item == 'info': continue
             os.makedirs(baseDir+'/'+item, exist_ok=True)
@@ -363,7 +396,7 @@ class Package:
                 id=id+1
 
             shutil.copy(srcFile, dstFile)
-            self.manifest.add_file(field_path,dstFile)
+            self.manifest.add_file(field_path,dstFile, self.__mergeManifest)
             self.save()
         except OSError as e:
             self.logger.error(str(e))

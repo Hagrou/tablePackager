@@ -55,45 +55,58 @@ class InstalledTablesModel(Observable):
 
         self.baseModel.logger.info("Begin Extraction")
         for table in self.__selectedTable:
-            if Path(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension).exists():
-                if (isReadOnlyFile(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension)):
-                    result = messagebox.showerror("Extraction",
-                                                  "A protected table package already exist.");
-                    continue
-                result = messagebox.askokcancel("Extraction",
-                                                "Table package already extracted, would you like to overwrite it ?")
-                if result:
-                    try:
-                        os.remove(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension)
-                    except OSError as e:
-                        self.logger.error(str(e))
+            try:
+                if Path(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension).exists():
+                    if (isReadOnlyFile(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension)):
+                        result = messagebox.showerror("Extraction",
+                                                      "A protected table package already exist.");
                         continue
+                    result = messagebox.askokcancel("Extraction",
+                                                    "Table package already extracted, would you like to overwrite it ?")
+                    if result:
+                        try:
+                            os.remove(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension)
+                        except OSError as e:
+                            self.logger.error(str(e))
+                            continue
+                    else:
+                        self.logger.info("Extraction canceled")
+                        continue
+                clean_dir(self.baseModel.tmp_path)
+
+                self.logger.info("--[Working on '%s']------------------" % (table['name']))
+
+                package = Package(self.baseModel, table['name'])
+                package.new(self.baseModel.tmp_path)
+                if os.path.exists(self.baseModel.installed_path + '/' + table['name'] + '.manifest.json'):
+                    self.logger.info("package found, use it")
+
+                    package.merge(installed=True)
                 else:
-                    self.logger.info("Extraction canceled")
-                    continue
-            clean_dir(self.baseModel.tmp_path)
-            self.logger.info("--[Working on '%s']------------------" % (table['name']))
-            package=Package(self.baseModel, table['name'])
-            package.new(self.baseModel.tmp_path)
+                    self.logger.info("no package found, create it")
 
-            if context['visual_pinball'].get():
-                self.baseModel.visualPinball.extract(package)
-                self.baseModel.vpinMame.extract(package)
-                self.baseModel.ultraDMD.extract(table['name'],package)
-                if context['pinupSystem'].get():
-                    self.baseModel.pinupSystem.extract(package,'visual pinball')
-            if context['pinballX'].get():
-                self.baseModel.pinballX.extract(table['name'], package)
-            if context['futurPinball'].get():
-                self.logger.warning("extract from futurPinball is not yet implemented")
-                if context['pinupSystem'].get():
-                    self.logger.warning("extract from pinupSystem is not yet implemented")
 
-            package.save()
-            package.pack() # zip package
-            shutil.move(self.baseModel.tmp_path + '/' + table['name'] + self.baseModel.package_extension,
-                        self.baseModel.package_path)
+                if context['visual_pinball'].get():
+                    self.baseModel.visualPinball.extract(package)
+                    self.baseModel.vpinMame.extract(package)
+                    self.baseModel.ultraDMD.extract(table['name'],package)
+                    if context['pinupSystem'].get():
+                        self.baseModel.pinupSystem.extract(package,'visual pinball')
+                if context['pinballX'].get():
+                    self.baseModel.pinballX.extract(table['name'], package)
+                if context['futurPinball'].get():
+                    self.logger.warning("extract from futurPinball is not yet implemented")
+                    if context['pinupSystem'].get():
+                        self.logger.warning("extract from pinupSystem is not yet implemented")
 
+                package.save()
+                package.pack() # zip package
+                shutil.move(self.baseModel.tmp_path + '/' + table['name'] + self.baseModel.package_extension,
+                            self.baseModel.package_path)
+
+            except Exception as e:
+                messagebox.showerror('Export Package', str(e))
+                return False
         clean_dir(self.baseModel.tmp_path)
         return True
 

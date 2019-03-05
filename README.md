@@ -40,6 +40,13 @@ Génération de l'aide HTML
 
 Todo
 ====
+
+
++ Extraction
+    * Prendre Meta si installé
+      => package.merge():
+          => ajout des infos
+    
 + Remove Installed Table
     * BUG:
         Pas de suppression du manifest
@@ -49,8 +56,6 @@ Todo
     - fenetre config en dessous!!!
 
 
-+ Extraction
-    * Prendre Meta si installé
 
 
     
