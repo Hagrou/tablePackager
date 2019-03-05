@@ -145,8 +145,7 @@ class PackageEditorModel(Observable):
                     return
 
             self.package.add_file(srcFile, dataPath, dstFile=targetFile)
-            a=Path(targetFile).suffix
-            if Path(targetFile).suffix=='.vpx':
+            if Path(targetFile).suffix=='.vpx' or Path(targetFile).suffix=='.vpt':
                 romName=self.baseModel.visualPinball.extract_rom_name(self.package.directory+'/'+self.package.name+'/'+dataPath+'/'+targetFile)
                 self.logger.info('+ updating rom name [%s]' % romName)
                 self.package.set_field('visual pinball/info/romName', romName)

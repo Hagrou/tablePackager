@@ -309,7 +309,7 @@ class PackageEditorViewer(Frame, Observer):
             acceptedFiles = (('memcard files', '*.prt'), ("all files", "*.*"))
             requiredName = self.packageEditorModel.package.get_field('visual pinball/info/romName')
         elif 'visual pinball/tables' in item['tags']:
-            acceptedFiles = (('vpx files', '*.vpx'),('directb2s files', '*.directb2s'),("all files", "*.*"))
+            acceptedFiles = (('vpx files', '*.vpx'),('vpx files', '*.vpt'),('directb2s files', '*.directb2s'),("all files", "*.*"))
 
         if acceptedFiles==(("all files", "*.*")):
             srcFile = filedialog.askopenfilename(parent=self.__topLevel,

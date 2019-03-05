@@ -30,6 +30,8 @@ class InstalledTablesModel(Observable):
         self.__tables = []
         for vpx_file in Path(self.baseModel.visual_pinball_path + "/tables").glob('**/*.vpx'):
             self.__tables.append({'type':'vpx','name':vpx_file.stem})
+        for vpt_file in Path(self.baseModel.visual_pinball_path + "/tables").glob('**/*.vpt'):
+            self.__tables.append({'type':'vpt','name':vpt_file.stem})
         self.__tables.sort(key=lambda table: table['name'].upper())
         self.notify_all(self,events=['<<UPDATE TABLES>>'],tables=self.__tables) # update listeners
 
@@ -161,7 +163,8 @@ class InstalledTablesModel(Observable):
             self.baseModel.pinballX.delete(table['name'])
             self.baseModel.pinupSystem.delete(table['name'],'visual pinball')
             self.logger.warning("delete on futurPinball is not yet implemented")
-            os.unlink(self.baseModel.installed_path+'/'+manifest.filename)
+            if isPackage:
+                os.unlink(self.baseModel.installed_path+'/'+manifest.filename)
 
         return True
 

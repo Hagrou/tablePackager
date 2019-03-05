@@ -28,7 +28,15 @@ class VisualPinball:
             raise ValueError('Visual Pinball not found(%s)' % self.visual_pinball_path)
 
         vpx_file = Path(self.visual_pinball_path + '/tables/' + tableName + '.vpx')
-        return self.extract_rom_name(vpx_file)
+        vpt_file = Path(self.visual_pinball_path + '/tables/' + tableName + '.vpt')
+
+        if os.path.exists(vpx_file):
+            vp_file=vpx_file
+        elif os.path.exists(vpt_file):
+            vp_file=vpt_file
+        else:
+            raise ValueError('table not found (%s) (vpt or vpx)' % self.visual_pinball_path + '/tables/' + package.name)
+        return self.extract_rom_name(vp_file)
 
     def extract(self, package):
         if not os.path.exists(self.visual_pinball_path):
@@ -36,19 +44,26 @@ class VisualPinball:
 
         self.logger.info("* Visual Pinball X files")
         vpx_file        = Path(self.visual_pinball_path + '/tables/' + package.name + '.vpx')
+        vpt_file        = Path(self.visual_pinball_path + '/tables/' + package.name + '.vpt')
         directb2s_file  = Path(self.visual_pinball_path + "/tables/" + vpx_file.stem + '.directb2s')
         music_file      = Path(self.visual_pinball_path + "/Music/" + vpx_file.stem + '.mp3') # TODO: store music into media/Audio?
-        if not os.path.exists(vpx_file):
-            raise ValueError('table not found (%s)' % vpx_file)
 
-        rom=self.extract_rom_name(vpx_file)
+
+        if os.path.exists(vpx_file):
+            vp_file=vpx_file
+        elif os.path.exists(vpt_file):
+            vp_file=vpt_file
+        else:
+            raise ValueError('table not found (%s) (vpt or vpx)' % self.visual_pinball_path + '/tables/' + package.name)
+
+        rom=self.extract_rom_name(vp_file)
         if rom=='':
-            self.logger.info("- no rom found in vpx file")
+            self.logger.info("- no rom found in vp file")
         else:
             self.logger.info("+ rom name is '%s'" % rom)
             package.set_field('visual pinball/info/romName', rom)
 
-        package.add_file(vpx_file, 'visual pinball/tables')  # Add vpx file
+        package.add_file(vp_file, 'visual pinball/tables')  # Add vpx file
         if not directb2s_file.exists():                      # Add directb2s file
             self.logger.warning("* no directb2s found")
         else:
@@ -76,12 +91,16 @@ class VisualPinball:
 
         self.logger.info("* Visual Pinball X files")
         vpx_file        = Path(self.visual_pinball_path + '/tables/' + tableName + '.vpx')
+        vpt_file = Path(self.visual_pinball_path + '/tables/' + tableName + '.vpt')
         directb2s_file  = Path(self.visual_pinball_path + "/tables/" + vpx_file.stem + '.directb2s')
         music_file      = Path(self.visual_pinball_path + "/Music/" + vpx_file.stem + '.mp3') # TODO: store music into media/Audio?
 
         if vpx_file.exists():
             self.logger.info("- remove %s file" % vpx_file)
             os.remove(vpx_file)
+        if vpt_file.exists():
+            self.logger.info("- remove %s file" % vpt_file)
+            os.remove(vpt_file)
         if directb2s_file.exists():
             self.logger.info("- remove %s file" % directb2s_file)
             os.remove(directb2s_file)
@@ -90,12 +109,12 @@ class VisualPinball:
             os.remove(music_file)
 
 
-    def extract_ultraDMD(self, vpx_file): # TODO: deprecated?
-        str=extract_string_from_binary_file(vpx_file, br'cAssetsFolder[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
-        str =extract_string_from_binary_file(vpx_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+    def extract_ultraDMD(self, vpt_file): # TODO: deprecated?
+        str=extract_string_from_binary_file(vpt_file, br'cAssetsFolder[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+        str =extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
 
-    def extract_rom_name(self,vpx_file):
-        return extract_string_from_binary_file(vpx_file, br'cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+    def extract_rom_name(self,vpt_file):
+        return extract_string_from_binary_file(vpt_file, br'cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
 
-    def extract_table_name(self,vpx_file):
-        return extract_string_from_binary_file(vpx_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+    def extract_table_name(self,vpt_file):
+        return extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')

@@ -32,6 +32,14 @@ Il faut ensuite exécuter la commande :
 Ce qui lance la production du fichier .msi qui va se trouver dans le répertoire `tablePackager\dist`.
 En fonction du virtual env, une cible 32 ou 64 bit sera générée
     
+    
+Logiciel supportés:
+
+    Visual Pinball 9
+    Visual Pinball X
+    PinUp System (extraction et installation de media)
+    Pinball X (extraction de média)
+   
 Génération de l'aide HTML
 -------------------------
 
@@ -41,16 +49,6 @@ Génération de l'aide HTML
 Todo
 ====
 
-
-+ Extraction
-    * Prendre Meta si installé
-      => package.merge():
-          => ajout des infos
-    
-+ Remove Installed Table
-    * BUG:
-        Pas de suppression du manifest
-      
 - Config:
     - Mise à jour de update file en cas de changement de configuration
     - fenetre config en dessous!!!
@@ -66,18 +64,17 @@ Todo
     
 
 Bug: 
+
+- Extraction avec écraser d'un package
+    => si Erreur, perte du package cible!!
     
- - preciser:
-    flyer.back => GameInfo
-                    xxx.flyer_back.jpg
-                    xxx.flyer_front.jpg
-                    
+                         
  - Typo des champs texts
 
 Whish
 =====
 
-- support vp9 / future pinball
+- / future pinball
 
 
 - traiter le cas du package invalid
