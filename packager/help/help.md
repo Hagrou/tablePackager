@@ -39,6 +39,10 @@ because I don't know how Pinball X links media files with it's internal data)
  - [Deploy a package](#Deploy-Package)
  
  - [Cleanup Table Files](#Clean-Tables)
+ 
+ - [Create Package from Scratch](#Create-Package-Scratch)
+ 
+ 
     
 ## <a name="Installation"></a>Installation
 
@@ -246,3 +250,16 @@ TablePackager will browse the files installed for the deletes. It also works
 with an installed package.
 
 ![alt text](../images/delete1.png)
+
+## <a name="Create-Package-Scratch"></a>Create Package from Scratch
+
+It is also possible to create a package from scratch. To do this, click on 
+'create empty package' button:
+
+![alt text](../images/create1.png)
+
+An table editor appears with 'John Doe' table as Name. First, rename it 
+and then edit this new package as it is describe in section [Edit a Package](#Edit-Package)
+
+![alt text](../images/create2.png)
+

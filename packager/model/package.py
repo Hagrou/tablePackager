@@ -191,16 +191,20 @@ class Manifest:
         return False
 
     def add_file(self, field_path, srcFile, mergeManifest=None):
+        mFile=None
+
         if self.exists_file(field_path, Path(srcFile).name):
             return
 
-        # looking for an 'installed' manifest info
-        (mFile,mContent)=mergeManifest.get_file(field_path, Path(srcFile).name)
+
         file = collections.OrderedDict()
         file['name'] = Path(srcFile).name
         file['size'] = os.path.getsize(srcFile)
         file['sha1'] = sha1sum(srcFile)
 
+        # looking for an 'installed' manifest info
+        if mergeManifest != None:
+            (mFile, _) = mergeManifest.get_file(field_path, Path(srcFile).name)
         if (mFile!=None):
             if file['sha1']!=mFile['file']['sha1']:
                 self.logger.warning("! file '%s/%s' changed" % (Path(srcFile).name,field_path))
