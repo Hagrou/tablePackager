@@ -146,7 +146,7 @@ class PackageEditorModel(Observable):
 
             self.package.add_file(srcFile, dataPath, dstFile=targetFile)
             if Path(targetFile).suffix=='.vpx' or Path(targetFile).suffix=='.vpt':
-                romName=self.baseModel.visualPinball.extract_rom_name(targetFile) # Bug?
+                romName=self.baseModel.visualPinball.extract_rom_name(srcFile) # Bug?
                 self.logger.info('+ updating rom name [%s]' % romName)
                 self.package.set_field('visual pinball/info/romName', romName)
                 self.package.save()

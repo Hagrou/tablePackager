@@ -207,7 +207,7 @@ class Manifest:
             (mFile, _) = mergeManifest.get_file(field_path, Path(srcFile).name)
         if (mFile!=None):
             if file['sha1']!=mFile['file']['sha1']:
-                self.logger.warning("! file '%s/%s' changed" % (Path(srcFile).name,field_path))
+                #self.logger.warning("! file '%s/%s' changed" % (Path(srcFile).name,field_path))
                 file['lastmod'] = mtime2IsoStr(os.path.getmtime(srcFile))  # last modification date
             else:
                 file['lastmod'] = mFile['file']['lastmod']
