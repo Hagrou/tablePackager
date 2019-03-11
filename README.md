@@ -59,17 +59,16 @@ Todo
     
 + Package Manager
     + import package
-         * Check Package compatibility version
+        - check si existe déjà
+        -
 
-    
-
+   
 Bug: 
 
-- Extraction avec écraser d'un package
-    => si Erreur, perte du package cible!!
-    
-                         
+
+                      
  - Typo des champs texts
+
 
 Whish
 =====

@@ -1,6 +1,5 @@
 import json
 from tkinter import messagebox
-#from packager.model.manifest import Manifest
 from packager.model.package import *
 
 from packager.tools.observer import Observable
@@ -52,6 +51,7 @@ class InstalledTablesModel(Observable):
         extractThread.start()
 
     def extract_tables_begin(self,context=None):
+        toDel=False;
         if not self.__selectedTable: # empty selection
             raise ValueError('No selected table')
 
@@ -66,11 +66,7 @@ class InstalledTablesModel(Observable):
                     result = messagebox.askokcancel("Extraction",
                                                     "Table package already extracted, would you like to overwrite it ?")
                     if result:
-                        try:
-                            os.remove(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension)
-                        except OSError as e:
-                            self.logger.error(str(e))
-                            continue
+                        toDel = True;
                     else:
                         self.logger.info("Extraction canceled")
                         continue
@@ -103,6 +99,10 @@ class InstalledTablesModel(Observable):
 
                 package.save()
                 package.pack() # zip package
+
+                if toDel:
+                    os.remove(self.baseModel.package_path + '/' + table['name'] + self.baseModel.package_extension)
+
                 shutil.move(self.baseModel.tmp_path + '/' + table['name'] + self.baseModel.package_extension,
                             self.baseModel.package_path)
 

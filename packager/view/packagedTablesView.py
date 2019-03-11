@@ -1,4 +1,6 @@
 import logging
+
+from pathlib import *
 from packager.tools.toolTip import *
 from tkinter import *
 from tkinter import messagebox
@@ -72,7 +74,17 @@ class PackagedTablesView(Frame, Observer):
         self.__packagedTablesModel.deletePackages(self)
 
     def importOnClick(self):
-        print("importOnClick")
+        acceptedFiles = (('package files', '*.zip'), ("all files", "*.*")) # TODO: use package extension
+        packageFile=filedialog.askopenfile(parent=self,
+                                           initialdir=self.__baseModel.package_path,
+                                           title="Select a table package",
+                                           filetypes=acceptedFiles)
+        if packageFile!='':
+            print("packageFile=%s" % packageFile)
+            self.__packagedTablesModel.importPackage(self, packageFile.name)
+
+
+
 
     def exportOnClick(self):
         exportPath = filedialog.askdirectory()
@@ -125,6 +137,7 @@ class PackagedTablesView(Frame, Observer):
                 self.__btExport['state'] = self.__backupState['btExport']
                 self.__btImport['state'] = self.__backupState['btImport']
                 self.__btUpdateView['state'] = 'normal'
+                self.__btImport['state'] = 'normal'
             elif '<<PACKAGE SELECTED>>' in event:
                 self.__btEdit['state'] = 'normal'
                 self.__btDel['state'] = 'normal'

@@ -139,3 +139,39 @@ class PackagedTablesModel(Observable):
         else:
             self.logger.error("--[Failed]------------------")
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
+
+
+    def importPackage(self, viewer, packageFile):
+        self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
+        importThread = AsynRun(self.import_package_begin, self.import_package_end, context={'package': packageFile})
+        importThread.start()
+
+    def import_package_begin(self, context=None):
+        try:
+            unpack(context['package'], self.baseModel.tmp_path)
+            package = Package(self.baseModel, Path(context['package']).stem)
+            package.open(self.baseModel.tmp_path)
+            package.save()
+            package.pack()
+
+            setReadWriteFile(self.baseModel.package_path + '/' + package.name + self.baseModel.package_extension)
+            shutil.copy(self.baseModel.tmp_path + '/' + package.name + self.baseModel.package_extension,
+                        self.baseModel.package_path)
+            if package.get_field('info/protected') == 'True':
+                self.logger.warning("Protect package with Read Only file status")
+                setReadOnlyFile(
+                    self.baseModel.package_path + '/' + package.name + self.baseModel.package_extension)
+            clean_dir(self.baseModel.tmp_path)
+            print("ici")
+        except Exception as e:
+            messagebox.showerror('Import Package', str(e))
+            return False
+        return True
+
+    def import_package_end(self, context=None, success=True):
+        if success:
+            self.logger.info("--[Done]------------------")
+            self.update()
+        else:
+            self.logger.error("--[Failed]------------------")
+        self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
