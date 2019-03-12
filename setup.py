@@ -1,6 +1,7 @@
 import sys
 from cx_Freeze import setup, Executable
 import os.path
+import shutil
 
 from packager.tablePackager import version
 
@@ -51,7 +52,7 @@ executables = [
 
 # force clean
 if os.path.exists('build'):
-    os.remove('build')
+    shutil.rmtree('build', ignore_errors=True)
 
 
 setup(name='tablePackager',
