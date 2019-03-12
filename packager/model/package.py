@@ -11,7 +11,7 @@ import datetime
 from packager.tools.exception import *
 from packager.tools.toolbox import *
 
-from packager.tablePackager import version
+from packager.tablePackager import *
 
 class Manifest:
     def __init__(self, name):

@@ -54,21 +54,10 @@ Todo
     - fenetre config en dessous!!!
 
 
-
-
-    
-+ Package Manager
-    + import package
-        - check si existe déjà
-        -
-
    
 Bug: 
 
-- Erreur ajout VPX cirqus voltaire [C:\Users\philippe\Downloads\1543247249_Cirqus_Voltaire-Bally-1997-R2.5DNFSSDMDTOPCCXPGISHD]
-    No Such file or directory []
  - Typo des champs texts
-
 
 Whish
 =====

@@ -260,29 +260,34 @@ class PackageEditorViewer(Frame, Observer):
     def on_select(self,evt):
         item=self.__tree.item(self.__tree.focus())
         if  'info' in item['tags']:
-            self.__btAddFile['state'] = 'disable'
-            self.__btDelFile['state'] = 'disable'
-            self.__btRenameFile['state'] = 'disable'
-            self.__btUpFile['state'] = 'disable'
-            self.__btDownFile['state'] = 'disable'
-        else:
-            if 'file' in item['tags'] or 'category' in item['tags']:
-                self.__btAddFile['state'] = 'normal'
-            if 'file' in item['tags']:
-                self.__btDelFile['state'] = 'normal'
-                self.__btRenameFile['state']='normal'
-                self.__btUpFile['state']='normal'
-                self.__btDownFile['state']='normal'
-                self.__btDownFile
-                self.preview(item['text'], item['tags'][-1])
-
-            if 'product' in item['tags']:
+            if self.__btProtectedState.get() == 'False':
                 self.__btAddFile['state'] = 'disable'
-            if 'product' in item['tags'] or 'category' in item['tags']:
                 self.__btDelFile['state'] = 'disable'
                 self.__btRenameFile['state'] = 'disable'
                 self.__btUpFile['state'] = 'disable'
                 self.__btDownFile['state'] = 'disable'
+        else:
+            if 'file' in item['tags'] or 'category' in item['tags']:
+                if self.__btProtectedState.get() == 'False':
+                    self.__btAddFile['state'] = 'normal'
+            if 'file' in item['tags']:
+                if self.__btProtectedState.get() == 'False':
+                    self.__btDelFile['state'] = 'normal'
+                    self.__btRenameFile['state']='normal'
+                    self.__btUpFile['state']='normal'
+                    self.__btDownFile['state']='normal'
+                    self.__btDownFile
+                self.preview(item['text'], item['tags'][-1])
+
+            if 'product' in item['tags']:
+                if self.__btProtectedState.get() == 'False':
+                    self.__btAddFile['state'] = 'disable'
+            if 'product' in item['tags'] or 'category' in item['tags']:
+                if self.__btProtectedState.get() == 'False':
+                    self.__btDelFile['state'] = 'disable'
+                    self.__btRenameFile['state'] = 'disable'
+                    self.__btUpFile['state'] = 'disable'
+                    self.__btDownFile['state'] = 'disable'
 
     def on_doubleClick(self,evt):
         item = self.__tree.item(self.__tree.focus())
@@ -346,12 +351,10 @@ class PackageEditorViewer(Frame, Observer):
             self.__btRenameFile['state'] = 'disable'
             self.__btUpFile['state'] = 'disable'
             self.__btDownFile['state'] = 'disable'
-            self.__tree.unbind('<ButtonRelease-1>')
             self.__tree.unbind('<Double-1>')
             self.__packageNameEntry.unbind('<KeyRelease>')
         else:
             self.__btSave['state'] = 'normal'
-            self.__tree.bind('<ButtonRelease-1>', self.on_select)
             self.__tree.bind('<Double-1>', self.on_doubleClick)
             self.__packageNameEntry.bind('<KeyRelease>', self.tableNameKeyEvent)
 

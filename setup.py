@@ -49,6 +49,11 @@ executables = [
                )
 ]
 
+# force clean
+if os.path.exists('build'):
+    os.remove('build')
+
+
 setup(name='tablePackager',
       version=version,
       description='Pincab Table Packager',

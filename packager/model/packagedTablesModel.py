@@ -148,6 +148,7 @@ class PackagedTablesModel(Observable):
 
     def import_package_begin(self, context=None):
         try:
+            self.logger.info("--[Import Package]------------------")
             unpack(context['package'], self.baseModel.tmp_path)
             package = Package(self.baseModel, Path(context['package']).stem)
             package.open(self.baseModel.tmp_path)
