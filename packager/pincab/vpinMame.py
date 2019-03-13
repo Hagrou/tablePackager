@@ -23,19 +23,23 @@ class VPinMame:
         if romName == '': # nothing to do
             return
         self.logger.info("* VPinMame files '%s'" % romName)
+        if type(romName) is not list:
+            romList=[romName]
+        else:
+            romList=romName
+        for rom in romList:
+            for rom_file in Path(self.visual_pinball_path+'/VPinMAME').glob('**/*%s*' % rom):
+                if "cfg" in str(rom_file.parent):  # .cfg
+                    package.add_file(rom_file, 'VPinMAME/cfg')
+                elif "nvram" in str(rom_file.parent):  # .nv
+                    package.add_file(rom_file, 'VPinMAME/nvram')
+                elif "roms" in str(rom_file.parent):  # .zip
+                    package.add_file(rom_file, 'VPinMAME/roms')
+                elif "memcard" in str(rom_file.parent):  # .prt
+                    package.add_file(rom_file, 'VPinMAME/memcard')
+                else:
+                    self.logger.error("New Case!!! [%s]" % rom_file)
 
-        for rom_file in Path(self.visual_pinball_path+'/VPinMAME').glob('**/*%s*' % romName):
-            if "cfg" in str(rom_file.parent):  # .cfg
-                package.add_file(rom_file, 'VPinMAME/cfg')
-            elif "nvram" in str(rom_file.parent):  # .nv
-                package.add_file(rom_file, 'VPinMAME/nvram')
-            elif "roms" in str(rom_file.parent):  # .zip
-                package.add_file(rom_file, 'VPinMAME/roms')
-            elif "memcard" in str(rom_file.parent):  # .prt
-                package.add_file(rom_file, 'VPinMAME/memcard')
-            else:
-                self.logger.error("New Case!!! [%s]" % rom_file)
-                exit(1)  # TODO: remove it
 
 
     def deploy(self,package): # TODO: give the choice of product
@@ -52,6 +56,12 @@ class VPinMame:
             return
         self.logger.info("* VPinMame files '%s'" % romName)
 
-        for rom_file in Path(self.visual_pinball_path+'/VPinMAME').glob('**/*%s*' % romName):
-            self.logger.info("- remove %s file" % rom_file)
-            os.remove(rom_file)
+        if type(romName) is not list:
+            romList=[romName]
+        else:
+            romList=romName
+
+        for rom in romList:
+            for rom_file in Path(self.visual_pinball_path+'/VPinMAME').glob('**/*%s.*' % rom):
+                self.logger.info("- remove %s file" % rom_file)
+                os.remove(rom_file)

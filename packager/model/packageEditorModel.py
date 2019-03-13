@@ -125,11 +125,16 @@ class PackageEditorModel(Observable):
         self.notify_all(self, events=['<<UPDATE_EDITOR>>'],selection_set=selection)  # update listeners
 
     def add_file(self, viewer, dataPath, srcFile, requiredName):
+        renameIt=False
         try:
             filename = Path(srcFile).name
             targetFile=srcFile
 
-            if Path(filename).stem != requiredName:
+            if type(requiredName) is list:
+                renameIt=[name for name in requiredName if name.upper()==Path(filename).stem.upper()]==[]
+            else:
+                renameIt=Path(filename).stem.upper() != requiredName.upper()
+            if renameIt:
                 suffixes = Path(filename).suffixes
                 newName = requiredName + ''.join(suffixes)
                 if not messagebox.askokcancel("Renaming File","The name of the file must be the same as package name. New name file will be %s." % newName,

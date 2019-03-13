@@ -57,13 +57,16 @@ def copytree(logger, src, dst, symlinks=False, ignore=None):
                 shutil.copy2(srcPath, dstPath)
 
 def extract_string_from_binary_file(vpx_file, pattern):
+    roms=[]
     p = re.compile(pattern)
     with open(vpx_file, 'rb', 0) as file, mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ) as s:
-        m = p.search(s)
+        m=re.findall(p,s)
         if m is None:
-            return None
-        logging.debug("\tstring found %s" % m.group(0))
-        return m.group(1).decode('ascii')
+            return []
+
+        for rom in m:
+            roms.append(rom.decode('ascii'))
+        return roms
 
 def sha1sum(filename):
     h  = hashlib.sha1()

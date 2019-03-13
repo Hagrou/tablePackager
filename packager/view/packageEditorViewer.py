@@ -385,7 +385,12 @@ class PackageEditorViewer(Frame, Observer):
                                                             tag=['info','category', product + '/' + category], text=category,
                                                             values=('', '', ''), open=True)
                         for infoName in content[product][category]:
-                            self.__tree.insert(infoFolder, "end", tag=['info',product+'/'+infoName], text=infoName+': '+content[product][category][infoName], values=('','',''),open=True)
+                            field_value = ''
+                            if type(content[product][category][infoName]) is list:
+                                field_value=','.join(content[product][category][infoName])
+                            else:
+                                field_value = content[product][category][infoName]
+                            self.__tree.insert(infoFolder, "end", tag=['info',product+'/'+infoName], text=infoName+': '+field_value, values=('','',''),open=True)
                     else:
                         categoryFolder=self.__tree.insert(productNode, "end", tag=['category',product+'/'+category], text=category, values=('','',''),open=True)
                         for element in content[product][category]:

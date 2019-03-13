@@ -5,8 +5,8 @@ Dependances :
 
     pip install Pillow
     pip install numpy
-    pip install tkinterhtml  ??
     pip install markdown
+
     
     
     
@@ -74,8 +74,12 @@ Whish
         - 1 seul fichier vpx présent
         - directb2s présent
  
+* Bug:
+    UltraDMD non pris en charge en ajout (Diablo Pinball)
 
 Licenses
 =========
 
 https://commons.wikimedia.org/wiki/GNOME_Desktop_icons
+
+https://www.vpforums.org/index.php?app=downloads&module=display&section=categoryletters&cat=50&sort_order=ASC&sort_key=file_name&letter=S&num=10&st=10

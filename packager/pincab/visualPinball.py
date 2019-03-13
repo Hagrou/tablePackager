@@ -114,7 +114,7 @@ class VisualPinball:
         str =extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
 
     def extract_rom_name(self,vpt_file):
-        return extract_string_from_binary_file(vpt_file, br'cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+        return extract_string_from_binary_file(vpt_file, br'Const cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
 
     def extract_table_name(self,vpt_file):
         return extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
