@@ -88,7 +88,7 @@ class PackageEditorModel(Observable):
 
     def pack_package_end(self,context=None,success=True):
         self.logger.info("--[Edition '%s' Done]------------------" % (self.package.name))
-        self.notify_all(self, events=['<<END_ACTION>>','<<PACKAGE UNSELECTED>>'])  # update listeners
+        self.notify_all(self, events=['<<END_ACTION>>','<<PACKAGE UNSELECTED>>','<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
 
     def rename_package(self, newPackageName):
@@ -118,11 +118,20 @@ class PackageEditorModel(Observable):
             raise ValueError('No selected package')
         self.logger.info("--[Edition '%s' Canceled]------------------" % (self.package.name))
         clean_dir(self.baseModel.tmp_path)
-        self.notify_all(self, events=['<<END_ACTION>>', '<<PACKAGE UNSELECTED>>', '<<HIDE EDITOR>>'])  # update listeners
+        self.notify_all(self, events=['<<END_ACTION>>', '<<PACKAGE UNSELECTED>>', '<<HIDE EDITOR>>','<<ENABLE_ALL>>'])  # update listeners
 
     def update_package(self, selection=None):
         self.package.update()
         self.notify_all(self, events=['<<UPDATE_EDITOR>>'],selection_set=selection)  # update listeners
+
+    def add_ultraDMD(self, viewer, dataPath, srcDir):
+        self.logger.info("* UltraDMD files")
+
+        ultraDMDDir = str(Path(srcDir).stem)
+        self.package.set_field('visual pinball/info/ultraDMD', ultraDMDDir)
+        for file in Path(srcDir).glob('**/*'):
+            self.package.add_file(file, 'UltraDMD/content')
+
 
     def add_file(self, viewer, dataPath, srcFile, requiredName):
         renameIt=False

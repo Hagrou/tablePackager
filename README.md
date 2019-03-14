@@ -75,7 +75,8 @@ Whish
         - directb2s présent
  
 * Bug:
-    UltraDMD non pris en charge en ajout (Diablo Pinball)
+   Les listes sont selectionnables alors qu'une action est en cours => active les boutons
+   
 
 Licenses
 =========

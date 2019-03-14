@@ -233,11 +233,12 @@ class PackageEditorViewer(Frame, Observer):
         self.__packageEditorModel.cancel_edition()
 
     def renameOnClick(self):
-        if (self.baseModel.packagedTablesModel.isExists(self.__packageNameEntry.get())):
+        newName=self.__packageNameEntry.get().strip()
+        if (self.baseModel.packagedTablesModel.isExists(newName)):
             if not self.askokcancel("Rename Conflict",
-                                    "The Package '%s' already exists. Do you want to continue (Only apply on Save) ?" % self.__packageNameEntry.get()):
+                                    "The Package '%s' already exists. Do you want to continue (Only apply on Save) ?" % newName):
                 return
-        self.__packageEditorModel.rename_package(self.__packageNameEntry.get())
+        self.__packageEditorModel.rename_package(newName)
 
     def on_closing(self):
         self.__packageEditorModel.cancel_edition()
@@ -301,6 +302,14 @@ class PackageEditorViewer(Frame, Observer):
 
         acceptedFiles = (("all files", "*.*"))
         requiredName = self.packageEditorModel.package.name
+
+        if 'UltraDMD/content' in item['tags']:
+            ultraDMDDir = filedialog.askdirectory(parent=self.__topLevel,
+                                            initialdir=self.__baseModel.package_path,
+                                            title="Select UltraDMD Directory to import")
+            self.__packageEditorModel.add_ultraDMD(self.__topLevel, item['tags'][-1], ultraDMDDir)
+            return
+
         if 'VPinMAME/cfg' in item['tags']:
             acceptedFiles=(('rom config files', '*.cfg'),("all files", "*.*"))
             requiredName = self.packageEditorModel.package.get_field('visual pinball/info/romName')

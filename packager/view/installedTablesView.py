@@ -63,6 +63,8 @@ class InstalledTablesView(Frame, Observer):
                     self.__listTables.insert(END, table['name'])
             elif '<<ENABLE_ALL>>' in event:
                 self.__btRefreshTables['state'] = 'normal'
+                self.__listTables.bind('<<ListboxSelect>>', self.on_select)
             elif '<<DISABLE_ALL>>' in event:
                 self.__btDelTable['state']='disabled'
                 self.__btRefreshTables['state']='disabled'
+                self.__listTables.unbind('<<ListboxSelect>>')

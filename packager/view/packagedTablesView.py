@@ -130,6 +130,7 @@ class PackagedTablesView(Frame, Observer):
                 self.__btExport['state']='disabled'
                 self.__backupState['btImport']=self.__btImport['state']
                 self.__btImport['state'] = 'disabled'
+                self.__listPackages.unbind('<<ListboxSelect>>')
             elif '<<ENABLE_ALL>>' in event:
                 self.__btEdit['state']=self.__backupState['btEdit']
                 self.__btNew['state'] = self.__backupState['btNew']
@@ -138,6 +139,7 @@ class PackagedTablesView(Frame, Observer):
                 self.__btImport['state'] = self.__backupState['btImport']
                 self.__btUpdateView['state'] = 'normal'
                 self.__btImport['state'] = 'normal'
+                self.__listPackages.bind('<<ListboxSelect>>', self.on_select)
             elif '<<PACKAGE SELECTED>>' in event:
                 self.__btEdit['state'] = 'normal'
                 self.__btDel['state'] = 'normal'
