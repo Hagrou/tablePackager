@@ -1,17 +1,25 @@
 # tablePackager
-Pincab Table Packager
+The aims of Table Packager is to gather all the files of a pinball table (table, rom, media, etc.) 
+in a single compressed file, a compressed package. You can edit it, add file or info and then 
+deploy it on you pincab or distribute it on the web.</p>
+<p>For the moment, you can extract table and media files from Pinball X, PinUp System and Visual Pinball X.</p>
+<p>A package can be installed on Pin Up System and Visual Pinball (Pinballx is not available on installation
+because I don't know how Pinball X links media files with it's internal data)
+     
+## <a name="Installation"></a>Installation
 
-Dependances :
 
-    pip install Pillow
-    pip install numpy
-    pip install markdown
+Table Packager is compatible on Windows 7 and more (32 or 64 bits). 
 
+    On Windows 7, you must download Visual C++ Redistributable from 
+    https://www.microsoft.com/en-in/download/details.aspx?id=48145, 
+    install it and Reboot the system.
+
+To install Table Packager, double click on 
+
+    tablePackager-x.y-win32.msi
     
     
-    
-========================================================
-
 Génération d'une distribution
 -----------------------------
 
@@ -46,41 +54,3 @@ Génération de l'aide HTML
     (venv) c:\tablePackager>python -m markdown packager/help/help.md > packager/help/help.html
 
 
-Todo
-====
-
-- Config:
-    - Mise à jour de update file en cas de changement de configuration
-    - fenetre config en dessous!!!
-
-
-   
-Bug: 
-
- - Typo des champs texts
-
-Whish
-=====
-
-- / future pinball
-
-
-- traiter le cas du package invalid
-    => ou version incompatible
-    
-
-+ Fonction check package:
-    * Visual Pinball
-        - 1 seul fichier vpx présent
-        - directb2s présent
- 
-* Bug:
-   Les listes sont selectionnables alors qu'une action est en cours => active les boutons
-   
-
-Licenses
-=========
-
-https://commons.wikimedia.org/wiki/GNOME_Desktop_icons
-
-https://www.vpforums.org/index.php?app=downloads&module=display&section=categoryletters&cat=50&sort_order=ASC&sort_key=file_name&letter=S&num=10&st=10
