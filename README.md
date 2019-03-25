@@ -1,5 +1,10 @@
 # tablePackager
-Pincab Table Packager
+The aims of Table Packager is to gather all the files of a pinball table (table, rom, media, etc.) 
+in a single compressed file, a compressed package. You can edit it, add file or info and then 
+deploy it on you pincab or distribute it on the web.</p>
+<p>For the moment, you can extract table and media files from Pinball X, PinUp System and Visual Pinball X.</p>
+<p>A package can be installed on Pin Up System and Visual Pinball (Pinballx is not available on installation
+because I don't know how Pinball X links media files with it's internal data)
 
 Dependances :
 
@@ -53,10 +58,15 @@ Todo
     - Mise à jour de update file en cas de changement de configuration
     - fenetre config en dessous!!!
 
+- Valider le merge d'un package
+
+- Ajouter le Bear Participation
+
 
    
 Bug: 
 
+ - Bug: Lecture image avec GhostBuster !!!
  - Typo des champs texts
 
 Whish

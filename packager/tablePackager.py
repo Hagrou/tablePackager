@@ -5,7 +5,7 @@ from packager.view.mainWindow import *
 from packager.model.baseModel import *
 from packager.tools.logHandler import *
 
-version='1.0'
+version='1.1'
 
 #https://datastudio.google.com/reporting/13ua5g7jmoyHovP4hrqk48HBYGeQbpJ1Z/page/55yX
 

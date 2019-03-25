@@ -197,7 +197,6 @@ class Manifest:
         if self.exists_file(field_path, Path(srcFile).name):
             return
 
-
         file = collections.OrderedDict()
         file['name'] = Path(srcFile).name
         file['size'] = os.path.getsize(srcFile)
@@ -255,6 +254,7 @@ class Manifest:
                         return ('media/'+key, value['file']['name'])
         return (None, None)
 
+
 class Package:
     def __init__(self, baseModel, name):
         self.__baseModel=baseModel
@@ -301,6 +301,40 @@ class Package:
         self.manifest.open(self.__directory)
         if not self.isCompatible():
             raise PackageException("Packager version is too old, please update it to use this packages")
+
+        self.check_package()
+
+    def check_package(self):
+        if not os.path.exists(self.directory):
+            raise PackageException("Package not found at %s" % self.directory)
+
+        fileInError=self.check_files(self.manifest.content,self.directory+'/'+self.name, '')
+        print("Error %s" % fileInError)
+        for (field_path,filename) in fileInError:
+            self.logger.info("Fix Package Manifest for %s/%s" % (field_path,filename))
+            self.__manifest.del_file(field_path.strip('/'), filename)
+
+
+    def check_files(self, content, originPath, filePath):
+        errorList=[]
+        if self.__directory==None or self.__manifest==None:
+            raise PackageException("Package must be openned")
+
+        for key, value in content.items():
+            if key=='info':
+                continue
+            elif key=='file':
+                if not os.path.exists(originPath+'/'+filePath+'/'+value['name']):
+                    self.logger.warning('File %s not found in package', filePath+'/'+value['name'])
+                    errorList.append((filePath,value['name']))
+            elif isinstance(value, dict):
+                errorList = errorList +self.check_files(content[key],originPath, filePath+'/'+key)
+            elif type(value) is list:
+                for item in value:
+                    if isinstance(item, dict):
+                        errorList=errorList+self.check_files(item,originPath, filePath+'/'+key)
+
+        return errorList
 
 
     def merge(self, installed=False):
