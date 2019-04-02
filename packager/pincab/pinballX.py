@@ -11,6 +11,10 @@ class PinballX:
         return self.__logger
 
     @property
+    def baseModel(self):
+        return self.__baseModel
+
+    @property
     def pinballX_path(self):
         return self.__baseModel.pinballX_path
 
@@ -76,6 +80,65 @@ class PinballX:
             else:
                 self.logger.error("New Case! [%s]" % file)
                 break
+
+    def deploy(self, package):
+        self.logger.info("* Deploy Pinball X")
+
+        if not os.path.exists(self.pinballX_path):
+            raise ValueError('PinballX not found (%s)' % self.pinballX_path)
+
+        if not Path(self.baseModel.tmp_path + "/" + package.name).exists():
+            raise ValueError('Path not found (%s)' % self.baseModel.tmp_path + "/" + package.name)
+
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyers Back",
+                 self.baseModel.pinballX_path + "/Media/Flyer Images/Back/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyers Inside",
+                 self.baseModel.pinballX_path + "/Media/Flyer Images/Inside1/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Flyers Front",
+                 self.baseModel.pinballX_path + "/Media/Flyer Images/Front/")
+
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Instruction Cards",
+                 self.baseModel.pinballX_path + "/Media/Instruction Cards/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/HighScores",
+                 self.baseModel.pinballX_path + "/High Scores/Visual Pinball/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Wheel",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/Wheel Images/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Audio",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/Table Audio/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/AudioLaunch",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/Launch Audio/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/BackGlass",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/Backglass Images/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/DMD",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/DMD Images/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/DMDVideos",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/DMD Videos/")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/PlayField",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/Table Images")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Topper",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/Topper Images")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/TableVideos",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/Table Videos")
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/ScreenGrabs",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/Screen Grabs")
+
+
+
 
     def delete(self, table_name):
         if not os.path.exists(self.pinballX_path):

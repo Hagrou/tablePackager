@@ -53,10 +53,11 @@ Todo
     - Mise à jour de update file en cas de changement de configuration
     - fenetre config en dessous!!!
 
-
+- Separate Topper / Topper Video 
    
 Bug: 
 
+ - Check installation de media alors que le produit n'est pas installé?
  - Typo des champs texts
 
 Whish

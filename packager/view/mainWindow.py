@@ -82,7 +82,7 @@ class MainWindow(Observer,Observable):
         self.__installAppChoice['visual_pinball'].set(True)
         self.__installAppChoice['futurPinball'].set(False)
         self.__installAppChoice['pinupSystem'].set(True)
-        self.__installAppChoice['pinballX'].set(False)
+        self.__installAppChoice['pinballX'].set(True)
 
         self.__installFrame = Frame(self.__window, width=2, relief=GROOVE, borderwidth=4)
         self.__cbInsVisualPinball = Checkbutton(self.__installFrame, text='Visual Pinball', variable=self.__installAppChoice['visual_pinball'], onvalue = True, offvalue = False)
@@ -93,8 +93,7 @@ class MainWindow(Observer,Observable):
         self.__cbInsFuturPinball.grid(column=0, row=5, sticky='NW')
         self.__cbInsPinupSystem = Checkbutton(self.__installFrame, text='PinUp System', variable=self.__installAppChoice['pinupSystem'], onvalue = True, offvalue = False)
         self.__cbInsPinupSystem.grid(column=0, row=6, sticky='NW')
-        self.__cbInsPinballX = Checkbutton(self.__installFrame, text='Pinball X',variable=self.__installAppChoice['pinballX'], onvalue = True, offvalue = False, state=DISABLED)
-        self.__cbInsPinballXToolTip = CreateToolTip(self.__cbInsPinballX, 'Not Yet Implemented')
+        self.__cbInsPinballX = Checkbutton(self.__installFrame, text='Pinball X',variable=self.__installAppChoice['pinballX'], onvalue = True, offvalue = False)
         self.__cbInsPinballX.grid(column=0, row=7, sticky='NW')
 
 

@@ -73,7 +73,7 @@ class PackagedTablesModel(Observable):
                     self.baseModel.vpinMame.deploy(package)
                     self.baseModel.ultraDMD.deploy(package)
                 if context['pinballX'].get():
-                    self.logger.warning("deploy to pinballX is not yet implemented")
+                    self.baseModel.pinballX.deploy(package)
 
                 if context['futurPinball'].get():
                     self.logger.warning("deploy to futur Pinball is not yet implemented")
