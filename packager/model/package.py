@@ -191,24 +191,24 @@ class Manifest:
             return True
         return False
 
-    def add_file(self, field_path, srcFile, mergeManifest=None):
+    def add_file(self, field_path, fullPathSrcFile, mergeManifest=None):
         mFile=None
 
-        if self.exists_file(field_path, Path(srcFile).name):
+        if self.exists_file(field_path, Path(fullPathSrcFile).name):
             return
 
         file = collections.OrderedDict()
-        file['name'] = Path(srcFile).name
-        file['size'] = os.path.getsize(srcFile)
-        file['sha1'] = sha1sum(srcFile)
+        file['name'] = Path(fullPathSrcFile).name
+        file['size'] = os.path.getsize(fullPathSrcFile)
+        file['sha1'] = sha1sum(fullPathSrcFile)
 
         # looking for an 'installed' manifest info
         if mergeManifest != None:
-            (mFile, _) = mergeManifest.get_file(field_path, Path(srcFile).name)
+            (mFile, _) = mergeManifest.get_file(field_path, Path(fullPathSrcFile).name)
         if (mFile!=None):
             if file['sha1']!=mFile['file']['sha1']:
-                logging.warning("! file '%s/%s' changed" % (Path(srcFile).name,field_path))
-                file['lastmod'] = mtime2IsoStr(os.path.getmtime(srcFile))  # last modification date
+                logging.warning("! file '%s/%s' changed" % (Path(fullPathSrcFile).name,field_path))
+                file['lastmod'] = mtime2IsoStr(os.path.getmtime(fullPathSrcFile))  # last modification date
             else:
                 file['lastmod'] = mFile['file']['lastmod']
             file['author(s)'] = mFile['file']['author(s)']
@@ -218,7 +218,7 @@ class Manifest:
             file['author(s)'] = ''
             file['version'] = ''
             file['url']=''
-            file['lastmod'] = mtime2IsoStr(os.path.getmtime(srcFile))  # last modification date
+            file['lastmod'] = mtime2IsoStr(os.path.getmtime(fullPathSrcFile))  # last modification date
 
         field_list = field_path.split('/')
         content = self.__content
@@ -226,16 +226,18 @@ class Manifest:
             content = content[type]
         content.append({'file':file})
 
-    def move_file(self, filename, src_field_path, dst_field_path):
-        (file, content) = self.get_file(src_field_path, filename)
-        if file != None:
-            content.remove(file)
+    def move_file(self, srcFile, src_field_path, dst_field_path):
+        (file, content) = self.get_file(src_field_path, srcFile)
+        if file == None:
+            return
 
-            field_list = dst_field_path.split('/')
-            content = self.__content
-            for type in field_list:
-                content = content[type]
-            content.append(file)
+        content.remove(file)
+
+        field_list = dst_field_path.split('/')
+        content = self.__content
+        for type in field_list:
+            content = content[type]
+        content.append(file)
 
     def rename_file(self, field_path, srcFile, dstFile):
         (file, content) = self.get_file(field_path, srcFile)
@@ -309,7 +311,6 @@ class Package:
             raise PackageException("Package not found at %s" % self.directory)
 
         fileInError=self.check_files(self.manifest.content,self.directory+'/'+self.name, '')
-        print("Error %s" % fileInError)
         for (field_path,filename) in fileInError:
             self.logger.info("Fix Package Manifest for %s/%s" % (field_path,filename))
             self.__manifest.del_file(field_path.strip('/'), filename)
@@ -410,6 +411,30 @@ class Package:
     def exists_field(self, field_path):
         return self.manifest.exists_field(field_path)
 
+
+    def collision_detector(self, srcFile, dstFile, checkSha1=False):
+        id = 1
+        isSameFile=False
+
+        origName=Path(dstFile).stem
+        origSuffix=Path(dstFile).suffix
+        while os.path.exists(dstFile): # check if dst file already exists
+            if checkSha1:
+                sha1a = sha1sum(dstFile)
+                sha2a = sha1sum(srcFile)
+                if sha1sum(dstFile)==sha1sum(srcFile): # same files, overwrite it
+                    isSameFile=True
+                    break
+
+            parent=Path(dstFile).parent
+            stem=Path(dstFile).stem
+            suffix=Path(dstFile).suffix
+            dstFile = parent.joinpath(origName + ('.%d' % id)+origSuffix)
+            id=id+1
+
+        return (Path(dstFile).name,isSameFile)
+
+    """
     def add_file(self, srcFile, field_path, dstFile=None):
         id=1
         try:
@@ -440,6 +465,26 @@ class Package:
         except OSError as e:
             self.logger.error(str(e))
             raise e
+    """
+
+    def add_file(self, fullPathSrcFile, dst_field_path, dstFile=None):
+        try:
+            if not os.path.exists(fullPathSrcFile):
+                raise PackageException("File not found at '%s'" % fullPathSrcFile)
+
+            if dstFile==None:
+                dstFile=Path(fullPathSrcFile).name
+            (dstFile,isSameFile) = self.collision_detector(fullPathSrcFile,
+                                                           self.directory + '/' + self.name + '/' + dst_field_path + '/' + dstFile,
+                                                           checkSha1=True)
+            self.logger.info("+ add '%s' -> '%s'" % (fullPathSrcFile, dst_field_path + '/' + dstFile))
+
+            shutil.copy(fullPathSrcFile, self.directory + '/' + self.name + '/' + dst_field_path + '/' + dstFile)
+            self.manifest.add_file(dst_field_path , self.directory + '/' + self.name + '/' + dst_field_path + '/' + dstFile, self.__mergeManifest)
+            self.save()
+        except OSError as e:
+            self.logger.error(str(e))
+            raise e
 
     def remove_file(self, srcFile, field_path):
         self.logger.info("+ remove '%s'" % (field_path + '/'+ srcFile))
@@ -463,14 +508,22 @@ class Package:
             self.logger.error(str(e))
             raise e
 
-    def move_file(self, file, src_field_path, dst_field_path):
-        self.logger.info("+ move '%s' -> '%s'" % (src_field_path + '/' + file,
-                                                 dst_field_path + '/' + file))
-        try:
-            shutil.move(self.directory + '/' + self.name + '/' + src_field_path + '/' + file,
-                        self.directory + '/' + self.name + '/' + dst_field_path + '/' + file)
+    def move_file(self, srcFile, src_field_path, dst_field_path):
+        self.logger.info("+ move '%s' -> '%s'" % (src_field_path + '/' + srcFile,
+                                                 dst_field_path + '/' + srcFile))
 
-            self.manifest.move_file(file,src_field_path, dst_field_path)
+        (dstFile,_)=self.collision_detector(self.directory + '/' + self.name + '/' + src_field_path + '/' + srcFile,
+                                            self.directory + '/' + self.name + '/' + dst_field_path + '/' + srcFile,
+                                            checkSha1=False)
+
+        try:
+            shutil.move(self.directory + '/' + self.name + '/' + src_field_path + '/' + srcFile,
+                        self.directory + '/' + self.name + '/' + dst_field_path + '/' + dstFile)
+            if srcFile!=dstFile:
+                self.manifest.rename_file(src_field_path, srcFile, dstFile)
+                srcFile=dstFile
+
+            self.manifest.move_file(srcFile,src_field_path, dst_field_path)   #!! move_file -> same name
             self.save()
         except OSError as e:
             self.logger.error(str(e))

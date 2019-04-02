@@ -374,7 +374,6 @@ class PackageEditorViewer(Frame, Observer):
 
     def on_downFile(self):
         item = self.__tree.item(self.__tree.focus())
-        item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.down_file(self, item['tags'][-1], item['text'])
 
     def refresh_files(self,selection_set=None):

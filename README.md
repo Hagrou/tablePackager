@@ -66,7 +66,18 @@ Todo
    
 Bug: 
 
- - Bug: Lecture image avec GhostBuster !!!
+ - Bug: 
+    - Déplacer une image dans une section contenant déjà une image du même nom
+      => 2 entrées dans le manifest, 1 seul fichier
+      
+      
+      !!!! move_file -> same name
+      
+       => collision_detector 
+            => move up/down
+            => rename
+            => add
+        
  - Typo des champs texts
 
 Whish
