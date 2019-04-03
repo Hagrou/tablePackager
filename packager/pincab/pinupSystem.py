@@ -81,6 +81,9 @@ class PinUpSystem:
                  self.baseModel.tmp_path + "/" + package.name + "/Media/Topper",
                  self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/Topper')
         copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/TopperVideos",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/Topper')
+        copytree(self.logger,
                  self.baseModel.tmp_path + "/" + package.name + "/Media/Wheel",
                  self.baseModel.pinupSystem_path + "/POPMedia/" + self.getProductPath(product) + '/Wheel')
         copytree(self.logger,

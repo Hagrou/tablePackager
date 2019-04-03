@@ -78,6 +78,7 @@ class Manifest:
         self.content['media']['Audio'] = []
         self.content['media']['AudioLaunch'] = []
         self.content['media']['Topper'] = []
+        self.content['media']['TopperVideos'] = []
         self.content['media']['ScreenGrabs'] = []
 
     def open(self, path, installed=False):

@@ -66,7 +66,7 @@ class PinballX:
             elif "Topper Images" in str(file.parent):
                 package.add_file(file, 'media/Topper')
             elif "Topper Videos" in str(file.parent):
-                package.add_file(file, 'media/Topper')
+                package.add_file(file, 'media/TopperVideos')
             elif "Table Images" in str(file.parent):
                 package.add_file(file, 'media/PlayField')
             elif "Wheel Images" in str(file.parent):
@@ -131,14 +131,14 @@ class PinballX:
                  self.baseModel.tmp_path + "/" + package.name + "/Media/Topper",
                  self.baseModel.pinballX_path + "/Media/Visual Pinball/Topper Images")
         copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/TopperVideos",
+                 self.baseModel.pinballX_path + "/Media/Visual Pinball/Topper Videos")
+        copytree(self.logger,
                  self.baseModel.tmp_path + "/" + package.name + "/Media/TableVideos",
                  self.baseModel.pinballX_path + "/Media/Visual Pinball/Table Videos")
         copytree(self.logger,
                  self.baseModel.tmp_path + "/" + package.name + "/Media/ScreenGrabs",
                  self.baseModel.pinballX_path + "/Media/Visual Pinball/Screen Grabs")
-
-
-
 
     def delete(self, table_name):
         if not os.path.exists(self.pinballX_path):

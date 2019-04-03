@@ -52,14 +52,18 @@ class PackagedTablesView(Frame, Observer):
 
         frameBt.pack(side=BOTTOM)
 
-        scrollbar = Scrollbar(self, orient="vertical")
-        scrollbar.pack(side=RIGHT, fill=Y)
+        self.__vScrollbar = Scrollbar(self, orient="vertical")
+        self.__vScrollbar.pack(side=RIGHT, fill='y')
 
-        self.__listPackages = Listbox(self, width=34, height=15, selectmode=EXTENDED, yscrollcommand=scrollbar.set, font=baseModel.config.get('font'))
+        self.__hScrollbar = Scrollbar(self, orient="horizontal")
+        self.__hScrollbar.pack(side=BOTTOM, fill='x')
+
+        self.__listPackages = Listbox(self, width=34, height=15, selectmode=EXTENDED, xscrollcommand=self.__hScrollbar.set, yscrollcommand=self.__vScrollbar.set, font=baseModel.config.get('font'))
         self.__listPackages.pack(expand=True, fill=Y)
         self.__listPackages.bind('<<ListboxSelect>>', self.on_select)
-        scrollbar.config(command=self.__listPackages.yview)
-        self.__listPackages.config(yscrollcommand=scrollbar.set)
+        self.__vScrollbar.config(command=self.__listPackages.yview)
+        self.__hScrollbar.config(command=self.__listPackages.xview)
+        self.__listPackages.config(xscrollcommand=self.__hScrollbar.set,yscrollcommand=self.__vScrollbar.set)
 
     def editOnClick(self):
         if len(self.__packagedTablesModel.selectedPackage)==0:

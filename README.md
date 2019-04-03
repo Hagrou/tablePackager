@@ -37,8 +37,8 @@ Logiciel supportés:
 
     Visual Pinball 9
     Visual Pinball X
-    PinUp System (extraction et installation de media)
-    Pinball X (extraction de média)
+    PinUp System 
+    Pinball X 
    
 Génération de l'aide HTML
 -------------------------
@@ -54,9 +54,12 @@ Todo
     - fenetre config en dessous!!!
 
 - Separate Topper / Topper Video 
-   
+
+
 Bug: 
 
+-  Check Package avec Topper Video et sans Topper Video
+- Valider la fusion de package
  - Check installation de media alors que le produit n'est pas installé?
  - Typo des champs texts
 
