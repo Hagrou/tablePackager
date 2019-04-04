@@ -58,7 +58,6 @@ Todo
 
 Bug: 
 
--  Check Package avec Topper Video et sans Topper Video
 - Valider la fusion de package
  - Check installation de media alors que le produit n'est pas installé?
  - Typo des champs texts

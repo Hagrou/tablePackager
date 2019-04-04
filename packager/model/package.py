@@ -316,6 +316,19 @@ class Package:
             self.logger.info("Fix Package Manifest for %s/%s" % (field_path,filename))
             self.__manifest.del_file(field_path.strip('/'), filename)
 
+        self.upgrade_package()
+
+
+    def upgrade_package(self):
+        majorPackagerVersion=int(self.manifest.get_field('info/packager version').split('.')[0])
+        minorPackagerVersion=int(self.manifest.get_field('info/packager version').split('.')[1])
+
+        if majorPackagerVersion==1 and minorPackagerVersion==1:
+            self.logger.info("Upgrade Package to 1.1.x (topper/topper videos)")
+            self.manifest.content['media']['TopperVideos'] = []
+            if not os.path.exists(self.directory+'/'+self.name+'/media/TopperVideos'):
+                os.makedirs(self.directory+'/'+self.name+'/media/TopperVideos')
+            self.manifest.set_field('info/packager version','1.1.0')
 
     def check_files(self, content, originPath, filePath):
         errorList=[]
@@ -435,39 +448,6 @@ class Package:
 
         return (Path(dstFile).name,isSameFile)
 
-    """
-    def add_file(self, srcFile, field_path, dstFile=None):
-        id=1
-        try:
-            if not os.path.exists(srcFile):
-                raise PackageException("File not found at '%s'" % srcFile)
-
-            if dstFile==srcFile or dstFile==None: # same name
-                self.logger.info("+ add '%s' -> '%s'" % (Path(srcFile).name,field_path))
-                dstFile=self.directory+'/'+self.name + '/' + field_path + '/%s' % (Path(srcFile).name)
-            else: # rename file
-                self.logger.info("+ radd '%s' -> '%s'" % (Path(dstFile).name,field_path))
-                dstFile = self.__directory + '/' + self.name + '/' + field_path + '/%s' %(Path(dstFile).name)
-
-            targetFile=dstFile
-
-            while os.path.exists(dstFile): # check if dst file already exists
-                sha1a = sha1sum(dstFile)
-                sha2a = sha1sum(srcFile)
-                if sha1sum(dstFile)==sha1sum(srcFile): # same files, overwrite it
-                    break
-                else:
-                    dstFile=self.__directory + '/' + self.name + '/' + field_path + '/' + Path(targetFile).stem+('.%d' % id)+Path(targetFile).suffix
-                id=id+1
-
-            shutil.copy(srcFile, dstFile)
-            self.manifest.add_file(field_path,dstFile, self.__mergeManifest)
-            self.save()
-        except OSError as e:
-            self.logger.error(str(e))
-            raise e
-    """
-
     def add_file(self, fullPathSrcFile, dst_field_path, dstFile=None):
         try:
             if not os.path.exists(fullPathSrcFile):
@@ -533,8 +513,10 @@ class Package:
 
     def isCompatible(self):
         majorVersion=int(version.split('.')[0])
+        minorVersion=int(version.split('.')[1])
         majorPackagerVersion=int(self.manifest.get_field('info/packager version').split('.')[0])
-        return majorVersion>=majorPackagerVersion
+        minorPackagerVersion=int(self.manifest.get_field('info/packager version').split('.')[1])
+        return majorVersion>=majorPackagerVersion and minorVersion>=minorPackagerVersion
 
 
     # zip package
