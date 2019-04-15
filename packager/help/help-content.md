@@ -16,6 +16,7 @@ A package can be installed on Pin Up System / Pinball X and Visual Pinball
     
 ## <a name="Installation"></a>Installation
 
+### <a name="First-Installation"></a>First Installation
 
 Table Packager is compatible on Windows 7 and more (32 or 64 bits). 
 
@@ -25,7 +26,7 @@ Table Packager is compatible on Windows 7 and more (32 or 64 bits).
 
 To install Table Packager, double click on 
 
-    tablePackager-x.y-win32.msi
+    tablePackager-x.y.z-win32.msi
     
 When the following window open, click "Next"
 
@@ -44,7 +45,17 @@ At the end of installation, you should see something like this:
  ![alt text](../images/install4.png)
 
 
-## <a name="Run-Package-Installer"></a>Run Package Installer
+    Table Packager is installed in C:\Program Files (x86)\tablePackager directory
+     
+    At the first execution, it creates a working directory in your $HomeDir/tablePackager.
+
+###<a name="Upgrade-Table-Packager"></a>Upgrade Table Packager
+
+To upgrade Table Packager with a new version, you must To upgrade the software
+ you must first uninstall the current version (the packages are kept)
+ 
+ 
+##<a name="Run-Package-Installer"></a>Run Package Installer
 
 To launch Table Packager, just double click on the icon:
 
@@ -209,6 +220,29 @@ You can see that all the media are "green" and ready to work in the "MediaManage
 
 ![alt text](../images/export2.png#medium)
 
+## <a name="Import-Export-Package"></a>Export and Import a package
+
+You can export a package to share it with an other "Pinball Maniac" by:
+
+1. Select a package to export
+
+2. Click on Export button 
+
+3. Then select the output dir 
+
+![alt text](../images/export3.png#medium)
+
+In the same way, you can import a package:
+
+1. Click on the Import button
+
+2. Then select the package
+
+![alt text](../images/import1.png#medium)
+
+    If the imported package was builded by an older version of TablePackager,
+    the package is automatically upgraded at importation.
+    
 ## <a name="Clean-Tables"></a>Cleanup Table Files
 
 Many files accumulate in Visual Pinball, VPInMAme, PinUp System, and so on.
@@ -233,4 +267,3 @@ and then edit this new package as it is describe in section [Edit a Package](#Ed
 
 ![alt text](../images/create2.png#medium)
 
-## <a name="Import-Export-Package"></a>Import and Export a package

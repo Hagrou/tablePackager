@@ -6,6 +6,7 @@
 This version support:
 - media installation for Pinball X
 - auto packages upgrade to maintains compatibility between all packages
+- Help Html refactoring with new navigation menu
 
 ### Bug Fixes
 * Add package checker to fix package if somes files are missing

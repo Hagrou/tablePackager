@@ -29,6 +29,7 @@ output += """
 mkin = open('help-content.md')
 output += markdown.markdown(mkin.read())
 
+output +="<p>-- Helper for TablePackager v"+version+" --</p>"
 output += """
 </div>
 </body>
