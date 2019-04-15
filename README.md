@@ -8,8 +8,7 @@ Dependances :
     pip install markdown
 
     
-    
-    
+   
 ========================================================
 
 Génération d'une distribution
@@ -53,7 +52,6 @@ Todo
     - Mise à jour de update file en cas de changement de configuration
     - fenetre config en dessous!!!
 
-- Separate Topper / Topper Video 
 
 
 Bug: 
@@ -67,18 +65,6 @@ Whish
 
 - / future pinball
 
-
-- traiter le cas du package invalid
-    => ou version incompatible
-    
-
-+ Fonction check package:
-    * Visual Pinball
-        - 1 seul fichier vpx présent
-        - directb2s présent
- 
-* Bug:
-   Les listes sont selectionnables alors qu'une action est en cours => active les boutons
    
 
 Licenses
