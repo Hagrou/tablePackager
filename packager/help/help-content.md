@@ -1,4 +1,5 @@
 
+## <a name="Abstract"></a>
 
 ![alt text](../images/tablePackager-logo.png "table Packager")
 
@@ -8,15 +9,9 @@ deploy it on you pincab or distribute it on the web.
 
 For the moment, you can extract table and media files from Pinball X, PinUp System and Visual Pinball X.
 
-A package can be installed on Pin Up System and Visual Pinball (Pinballx is not available on installation
-because I don't know how Pinball X links media files with it's internal data)
-![alt text](../images/tablePackagerPrinciple.png "table Packager")
+A package can be installed on Pin Up System / Pinball X and Visual Pinball
 
-
-
-- [Installation](#Installation)
-
-- [Run Package Installer](#Run-Package-Installer)
+![alt text](../images/tablePackagerPrinciple.png#medium)
 
 - [Extract and Package a Table](#Extract-Package-Table)
 
@@ -43,7 +38,7 @@ because I don't know how Pinball X links media files with it's internal data)
  - [Create Package from Scratch](#Create-Package-Scratch)
  
  - Import and Export a package TODO
- 
+ </ul>
  
     
 ## <a name="Installation"></a>Installation
@@ -61,15 +56,15 @@ To install Table Packager, double click on
     
 When the following window open, click "Next"
 
-![alt text](../images/install1.png)
+![alt text](../images/install1.png#medium)
 
 Then, accept the request for elevation of windows and wait during installation
 
-![alt text](../images/install2.png)
+![alt text](../images/install2.png#medium)
 
 At the end of installation, you should see something like this:
 
-![alt text](../images/install3.png)
+![alt text](../images/install3.png#medium)
  
  And this icon on your desktop: 
  
@@ -84,7 +79,7 @@ To launch Table Packager, just double click on the icon:
  
 Then, you should see an window like this:
 
-![alt text](../images/overview.png)
+![alt text](../images/overview.png#medium)
 
 This window is mainly divided into two lists:
 
@@ -106,7 +101,7 @@ To transform a table and all associated files (sound, rom, flyers, etc.), simply
    (you can then see it in the Actions view) and create a file "table package" 
    (Elvira ad the Party Monsters (Bally 1989).zip) containing all the files and metadata.
 
-![alt text](../images/extract1.png)
+![alt text](../images/extract1.png#medium)
 
 ## <a name="Edit-Package"></a>Edit a Package
 
@@ -116,17 +111,17 @@ You can now edit this package to rename it, add information files or multimedia:
 
 2. Click on edition button
 
-![alt text](../images/edit1.png)
+![alt text](../images/edit1.png#medium)
 
 Table Package unpack package in a tmp directory and then open an edition windows:
 
-![alt text](../images/edit2.png)
+![alt text](../images/edit2.png#medium)
 
 You can add information on the flipper, rename the package, add a file, etc.
 
 ### <a name="Rename-Package"></a>Rename a Package
 
-![alt text](../images/edit3.png)
+![alt text](../images/edit3.png#medium)
 
 To rename a package:
  
@@ -140,7 +135,7 @@ To rename a package:
  
 ### <a name="Meta-Information"></a>Edit Meta Information
 
-![alt text](../images/edit4.png)
+![alt text](../images/edit4.png#medium)
 
 You can add information about each file in a package. For that:
 
@@ -150,7 +145,7 @@ You can add information about each file in a package. For that:
 
 ### <a name="Add-File"></a>Add a file
 
-![alt text](../images/edit5.png)
+![alt text](../images/edit5.png#medium)
 
 To add a file:
 
@@ -167,7 +162,7 @@ To add a file:
 
 ### <a name="Delete-File"></a>Delete a file
 
-![alt text](../images/edit6.png)
+![alt text](../images/edit6.png#medium)
 
 To delete a file:
 
@@ -185,7 +180,7 @@ section by renaming them for example by:
     Elvira and the Party Monsters.1.png
     Elvira and the Party Monsters.2.png
 
-![alt text](../images/edit7.png)
+![alt text](../images/edit7.png#medium)
 
 To rename a file:
 
@@ -199,7 +194,7 @@ To rename a file:
 
 ### <a name="Move-File"></a>Move file to another section
 
-![alt text](../images/edit8.png)
+![alt text](../images/edit8.png#medium)
 
 You can move a file between sections. For example, to move the file Elivia and the Party Monsters.inside2.jpg to Flyers Back section:
 
@@ -216,17 +211,17 @@ All changes made in edition will only be applied after the save (button Save).
 To avoid overwriting a package by mistake, you can protect 
 it by enabling the "Protected" checkbox, and save the package.
 
-![alt text](../images/edit9.png)
+![alt text](../images/edit9.png#medium)
 
 A protected package is marked by a blue color in Package Table List.
 
-![alt text](../images/edit10.png)
+![alt text](../images/edit10.png#medium)
 
 You can remove the protection by edit the package and unselect "Protected".
 
 ## <a name="Deploy-Package"></a>Deploy a package
 
-![alt text](../images/export1.png)
+![alt text](../images/export1.png#medium)
 
 Your Elvira Package is ready, it's time to install it on your pincab:
 
@@ -239,7 +234,7 @@ All package files are copied to the different Visual Pinball and PinUp System di
 You must then import this new pinball into the PinUp System list (run pinUpMenuSetup.exe). 
 You can see that all the media are "green" and ready to work in the "MediaManagerForm" window.
 
-![alt text](../images/export2.png)
+![alt text](../images/export2.png#medium)
 
 ## <a name="Clean-Tables"></a>Cleanup Table Files
 
@@ -251,17 +246,16 @@ then click on the delete button.
 TablePackager will browse the files installed for the deletes. It also works 
 with an installed package.
 
-![alt text](../images/delete1.png)
+![alt text](../images/delete1.png#medium)
 
 ## <a name="Create-Package-Scratch"></a>Create Package from Scratch
 
 It is also possible to create a package from scratch. To do this, click on 
 'create empty package' button:
 
-![alt text](../images/create1.png)
+![alt text](../images/create1.png#medium)
 
 An table editor appears with 'John Doe' table as Name. First, rename it 
 and then edit this new package as it is describe in section [Edit a Package](#Edit-Package)
 
-![alt text](../images/create2.png)
-
+![alt text](../images/create2.png#medium)
