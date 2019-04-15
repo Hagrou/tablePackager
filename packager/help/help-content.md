@@ -12,33 +12,6 @@ For the moment, you can extract table and media files from Pinball X, PinUp Syst
 A package can be installed on Pin Up System / Pinball X and Visual Pinball
 
 ![alt text](../images/tablePackagerPrinciple.png#medium)
-
-- [Extract and Package a Table](#Extract-Package-Table)
-
-- [Edit a Package](#Edit-Package)
-
-    - [Rename a Package](#Rename-Package)
-    
-    - [Edit Meta Information](#Meta-Information)
-    
-    - [Add a file](#Add-File)
-    
-    - [Delete a file](#Delete-File)
-
-    - [Rename a file](#Rename-File)
-    
-    - [Move file to another section](#Move-File)
-    
-    - [Save and file Protection](#Save-Protection)
-    
- - [Deploy a package](#Deploy-Package)
- 
- - [Cleanup Table Files](#Clean-Tables)
- 
- - [Create Package from Scratch](#Create-Package-Scratch)
- 
- - Import and Export a package TODO
- </ul>
  
     
 ## <a name="Installation"></a>Installation
@@ -259,3 +232,5 @@ An table editor appears with 'John Doe' table as Name. First, rename it
 and then edit this new package as it is describe in section [Edit a Package](#Edit-Package)
 
 ![alt text](../images/create2.png#medium)
+
+## <a name="Import-Export-Package"></a>Import and Export a package

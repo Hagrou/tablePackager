@@ -18,16 +18,23 @@ li a {
   color: #000;
   padding: 8px 16px;
   text-decoration: none;
+  font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px;
 }
 
 li a.active {
   background-color: #4CAF50;
   color: white;
+  font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px;
 }
 
 li a:hover:not(.active) {
   background-color: #555;
   color: white;
+  font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px;
+}
+
+li.sub {
+  color: #ccc;
 }
 
 img[src*="#medium"] {
@@ -37,9 +44,29 @@ img[src*="#medium"] {
   width: auto;
   height: auto;
   border: 1px solid blue;
+  class="center";
 }
 
 p {
   text-align: justify;
-  max-width: 80ch;
+  max-width: 60ch;
+  font-family: Verdana, Geneva, sans-serif;
 }
+
+h1 {
+    font-family: Verdana, Geneva, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
+}
+
+h2 {
+    font-family: Verdana, Geneva, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
+}
+
+h3 {
+    font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
+}
+
+p { font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; }
+
+blockquote { font-family: Verdana, Geneva, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; }
+
+pre { font-family: Verdana, Geneva, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5667px; }

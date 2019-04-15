@@ -1,4 +1,6 @@
 import markdown
+from packager.tablePackager import version
+
 import os, sys
 
 
@@ -19,8 +21,10 @@ output += """</style>
 
 menu = open('help-menu.html')
 output += menu.read()
+output += "<p>1.1.0</p>"
 output += """
-<div class="tip" markdown="1" style="margin-left:25%;padding:1px 16px;height:1000px;">
+
+<div class="tip" style="margin-left:25%;padding:1px 16px;height:1000px;">
 """
 mkin = open('help-content.md')
 output += markdown.markdown(mkin.read())
