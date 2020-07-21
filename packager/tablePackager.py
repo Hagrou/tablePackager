@@ -1,12 +1,12 @@
 import logging
 
 from packager.view.mainWindow import *
-
 from packager.model.baseModel import *
 from packager.tools.logHandler import *
 
 # Major.minor.fix; Minor number++ when package format/info change
-version='1.1.0'
+version='1.1.1'
+package_version='1.0'
 
 #https://datastudio.google.com/reporting/13ua5g7jmoyHovP4hrqk48HBYGeQbpJ1Z/page/55yX
 
@@ -26,13 +26,11 @@ def main():
     logger.addHandler(logHandler)
 
     logger.info('Started')
-    baseModel=BaseModel(logger)
+    baseModel=BaseModel(logger, version,package_version)
     mainWindow = MainWindow(baseModel, logHandler)
     baseModel.installedTablesModel.update()
     baseModel.packagedTablesModel.update()
     mainWindow.mainLoop()
-
-import os
 
 if __name__ == '__main__':
     main()

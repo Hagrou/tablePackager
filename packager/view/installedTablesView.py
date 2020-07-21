@@ -10,8 +10,8 @@ class InstalledTablesView(Frame, Observer):
         Observer.__init__(self, baseModel.installedTablesModel)
 
         self.__baseModel=baseModel
-        self.__btDelTableImage = PhotoImage(file=self.__baseModel.baseDir+"images/btDelTable.png")
-        self.__btRefreshTableImage = PhotoImage(file=self.__baseModel.baseDir + "images/btRefreshTable.png")
+        self.__btDelTableImage = PhotoImage(file=self.__baseModel.base_dir + "images/btDelTable.png")
+        self.__btRefreshTableImage = PhotoImage(file=self.__baseModel.base_dir + "images/btRefreshTable.png")
         self.__installedTablesModel=self.__baseModel.installedTablesModel
         self.__label = Label(self, text="Installed Tables")
         self.__label.pack(side=TOP)

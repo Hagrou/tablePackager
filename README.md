@@ -278,29 +278,19 @@ and install following dependencies :
     pip install markdown
     pip install cx_freeze
     
-
-
-### <a name="Generate Help page"></a>Generate Help page    
-
-
-
-    (venv) c:\tablePackager>python -m markdown packager/help/help.md > packager/help/help.html
-
 ### <a name="Build a release"></a>Build a release
 
 To simplify the installation and use of the Packager table, it
-is distributed as a Windows installer file (_tablePackager-x.y-<arch> .msi_).
+is distributed as a Windows installer file (_tablePackager-x.y.z-<arch> .msi_).
 
 As many pincab use different versions of Windows 7/10 (32 bits and 64 bits), 
 the build requires 2 venv initialized with 2 versions of Python (v3.8, 32 and 64 bits)
 
+Run this command to build tablePackager.msi
 
-Il faut ensuite exécuter la commande :
-    
     (venv) C:\tablePackager>python setup.py bdist_msi
     
-Ce qui lance la production du fichier .msi qui va se trouver dans le répertoire `tablePackager\dist`.
-En fonction du virtual env, une cible 32 ou 64 bit sera générée
+The result will be found in the `tablePackager\dist` directory.
     
     
 Logiciel supportés:
@@ -311,4 +301,8 @@ Logiciel supportés:
     Pinball X 
 
 
+
+# Liens utiles
+
+https://docs.google.com/spreadsheets/d/1mneCSviXWAZtmQyMBWCFge-FLfZDapdqttQ-8l8oX_k/edit#gid=952993907
 

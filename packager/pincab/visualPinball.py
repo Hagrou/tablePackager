@@ -60,7 +60,7 @@ class VisualPinball:
         if rom=='':
             self.logger.info("- no rom found in vp file")
         else:
-            self.logger.info("+ rom name is '%s'" % rom)
+            self.logger.info("+ rom name is '%s' (the first is normally active)" % rom)
             package.set_field('visual pinball/info/romName', rom)
 
         package.add_file(vp_file, 'visual pinball/tables')  # Add vpx file
@@ -113,8 +113,12 @@ class VisualPinball:
         str=extract_string_from_binary_file(vpt_file, br'cAssetsFolder[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
         str =extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
 
-    def extract_rom_name(self,vpt_file):
-        return extract_string_from_binary_file(vpt_file, br'Const cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+    def extract_rom_name(self,vpt_file: Path) -> list:
+        all_roms=extract_string_from_binary_file(vpt_file, br'Const cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+        escape_rom=extract_string_from_binary_file(vpt_file, br'\'Const cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+        active_rom=list(set(all_roms)-set(escape_rom))
+        return active_rom + escape_rom
+
 
     def extract_table_name(self,vpt_file):
         return extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')

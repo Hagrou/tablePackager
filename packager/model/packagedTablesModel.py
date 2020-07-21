@@ -1,25 +1,27 @@
-from tkinter import messagebox
+from __future__ import annotations
+import tkinter
 from packager.model.package import *
 from packager.tools.observer import Observable
 from packager.tools.toolbox import *
 
+
 class PackagedTablesModel(Observable):
-    def __init__(self, baseModel):
+    def __init__(self, baseModel: BaseModel):
         super().__init__()
-        self.__baseModel=baseModel
-        self.__packages=[]
+        self.__baseModel = baseModel
+        self.__packages = []
         self.__selectedPackage = []
 
     @property
-    def baseModel(self):
+    def baseModel(self) -> BaseModel:
         return self.__baseModel
 
     @property
-    def logger(self):
+    def logger(self) -> object:
         return self.baseModel.logger
 
     @property
-    def packages(self):
+    def packages(self) -> Package:
         return self.__packages
 
     @property
@@ -28,38 +30,39 @@ class PackagedTablesModel(Observable):
 
     def update(self):
         # read Packaged Tables
-        self.__packages=[]
-        for packages_file in Path(self.baseModel.package_path).glob('**/*'+self.baseModel.package_extension):
+        self.__packages = []
+        for packages_file in Path(self.baseModel.package_path).glob('**/*' + self.baseModel.package_extension):
             if isReadOnlyFile(packages_file):
-                self.__packages.append({'name':packages_file.stem,'protected':True})
+                self.__packages.append({'name': packages_file.stem, 'protected': True})
             else:
                 self.__packages.append({'name': packages_file.stem, 'protected': False})
         self.__packages.sort(key=lambda package: package['name'].upper())
-        self.notify_all(self, events=['<<UPDATE PACKAGES>>','<<PACKAGE UNSELECTED>>'], packages=self.__packages) # update listeners
+        self.notify_all(self, events=['<<UPDATE PACKAGES>>', '<<PACKAGE UNSELECTED>>'],
+                        packages=self.__packages)  # update listeners
 
     def isExists(self, packageName):
-        for packages_file in Path(self.baseModel.package_path).glob('**/*'+self.baseModel.package_extension):
-            if packageName==packages_file.stem:
+        for packages_file in Path(self.baseModel.package_path).glob('**/*' + self.baseModel.package_extension):
+            if packageName == packages_file.stem:
                 return True
         return False
 
     def selectPackages(self, selection):
-        self.__selectedPackage=[]
+        self.__selectedPackage = []
         for index in selection:
             self.__selectedPackage.append(self.__packages[index])
-        self.notify_all(self, events=['<<PACKAGE SELECTED>>'],tables=self.__packages)  # update listeners
+        self.notify_all(self, events=['<<PACKAGE SELECTED>>'], tables=self.__packages)  # update listeners
 
     def unSelectPackages(self):
         self.__selectedPackage = []
         self.notify_all(self, events=['<<PACKAGE UNSELECTED>>'])  # update listeners
 
-    def deployPackage(self,appChoice):
-        self.notify_all(self, events=['<<DISABLE_ALL>>','<<BEGIN_ACTION>>'])  # update listeners
+    def deployPackage(self, appChoice):
+        self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
         deployThread = AsynRun(self.deploy_tables_begin, self.deploy_tables_end, context=appChoice)
         deployThread.start()
 
-    def deploy_tables_begin(self,context=None):
-        if not self.__selectedPackage: # empty selection
+    def deploy_tables_begin(self, context=None):
+        if not self.__selectedPackage:  # empty selection
             raise ValueError('No selected package')
         try:
             for packageInfo in self.__selectedPackage:
@@ -78,17 +81,18 @@ class PackagedTablesModel(Observable):
                 if context['futurPinball'].get():
                     self.logger.warning("deploy to futur Pinball is not yet implemented")
                 if context['pinupSystem'].get():
-                    self.baseModel.pinupSystem.deploy(package,'visual pinball')
+                    self.baseModel.pinupSystem.deploy(package, 'visual pinball')
 
-                shutil.copyfile(self.baseModel.tmp_path+'/'+packageInfo['name']+'/'+packageInfo['name']+'.manifest.json',
-                                self.baseModel.installed_path+'/'+packageInfo['name']+'.manifest.json')
+                shutil.copyfile(
+                    self.baseModel.tmp_path + '/' + packageInfo['name'] + '/' + packageInfo['name'] + '.manifest.json',
+                    self.baseModel.installed_path + '/' + packageInfo['name'] + '.manifest.json')
             clean_dir(self.baseModel.tmp_path)
             return True
         except Exception as e:
-            messagebox.showerror('Deploy Package', str(e))
+            tkinter.messagebox.showerror('Deploy Package', str(e))
             return False
 
-    def deploy_tables_end(self,context=None, success=True):
+    def deploy_tables_end(self, context=None, success=True):
         if success:
             self.logger.info("--[Done]------------------")
         else:
@@ -98,25 +102,28 @@ class PackagedTablesModel(Observable):
 
     def deletePackages(self, viewer):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
-        packages=', '.join(p['name'] for p in self.selectedPackage)
-        delConfirmed=messagebox.askokcancel("Delete Package", "Are you sure you want to delete package(s) '%s'" % (packages),
-                               parent=viewer)
+        packages = ', '.join(p['name'] for p in self.selectedPackage)
+        delConfirmed = tkinter.messagebox.askokcancel("Delete Package",
+                                                      "Are you sure you want to delete package(s) '%s'" % (packages),
+                                                      parent=viewer)
         if delConfirmed:
             self.logger.info("--[Delete Package(s=]------------------")
             for packageInfo in self.selectedPackage:
                 try:
-                    os.unlink(self.baseModel.package_path + '/' + packageInfo['name'] + self.baseModel.package_extension)
+                    os.unlink(
+                        self.baseModel.package_path + '/' + packageInfo['name'] + self.baseModel.package_extension)
                 except OSError as e:
                     self.logger.error(str(e))
                     continue
-                self.logger.info("+ del %s" % (self.baseModel.package_path+'/'+packageInfo['name']+self.baseModel.package_extension))
+                self.logger.info("+ del %s" % (
+                            self.baseModel.package_path + '/' + packageInfo['name'] + self.baseModel.package_extension))
             self.logger.info("--[Done]------------------")
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
 
     def exportPackages(self, viewer, exportPath):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
-        exportThread = AsynRun(self.export_package_begin, self.export_package_end, context={ 'path': exportPath})
+        exportThread = AsynRun(self.export_package_begin, self.export_package_end, context={'path': exportPath})
         exportThread.start()
 
     def export_package_begin(self, context=None):
@@ -125,12 +132,13 @@ class PackagedTablesModel(Observable):
         try:
             self.logger.info("--[Export Package]------------------")
             for packageInfo in self.__selectedPackage:
-                packageFileName='/' + packageInfo['name'] + self.baseModel.package_extension
+                packageFileName = '/' + packageInfo['name'] + self.baseModel.package_extension
                 self.logger.info("+ copy '%s' -> '%s'" % (packageFileName, context['path']))
-                shutil.copyfile(self.baseModel.package_path + '/' + packageFileName,context['path']+ '/' + packageFileName)
+                shutil.copyfile(self.baseModel.package_path + '/' + packageFileName,
+                                context['path'] + '/' + packageFileName)
             return True
         except Exception as e:
-            messagebox.showerror('Export Package', str(e))
+            tkinter.messagebox.showerror('Export Package', str(e))
             return False
 
     def export_package_end(self, context=None, success=True):
@@ -139,7 +147,6 @@ class PackagedTablesModel(Observable):
         else:
             self.logger.error("--[Failed]------------------")
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
-
 
     def importPackage(self, viewer, packageFile):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
@@ -165,7 +172,7 @@ class PackagedTablesModel(Observable):
             clean_dir(self.baseModel.tmp_path)
             print("ici")
         except Exception as e:
-            messagebox.showerror('Import Package', str(e))
+            tkinter.messagebox.showerror('Import Package', str(e))
             return False
         return True
 

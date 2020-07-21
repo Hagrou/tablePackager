@@ -141,7 +141,7 @@ class InstalledTablesModel(Observable):
             ultraDMD=''
             romName=''
             isPackage=False
-            manifest=Manifest(table['name'])
+            manifest=Manifest(table['name'], self.baseModel.version, self.baseModel.package_version)
             try:
                 manifest.open(self.baseModel.installed_path, installed=True)
                 isPackage=True

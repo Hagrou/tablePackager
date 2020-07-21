@@ -21,6 +21,7 @@ class MainWindow(Observer,Observable):
         self.__baseModel=baseModel
         self.__window=Tk()
 
+        self.__window.iconbitmap("images/tablePackager_128x128.ico")
         # create a toplevel menu
         self.__menubar = Menu(self.__window)
         self.__menubar.add_command(label="Options", command=self.onOptionMenu)
@@ -68,8 +69,8 @@ class MainWindow(Observer,Observable):
 
         self.__cbExPinballX.grid(column=0, row=3, sticky='NW')
 
-        self.__btExtractImage = PhotoImage(file=baseModel.baseDir+"images/btExtract.png")
-        self.__btInstallImage = PhotoImage(file=baseModel.baseDir+"images/btInstall.png")
+        self.__btExtractImage = PhotoImage(file=baseModel.base_dir + "images/btExtract.png")
+        self.__btInstallImage = PhotoImage(file=baseModel.base_dir + "images/btInstall.png")
 
         self.__btExtract = Button(self.__extractFrame, image=self.__btExtractImage, command=self.extractOnClick,
                                  state=DISABLED)

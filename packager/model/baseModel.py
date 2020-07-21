@@ -11,41 +11,51 @@ from packager.model.packagedTablesModel import *
 
 
 class BaseModel:
-    def __init__(self, logger):
-        if Path(os.getcwd()).name=='packager':  # running from IDE
-            self.__baseDir=''
-        else: # running from exe
-            self.__baseDir = 'lib/packager/'
+    def __init__(self, logger: logging, version: str, package_version: str) -> None:
+        if Path(os.getcwd()).name == 'packager':  # running from IDE
+            self.__base_dir = ''
+        else:  # running from exe
+            self.__base_dir = 'lib/packager/'
 
-        self.__config=Config()
-        self.__tmp_path=self.__config.get('working_dir')+'/tmp'
-        self.__package_path=self.__config.get('working_dir')+'/packages'
-        self.__installed_path=self.__config.get('working_dir')+'/installed'
-        self.__logger=logger
+        self.__config = Config()
+        self.__version = version
+        self.__package_version = package_version
+        self.__tmp_path = self.__config.get('working_dir') + '/tmp'
+        self.__package_path = self.__config.get('working_dir') + '/packages'
+        self.__installed_path = self.__config.get('working_dir') + '/installed'
+        self.__logger = logger
 
-        self.__installedTablesModel=InstalledTablesModel(self)
+        self.__installedTablesModel = InstalledTablesModel(self)
         self.__packagedTablesModel = PackagedTablesModel(self)
-        self.__packageEditorModel=PackageEditorModel(self)
-        self.__visualPinball=VisualPinball(self.logger, self)
-        self.__pinupSystem=PinUpSystem(self.logger, self)
-        self.__vpinMame=VPinMame(self.logger, self)
+        self.__packageEditorModel = PackageEditorModel(self)
+        self.__visualPinball = VisualPinball(self.logger, self)
+        self.__pinupSystem = PinUpSystem(self.logger, self)
+        self.__vpinMame = VPinMame(self.logger, self)
         self.__pinballX = PinballX(self.logger, self)
-        self.__ultraDMD= UltraDMD(self.logger,self)
+        self.__ultraDMD = UltraDMD(self.logger, self)
 
     @property
     def config(self):
         return self.__config
 
     @property
-    def baseDir(self):
-        return self.__baseDir
+    def base_dir(self) -> str:
+        return self.__base_dir
 
     @property
-    def config(self):
+    def version(self) -> str:
+        return self.__version
+
+    @property
+    def package_version(self) -> str:
+        return self.__package_version
+
+    @property
+    def config(self) -> Config:
         return self.__config
 
     @property
-    def logger(self):
+    def logger(self) -> logging:
         return self.__logger
 
     @property
@@ -55,8 +65,6 @@ class BaseModel:
     @property
     def installedTablesModel(self):
         return self.__installedTablesModel
-
-
 
     @property
     def packagedTablesModel(self):
@@ -79,7 +87,7 @@ class BaseModel:
         return self.__config.get('pinupSystem_path')
 
     @property
-    def tmp_path(self):
+    def tmp_path(self) -> str:
         return self.__tmp_path
 
     @property

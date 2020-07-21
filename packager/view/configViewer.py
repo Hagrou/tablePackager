@@ -15,7 +15,7 @@ class ConfigViewer(Frame):
         self.__baseModel=baseModel
         self.__root=window
         self.__topLevel=None
-        self.__btDirImage = PhotoImage(file=baseModel.baseDir+"images/btDir.png")
+        self.__btDirImage = PhotoImage(file=baseModel.base_dir + "images/btDir.png")
 
 
     def hide(self):

@@ -1,133 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tablePackager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tablePackager.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReleaseNotes.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReleaseNotes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/help/genHelp.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/help/genHelp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/help/help-content.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/help/help.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/model/baseModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/baseModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/model/installedTablesModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/installedTablesModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/model/package.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/package.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/model/packageEditorModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packageEditorModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/model/packagedTablesModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packagedTablesModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/pincab/visualPinball.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/pincab/visualPinball.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/tablePackager.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/tablePackager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/tools/toolbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/tools/toolbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/configViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/configViewer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/installedTablesView.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/installedTablesView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/mainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/mainWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/packagedTablesView.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packagedTablesView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="tablePackager" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="396">
-                <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ReleaseNotes.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="136">
-                <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/help/genHelp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setup.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="15" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/help/help-content.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="464">
-                <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/help/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/model/baseModel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1606">
-              <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/model/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/tablePackager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="7" selection-start-line="8" selection-end-line="8" selection-end-column="7" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packager/help/help-menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -136,182 +55,13 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>strerror</find>
-      <find>strerr</find>
-      <find>bind</find>
-      <find>super</find>
-      <find>prote</find>
-      <find>btp</find>
-      <find>tip</find>
-      <find>selectir</find>
-      <find>filedi</find>
-      <find>os.</find>
-      <find>build_tree</find>
-      <find>vpx</find>
-      <find>.vpx</find>
-      <find>import</find>
-      <find>askop</find>
-      <find>unpack</find>
-      <find>png</find>
-      <find>preview</find>
-      <find>protected</find>
-      <find>logger</find>
-      <find>&lt;</find>
-      <find>rename</find>
-      <find>Package</find>
-      <find>get_fir</find>
-      <find>scr</find>
-      <find>version</find>
-      <find>desktop</find>
-      <find>icon</find>
-      <find>?show</find>
-      <find>#big</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-      <replace>#big</replace>
-      <replace>#medium</replace>
-      <replace>&lt;/li&gt;</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>C:\Users\philippe\Documents\Atelier\flipper\tablePackager\packager</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/packager/tools/extract_installed_tables.py" />
-        <option value="$PROJECT_DIR$/packager/tools/observer.py" />
-        <option value="$PROJECT_DIR$/sandbox/topLevel.py" />
-        <option value="$PROJECT_DIR$/packager/tools/exception.py" />
-        <option value="$PROJECT_DIR$/packager/model/manifest.py" />
-        <option value="$PROJECT_DIR$/packager/view/visualPinballEditor.py" />
-        <option value="$PROJECT_DIR$/packager/view/vpinMameEditor.py" />
-        <option value="$PROJECT_DIR$/sandbox/fields.py" />
-        <option value="$PROJECT_DIR$/sandbox/kwarg.py" />
-        <option value="$PROJECT_DIR$/sandbox/date.py" />
-        <option value="$PROJECT_DIR$/sandbox/loadImage.py" />
-        <option value="$PROJECT_DIR$/packager/tools/toolTip.py" />
-        <option value="$PROJECT_DIR$/packager/view/logViewer.py" />
-        <option value="$PROJECT_DIR$/packager/view/configViewer.py" />
-        <option value="$PROJECT_DIR$/packager/view/FileInfoViewer.py" />
-        <option value="$PROJECT_DIR$/packager/pincab/tableDatabase.py" />
-        <option value="$PROJECT_DIR$/packager/model/baseModel.py" />
-        <option value="$PROJECT_DIR$/packager/pincab/ultraDMD.py" />
-        <option value="$PROJECT_DIR$/packager/sandbox/tkHtml.py" />
-        <option value="$PROJECT_DIR$/packager/view/helpViewer.py" />
-        <option value="$PROJECT_DIR$/packager/sandbox/runBrowser.py" />
-        <option value="$PROJECT_DIR$/packager/model/config.py" />
-        <option value="$PROJECT_DIR$/packager/view/fileInfoViewer.py" />
-        <option value="$PROJECT_DIR$/packager/view/renamefileViewer.py" />
-        <option value="$PROJECT_DIR$/packager/sandbox/calc.py" />
-        <option value="$PROJECT_DIR$/packager/model/installedTablesModel.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
-        <option value="$PROJECT_DIR$/packager/pincab/visualPinball.py" />
-        <option value="$PROJECT_DIR$/packager/tools/toolbox.py" />
-        <option value="$PROJECT_DIR$/packager/pincab/vpinMame.py" />
-        <option value="$PROJECT_DIR$/packager/view/packageEditorViewer.py" />
-        <option value="$PROJECT_DIR$/packager/model/packageEditorModel.py" />
-        <option value="$PROJECT_DIR$/packager/model/test_package.py" />
-        <option value="$PROJECT_DIR$/packager/model/packagedTablesModel.py" />
-        <option value="$PROJECT_DIR$/ReleaseNote.md" />
-        <option value="$PROJECT_DIR$/packager/pincab/pinballX.py" />
-        <option value="$PROJECT_DIR$/packager/pincab/pinupSystem.py" />
-        <option value="$PROJECT_DIR$/packager/view/installedTablesView.py" />
-        <option value="$PROJECT_DIR$/packager/view/packagedTablesView.py" />
-        <option value="$PROJECT_DIR$/packager/tablePackager.py" />
-        <option value="$PROJECT_DIR$/packager/model/package.py" />
-        <option value="$PROJECT_DIR$/packager/view/mainWindow.py" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/packager/help/help2.html" />
-        <option value="$PROJECT_DIR$/packager/help/help.md" />
-        <option value="$PROJECT_DIR$/ReleaseNotes.md" />
-        <option value="$PROJECT_DIR$/packager/help/help.html" />
-        <option value="$PROJECT_DIR$/packager/help/styles.css" />
-        <option value="$PROJECT_DIR$/packager/help/help-menu.html" />
-        <option value="$PROJECT_DIR$/packager/help/genHelp.py" />
-        <option value="$PROJECT_DIR$/packager/help/help-content.md" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="365" />
-    <option name="y" value="115" />
-    <option name="width" value="1699" />
-    <option name="height" value="949" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tablePackager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tablePackager" type="462c0819:PsiDirectoryNode" />
-              <item name="packager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tablePackager" type="462c0819:PsiDirectoryNode" />
-              <item name="packager" type="462c0819:PsiDirectoryNode" />
-              <item name="help" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tablePackager" type="462c0819:PsiDirectoryNode" />
-              <item name="packager" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tablePackager" type="462c0819:PsiDirectoryNode" />
-              <item name="packager" type="462c0819:PsiDirectoryNode" />
-              <item name="sandbox" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tablePackager" type="462c0819:PsiDirectoryNode" />
-              <item name="packager" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tablePackager" type="462c0819:PsiDirectoryNode" />
-              <item name="packager" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tablePackager" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tablePackager" type="462c0819:PsiDirectoryNode" />
-              <item name="venv-32" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tablePackager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1ecZkNNbuvjFpuY1ZYoUiv45ND3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -338,19 +88,49 @@
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.genHelp">
+  <component name="RunManager" selected="Python.tablePackager-x64">
+    <configuration name="build_32_msi" type="PythonConfigurationType" factoryName="Python">
+      <module name="tablePackager" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/setup.py" />
+      <option name="PARAMETERS" value="bdist_msi" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="build_64_msi" type="PythonConfigurationType" factoryName="Python">
+      <module name="tablePackager" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/setup.py" />
+      <option name="PARAMETERS" value="bdist_msi" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="calc" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tablePackager" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -501,6 +281,8 @@
     <list>
       <item itemvalue="Python.tablePackage-x32" />
       <item itemvalue="Python.tablePackager-x64" />
+      <item itemvalue="Python.build_64_msi" />
+      <item itemvalue="Python.build_32_msi" />
       <item itemvalue="Python.tkHtml" />
       <item itemvalue="Python.helpViewer" />
       <item itemvalue="Python.runBrowser" />
@@ -509,8 +291,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.genHelp" />
         <item itemvalue="Python.calc" />
+        <item itemvalue="Python.genHelp" />
         <item itemvalue="Python.runBrowser" />
         <item itemvalue="Python.helpViewer" />
         <item itemvalue="Python.tkHtml" />
@@ -530,55 +312,91 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="512" y="173" width="1699" height="949" extended-state="0" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5743707" visible="true" weight="0.2281758" />
-      <window_info id="Structure" order="1" sideWeight="0.32152975" side_tool="true" weight="0.17521903" />
-      <window_info id="Favorites" order="2" sideWeight="0.4256293" side_tool="true" weight="0.1857996" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3287037" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.499002" weight="0.1443406" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49966735" weight="0.24357034" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3277592" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49925926" visible="true" weight="0.41666666" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50074077" side_tool="true" weight="0.33429396" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3202847" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.68244576" visible="true" weight="0.1795008" />
-      <window_info id="Structure" order="1" sideWeight="0.31755424" side_tool="true" visible="true" weight="0.1795008" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32905483" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.499002" weight="0.24052005" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49966735" visible="true" weight="0.37330037" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32844934" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.26977247" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50033265" side_tool="true" weight="0.3276492" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32600734" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
+  <component name="WindowStateProjectService">
+    <state x="443" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595189419569">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="443" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595189419569" />
+    <state x="273" y="315" key="#com.intellij.tools.ToolEditorDialog" timestamp="1594631460183">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="273" y="315" key="#com.intellij.tools.ToolEditorDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594631460183" />
+    <state x="824" y="181" key="#genHelp" timestamp="1594623669355">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="824" y="181" key="#genHelp/0.0.1920.1040@0.0.1920.1040" timestamp="1594623669355" />
+    <state x="227" y="272" key="#xdebugger.XInspectDialog" timestamp="1594634057872">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="227" y="272" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594634057872" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1594647871000">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594647871000" />
+    <state x="685" y="381" key="FileChooserDialogImpl" timestamp="1595189195586">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="685" y="381" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595189195586" />
+    <state width="1664" height="275" key="GridCell.Tab.0.bottom" timestamp="1595373860877">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373860877" />
+    <state width="1664" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
+    <state width="1664" height="275" key="GridCell.Tab.0.center" timestamp="1595373860877">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="275" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373860877" />
+    <state width="1664" height="295" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352108" />
+    <state width="1664" height="275" key="GridCell.Tab.0.left" timestamp="1595373860877">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="275" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373860877" />
+    <state width="1664" height="295" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352108" />
+    <state width="1664" height="275" key="GridCell.Tab.0.right" timestamp="1595373860877">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="275" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373860877" />
+    <state width="1664" height="295" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
+    <state width="1664" height="193" key="GridCell.Tab.1.bottom" timestamp="1595373808676">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="193" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373808676" />
+    <state width="1664" height="295" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
+    <state width="1664" height="193" key="GridCell.Tab.1.center" timestamp="1595373808676">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="193" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373808676" />
+    <state width="1664" height="295" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
+    <state width="1664" height="193" key="GridCell.Tab.1.left" timestamp="1595373808676">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="193" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373808676" />
+    <state width="1664" height="295" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
+    <state width="1664" height="193" key="GridCell.Tab.1.right" timestamp="1595373808676">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="193" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373808676" />
+    <state width="1664" height="295" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
+    <state x="-1" y="43" width="998" height="708" key="SettingsEditor" timestamp="1595189400796">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1" y="43" width="998" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1595189400796" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1595179504748">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1595179504748" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -604,442 +422,16 @@
           <option name="timeStamp" value="165" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packager/model/packageEditorModel.py</url>
-          <line>127</line>
-          <option name="timeStamp" value="169" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packager/model/package.py</url>
-          <line>514</line>
-          <option name="timeStamp" value="204" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packager/model/package.py</url>
-          <line>326</line>
-          <option name="timeStamp" value="205" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packager/help/genHelp.py</url>
           <line>38</line>
-          <option name="timeStamp" value="206" />
+          <option name="timeStamp" value="213" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/packager/tools/extract_installed_tables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/tools/exception.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/tableDatabase.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="23" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/os.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="219" selection-start-line="219" selection-end-line="219" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/sandbox/tkHtml.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="81" lean-forward="true" selection-start-line="17" selection-end-line="23" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/tables.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/sandbox/runBrowser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/help.html" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/tkinter/ttk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="1245" selection-start-line="1245" selection-end-line="1245" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/tools/toolTip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="76" column="31" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/helpViewer.py" />
-    <entry file="file://$PROJECT_DIR$/packager/view/renamefileViewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="66" column="60" selection-start-line="66" selection-start-column="60" selection-end-line="66" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/sandbox/calc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/configViewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/pathlib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13532">
-          <caret line="809" selection-start-line="809" selection-end-line="809" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/re.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="221" selection-start-line="221" selection-end-line="221" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/genericpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/tools/observer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="918" column="19" lean-forward="true" selection-start-line="918" selection-start-column="19" selection-end-line="918" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/vpinMame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/ultraDMD.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/fileInfoViewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/packageEditorViewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6137">
-          <caret line="376" selection-start-line="376" selection-end-line="376" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21760">
-          <caret line="1283" column="19" selection-start-line="1283" selection-start-column="19" selection-end-line="1283" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/test_package.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/pinballX.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="133" column="84" selection-start-line="133" selection-start-column="72" selection-end-line="133" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/pinupSystem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="83" column="84" selection-start-line="83" selection-start-column="84" selection-end-line="83" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/installedTablesModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="93" column="61" selection-start-line="93" selection-start-column="61" selection-end-line="93" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/pincab/visualPinball.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/packagedTablesView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1554306552773" expanded="true" signature="3839:4819" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/installedTablesView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="30" column="52" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/packageEditorModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-            <marker date="1553636049182" expanded="true" signature="457:502" ph="..." />
-            <marker date="1553636049182" expanded="true" signature="579:652" ph="..." />
-            <marker date="1553636049182" expanded="true" signature="616:652" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/tools/toolbox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="47" column="24" lean-forward="true" selection-start-line="46" selection-start-column="2" selection-end-line="47" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1552516304611" expanded="true" signature="2298:2300" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/packagedTablesModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="154" selection-start-line="154" selection-end-line="154" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/view/mainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/package.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="36" />
-          <folding>
-            <marker date="1554406873273" expanded="true" signature="631:675" ph="..." />
-            <marker date="1554406873273" expanded="true" signature="4154:4275" ph="..." />
-            <marker date="1554406873273" expanded="true" signature="9555:9587" ph="..." />
-            <marker date="1554406873273" expanded="true" signature="9762:9832" ph="..." />
-            <marker date="1554406873273" expanded="true" signature="10119:10171" ph="..." />
-            <marker date="1554406873273" expanded="true" signature="13786:13963" ph="..." />
-            <marker date="1554406873273" expanded="true" signature="13978:15455" ph="..." />
-            <marker date="1554406873273" expanded="true" signature="14076:14973" ph="..." />
-            <marker date="1554406873273" expanded="true" signature="15007:15455" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/help/help2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="78" column="23" lean-forward="true" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/help/help.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="4573">
-            <caret line="269" column="5" selection-start-line="269" selection-start-column="5" selection-end-line="269" selection-end-column="5" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/help/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/help/help.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/help/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="15" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/tablePackager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="7" selection-start-line="8" selection-end-line="8" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/baseModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1606">
-          <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/model/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/help/help-menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/help/help-content.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="464">
-            <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ReleaseNotes.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="136">
-            <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packager/help/genHelp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="396">
-            <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="module" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
