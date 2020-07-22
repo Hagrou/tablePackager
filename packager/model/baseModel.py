@@ -1,7 +1,7 @@
 import os
 from packager.model.config import *
 from packager.model.installedTablesModel import *
-from packager.pincab.visualPinball import VisualPinball
+from packager.pincab.visualPinball import *
 from packager.pincab.vpinMame import VPinMame
 from packager.pincab.pinballX import PinballX
 from packager.pincab.pinupSystem import PinUpSystem

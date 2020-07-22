@@ -1,10 +1,4 @@
-import os
-import shutil
-
-from packager.model.package import Package
-from packager.tools.exception import *
 from packager.tools.toolbox import *
-from pathlib import Path
 
 class VisualPinball:
     def __init__(self, logger, baseModel):
@@ -114,8 +108,8 @@ class VisualPinball:
         str =extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
 
     def extract_rom_name(self,vpt_file: Path) -> list:
-        all_roms=extract_string_from_binary_file(vpt_file, br'[ ]*cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
-        escape_rom=extract_string_from_binary_file(vpt_file, br'\'[ ]*cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+        all_roms=extract_string_from_binary_file(vpt_file, br'[.]*GameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+        escape_rom=extract_string_from_binary_file(vpt_file, br'\'[a-zA-Z0-9_ ]*GameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
         active_rom=list(set(all_roms)-set(escape_rom))
         return active_rom + escape_rom
 

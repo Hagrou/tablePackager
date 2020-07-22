@@ -1,7 +1,7 @@
 import tkinter
 
 from packager.model.baseModel import *
-from packager.model.package import *
+from packager.model.package import Package
 from packager.tools.observer import Observable
 from packager.tools.toolbox import *
 
