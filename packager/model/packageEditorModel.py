@@ -144,8 +144,14 @@ class PackageEditorModel(Observable):
             target_file = srcFile
 
             if type(required_name) is list:
-                rename_it = [name for name in required_name if name.upper() == Path(filename).stem.upper()] == []
-                required_name=required_name[0]
+                if len(required_name) == 0:
+                    tkinter.messagebox.showwarning("Renaming File",
+                                                   "No information found for filename",
+                                                   parent=viewer)
+                else:
+                    rename_it = [name for name in required_name if name.upper() == Path(filename).stem.upper()] == []
+                    required_name=required_name[0]
+
             else:
                 rename_it = Path(filename).stem.upper() != required_name.upper()
             if rename_it:
