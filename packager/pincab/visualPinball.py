@@ -114,8 +114,8 @@ class VisualPinball:
         str =extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
 
     def extract_rom_name(self,vpt_file: Path) -> list:
-        all_roms=extract_string_from_binary_file(vpt_file, br'Const cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
-        escape_rom=extract_string_from_binary_file(vpt_file, br'\'Const cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+        all_roms=extract_string_from_binary_file(vpt_file, br'[ ]*cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+        escape_rom=extract_string_from_binary_file(vpt_file, br'\'[ ]*cGameName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
         active_rom=list(set(all_roms)-set(escape_rom))
         return active_rom + escape_rom
 

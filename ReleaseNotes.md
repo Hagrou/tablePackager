@@ -9,7 +9,10 @@
 ### Bug Fixes
 - Fix version variable error
 - Fix multiples roms in vpx file (when one is commented)
+- Fix not found rom for Star War Trilogy
 ! TODO: garder une liste de roms? => préciser la default?
+
+
 
 ## What's New in Version 1.1.0
 ### What's New

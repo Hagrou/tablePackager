@@ -20,28 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tablePackager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tablePackager.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReleaseNotes.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReleaseNotes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/help/genHelp.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/help/genHelp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/help/help-content.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/help/help.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/baseModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/baseModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/installedTablesModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/installedTablesModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/package.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/package.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/packageEditorModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packageEditorModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/model/packagedTablesModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packagedTablesModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packager/pincab/visualPinball.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/pincab/visualPinball.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/tablePackager.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/tablePackager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/tools/toolbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/tools/toolbox.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/view/configViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/configViewer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/view/installedTablesView.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/installedTablesView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/view/mainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/mainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packager/view/packagedTablesView.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packagedTablesView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -349,45 +330,45 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="381" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595189195586" />
-    <state width="1664" height="275" key="GridCell.Tab.0.bottom" timestamp="1595373860877">
+    <state width="1899" height="195" key="GridCell.Tab.0.bottom" timestamp="1595408879515">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1664" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373860877" />
+    <state width="1899" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595408879515" />
     <state width="1664" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1664" height="275" key="GridCell.Tab.0.center" timestamp="1595373860877">
+    <state width="1899" height="195" key="GridCell.Tab.0.center" timestamp="1595408879515">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1664" height="275" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373860877" />
+    <state width="1899" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595408879515" />
     <state width="1664" height="295" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352108" />
-    <state width="1664" height="275" key="GridCell.Tab.0.left" timestamp="1595373860877">
+    <state width="1899" height="195" key="GridCell.Tab.0.left" timestamp="1595408879514">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1664" height="275" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373860877" />
+    <state width="1899" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595408879514" />
     <state width="1664" height="295" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352108" />
-    <state width="1664" height="275" key="GridCell.Tab.0.right" timestamp="1595373860877">
+    <state width="1899" height="195" key="GridCell.Tab.0.right" timestamp="1595408879515">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1664" height="275" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373860877" />
+    <state width="1899" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595408879515" />
     <state width="1664" height="295" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1664" height="193" key="GridCell.Tab.1.bottom" timestamp="1595373808676">
+    <state width="1899" height="195" key="GridCell.Tab.1.bottom" timestamp="1595408892283">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1664" height="193" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373808676" />
+    <state width="1899" height="195" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595408892283" />
     <state width="1664" height="295" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1664" height="193" key="GridCell.Tab.1.center" timestamp="1595373808676">
+    <state width="1899" height="195" key="GridCell.Tab.1.center" timestamp="1595408892283">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1664" height="193" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373808676" />
+    <state width="1899" height="195" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595408892283" />
     <state width="1664" height="295" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1664" height="193" key="GridCell.Tab.1.left" timestamp="1595373808676">
+    <state width="1899" height="195" key="GridCell.Tab.1.left" timestamp="1595408892283">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1664" height="193" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373808676" />
+    <state width="1899" height="195" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595408892283" />
     <state width="1664" height="295" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1664" height="193" key="GridCell.Tab.1.right" timestamp="1595373808676">
+    <state width="1899" height="195" key="GridCell.Tab.1.right" timestamp="1595408892283">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1664" height="193" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595373808676" />
+    <state width="1899" height="195" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595408892283" />
     <state width="1664" height="295" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
     <state x="-1" y="43" width="998" height="708" key="SettingsEditor" timestamp="1595189400796">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -425,6 +406,11 @@
           <url>file://$PROJECT_DIR$/packager/help/genHelp.py</url>
           <line>38</line>
           <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/packager/pincab/visualPinball.py</url>
+          <line>118</line>
+          <option name="timeStamp" value="214" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
