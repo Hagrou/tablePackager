@@ -55,7 +55,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__topLevel = Toplevel(self.__parent)
         self.__topLevel.wm_title("%s package" % self.packageEditorModel.currentPackage['name'])
         self.__topLevel.protocol('WM_DELETE_WINDOW', self.on_closing)
-
+        self.__topLevel.iconbitmap("images/tablePackager_128x128.ico")
         # =================================================================
         self.__infoFrame = Frame(self.__topLevel)
         self.__packageNameLabel = Label(self.__infoFrame, text="Package Name: ")
@@ -138,7 +138,7 @@ class PackageEditorViewer(Frame, Observer):
 
         # ======================================
         (dataPath, name) = self.packageEditorModel.get_first_image()
-        if (dataPath != None):
+        if dataPath is not None:
             imagePreviewPath = self.__packageEditorModel.package.directory + '/' + \
                                self.__packageEditorModel.package.name + '/' + \
                                dataPath + '/' + name
@@ -159,7 +159,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__label.grid(row=0, column=0, sticky=E + W + N)
         self.__tree = Treeview(self.__contentFrame)
         self.__tree.bind('<ButtonRelease-1>', self.on_select)
-        self.__tree.bind('<Double-1>', self.on_doubleClick)
+        self.__tree.bind('<Double-1>', self.on_double_click)
 
         self.__tree["columns"] = ("1", "2", "3", "4", "5")
         self.__tree.column("#0", width=270, minwidth=270)
@@ -182,11 +182,11 @@ class PackageEditorViewer(Frame, Observer):
         self.__tree.grid(row=1, column=0, rowspan=6, sticky=E + W)
         scrollbar.grid(row=1, column=1, rowspan=6, sticky=N + S)
 
-        self.__btAddFile = Button(self.__contentFrame, image=self.__btAddFileImage, command=self.on_addFile,
+        self.__btAddFile = Button(self.__contentFrame, image=self.__btAddFileImage, command=self.on_add_file,
                                   state='disable')
         self.__btAddFileTip = CreateToolTip(self.__btAddFile, 'Add a file to package')
         self.__btAddFile.grid(row=1, column=2, sticky=N)
-        self.__btDelFile = Button(self.__contentFrame, image=self.__btDelFileImage, command=self.on_delFile,
+        self.__btDelFile = Button(self.__contentFrame, image=self.__btDelFileImage, command=self.on_del_file,
                                   state='disable')
         self.__btDelFileTip = CreateToolTip(self.__btDelFile, 'Delete a file from package')
         self.__btDelFile.grid(row=2, column=2, sticky=N)
@@ -205,7 +205,7 @@ class PackageEditorViewer(Frame, Observer):
         # =====================================================================
         self.__infoFrame.grid(row=0, column=0, sticky=E + W)
         self.__contentFrame.grid(row=1, column=0, sticky=E + W, padx=2, pady=10)
-        self.__btSave = Button(self.__topLevel, text="Save", command=self.saveOnClick)
+        self.__btSave = Button(self.__topLevel, text="Save", command=self.save_on_click)
         self.__btCancel = Button(self.__topLevel, text="Cancel", command=self.cancel_on_click)
         self.__btSave.grid(row=2, column=0, sticky=E)
         self.__btCancel.grid(row=2, column=0, sticky=W)
@@ -223,7 +223,7 @@ class PackageEditorViewer(Frame, Observer):
         else:
             self.__btRename['state'] = 'disable'
 
-    def saveOnClick(self):
+    def save_on_click(self):
         info = {'info/table name': self.__tableNameEntry.get(),
                 'info/manufacturer': self.__tableManufacturerEntry.get(),
                 'info/table designer(s)': self.__tableDesignerEntry.get(),
@@ -254,11 +254,11 @@ class PackageEditorViewer(Frame, Observer):
                     path + '/' + file
 
         if extension == '.jpg' or extension == '.png' or extension == '.gif':
-            pilImage = PIL.Image.open(file_path)
+            pil_image = PIL.Image.open(file_path)
         else:
-            pilImage = PIL.Image.open('images/noPreview.png')
-        pilImage.thumbnail((300, 300), PIL.Image.ANTIALIAS)
-        tkImage = PIL.ImageTk.PhotoImage(pilImage)
+            pil_image = PIL.Image.open('images/noPreview.png')
+        pil_image.thumbnail((300, 300), PIL.Image.ANTIALIAS)
+        tkImage = PIL.ImageTk.PhotoImage(pil_image)
         self.__imageCanvasViewer.itemconfig(self.__tkImagePreview, image=tkImage)
         self.__imageCanvasViewer.image = tkImage
 
@@ -294,7 +294,7 @@ class PackageEditorViewer(Frame, Observer):
                     self.__btUpFile['state'] = 'disable'
                     self.__btDownFile['state'] = 'disable'
 
-    def on_doubleClick(self, evt):
+    def on_double_click(self, evt):
         item = self.__tree.item(self.__tree.focus())
         if 'file' in item['tags']:
             self.__fileInfoViewer.show(self.__packageEditorModel.package,
@@ -302,11 +302,11 @@ class PackageEditorViewer(Frame, Observer):
                                        self.__packageEditorModel.get_fileInfo(self.__topLevel, item['tags'][-1],
                                                                               item['text']))
 
-    def on_addFile(self):
+    def on_add_file(self):
         item = self.__tree.item(self.__tree.focus())
 
-        acceptedFiles = (("all files", "*.*"))
-        requiredName = self.packageEditorModel.package.name
+        accepted_files = (("all files", "*.*"))
+        required_name = self.packageEditorModel.package.name
 
         if 'UltraDMD/content' in item['tags']:
             ultraDMDDir = filedialog.askdirectory(parent=self.__topLevel,
@@ -316,36 +316,37 @@ class PackageEditorViewer(Frame, Observer):
             return
 
         if 'VPinMAME/cfg' in item['tags']:
-            acceptedFiles = (('rom config files', '*.cfg'), ("all files", "*.*"))
-            requiredName = self.packageEditorModel.package.get_field('visual pinball/info/romName')
+            accepted_files = (('rom config files', '*.cfg'), ("all files", "*.*"))
+            required_name = self.packageEditorModel.package.get_field('visual pinball/info/romName')
         elif 'VPinMAME/nvram' in item['tags']:
-            acceptedFiles = (('nvram files', '*.nv'), ("all files", "*.*"))
-            requiredName = self.packageEditorModel.package.get_field('visual pinball/info/romName')
+            accepted_files = (('nvram files', '*.nv'), ("all files", "*.*"))
+            required_name = self.packageEditorModel.package.get_field('visual pinball/info/romName')
         elif 'VPinMAME/roms' in item['tags']:
-            acceptedFiles = (('roms files', '*.zip'), ("all files", "*.*"))
-            requiredName = self.packageEditorModel.package.get_field('visual pinball/info/romName')
+            accepted_files = (('roms files', '*.zip'), ("all files", "*.*"))
+            required_name = self.packageEditorModel.package.get_field('visual pinball/info/romName')
         elif 'VPinMAME/memcard' in item['tags']:
-            acceptedFiles = (('memcard files', '*.prt'), ("all files", "*.*"))
-            requiredName = self.packageEditorModel.package.get_field('visual pinball/info/romName')
+            accepted_files = (('memcard files', '*.prt'), ("all files", "*.*"))
+            required_name = self.packageEditorModel.package.get_field('visual pinball/info/romName')
         elif 'visual pinball/tables' in item['tags']:
-            acceptedFiles = (
-                ('vpx files', '*.vpx'), ('vpx files', '*.vpt'), ('directb2s files', '*.directb2s'),
+            accepted_files = (
+                ('vpx files', '*.vpx'), ('vpx files', '*.vpt'),
+                ('directb2s files', '*.directb2s'), ('pov files', '*.pov'),
                 ("all files", "*.*"))
 
-        if acceptedFiles == (("all files", "*.*")):
-            srcFile = filedialog.askopenfilename(parent=self.__topLevel,
+        if accepted_files == (("all files", "*.*")):
+            src_file = filedialog.askopenfilename(parent=self.__topLevel,
                                                  initialdir=self.__baseModel.package_path,
                                                  title="Select file")  # crash if filetypes contain only ("all files", "*.*") !?
         else:
-            srcFile = filedialog.askopenfilename(parent=self.__topLevel,
+            src_file = filedialog.askopenfilename(parent=self.__topLevel,
                                                  initialdir=self.__baseModel.package_path,
                                                  title="Select file",
-                                                 filetypes=acceptedFiles)
+                                                 filetypes=accepted_files)
 
-        if srcFile != '':
-            self.__packageEditorModel.add_file(self.__topLevel, item['tags'][-1], srcFile, requiredName)
+        if src_file != '':
+            self.__packageEditorModel.add_file(self.__topLevel, item['tags'][-1], src_file, required_name)
 
-    def on_delFile(self):
+    def on_del_file(self):
         item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.del_file(self.__topLevel, item['tags'][-1], item['text'])
 
@@ -370,7 +371,7 @@ class PackageEditorViewer(Frame, Observer):
             self.__packageNameEntry.unbind('<KeyRelease>')
         else:
             self.__btSave['state'] = 'normal'
-            self.__tree.bind('<Double-1>', self.on_doubleClick)
+            self.__tree.bind('<Double-1>', self.on_double_click)
             self.__packageNameEntry.bind('<KeyRelease>', self.tableNameKeyEvent)
 
     def on_upFile(self):
@@ -466,7 +467,7 @@ class PackageEditorViewer(Frame, Observer):
                     self.__btUpFile['state'] = self.__backupState['btUpFile']
                     self.__btDownFile['state'] = self.__backupState['btDownFile']
                     self.__tree.bind('<ButtonRelease-1>', self.on_select)
-                    self.__tree.bind('<Double-1>', self.on_doubleClick)
+                    self.__tree.bind('<Double-1>', self.on_double_click)
             elif '<<UPDATE_EDITOR>>':
                 if self.__visible:
                     selection_set = None

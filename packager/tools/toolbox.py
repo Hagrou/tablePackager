@@ -52,17 +52,17 @@ def copytree(logger, src, dst, symlinks=False, ignore=None):
     if not os.path.exists(dst):
         os.makedirs(dst)
     for item in os.listdir(src):
-        srcPath = src + '/' + item  # os.path.join(src, item)
-        dstPath = dst + '/' + item  # os.path.join(dst, item)
-        logger.info("+ deploy %s" % (dstPath))
-        if os.path.isdir(srcPath):
-            copytree(logger, srcPath, dstPath, symlinks, ignore)
+        src_path = src + '/' + item  # os.path.join(src, item)
+        dst_path = dst + '/' + item  # os.path.join(dst, item)
+        logger.info("+ deploy %s" % dst_path)
+        if os.path.isdir(src_path):
+            copytree(logger, src_path, dst_path, symlinks, ignore)
         else:
-            if not os.path.exists(dstPath) or os.stat(srcPath).st_mtime - os.stat(dstPath).st_mtime > 1:
-                shutil.copy2(srcPath, dstPath)
+            if not os.path.exists(dst_path) or os.stat(src_path).st_mtime - os.stat(dst_path).st_mtime > 1:
+                shutil.copy2(src_path, dst_path)
 
 
-def extract_string_from_binary_file(vpx_file, pattern) -> object:
+def extract_string_from_binary_file(vpx_file, pattern) -> list:
     roms = []
     p = re.compile(pattern)
     with open(vpx_file, 'rb', 0) as file, mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ) as s:

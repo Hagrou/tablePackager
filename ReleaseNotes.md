@@ -5,14 +5,17 @@
 ### What's New
 - Merge README.md and help.md
 - Gen help.html at build time
+- .pov file management
 
 ### Bug Fixes
 - Fix version variable error
 - Fix multiples roms in vpx file (when one is commented)
 - Fix not found rom for Star War Trilogy
-- Give possibility to add a rom file even the rom name has not been found
-! TODO: garder une liste de roms? => préciser la default?
+- Give possibility to add a rom file even the rom name has not been 
+- Add tablePackager icon on each window
 
+! Bug: On peut ouvrir plusieurs fenetre de configuration
+! TODO: garder une liste de roms? => préciser la default?
 
 
 ## What's New in Version 1.1.0
@@ -23,8 +26,8 @@ This version support:
 - Help Html refactoring with new navigation menu
 
 ### Bug Fixes
-* Add package checker to fix package if somes files are missing
-* Generalize file collision for add and move file in package
+- Add package checker to fix package if somes files are missing
+- Generalize file collision for add and move file in package
 
 ## What's New in Version 1.0.0
 

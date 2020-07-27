@@ -22,7 +22,17 @@
     <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReleaseNotes.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReleaseNotes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/model/installedTablesModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/installedTablesModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packager/model/packageEditorModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/model/packageEditorModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/pincab/tableDatabase.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/pincab/tableDatabase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/pincab/visualPinball.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/pincab/visualPinball.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/tablePackager.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/tablePackager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/tools/extract_installed_tables.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/tools/toolbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/tools/toolbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/configViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/configViewer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/fileInfoViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/fileInfoViewer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/installedTablesView.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/installedTablesView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +55,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/packager/pincab" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -57,16 +67,16 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager" />
-      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\tablePackager" />
-      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\tablePackager\pincab" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\packager\help" />
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\packager\view" />
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\packager\pincab" />
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager" />
+      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\tablePackager" />
+      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\tablePackager\pincab" />
     </key>
   </component>
   <component name="RunManager" selected="Python.tablePackager-x64">
@@ -154,48 +164,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="helpViewer" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tablePackager" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/packager/view" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/packager/view/helpViewer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="runBrowser" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tablePackager" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/packager/sandbox" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/packager/sandbox/runBrowser.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="tablePackage-x32" type="PythonConfigurationType" factoryName="Python">
       <module name="tablePackager" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -238,45 +206,66 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tkHtml" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Unittests for test_visualPinball.TestVisualPinball.test_extract_rom_from_pirate_of_the_caribbean" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="tablePackager" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/packager/sandbox" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/packager/pincab" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/packager/sandbox/tkHtml.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_visualPinball.TestVisualPinball.test_extract_rom_from_pirate_of_the_caribbean&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in C:/Users/philippe/Documents/Atelier/flipper/tablePackager/packager/tools/test_extract_installed_tables.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="tablePackager" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/packager/tools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/packager/tools/test_extract_installed_tables.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_visualPinball.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="tablePackager" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/packager/pincab" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/packager/pincab/test_visualPinball.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.build_32_msi" />
+      <item itemvalue="Python.build_64_msi" />
       <item itemvalue="Python.tablePackage-x32" />
       <item itemvalue="Python.tablePackager-x64" />
-      <item itemvalue="Python.build_64_msi" />
-      <item itemvalue="Python.build_32_msi" />
-      <item itemvalue="Python.tkHtml" />
-      <item itemvalue="Python.helpViewer" />
-      <item itemvalue="Python.runBrowser" />
       <item itemvalue="Python.calc" />
       <item itemvalue="Python.genHelp" />
+      <item itemvalue="Python tests.Unittests for test_visualPinball.TestVisualPinball.test_extract_rom_from_pirate_of_the_caribbean" />
+      <item itemvalue="Python tests.Unittests in test_visualPinball.py" />
+      <item itemvalue="Python tests.Unittests in C:/Users/philippe/Documents/Atelier/flipper/tablePackager/packager/tools/test_extract_installed_tables.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests in test_visualPinball.py" />
+        <item itemvalue="Python tests.Unittests for test_visualPinball.TestVisualPinball.test_extract_rom_from_pirate_of_the_caribbean" />
+        <item itemvalue="Python tests.Unittests in C:/Users/philippe/Documents/Atelier/flipper/tablePackager/packager/tools/test_extract_installed_tables.py" />
         <item itemvalue="Python.calc" />
         <item itemvalue="Python.genHelp" />
-        <item itemvalue="Python.runBrowser" />
-        <item itemvalue="Python.helpViewer" />
-        <item itemvalue="Python.tkHtml" />
       </list>
     </recent_temporary>
   </component>
@@ -322,53 +311,58 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="227" y="272" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594634057872" />
+    <state width="484" height="466" key="DebuggerActiveHint" timestamp="1595452443587">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="484" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595452443587" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1594647871000">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594647871000" />
-    <state x="685" y="381" key="FileChooserDialogImpl" timestamp="1595189195586">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2605" y="381" key="FileChooserDialogImpl" timestamp="1595450975922">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="2605" y="381" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595450975922" />
     <state x="685" y="381" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595189195586" />
-    <state width="1899" height="195" key="GridCell.Tab.0.bottom" timestamp="1595415866154">
+    <state width="1899" height="178" key="GridCell.Tab.0.bottom" timestamp="1595887420043">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595415866154" />
+    <state width="1899" height="178" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595887420043" />
     <state width="1664" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1899" height="195" key="GridCell.Tab.0.center" timestamp="1595415866154">
+    <state width="1899" height="178" key="GridCell.Tab.0.center" timestamp="1595887420043">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595415866154" />
+    <state width="1899" height="178" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595887420043" />
     <state width="1664" height="295" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352108" />
-    <state width="1899" height="195" key="GridCell.Tab.0.left" timestamp="1595415866154">
+    <state width="1899" height="178" key="GridCell.Tab.0.left" timestamp="1595887420043">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595415866154" />
+    <state width="1899" height="178" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595887420043" />
     <state width="1664" height="295" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352108" />
-    <state width="1899" height="195" key="GridCell.Tab.0.right" timestamp="1595415866154">
+    <state width="1899" height="178" key="GridCell.Tab.0.right" timestamp="1595887420043">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595415866154" />
+    <state width="1899" height="178" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595887420043" />
     <state width="1664" height="295" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1899" height="195" key="GridCell.Tab.1.bottom" timestamp="1595415866067">
+    <state width="1899" height="195" key="GridCell.Tab.1.bottom" timestamp="1595456742816">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="195" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595415866067" />
+    <state width="1899" height="195" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595456742816" />
     <state width="1664" height="295" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1899" height="195" key="GridCell.Tab.1.center" timestamp="1595415866067">
+    <state width="1899" height="195" key="GridCell.Tab.1.center" timestamp="1595456742816">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="195" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595415866067" />
+    <state width="1899" height="195" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595456742816" />
     <state width="1664" height="295" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1899" height="195" key="GridCell.Tab.1.left" timestamp="1595415866067">
+    <state width="1899" height="195" key="GridCell.Tab.1.left" timestamp="1595456742816">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="195" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595415866067" />
+    <state width="1899" height="195" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595456742816" />
     <state width="1664" height="295" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1899" height="195" key="GridCell.Tab.1.right" timestamp="1595415866067">
+    <state width="1899" height="195" key="GridCell.Tab.1.right" timestamp="1595456742816">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="195" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595415866067" />
+    <state width="1899" height="195" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595456742816" />
     <state width="1664" height="295" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
     <state x="-1" y="43" width="998" height="708" key="SettingsEditor" timestamp="1595189400796">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -406,6 +400,16 @@
           <url>file://$PROJECT_DIR$/packager/help/genHelp.py</url>
           <line>38</line>
           <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/packager/pincab/test_visualPinball.py</url>
+          <line>80</line>
+          <option name="timeStamp" value="221" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/packager/view/packageEditorViewer.py</url>
+          <line>140</line>
+          <option name="timeStamp" value="222" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
