@@ -24,7 +24,7 @@ class ConfigViewer(Frame):
     def show(self):
         self.__topLevel = Toplevel(self.__parent)
         self.__topLevel.wm_title("Configuration")
-        self.__topLevel.protocol('WM_DELETE_WINDOW', self.onClosing)
+        self.__topLevel.protocol('WM_DELETE_WINDOW', self.on_closing)
         self.__topLevel.iconbitmap("images/tablePackager_128x128.ico")
 
         # =================================================================
@@ -54,17 +54,17 @@ class ConfigViewer(Frame):
         self.__pinupSystemPathEntry.grid(column=1, row=2, padx=2, pady=2)
         self.__pinupSystemPathEntry.insert(END, self.__baseModel.pinupSystem_path)
         self.__pinupSystemPathDirBt = Button(self.__infoFrame, image=self.__btDirImage,
-                                             command=self.onChoosePinupSystemPathDir)
+                                             command=self.on_choose_pinup_system_path_dir)
         self.__pinupSystemPathDirBt.grid(column=2, row=2, sticky=E, padx=2, pady=2)
 
         # =====================================================================
         self.__infoFrame.grid(row=0, column=0, sticky=E + W)
-        self.__btSave = Button(self.__topLevel, text="Save", command=self.onSave)
-        self.__btCancel = Button(self.__topLevel, text="Cancel", command=self.onCancel)
+        self.__btSave = Button(self.__topLevel, text="Save", command=self.on_save)
+        self.__btCancel = Button(self.__topLevel, text="Cancel", command=self.on_cancel)
         self.__btSave.grid(row=2, column=0, sticky=E)
         self.__btCancel.grid(row=2, column=0, sticky=W)
 
-    def onClosing(self):
+    def on_closing(self):
         print("closing")
         self.hide()
 
@@ -80,18 +80,18 @@ class ConfigViewer(Frame):
             self.__pinballXPathPathEntry.delete(0, 'end')
             self.__pinballXPathPathEntry.insert(END, path)
 
-    def onChoosePinupSystemPathDir(self):
+    def on_choose_pinup_system_path_dir(self):
         path = filedialog.askdirectory(initialdir=self.__pinupSystemPathEntry.get())
         if path != '':
             self.__pinupSystemPathEntry.delete(0, 'end')
             self.__pinupSystemPathEntry.insert(END, path)
 
-    def onSave(self):
+    def on_save(self):
         self.__baseModel.config.set('visual_pinball_path', self.__visualPinballPathEntry.get())
         self.__baseModel.config.set('pinballX_path', self.__pinballXPathPathEntry.get())
         self.__baseModel.config.set('pinupSystem_path', self.__pinupSystemPathEntry.get())
         self.__baseModel.config.save()
         self.hide()
 
-    def onCancel(self):
+    def on_cancel(self):
         self.hide()

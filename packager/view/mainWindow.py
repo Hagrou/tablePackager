@@ -130,7 +130,6 @@ class MainWindow(Observer,Observable):
             print(Err)
 
     def onOptionMenu(self):
-        print("onMenuOption")
         self.__configViewer.show()
 
     def onHelpMenu(self):

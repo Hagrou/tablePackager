@@ -1,4 +1,6 @@
 from packager.tools.toolbox import *
+import subprocess
+import tkinter
 
 
 class VisualPinball:
@@ -65,9 +67,17 @@ class VisualPinball:
         else:
             package.add_file(directb2s_file, 'visual pinball/tables')
 
-        if not pov_file.exists():  # Add directb2s file
-            self.logger.warning("* no pov file found")
+        if pov_file.exists():
+            overwrite_pov = tkinter.messagebox.askokcancel("Overwrite pov file ?",
+                                                           "Do you want to update .pov file with your last PinballX configuration ?")
+            if overwrite_pov:
+                self.logger.warning("* extract and overwrite pov file")
+                self.extract_pov_file(package, vp_file)
         else:
+            self.logger.warning("* no pov file found, extract it")
+            self.extract_pov_file(package, vp_file)
+
+        if pov_file.exists():
             package.add_file(pov_file, 'visual pinball/tables')
 
         if music_file.exists():
@@ -128,3 +138,8 @@ class VisualPinball:
 
     def extract_table_name(self, vpt_file):
         return extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
+
+    def extract_pov_file(self, package, vp_file):
+        cmdLine = ["%s/VPinballX.exe" % self.visual_pinball_path, "-pov", vp_file]
+        self.logger.info("%s/VPinballX.exe -pov %s" % (self.visual_pinball_path, vp_file))
+        subprocess.call(cmdLine)

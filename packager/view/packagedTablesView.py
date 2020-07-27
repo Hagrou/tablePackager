@@ -28,7 +28,7 @@ class PackagedTablesView(Frame, Observer):
         self.__label.pack(side=TOP)
 
         frameBt=Frame(self)
-        self.__btEdit = Button(frameBt, image=self.__btEditImage, command=self.editOnClick, state=DISABLED)
+        self.__btEdit = Button(frameBt, image=self.__btEditImage, command=self.edit_on_click, state=DISABLED)
         self.__btEdit.pack(side=LEFT)
         self.__btEditToolTip=CreateToolTip(self.__btEdit,'Edit a package')
         self.__btDel = Button(frameBt, image=self.__btDelImage, command=self.delOnClick, state=DISABLED)
@@ -65,7 +65,7 @@ class PackagedTablesView(Frame, Observer):
         self.__hScrollbar.config(command=self.__listPackages.xview)
         self.__listPackages.config(xscrollcommand=self.__hScrollbar.set,yscrollcommand=self.__vScrollbar.set)
 
-    def editOnClick(self):
+    def edit_on_click(self):
         if len(self.__packagedTablesModel.selectedPackage)==0:
             messagebox.showerror('Package Edition', 'You must select a package to edit it')
             return

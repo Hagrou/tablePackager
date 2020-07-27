@@ -62,7 +62,7 @@ class FileInfoViewer(Frame, Observable):
         # =====================================================================
         self.__infoFrame.grid(row=0, column=0, sticky=E + W)
         self.__btSave = Button(self.__topLevel, text="Save", command=self.onSave)
-        self.__btCancel = Button(self.__topLevel, text="Cancel", command=self.onCancel)
+        self.__btCancel = Button(self.__topLevel, text="Cancel", command=self.on_cancel)
         self.__btSave.grid(row=2, column=0, sticky=E)
         self.__btCancel.grid(row=2, column=0, sticky=W)
 
@@ -82,7 +82,7 @@ class FileInfoViewer(Frame, Observable):
         self.__currentPackage = None
         self.hide()
 
-    def onCancel(self):
+    def on_cancel(self):
         self.__currentFile = None
         self.__currentPackage = None
         self.notify_all(self, events=['<<ENABLE_ALL>>'])  # update listeners
