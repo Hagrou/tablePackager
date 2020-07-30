@@ -31,6 +31,8 @@ class PackageEditorViewer(Frame, Observer):
         self.__btRenameFileImage = PhotoImage(file=baseModel.base_dir + "images/btRenameFile.png")
         self.__btUpFileImage = PhotoImage(file=baseModel.base_dir + "images/btUpFile.png")
         self.__btDownFileImage = PhotoImage(file=baseModel.base_dir + "images/btDownFile.png")
+        self.__btRotateLeftImage = PhotoImage(file=baseModel.base_dir + "images/btRotateLeft.png")
+        self.__btRotateRightImage = PhotoImage(file=baseModel.base_dir + "images/btRotateRight.png")
         self.__topLevel = None
         self.__fileInfoViewer = FileInfoViewer(self, baseModel)
         self.__fileInfoViewer.attach(self)
@@ -61,7 +63,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__packageNameLabel = Label(self.__infoFrame, text="Package Name: ")
         self.__packageNameLabel.grid(column=0, row=0, sticky='W', padx=2, pady=0)
         self.__packageNameEntry = Entry(self.__infoFrame, width=50)
-        self.__packageNameEntry.bind('<KeyRelease>', self.tableNameKeyEvent)
+        self.__packageNameEntry.bind('<KeyRelease>', self.table_name_key_event)
         self.__packageNameEntry.grid(column=1, sticky='W', row=0, padx=2, pady=0)
         self.__packageNameEntry.insert(END, self.packageEditorModel.currentPackage['name'])
         self.__btRename = Button(self.__infoFrame, text="Rename", command=self.rename_on_click, state='disable')
@@ -147,6 +149,7 @@ class PackageEditorViewer(Frame, Observer):
 
         pilImage = PIL.Image.open(imagePreviewPath)
         pilImage.thumbnail((300, 300), PIL.Image.ANTIALIAS)
+
         tkImage = PIL.ImageTk.PhotoImage(pilImage)
         self.__tkImagePreview = self.__imageCanvasViewer.create_image(150, 150, image=tkImage)
 
@@ -177,6 +180,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__tree.tag_configure('info', foreground='grey')
         scrollbar = Scrollbar(self.__contentFrame, orient="vertical")
         scrollbar.config(command=self.__tree.yview)
+
         self.__tree.config(yscrollcommand=scrollbar.set)
 
         self.__tree.grid(row=1, column=0, rowspan=6, sticky=E + W)
@@ -190,21 +194,32 @@ class PackageEditorViewer(Frame, Observer):
                                   state='disable')
         self.__btDelFileTip = CreateToolTip(self.__btDelFile, 'Delete a file from package')
         self.__btDelFile.grid(row=2, column=2, sticky=N)
-        self.__btRenameFile = Button(self.__contentFrame, image=self.__btRenameFileImage, command=self.on_renameFile,
+        self.__btRenameFile = Button(self.__contentFrame, image=self.__btRenameFileImage, command=self.on_rename_file,
                                      state='disable')
         self.__btRenameFileTip = CreateToolTip(self.__btRenameFile, 'Rename a file into package')
         self.__btRenameFile.grid(row=3, column=2, sticky=N)
 
-        self.__btUpFile = Button(self.__contentFrame, image=self.__btUpFileImage, command=self.on_upFile,
+        self.__btUpFile = Button(self.__contentFrame, image=self.__btUpFileImage, command=self.on_up_file,
                                  state='disable')
         self.__btUpFile.grid(row=4, column=2, sticky=N)
-        self.__btDownFile = Button(self.__contentFrame, image=self.__btDownFileImage, command=self.on_downFile,
+        self.__btDownFile = Button(self.__contentFrame, image=self.__btDownFileImage, command=self.on_down_file,
                                    state='disable')
         self.__btDownFile.grid(row=5, column=2, sticky=N)
 
+        self.__btRotateRight = Button(self.__contentFrame, image=self.__btRotateRightImage,
+                                      command=self.on_rotate_right_image,
+                                      state='disable')
+        self.__btRotateRightTip = CreateToolTip(self.__btAddFile, 'Turn Right image')
+        self.__btRotateRight.grid(row=6, column=2, sticky=N)
+        self.__btRotateLeft = Button(self.__contentFrame, image=self.__btRotateLeftImage,
+                                     command=self.on_rotate_left_image,
+                                     state='disable')
+        self.__btRotateLeftTip = CreateToolTip(self.__btAddFile, 'Turn Left image')
+        self.__btRotateLeft.grid(row=7, column=2, sticky=N)
+
         # =====================================================================
         self.__infoFrame.grid(row=0, column=0, sticky=E + W)
-        self.__contentFrame.grid(row=1, column=0, sticky=E + W, padx=2, pady=10)
+        self.__contentFrame.grid(row=1, column=0, sticky=E + W + S, padx=2, pady=10)
         self.__btSave = Button(self.__topLevel, text="Save", command=self.save_on_click)
         self.__btCancel = Button(self.__topLevel, text="Cancel", command=self.cancel_on_click)
         self.__btSave.grid(row=2, column=0, sticky=E)
@@ -217,7 +232,7 @@ class PackageEditorViewer(Frame, Observer):
     def askokcancel(self, title, message):
         return tkinter.messagebox.askokcancel(title, message, parent=self.__topLevel)
 
-    def tableNameKeyEvent(self, event):
+    def table_name_key_event(self, event):
         if self.packageEditorModel.package.name != self.__packageNameEntry.get():
             self.__btRename['state'] = 'enable'
         else:
@@ -255,12 +270,16 @@ class PackageEditorViewer(Frame, Observer):
 
         if extension == '.jpg' or extension == '.png' or extension == '.gif':
             pil_image = PIL.Image.open(file_path)
+            self.__btRotateRight['state'] = 'normal'
+            self.__btRotateLeft['state'] = 'normal'
         else:
             pil_image = PIL.Image.open('images/noPreview.png')
+            self.__btRotateRight['state'] = 'disable'
+            self.__btRotateLeft['state'] = 'disable'
         pil_image.thumbnail((300, 300), PIL.Image.ANTIALIAS)
-        tkImage = PIL.ImageTk.PhotoImage(pil_image)
-        self.__imageCanvasViewer.itemconfig(self.__tkImagePreview, image=tkImage)
-        self.__imageCanvasViewer.image = tkImage
+        tk_image = PIL.ImageTk.PhotoImage(pil_image)
+        self.__imageCanvasViewer.itemconfig(self.__tkImagePreview, image=tk_image)
+        self.__imageCanvasViewer.image = tk_image
 
     def on_select(self, evt):
         item = self.__tree.item(self.__tree.focus())
@@ -271,6 +290,8 @@ class PackageEditorViewer(Frame, Observer):
                 self.__btRenameFile['state'] = 'disable'
                 self.__btUpFile['state'] = 'disable'
                 self.__btDownFile['state'] = 'disable'
+                self.__btRotateRight['state'] = 'disable'
+                self.__btRotateLeft['state'] = 'disable'
         else:
             if 'file' in item['tags'] or 'category' in item['tags']:
                 if self.__btProtectedState.get() == 'False':
@@ -281,7 +302,6 @@ class PackageEditorViewer(Frame, Observer):
                     self.__btRenameFile['state'] = 'normal'
                     self.__btUpFile['state'] = 'normal'
                     self.__btDownFile['state'] = 'normal'
-                    self.__btDownFile
                 self.preview(item['text'], item['tags'][-1])
 
             if 'product' in item['tags']:
@@ -293,6 +313,8 @@ class PackageEditorViewer(Frame, Observer):
                     self.__btRenameFile['state'] = 'disable'
                     self.__btUpFile['state'] = 'disable'
                     self.__btDownFile['state'] = 'disable'
+                    self.__btRotateRight['state'] = 'disable'
+                    self.__btRotateLeft['state'] = 'disable'
 
     def on_double_click(self, evt):
         item = self.__tree.item(self.__tree.focus())
@@ -335,13 +357,13 @@ class PackageEditorViewer(Frame, Observer):
 
         if accepted_files == (("all files", "*.*")):
             src_file = filedialog.askopenfilename(parent=self.__topLevel,
-                                                 initialdir=self.__baseModel.package_path,
-                                                 title="Select file")  # crash if filetypes contain only ("all files", "*.*") !?
+                                                  initialdir=self.__baseModel.package_path,
+                                                  title="Select file")  # crash if filetypes contain only ("all files", "*.*") !?
         else:
             src_file = filedialog.askopenfilename(parent=self.__topLevel,
-                                                 initialdir=self.__baseModel.package_path,
-                                                 title="Select file",
-                                                 filetypes=accepted_files)
+                                                  initialdir=self.__baseModel.package_path,
+                                                  title="Select file",
+                                                  filetypes=accepted_files)
 
         if src_file != '':
             self.__packageEditorModel.add_file(self.__topLevel, item['tags'][-1], src_file, required_name)
@@ -350,7 +372,7 @@ class PackageEditorViewer(Frame, Observer):
         item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.del_file(self.__topLevel, item['tags'][-1], item['text'])
 
-    def on_renameFile(self):
+    def on_rename_file(self):
         item = self.__tree.item(self.__tree.focus())
         if 'file' in item['tags']:
             self.__renameFileViewer.show(self.__packageEditorModel.package,
@@ -372,15 +394,37 @@ class PackageEditorViewer(Frame, Observer):
         else:
             self.__btSave['state'] = 'normal'
             self.__tree.bind('<Double-1>', self.on_double_click)
-            self.__packageNameEntry.bind('<KeyRelease>', self.tableNameKeyEvent)
+            self.__packageNameEntry.bind('<KeyRelease>', self.table_name_key_event)
 
-    def on_upFile(self):
+    def on_up_file(self):
         item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.up_file(self, item['tags'][-1], item['text'])
 
-    def on_downFile(self):
+    def on_down_file(self):
         item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.down_file(self, item['tags'][-1], item['text'])
+
+
+    def __rotate_image(self, item, angle: int):
+        item = self.__tree.item(self.__tree.focus())
+        if 'file' in item['tags']:
+            file_path = self.__packageEditorModel.package.directory + '/' + \
+                        self.__packageEditorModel.package.name + '/' + \
+                        item['tags'][-1] + '/' + item['text']
+
+            pil_image = PIL.Image.open(file_path)
+            pil_image = pil_image.rotate(angle, expand=1)
+            pil_image.save(file_path)
+
+            pil_image.thumbnail((300, 300), PIL.Image.ANTIALIAS)
+            tk_image = PIL.ImageTk.PhotoImage(pil_image)
+            self.__imageCanvasViewer.itemconfig(self.__tkImagePreview, image=tk_image)
+            self.__imageCanvasViewer.image = tk_image
+
+    def on_rotate_right_image(self) -> None:
+        self.__rotate_image(self.__tree.item(self.__tree.focus()), -90)
+    def on_rotate_left_image(self) -> None:
+        self.__rotate_image(self.__tree.item(self.__tree.focus()), 90)
 
     def refresh_files(self, selection_set=None):
         self.__btAddFile['state'] = 'disabled'
@@ -392,38 +436,38 @@ class PackageEditorViewer(Frame, Observer):
 
         for product in content:
             if product != 'info':
-                productNode = self.__tree.insert("", "end", tag=['product', product], text=product, values=('', '', ''),
+                product_node = self.__tree.insert("", "end", tag=['product', product], text=product, values=('', '', ''),
                                                  open=True)
                 for category in content[product]:
                     if category == 'info':
-                        infoFolder = self.__tree.insert(productNode, "end",
+                        info_folder = self.__tree.insert(product_node, "end",
                                                         tag=['info', 'category', product + '/' + category],
                                                         text=category,
                                                         values=('', '', ''), open=True)
-                        for infoName in content[product][category]:
+                        for info_name in content[product][category]:
                             field_value = ''
-                            if type(content[product][category][infoName]) is list:
-                                field_value = ','.join(content[product][category][infoName])
+                            if type(content[product][category][info_name]) is list:
+                                field_value = ','.join(content[product][category][info_name])
                             else:
-                                field_value = content[product][category][infoName]
-                            self.__tree.insert(infoFolder, "end", tag=['info', product + '/' + infoName],
-                                               text=infoName + ': ' + field_value, values=('', '', ''), open=True)
+                                field_value = content[product][category][info_name]
+                            self.__tree.insert(info_folder, "end", tag=['info', product + '/' + info_name],
+                                               text=info_name + ': ' + field_value, values=('', '', ''), open=True)
                     else:
-                        categoryFolder = self.__tree.insert(productNode, "end",
+                        category_folder = self.__tree.insert(product_node, "end",
                                                             tag=['category', product + '/' + category], text=category,
                                                             values=('', '', ''), open=True)
                         for element in content[product][category]:
                             if element.get('file') is not None:
                                 file = element['file']
-                                lastMod = file['lastmod']
-                                node_id = self.__tree.insert(categoryFolder, "end", text=file['name'],
+                                last_mod = file['lastmod']
+                                node_id = self.__tree.insert(category_folder, "end", text=file['name'],
                                                              tag=['file', product + '/' + category],
                                                              values=(convert_size(file['size']),
-                                                                     utcTime2Str(strIsoUTCTime2DateTime(lastMod)),
+                                                                     utcTime2Str(strIsoUTCTime2DateTime(last_mod)),
                                                                      file['author(s)'], file['version'], file['url']))
-                                if selection_set != None:
-                                    dataPath = product + '/' + category
-                                    if dataPath == selection_set[0] and file['name'] == selection_set[1]:
+                                if selection_set is not None:
+                                    data_path = product + '/' + category
+                                    if data_path == selection_set[0] and file['name'] == selection_set[1]:
                                         self.__tree.selection_set(node_id)
                                         self.__tree.focus(node_id)
 

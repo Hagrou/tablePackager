@@ -6,6 +6,7 @@
 - Merge README.md and help.md
 - Gen help.html at build time
 - .pov file management
+- Image rotation in editor
 
 ### Bug Fixes
 - Fix version variable error
