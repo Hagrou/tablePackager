@@ -1,27 +1,27 @@
-import logging
-from pprint import pprint
-from tkinter import filedialog
 from tkinter import *
+from tkinter import filedialog
 from tkinter.ttk import *
-from packager.tools.observer import *
-from packager.tools.toolbox import *
-from packager.tools.toolTip import *
 
 
 class ConfigViewer(Frame):
-    def __init__(self, window, baseModel, **kwargs):
+    def __init__(self, window, base_model, **kwargs):
         Frame.__init__(self, window, width=200, height=100, **kwargs)
 
         self.__parent = window
-        self.__baseModel = baseModel
+        self.__baseModel = base_model
         self.__root = window
         self.__topLevel = None
-        self.__btDirImage = PhotoImage(file=baseModel.base_dir + "images/btDir.png")
+        self.__btDirImage = PhotoImage(file=base_model.base_dir + "images/btDir.png")
+        self.__is_hide = True
 
     def hide(self):
         self.__topLevel.withdraw()
+        self.__is_hide = True
 
     def show(self):
+        if not self.__is_hide:
+            return
+        self.__is_hide = False
         self.__topLevel = Toplevel(self.__parent)
         self.__topLevel.wm_title("Configuration")
         self.__topLevel.protocol('WM_DELETE_WINDOW', self.on_closing)
@@ -36,7 +36,7 @@ class ConfigViewer(Frame):
         self.__visualPinballPathEntry.grid(column=1, row=0, padx=2, pady=2)
         self.__visualPinballPathEntry.insert(END, self.__baseModel.visual_pinball_path)
         self.__visualPinballPathDirBt = Button(self.__infoFrame, image=self.__btDirImage,
-                                               command=self.onChooseVisualPinballPathDir)
+                                               command=self.on_choose_visual_pinball_path_dir)
         self.__visualPinballPathDirBt.grid(column=2, row=0, sticky=E, padx=2, pady=2)
 
         self.__pinballXPathLabel = Label(self.__infoFrame, text="Pinball X path: ")
@@ -45,7 +45,7 @@ class ConfigViewer(Frame):
         self.__pinballXPathPathEntry.grid(column=1, row=1, padx=2, pady=2)
         self.__pinballXPathPathEntry.insert(END, self.__baseModel.pinballX_path)
         self.__pinballXPathPathDirBt = Button(self.__infoFrame, image=self.__btDirImage,
-                                              command=self.onChoosePinballXPathDir)
+                                              command=self.on_choose_pinball_x_path_dir)
         self.__pinballXPathPathDirBt.grid(column=2, row=1, sticky=E, padx=2, pady=2)
 
         self.__pinupSystemPathLabel = Label(self.__infoFrame, text="Pinball X path: ")
@@ -65,26 +65,31 @@ class ConfigViewer(Frame):
         self.__btCancel.grid(row=2, column=0, sticky=W)
 
     def on_closing(self):
-        print("closing")
         self.hide()
 
-    def onChooseVisualPinballPathDir(self):
+    def on_choose_visual_pinball_path_dir(self):
+        self.__is_hide = True
         path = filedialog.askdirectory(initialdir=self.__visualPinballPathEntry.get())
-        if path != '':
-            self.__visualPinballPathEntry.delete(0, 'end')
-            self.__visualPinballPathEntry.insert(END, path)
+        if path is None or path == '':
+            return
+        self.__visualPinballPathEntry.delete(0, 'end')
+        self.__visualPinballPathEntry.insert(END, path)
 
-    def onChoosePinballXPathDir(self):
+    def on_choose_pinball_x_path_dir(self):
+        self.__is_hide = True
         path = filedialog.askdirectory(initialdir=self.__pinballXPathPathEntry.get())
-        if path != '':
-            self.__pinballXPathPathEntry.delete(0, 'end')
-            self.__pinballXPathPathEntry.insert(END, path)
+        if path is None or path == '':
+            return
+        self.__pinballXPathPathEntry.delete(0, 'end')
+        self.__pinballXPathPathEntry.insert(END, path)
 
     def on_choose_pinup_system_path_dir(self):
+        self.__is_hide = True
         path = filedialog.askdirectory(initialdir=self.__pinupSystemPathEntry.get())
-        if path != '':
-            self.__pinupSystemPathEntry.delete(0, 'end')
-            self.__pinupSystemPathEntry.insert(END, path)
+        if path is None or path == '':
+            return
+        self.__pinupSystemPathEntry.delete(0, 'end')
+        self.__pinupSystemPathEntry.insert(END, path)
 
     def on_save(self):
         self.__baseModel.config.set('visual_pinball_path', self.__visualPinballPathEntry.get())

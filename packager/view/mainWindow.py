@@ -24,12 +24,12 @@ class MainWindow(Observer,Observable):
         self.__window.iconbitmap("images/tablePackager_128x128.ico")
         # create a toplevel menu
         self.__menubar = Menu(self.__window)
-        self.__menubar.add_command(label="Options", command=self.onOptionMenu)
+        self.__menubar.add_command(label="Options", command=self.on_option_menu)
 
         self.__helpMenu = Menu(self.__menubar, tearoff=0)
-        self.__helpMenu.add_command(label="Getting Start", command=self.onHelpMenu)
+        self.__helpMenu.add_command(label="Getting Start", command=self.on_help_menu)
         self.__helpMenu.add_separator()
-        self.__helpMenu.add_command(label="About", command=self.onHelpMenu)
+        self.__helpMenu.add_command(label="About", command=self.on_help_menu)
         self.__menubar.add_cascade(label="Help", menu=self.__helpMenu)
 
 
@@ -129,10 +129,10 @@ class MainWindow(Observer,Observable):
         except Exception as Err:
             print(Err)
 
-    def onOptionMenu(self):
+    def on_option_menu(self):
         self.__configViewer.show()
 
-    def onHelpMenu(self):
+    def on_help_menu(self):
         path=os_path.abspath(os_path.split(__file__)[0])
 
         url = 'file://%s/../help/help.html' % path
