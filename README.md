@@ -9,6 +9,8 @@ deploy it on you pincab or distribute it on the web.
 
 For the moment, you can extract table and media files from Pinball X, PinUp System and Visual Pinball X.
 
+It is also possible to create a table package from scratch.
+
 A package can be installed on Pin Up System / Pinball X and Visual Pinball
 
 ![alt text](packager/images/tablePackagerPrinciple.png#medium)
@@ -51,8 +53,8 @@ At the end of installation, you should see something like this:
 
 ###<a name="Upgrade-Table-Packager"></a>Upgrade Table Packager
 
-To upgrade Table Packager with a new version, you must To upgrade the software
- you must first uninstall the current version (the packages are kept)
+To upgrade Table Packager with a new version, you must first uninstall the current version 
+(the packages are kept) and then install the new one.
  
  
 ##<a name="Run-Package-Installer"></a>Run Package Installer
@@ -306,3 +308,11 @@ Logiciel supportés:
 
 https://docs.google.com/spreadsheets/d/1mneCSviXWAZtmQyMBWCFge-FLfZDapdqttQ-8l8oX_k/edit#gid=952993907
 
+# Donate - Contribute to Table Packager
+
+Donations to Table Packager support the development of the project. As you probably know, 
+developing applications takes much time and resources. Your donation will make it possible 
+to keep up the current development standard.
+
+[![Donate](https://www.paypalobjects.com/en_US/FR/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PHYZNFJ4FPQNY)
+    
