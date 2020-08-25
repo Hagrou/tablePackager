@@ -40,6 +40,7 @@ class PackageEditorViewer(Frame, Observer):
         self.__renameFileViewer = RenameFileViewer(self, baseModel)
         self.__renameFileViewer.attach(self)
         self.__visible = False
+        self.__last_dir = self.__baseModel.package_path
 
     @property
     def baseModel(self):
@@ -332,9 +333,10 @@ class PackageEditorViewer(Frame, Observer):
 
         if 'UltraDMD/content' in item['tags']:
             ultraDMDDir = filedialog.askdirectory(parent=self.__topLevel,
-                                                  initialdir=self.__baseModel.package_path,
+                                                  initialdir=self.__self.__last_dir,
                                                   title="Select UltraDMD Directory to import")
             self.__packageEditorModel.add_ultra_dmd(self.__topLevel, item['tags'][-1], ultraDMDDir)
+            self.__self.__last_dir=ultraDMDDir
             return
 
         if 'VPinMAME/cfg' in item['tags']:
@@ -357,15 +359,16 @@ class PackageEditorViewer(Frame, Observer):
 
         if accepted_files == (("all files", "*.*")):
             src_file = filedialog.askopenfilename(parent=self.__topLevel,
-                                                  initialdir=self.__baseModel.package_path,
+                                                  initialdir=self.__last_dir,
                                                   title="Select file")  # crash if filetypes contain only ("all files", "*.*") !?
         else:
             src_file = filedialog.askopenfilename(parent=self.__topLevel,
-                                                  initialdir=self.__baseModel.package_path,
+                                                  initialdir=self.__last_dir,
                                                   title="Select file",
                                                   filetypes=accepted_files)
 
         if src_file != '':
+            self.__last_dir=src_file
             self.__packageEditorModel.add_file(self.__topLevel, item['tags'][-1], src_file, required_name)
 
     def on_del_file(self):
