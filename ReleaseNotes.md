@@ -16,7 +16,7 @@
 - Give possibility to add a rom file even the rom name has not been 
 - Add tablePackager icon on each window
 - Fix Directory Chooser popup: use last directory by default
-
+- Fix Error on import package canceling
 
 ! Bug: On peut ouvrir plusieurs fenetre de configuration
 ! TODO: garder une liste de roms? => préciser la default?
