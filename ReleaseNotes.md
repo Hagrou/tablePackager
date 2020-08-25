@@ -8,12 +8,15 @@
 - .pov file management
 - Image rotation in editor
 
+
 ### Bug Fixes
 - Fix version variable error
 - Fix multiples roms in vpx file (when one is commented)
 - Fix not found rom for Star War Trilogy
 - Give possibility to add a rom file even the rom name has not been 
 - Add tablePackager icon on each window
+- Fix Directory Chooser popup: use last directory by default
+
 
 ! Bug: On peut ouvrir plusieurs fenetre de configuration
 ! TODO: garder une liste de roms? => préciser la default?
