@@ -58,7 +58,8 @@ class PackageEditorViewer(Frame, Observer):
         self.__topLevel = Toplevel(self.__parent)
         self.__topLevel.wm_title("%s package" % self.packageEditorModel.currentPackage['name'])
         self.__topLevel.protocol('WM_DELETE_WINDOW', self.on_closing)
-        self.__topLevel.iconbitmap("images/tablePackager_128x128.ico")
+
+        self.__topLevel.iconbitmap(self.baseModel.base_dir + "images/tablePackager_128x128.ico")
         # =================================================================
         self.__infoFrame = Frame(self.__topLevel)
         self.__packageNameLabel = Label(self.__infoFrame, text="Package Name: ")
@@ -336,7 +337,7 @@ class PackageEditorViewer(Frame, Observer):
                                                   initialdir=self.__self.__last_dir,
                                                   title="Select UltraDMD Directory to import")
             self.__packageEditorModel.add_ultra_dmd(self.__topLevel, item['tags'][-1], ultraDMDDir)
-            self.__self.__last_dir=ultraDMDDir
+            self.__self.__last_dir = ultraDMDDir
             return
 
         if 'VPinMAME/cfg' in item['tags']:
@@ -368,7 +369,7 @@ class PackageEditorViewer(Frame, Observer):
                                                   filetypes=accepted_files)
 
         if src_file != '':
-            self.__last_dir=src_file
+            self.__last_dir = src_file
             self.__packageEditorModel.add_file(self.__topLevel, item['tags'][-1], src_file, required_name)
 
     def on_del_file(self):
@@ -407,7 +408,6 @@ class PackageEditorViewer(Frame, Observer):
         item = self.__tree.item(self.__tree.focus())
         self.__packageEditorModel.down_file(self, item['tags'][-1], item['text'])
 
-
     def __rotate_image(self, item, angle: int):
         item = self.__tree.item(self.__tree.focus())
         if 'file' in item['tags']:
@@ -426,6 +426,7 @@ class PackageEditorViewer(Frame, Observer):
 
     def on_rotate_right_image(self) -> None:
         self.__rotate_image(self.__tree.item(self.__tree.focus()), -90)
+
     def on_rotate_left_image(self) -> None:
         self.__rotate_image(self.__tree.item(self.__tree.focus()), 90)
 
@@ -439,14 +440,15 @@ class PackageEditorViewer(Frame, Observer):
 
         for product in content:
             if product != 'info':
-                product_node = self.__tree.insert("", "end", tag=['product', product], text=product, values=('', '', ''),
-                                                 open=True)
+                product_node = self.__tree.insert("", "end", tag=['product', product], text=product,
+                                                  values=('', '', ''),
+                                                  open=True)
                 for category in content[product]:
                     if category == 'info':
                         info_folder = self.__tree.insert(product_node, "end",
-                                                        tag=['info', 'category', product + '/' + category],
-                                                        text=category,
-                                                        values=('', '', ''), open=True)
+                                                         tag=['info', 'category', product + '/' + category],
+                                                         text=category,
+                                                         values=('', '', ''), open=True)
                         for info_name in content[product][category]:
                             field_value = ''
                             if type(content[product][category][info_name]) is list:
@@ -457,8 +459,8 @@ class PackageEditorViewer(Frame, Observer):
                                                text=info_name + ': ' + field_value, values=('', '', ''), open=True)
                     else:
                         category_folder = self.__tree.insert(product_node, "end",
-                                                            tag=['category', product + '/' + category], text=category,
-                                                            values=('', '', ''), open=True)
+                                                             tag=['category', product + '/' + category], text=category,
+                                                             values=('', '', ''), open=True)
                         for element in content[product][category]:
                             if element.get('file') is not None:
                                 file = element['file']

@@ -21,9 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReleaseNotes.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReleaseNotes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/help/genHelp.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/help/genHelp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/help/help-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/packager/help/help-menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/tablePackager.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/tablePackager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packager/view/configViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/configViewer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/fileInfoViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/fileInfoViewer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packager/view/mainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/mainWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/packageEditorViewer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +57,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -61,19 +69,19 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager" />
+      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\tablePackager" />
+      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\tablePackager\pincab" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\packager\help" />
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\packager\view" />
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\packager\pincab" />
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager" />
-      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\tablePackager" />
-      <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager\tablePackager\pincab" />
-    </key>
   </component>
-  <component name="RunManager" selected="Python.tablePackager-x64">
+  <component name="RunManager" selected="Python.build_32_msi">
     <configuration name="build_32_msi" type="PythonConfigurationType" factoryName="Python">
       <module name="tablePackager" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -309,6 +317,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="227" y="272" key="#xdebugger.XInspectDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594634057872" />
+    <state x="2563" y="376" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1598475633615">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2563" y="376" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598475633615" />
     <state width="484" height="466" key="DebuggerActiveHint" timestamp="1595452443587">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -322,53 +334,54 @@
     </state>
     <state x="2605" y="381" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595450975922" />
     <state x="685" y="381" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595189195586" />
-    <state width="1549" height="224" key="GridCell.Tab.0.bottom" timestamp="1598389921525">
+    <state width="1549" height="224" key="GridCell.Tab.0.bottom" timestamp="1598480112966">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1549" height="224" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598389921525" />
-    <state width="1664" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1549" height="224" key="GridCell.Tab.0.center" timestamp="1598389921525">
+    <state width="1549" height="224" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598480112966" />
+    <state width="1549" height="224" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598474062400" />
+    <state width="1549" height="224" key="GridCell.Tab.0.center" timestamp="1598480112965">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1549" height="224" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598389921525" />
-    <state width="1664" height="295" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352108" />
-    <state width="1549" height="224" key="GridCell.Tab.0.left" timestamp="1598389921525">
+    <state width="1549" height="224" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598480112965" />
+    <state width="1549" height="224" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598474062400" />
+    <state width="1549" height="224" key="GridCell.Tab.0.left" timestamp="1598480112965">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1549" height="224" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598389921525" />
-    <state width="1664" height="295" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352108" />
-    <state width="1549" height="224" key="GridCell.Tab.0.right" timestamp="1598389921525">
+    <state width="1549" height="224" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598480112965" />
+    <state width="1549" height="224" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598474062400" />
+    <state width="1549" height="224" key="GridCell.Tab.0.right" timestamp="1598480112965">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1549" height="224" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598389921525" />
-    <state width="1664" height="295" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1549" height="183" key="GridCell.Tab.1.bottom" timestamp="1598388760902">
+    <state width="1549" height="224" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598480112965" />
+    <state width="1549" height="224" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598474062400" />
+    <state width="1549" height="183" key="GridCell.Tab.1.bottom" timestamp="1598479717402">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1549" height="183" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598388760902" />
+    <state width="1549" height="183" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598479717402" />
     <state width="1664" height="295" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1549" height="183" key="GridCell.Tab.1.center" timestamp="1598388760902">
+    <state width="1549" height="183" key="GridCell.Tab.1.center" timestamp="1598479717402">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1549" height="183" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598388760902" />
+    <state width="1549" height="183" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598479717402" />
     <state width="1664" height="295" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1549" height="183" key="GridCell.Tab.1.left" timestamp="1598388760902">
+    <state width="1549" height="183" key="GridCell.Tab.1.left" timestamp="1598479717402">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1549" height="183" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598388760902" />
+    <state width="1549" height="183" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598479717402" />
     <state width="1664" height="295" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
-    <state width="1549" height="183" key="GridCell.Tab.1.right" timestamp="1598388760902">
+    <state width="1549" height="183" key="GridCell.Tab.1.right" timestamp="1598479717402">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1549" height="183" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598388760902" />
+    <state width="1549" height="183" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598479717402" />
     <state width="1664" height="295" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595190352109" />
     <state x="-1" y="43" width="998" height="708" key="SettingsEditor" timestamp="1595189400796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1" y="43" width="998" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1595189400796" />
-    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1595179504748">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1598479644129">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1598479644129" />
     <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1595179504748" />
   </component>
   <component name="XDebuggerManager">
@@ -395,19 +408,19 @@
           <option name="timeStamp" value="165" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packager/help/genHelp.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="213" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packager/pincab/test_visualPinball.py</url>
           <line>80</line>
           <option name="timeStamp" value="221" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packager/view/packageEditorViewer.py</url>
-          <line>469</line>
+          <line>471</line>
           <option name="timeStamp" value="227" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/packager/help/genHelp.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="228" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

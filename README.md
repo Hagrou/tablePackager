@@ -295,7 +295,7 @@ Run this command to build tablePackager.msi
 The result will be found in the `tablePackager\dist` directory.
     
     
-Logiciel supportés:
+Supported softwares:
 
     Visual Pinball 9
     Visual Pinball X
@@ -308,11 +308,11 @@ Logiciel supportés:
 
 https://docs.google.com/spreadsheets/d/1mneCSviXWAZtmQyMBWCFge-FLfZDapdqttQ-8l8oX_k/edit#gid=952993907
 
-# Donate - Contribute to Table Packager
+# <a name="Donate"></a>Contribute to Table Packager
 
-Donations to Table Packager support the development of the project. As you probably know, 
-developing applications takes much time and resources. Your donation will make it possible 
-to keep up the current development standard.
+Donations to Table Packager support the development of the project. 
+If you find this software useful, you can sponsor its development with
+ a donation.
 
 [![Donate](https://www.paypalobjects.com/en_US/FR/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PHYZNFJ4FPQNY)
     

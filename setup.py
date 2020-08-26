@@ -4,7 +4,7 @@ import os.path
 import shutil
 
 from packager.tablePackager import version
-from packager.help.genHelp import gen_help
+from packager.help.genHelp import *
 
 PYTHON_INSTALL_DIR = os.path.dirname(os.path.dirname(os.__file__))
 os.environ['TCL_LIBRARY'] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', 'tcl8.6')
@@ -56,8 +56,8 @@ if os.path.exists('build'):
     shutil.rmtree('build', ignore_errors=True)
 
 print("Generate packager/help/help.html")
-gen_help('./README.md','packager/help')
-
+gen_help('./README.md','packager/help',version)
+gen_about('./about.md','packager/help',version)
 
 setup(name='tablePackager',
       version=version,

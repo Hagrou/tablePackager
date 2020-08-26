@@ -1,5 +1,13 @@
 # Table Packager Release Notes
 
+## What's New in Version 1.1.2
+
+### What's New
+- add "about age"
+
+### Bug Fixes
+- Fix stupid !@ bug on icon path for installed package
+
 ## What's New in Version 1.1.1
 
 ### What's New

@@ -22,7 +22,8 @@ class FileInfoViewer(Frame, Observable):
     def show(self, package, dataPath, item):
         self.notify_all(self, events=['<<DISABLE_ALL>>'])  # update listeners
         self.__topLevel = Toplevel(self.__parent)
-        self.__topLevel.iconbitmap("images/tablePackager_128x128.ico")
+
+        self.__topLevel.iconbitmap(self.__base_model.base_dir + "images/tablePackager_128x128.ico")
         self.__topLevel.wm_title("File ")
         self.__topLevel.protocol('WM_DELETE_WINDOW', self.onClosing)
 
