@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ce2e04c-4745-4224-b49d-06f441428f03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ReleaseNotes.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReleaseNotes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packager/view/configViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/packager/view/configViewer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +71,7 @@
       <recent name="C:\Users\philippe\Documents\Atelier\flipper\tablePackager" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.build_32_msi">
+  <component name="RunManager" selected="Python.build_64_msi">
     <configuration name="build_32_msi" type="PythonConfigurationType" factoryName="Python">
       <module name="tablePackager" />
       <option name="INTERPRETER_OPTIONS" value="" />

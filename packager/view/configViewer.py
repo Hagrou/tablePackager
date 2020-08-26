@@ -25,7 +25,7 @@ class ConfigViewer(Frame):
         self.__topLevel = Toplevel(self.__parent)
         self.__topLevel.wm_title("Configuration")
         self.__topLevel.protocol('WM_DELETE_WINDOW', self.on_closing)
-        self.__topLevel.iconbitmap(self.__base_model.base_dir + "images/tablePackager_128x128.ico")
+        self.__topLevel.iconbitmap(self.__baseModel.base_dir + "images/tablePackager_128x128.ico")
 
         # =================================================================
         self.__infoFrame = Frame(self.__topLevel)
