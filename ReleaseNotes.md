@@ -3,7 +3,7 @@
 ## What's New in Version 1.1.2
 
 ### What's New
-- add "about age"
+- add "about page"
 
 ### Bug Fixes
 - Fix stupid !@ bug on icon path for installed package
