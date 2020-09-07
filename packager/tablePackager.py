@@ -5,7 +5,7 @@ from packager.model.baseModel import *
 from packager.tools.logHandler import *
 
 # Major.minor.fix; Minor number++ when package format/info change
-version = '1.1.2'
+version = '1.1.3'
 package_version = '1.0'
 
 

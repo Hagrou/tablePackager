@@ -1,4 +1,5 @@
 from packager.tools.toolbox import *
+from packager.model.package import Package
 import subprocess
 import tkinter
 
@@ -20,12 +21,12 @@ class VisualPinball:
     def visual_pinball_path(self):
         return self.baseModel.visual_pinball_path
 
-    def get_rom_name(self, tableName):
+    def get_rom_name(self, table_name: str) -> list:
         if not os.path.exists(self.visual_pinball_path):
             raise ValueError('Visual Pinball not found(%s)' % self.visual_pinball_path)
 
-        vpx_file = Path(self.visual_pinball_path + '/tables/' + tableName + '.vpx')
-        vpt_file = Path(self.visual_pinball_path + '/tables/' + tableName + '.vpt')
+        vpx_file = Path(self.visual_pinball_path + '/tables/' + table_name + '.vpx')
+        vpt_file = Path(self.visual_pinball_path + '/tables/' + table_name + '.vpt')
 
         if os.path.exists(vpx_file):
             vp_file = vpx_file
@@ -35,7 +36,7 @@ class VisualPinball:
             raise ValueError('table not found (%s) (vpt or vpx)' % self.visual_pinball_path + '/tables/' + package.name)
         return self.extract_rom_name(vp_file)
 
-    def extract(self, package):
+    def extract(self, package: Package) -> None:
         if not os.path.exists(self.visual_pinball_path):
             raise ValueError('Visual Pinball not found(%s)' % self.visual_pinball_path)
 
@@ -83,7 +84,7 @@ class VisualPinball:
         if music_file.exists():
             package.add_file(music_file, 'media/Audio')
 
-    def deploy(self, package):
+    def deploy(self, package: Package) -> None:
         self.logger.info("* Visual Pinball X files")
         if not os.path.exists(self.visual_pinball_path):
             raise ValueError('Visual Pinball not found(%s)' % self.visual_pinball_path)
@@ -96,7 +97,7 @@ class VisualPinball:
                  self.baseModel.visual_pinball_path + "/tables")
         return True
 
-    def delete(self, table_name):
+    def delete(self, table_name: str) -> None:
         if not os.path.exists(self.visual_pinball_path):
             raise ValueError('Visual Pinball not found(%s)' % self.visual_pinball_path)
 
@@ -136,10 +137,10 @@ class VisualPinball:
         active_rom = list(set(all_roms) - set(escape_rom))
         return active_rom + escape_rom
 
-    def extract_table_name(self, vpt_file):
+    def extract_table_name(self, vpt_file: Path) -> list:
         return extract_string_from_binary_file(vpt_file, br'TableName[ ]*=[ ]*"([a-zA-Z0-9_]+)"')
 
-    def extract_pov_file(self, package, vp_file):
-        cmdLine = ["%s/VPinballX.exe" % self.visual_pinball_path, "-pov", vp_file]
+    def extract_pov_file(self, package: Package, vp_file: Path) -> None:
+        cmd_line = ["%s/VPinballX.exe" % self.visual_pinball_path, "-pov", vp_file]
         self.logger.info("%s/VPinballX.exe -pov %s" % (self.visual_pinball_path, vp_file))
-        subprocess.call(cmdLine)
+        subprocess.call(cmd_line)

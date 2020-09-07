@@ -139,25 +139,25 @@ class InstalledTablesModel(Observable):
             self.logger.info("--[Working on '%s']------------------" % (table['name']))
 
             ultraDMD=''
-            romName=''
+            rom_list=[]
             isPackage=False
             manifest=Manifest(table['name'], self.baseModel.version, self.baseModel.package_version)
             try:
                 manifest.open(self.baseModel.installed_path, installed=True)
                 isPackage=True
                 if manifest.exists_field('visual pinball/info/romName'):
-                    romName=manifest.get_field('visual pinball/info/romName')
+                    rom_list=manifest.get_field('visual pinball/info/romName')
                 if manifest.exists_field('visual pinball/info/ultraDMD'):
                     ultraDMD=manifest.get_field('visual pinball/info/ultraDMD')
             except:
-                romName=self.baseModel.visualPinball.get_rom_name(table['name']) # use package.manifest if exists
+                rom_list=self.baseModel.visualPinball.get_rom_name(table['name']) # use package.manifest if exists
 
             self.baseModel.visualPinball.delete(table['name'])
 
-            self.baseModel.vpinMame.delete(table['name'],romName)
+            self.baseModel.vpinMame.delete(table['name'],rom_list)
             if isPackage:
                 if ultraDMD!='':
-                    self.baseModel.ultraDMD.delete(table['name'],dirName=ultraDMD)  # use package.manifest if exists
+                    self.baseModel.ultraDMD.delete(table['name'], dir_name=ultraDMD)  # use package.manifest if exists
             else:
                 self.baseModel.ultraDMD.delete(table['name']) # use package.manifest if exists
             self.baseModel.pinballX.delete(table['name'])

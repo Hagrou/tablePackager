@@ -62,7 +62,7 @@ def copytree(logger, src, dst, symlinks=False, ignore=None):
                 shutil.copy2(src_path, dst_path)
 
 
-def extract_string_from_binary_file(vpx_file, pattern) -> list:
+def extract_string_from_binary_file(vpx_file:str, pattern: str) -> list:
     roms = []
     p = re.compile(pattern)
     with open(vpx_file, 'rb', 0) as file, mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ) as s:

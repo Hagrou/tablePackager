@@ -9,7 +9,6 @@ from pathlib import *
 from pprint import pprint
 import datetime
 
-
 from packager.tools.exception import *
 from packager.tools.toolbox import *
 from packager.tablePackager import *
@@ -20,7 +19,7 @@ class Manifest:
         self.__content = collections.OrderedDict()
         self.__name = name
         self.__version = version
-        self.__package_version=package_version
+        self.__package_version = package_version
 
     @property
     def content(self):
@@ -92,7 +91,7 @@ class Manifest:
         self.content['media']['TopperVideos'] = []
         self.content['media']['ScreenGrabs'] = []
 
-    def open(self, path, installed=False):
+    def open(self, path: Path, installed: bool = False) -> None:
         if not os.path.exists(path):
             raise PackageException("Manifest not found at %s" % path)
         try:
@@ -105,7 +104,7 @@ class Manifest:
         except:
             raise PackageException("Manifest not found at %s" % (path + '/' + self.name + '/' + self.filename))
 
-    def save(self, path):
+    def save(self, path: Path) -> None:
         self.set_field('info/lastmod', utcTime2IsoStr())  # update last modification date
         try:
             with open(path + '/' + self.name + '/' + self.filename, 'w') as outfile:
@@ -113,7 +112,7 @@ class Manifest:
         except IOError as e:
             raise PackageException("Manifest write error %s" % str(e))
 
-    def save_as(self, path, name):
+    def save_as(self, path: Path, name:str) -> None:
         self.set_field('info/lastmod', utcTime2IsoStr())  # update last modification date
         try:
             with open(path + '/' + self.name + '/' + name + '.manifest.json', 'w') as outfile:
@@ -121,26 +120,26 @@ class Manifest:
         except IOError as e:
             raise PackageException("Manifest write error %s" % str(e))
 
-    def rename(self, path, name):
+    def rename(self, path: Path, name: str) -> None:
         os.unlink(path + '/' + self.name + '/' + self.filename)
         self.save_as(path, name)
         self.__name = name
 
-    def set_field(self, field_path, value):
+    def set_field(self, field_path: str, value) -> None:
         content = self.__content
         field_list = field_path.split('/')
         for field in field_list[:-1]:
             content = content[field]
         content[field_list[-1]] = value
 
-    def get_field(self, field_path):
+    def get_field(self, field_path: str):
         content = self.__content
         field_list = field_path.split('/')
         for field in field_list[:-1]:
             content = content[field]
         return content[field_list[-1]]
 
-    def exists_field(self, field_path):
+    def exists_field(self, field_path: str) -> bool:
         content = self.__content
         field_list = field_path.split('/')
         for field in field_list:
@@ -149,7 +148,7 @@ class Manifest:
             content = content[field]
         return True
 
-    def get_file(self, field_path, filename):
+    def get_file(self, field_path:str, filename: str):
         content = self.__content
         field_list = field_path.split('/')
         for type in field_list:
@@ -159,7 +158,7 @@ class Manifest:
                 return (file, content)
         return None, None
 
-    def prev_file_data_path(self, field_path, filename):
+    def prev_file_data_path(self, field_path: str, filename: str):
         prev_file = ''
 
         field_list = field_path.split('/')
@@ -174,7 +173,7 @@ class Manifest:
                 prev_file = key1 + '/' + key2
         return prev_file
 
-    def next_file_data_path(self, field_path, filename):
+    def next_file_data_path(self, field_path:str, filename: str):
         next_file = ''
 
         field_list = field_path.split('/')
@@ -189,37 +188,37 @@ class Manifest:
                 next_file = key1 + '/' + key2
         return next_file
 
-    def exists_file(self, field_path, filename):
+    def exists_file(self, field_path: str, filename: str) -> bool:
         (file, content) = self.get_file(field_path, filename)
         if file is not None:
             return True
         return False
 
-    def del_file(self, field_path, filename):
+    def del_file(self, field_path: str, filename: str) -> bool:
         (file, content) = self.get_file(field_path, filename)
         if file is not None:
             content.remove(file)
             return True
         return False
 
-    def add_file(self, field_path, fullPathSrcFile, mergeManifest=None):
+    def add_file(self, field_path: str, full_path_src_file: str, manifest_to_merge=None):
         mFile = None
 
-        if self.exists_file(field_path, Path(fullPathSrcFile).name):
+        if self.exists_file(field_path, Path(full_path_src_file).name):
             return
 
         file = collections.OrderedDict()
-        file['name'] = Path(fullPathSrcFile).name
-        file['size'] = os.path.getsize(fullPathSrcFile)
-        file['sha1'] = sha1sum(fullPathSrcFile)
+        file['name'] = Path(full_path_src_file).name
+        file['size'] = os.path.getsize(full_path_src_file)
+        file['sha1'] = sha1sum(full_path_src_file)
 
         # looking for an 'installed' manifest info
-        if mergeManifest != None:
-            (mFile, _) = mergeManifest.get_file(field_path, Path(fullPathSrcFile).name)
-        if (mFile != None):
+        if manifest_to_merge is not None:
+            (mFile, _) = manifest_to_merge.get_file(field_path, Path(full_path_src_file).name)
+        if mFile is not None:
             if file['sha1'] != mFile['file']['sha1']:
-                logging.warning("! file '%s/%s' changed" % (Path(fullPathSrcFile).name, field_path))
-                file['lastmod'] = mtime2IsoStr(os.path.getmtime(fullPathSrcFile))  # last modification date
+                logging.warning("! file '%s/%s' changed" % (Path(full_path_src_file).name, field_path))
+                file['lastmod'] = mtime2IsoStr(os.path.getmtime(full_path_src_file))  # last modification date
             else:
                 file['lastmod'] = mFile['file']['lastmod']
             file['author(s)'] = mFile['file']['author(s)']
@@ -229,31 +228,30 @@ class Manifest:
             file['author(s)'] = ''
             file['version'] = ''
             file['url'] = ''
-            file['lastmod'] = mtime2IsoStr(os.path.getmtime(fullPathSrcFile))  # last modification date
+            file['lastmod'] = mtime2IsoStr(os.path.getmtime(full_path_src_file))  # last modification date
 
         field_list = field_path.split('/')
         content = self.__content
-        for type in field_list:
-            content = content[type]
+        for field_type in field_list:
+            content = content[field_type]
         content.append({'file': file})
 
-    def move_file(self, srcFile, src_field_path, dst_field_path):
-        (file, content) = self.get_file(src_field_path, srcFile)
+    def move_file(self, src_file: str, src_field_path: str, dst_field_path: str) -> None:
+        (file, content) = self.get_file(src_field_path, src_file)
         if file is None:
             return
 
         content.remove(file)
-
         field_list = dst_field_path.split('/')
         content = self.__content
         for type in field_list:
             content = content[type]
         content.append(file)
 
-    def rename_file(self, field_path, srcFile, dstFile):
-        (file, content) = self.get_file(field_path, srcFile)
+    def rename_file(self, field_path: str, src_file: str, dst_file: str) -> bool:
+        (file, content) = self.get_file(field_path, src_file)
         if file is not None:
-            file['file']['name'] = dstFile
+            file['file']['name'] = dst_file
             return True
         return False
 
@@ -289,7 +287,7 @@ class Package:
         return self.__directory
 
     @property
-    def baseModel(self) :
+    def baseModel(self):
         return self.__baseModel
 
     @property
@@ -312,7 +310,7 @@ class Package:
         if not os.path.exists(base_dir):
             raise PackageException("Package not found at %s" % base_dir)
         self.__directory = base_dir
-        self.__manifest = Manifest(self.__name,self.baseModel.version, self.baseModel.package_version)
+        self.__manifest = Manifest(self.__name, self.baseModel.version, self.baseModel.package_version)
         self.manifest.open(self.__directory)
         if not self.is_compatible():
             raise PackageException("Packager version is too old, please update it to use this packages")
@@ -323,8 +321,8 @@ class Package:
         if not os.path.exists(self.directory):
             raise PackageException("Package not found at %s" % self.directory)
 
-        fileInError = self.check_files(self.manifest.content, self.directory + '/' + self.name, '')
-        for (field_path, filename) in fileInError:
+        file_in_error = self.check_files(self.manifest.content, self.directory + '/' + self.name, '')
+        for (field_path, filename) in file_in_error:
             self.logger.info("Fix Package Manifest for %s/%s" % (field_path, filename))
             self.__manifest.del_file(field_path.strip('/'), filename)
 
@@ -342,8 +340,8 @@ class Package:
             self.manifest.set_field('info/packager version', '1.1.0')
 
     def check_files(self, content, originPath, filePath):
-        errorList = []
-        if self.__directory == None or self.__manifest == None:
+        error_list = []
+        if self.__directory is None or self.__manifest is None:
             raise PackageException("Package must be openned")
 
         for key, value in content.items():
@@ -352,19 +350,19 @@ class Package:
             elif key == 'file':
                 if not os.path.exists(originPath + '/' + filePath + '/' + value['name']):
                     self.logger.warning('File %s not found in package', filePath + '/' + value['name'])
-                    errorList.append((filePath, value['name']))
+                    error_list.append((filePath, value['name']))
             elif isinstance(value, dict):
-                errorList = errorList + self.check_files(content[key], originPath, filePath + '/' + key)
+                error_list = error_list + self.check_files(content[key], originPath, filePath + '/' + key)
             elif type(value) is list:
                 for item in value:
                     if isinstance(item, dict):
-                        errorList = errorList + self.check_files(item, originPath, filePath + '/' + key)
+                        error_list = error_list + self.check_files(item, originPath, filePath + '/' + key)
 
-        return errorList
+        return error_list
 
     def merge(self, installed=False):
         # read installed manifest
-        self.__mergeManifest = Manifest(self.__name,self.baseModel.version, self.baseModel.package_version)
+        self.__mergeManifest = Manifest(self.__name, self.baseModel.version, self.baseModel.package_version)
         self.__mergeManifest.open(self.__baseModel.installed_path, installed)
 
         # build new manifest
@@ -386,7 +384,7 @@ class Package:
     def save(self):
         self.manifest.save(self.__directory)
 
-    def rename_files(self, newName, path, content):
+    def rename_files(self, new_name, path, content):
         for key, value in content.items():
             if key == 'info':
                 continue
@@ -395,28 +393,28 @@ class Package:
                     self.logger.info("+ rename file '%s'" % (path + '/' + value['name']))
                     os.rename(self.directory + '/' + self.name + '/' + path + '/' + value['name'],
                               self.directory + '/' + self.name + '/' + path + '/' + value['name'].replace(self.name,
-                                                                                                          newName))
-                    value['name'] = value['name'].replace(self.name, newName)
+                                                                                                          new_name))
+                    value['name'] = value['name'].replace(self.name, new_name)
 
             elif isinstance(value, dict):
-                self.rename_files(newName, path + '/' + key, content[key])
+                self.rename_files(new_name, path + '/' + key, content[key])
             elif type(value) is list:
                 for item in value:
                     if isinstance(item, dict):
-                        self.rename_files(newName, path + '/' + key, item)
+                        self.rename_files(new_name, path + '/' + key, item)
 
-    def rename_package(self, newName):
+    def rename_package(self, new_name):
         if not os.path.exists(self.directory):
             raise PackageException("Package not found at %s" % self.directory)
 
-        self.rename_files(newName, '', self.manifest.content)
+        self.rename_files(new_name, '', self.manifest.content)
 
-        self.manifest.rename(self.directory, newName)
+        self.manifest.rename(self.directory, new_name)
         self.logger.info("+ rename directory  '%s'" % (self.name))
 
         os.rename(self.directory + '/' + self.name,
-                  self.directory + '/' + newName)
-        self.__name = newName
+                  self.directory + '/' + new_name)
+        self.__name = new_name
 
     def build_tree(self, baseDir, content):
         if type(content) is list:
@@ -435,7 +433,7 @@ class Package:
     def exists_field(self, field_path):
         return self.manifest.exists_field(field_path)
 
-    def collision_detector(self, src_file: str, dst_file: str, check_sha1: bool= False) -> (Path,bool):
+    def collision_detector(self, src_file: str, dst_file: str, check_sha1: bool = False) -> (Path, bool):
         id_file = 1
         is_same_file = False
 
@@ -476,11 +474,11 @@ class Package:
             self.logger.error(str(e))
             raise e
 
-    def remove_file(self, srcFile, field_path):
-        self.logger.info("+ remove '%s'" % (field_path + '/' + srcFile))
+    def remove_file(self, src_file: str, field_path: str):
+        self.logger.info("+ remove '%s'" % (field_path + '/' + src_file))
         try:
-            os.unlink(self.directory + '/' + self.name + '/' + field_path + '/' + srcFile)
-            self.manifest.del_file(field_path, srcFile)
+            os.unlink(self.directory + '/' + self.name + '/' + field_path + '/' + src_file)
+            self.manifest.del_file(field_path, src_file)
             self.save()
         except OSError as e:
             self.logger.error(str(e))
@@ -498,22 +496,22 @@ class Package:
             self.logger.error(str(e))
             raise e
 
-    def move_file(self, srcFile, src_field_path, dst_field_path):
-        self.logger.info("+ move '%s' -> '%s'" % (src_field_path + '/' + srcFile,
-                                                  dst_field_path + '/' + srcFile))
+    def move_file(self, src_file, src_field_path, dst_field_path):
+        self.logger.info("+ move '%s' -> '%s'" % (src_field_path + '/' + src_file,
+                                                  dst_field_path + '/' + src_file))
 
-        (dstFile, _) = self.collision_detector(self.directory + '/' + self.name + '/' + src_field_path + '/' + srcFile,
-                                               self.directory + '/' + self.name + '/' + dst_field_path + '/' + srcFile,
+        (dstFile, _) = self.collision_detector(self.directory + '/' + self.name + '/' + src_field_path + '/' + src_file,
+                                               self.directory + '/' + self.name + '/' + dst_field_path + '/' + src_file,
                                                check_sha1=False)
 
         try:
-            shutil.move(self.directory + '/' + self.name + '/' + src_field_path + '/' + srcFile,
+            shutil.move(self.directory + '/' + self.name + '/' + src_field_path + '/' + src_file,
                         self.directory + '/' + self.name + '/' + dst_field_path + '/' + dstFile)
-            if srcFile != dstFile:
-                self.manifest.rename_file(src_field_path, srcFile, dstFile)
-                srcFile = dstFile
+            if src_file != dstFile:
+                self.manifest.rename_file(src_field_path, src_file, dstFile)
+                src_file = dstFile
 
-            self.manifest.move_file(srcFile, src_field_path, dst_field_path)  # !! move_file -> same name
+            self.manifest.move_file(src_file, src_field_path, dst_field_path)  # !! move_file -> same name
             self.save()
         except OSError as e:
             self.logger.error(str(e))
@@ -527,20 +525,20 @@ class Package:
         return major_version >= major_packager_version and minor_version >= minor_packager_version
 
     # zip package
-    def pack(self):
+    def pack(self) -> None:
         self.logger.info("* packing table '%s'" % (self.name + self.baseModel.package_extension))
         pack(self.directory + '/' + self.name,
              self.directory,
              self.name + self.baseModel.package_extension)
 
     # unzip package
-    def unpack(self):
+    def unpack(self) -> None:
         self.logger.info("* unpack table '%s'" % (self.name + self.baseModel.package_extension))
         clean_dir(self.baseModel.tmp_path)
         unpack(self.baseModel.package_path + '/' + self.name + self.baseModel.package_extension,
                self.baseModel.tmp_path)
 
-    def exists_file(self, typePath, filename):
+    def exists_file(self, typePath: str, filename: str) -> bool:
         return self.manifest.exists_file(typePath, filename)
 
     def get_first_image(self):

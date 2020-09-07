@@ -1,10 +1,12 @@
 from packager.tools.toolbox import *
+from packager.model.package import Package
 from pathlib import Path
+
 
 class PinballX:
     def __init__(self, logger, baseModel):
-        self.__baseModel=baseModel
-        self.__logger=logger
+        self.__baseModel = baseModel
+        self.__logger = logger
 
     @property
     def logger(self):
@@ -18,14 +20,15 @@ class PinballX:
     def pinballX_path(self):
         return self.__baseModel.pinballX_path
 
-    def getProductPath(self, product):
-        if product=='visual pinball':
+    def get_product_path(self, product: str) -> str:
+        if product == 'visual pinball':
             return 'Visual Pinball'
         return 'Visual Pinball'
 
     def extract(self, table_name, package):
         if not os.path.exists(self.pinballX_path):
-            raise ValueError('PinballX not found (%s)' % self.pinballX_path)
+            self.logger.warning('PinballX not found (%s)' % self.pinballX_path)
+            return
 
         self.logger.info("* Pinball X files")
         for file in Path(self.pinballX_path).glob('**/*%s*' % table_name):
@@ -81,11 +84,12 @@ class PinballX:
                 self.logger.error("New Case! [%s]" % file)
                 break
 
-    def deploy(self, package):
+    def deploy(self, package: Package) -> None:
         self.logger.info("* Deploy Pinball X")
 
         if not os.path.exists(self.pinballX_path):
-            raise ValueError('PinballX not found (%s)' % self.pinballX_path)
+            self.logger.warning('PinballX not found (%s)' % self.pinballX_path)
+            return
 
         if not Path(self.baseModel.tmp_path + "/" + package.name).exists():
             raise ValueError('Path not found (%s)' % self.baseModel.tmp_path + "/" + package.name)
@@ -140,9 +144,10 @@ class PinballX:
                  self.baseModel.tmp_path + "/" + package.name + "/Media/ScreenGrabs",
                  self.baseModel.pinballX_path + "/Media/Visual Pinball/Screen Grabs")
 
-    def delete(self, table_name):
+    def delete(self, table_name: str) -> None:
         if not os.path.exists(self.pinballX_path):
-            raise ValueError('PinballX not found (%s)' % self.pinballX_path)
+            self.logger.warning('PinballX not found (%s)' % self.pinballX_path)
+            return
 
         self.logger.info("* Pinball X files")
         for file in Path(self.pinballX_path).glob('**/%s.*' % table_name):
