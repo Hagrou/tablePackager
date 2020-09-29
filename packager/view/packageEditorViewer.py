@@ -95,17 +95,17 @@ class PackageEditorViewer(Frame, Observer):
                                                       text=utcTime2Str(strIsoUTCTime2DateTime(lastModDate)))
         self.__lastModificationDateValueLabel.grid(column=1, sticky='NW', row=2, padx=2, pady=0)
 
-        self.__packagerVersionLabel = Label(self.__infoFrame,
-                                            text="Packager version: %s" % (
-                                                self.packageEditorModel.package.get_field('info/packager version')))
+        self.__package_version_label = Label(self.__infoFrame,
+                                             text="Package version: %s" % (
+                                                self.packageEditorModel.package.get_field('info/package version')))
 
-        self.__packagerVersionLabel.grid(column=2, row=2, sticky='NW', padx=2, pady=0)
+        self.__package_version_label.grid(column=2, row=2, sticky='NW', padx=2, pady=0)
 
-        self.__packageVersionLabel = Label(self.__infoFrame, text="Version: ")
-        self.__packageVersionLabel.grid(column=0, row=3, sticky='NW', padx=2, pady=0)
-        self.__packageVersionEntry = Entry(self.__infoFrame)
-        self.__packageVersionEntry.grid(column=1, row=3, sticky='NW', padx=2, pady=0)
-        self.__packageVersionEntry.insert(END, self.packageEditorModel.package.get_field('info/package version'))
+        self.__versionLabel = Label(self.__infoFrame, text="Version: ")
+        self.__versionLabel.grid(column=0, row=3, sticky='NW', padx=2, pady=0)
+        self.__versionEntry = Entry(self.__infoFrame)
+        self.__versionEntry.grid(column=1, row=3, sticky='NW', padx=2, pady=0)
+        self.__versionEntry.insert(END, self.packageEditorModel.package.get_field('info/version'))
 
         self.__tableNameLabel = Label(self.__infoFrame, text="Table Name: ")
         self.__tableNameLabel.grid(column=0, row=4, sticky='NW', padx=2, pady=0)
@@ -246,7 +246,7 @@ class PackageEditorViewer(Frame, Observer):
                 'info/table designer(s)': self.__tableDesignerEntry.get(),
                 'info/year': self.__tableYearEntry.get(),
                 'info/theme': self.__themeLabelText.get('1.0', 'end'),
-                'info/package version': self.__packageVersionEntry.get(),
+                'info/version': self.__versionEntry.get(),
                 }
         self.__packageEditorModel.save_package(info)
 

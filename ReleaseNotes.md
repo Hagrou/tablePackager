@@ -1,9 +1,17 @@
 # Table Packager Release Notes
 
-Bug: suppression "Medieval Madness_Redux2.3 => oo"
+## What's New in Version 1.1.3
 
-Choisir PinUp System ou Pinball X (main appchoice)
-Bug Effacement si pas PinballX => passer l'exception + message
+
+### What's New
+- Add Media from POPMedia 
+### Bug Fixes
+
+- Fix bug if PinballX is not installed
+- Fix Package Version and upgrade error
+- Fix extraction suffix error
+
+
 ## What's New in Version 1.1.2
 
 ### What's New

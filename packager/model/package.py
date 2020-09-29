@@ -15,10 +15,9 @@ from packager.tablePackager import *
 
 
 class Manifest:
-    def __init__(self, name, version, package_version):
+    def __init__(self, name: str, package_version:str) -> None:
         self.__content = collections.OrderedDict()
         self.__name = name
-        self.__version = version
         self.__package_version = package_version
 
     @property
@@ -28,10 +27,6 @@ class Manifest:
     @property
     def name(self) -> str:
         return self.__name
-
-    @property
-    def version(self) -> str:
-        return self.__version
 
     @property
     def package_version(self) -> str:
@@ -44,14 +39,14 @@ class Manifest:
     def __str__(self):
         return pprint(self.__content)
 
-    def new(self):
+    def new(self) -> None:
         self.content['info'] = collections.OrderedDict()
-        self.content['info']['packager version'] = self.version
         self.content['info']['package name'] = self.name
         self.content['info']['package version'] = self.package_version
         self.content['info']['creation date'] = utcTime2IsoStr()
         self.content['info']['lastmod'] = self.content['info']['creation date']
 
+        self.content['info']['version'] = ''
         self.content['info']['table designer(s)'] = ''
         self.content['info']['manufacturer'] = ''
         self.content['info']['table name'] = ''
@@ -88,15 +83,16 @@ class Manifest:
         self.content['media']['Audio'] = []
         self.content['media']['AudioLaunch'] = []
         self.content['media']['Topper'] = []
-        self.content['media']['TopperVideos'] = []
         self.content['media']['ScreenGrabs'] = []
+        self.content['media']['TopperVideos'] = []  # new 1.1
+        self.content['media']['Loading'] = []  # new 1.2
 
     def open(self, path: Path, installed: bool = False) -> None:
         if not os.path.exists(path):
             raise PackageException("Manifest not found at %s" % path)
         try:
             if installed:
-                manifest_path = path + '/' + self.filename
+                manifest_path = path + '/' + self.filename  # search manifest in installed table dir
             else:
                 manifest_path = path + '/' + self.name + '/' + self.filename
             with open(manifest_path) as data_file:
@@ -112,7 +108,7 @@ class Manifest:
         except IOError as e:
             raise PackageException("Manifest write error %s" % str(e))
 
-    def save_as(self, path: Path, name:str) -> None:
+    def save_as(self, path: Path, name: str) -> None:
         self.set_field('info/lastmod', utcTime2IsoStr())  # update last modification date
         try:
             with open(path + '/' + self.name + '/' + name + '.manifest.json', 'w') as outfile:
@@ -136,6 +132,7 @@ class Manifest:
         content = self.__content
         field_list = field_path.split('/')
         for field in field_list[:-1]:
+            if field == '': continue
             content = content[field]
         return content[field_list[-1]]
 
@@ -148,14 +145,14 @@ class Manifest:
             content = content[field]
         return True
 
-    def get_file(self, field_path:str, filename: str):
+    def get_file(self, field_path: str, filename: str):
         content = self.__content
         field_list = field_path.split('/')
-        for type in field_list:
-            content = content[type]
+        for field_type in field_list:
+            content = content[field_type]
         for file in content:
             if file['file']['name'] == filename:
-                return (file, content)
+                return file, content
         return None, None
 
     def prev_file_data_path(self, field_path: str, filename: str):
@@ -173,7 +170,7 @@ class Manifest:
                 prev_file = key1 + '/' + key2
         return prev_file
 
-    def next_file_data_path(self, field_path:str, filename: str):
+    def next_file_data_path(self, field_path: str, filename: str):
         next_file = ''
 
         field_list = field_path.split('/')
@@ -201,34 +198,38 @@ class Manifest:
             return True
         return False
 
-    def add_file(self, field_path: str, full_path_src_file: str, manifest_to_merge=None):
-        mFile = None
+    def add_file_info(self, field_path: str, file: dict):
+        field_list = field_path.split('/')
+        content = self.__content
+        for field_type in field_list:
+            if field_type == '':
+                continue
+            content = content[field_type]
+        content.append({'file': file})
 
-        if self.exists_file(field_path, Path(full_path_src_file).name):
+    def add_file(self, field_path: str, full_path_src_file: str):
+        manifest_file = None
+
+        # check if file is already set in manifest
+        (file, content) = self.get_file(field_path, Path(full_path_src_file).name)
+        if file is not None:
+            # compare sha1
+            sha1=sha1sum(full_path_src_file)
+            if file['file']['sha1'] != sha1:
+                logging.warning("! file '%s/%s' changed" % (Path(full_path_src_file).name, field_path))
+                file['file']['lastmod'] = mtime2IsoStr(os.path.getmtime(full_path_src_file))  # last modification date
+                file['file']['size'] = os.path.getsize(full_path_src_file)
+                file['file']['sha1'] = sha1
             return
 
         file = collections.OrderedDict()
         file['name'] = Path(full_path_src_file).name
         file['size'] = os.path.getsize(full_path_src_file)
         file['sha1'] = sha1sum(full_path_src_file)
-
-        # looking for an 'installed' manifest info
-        if manifest_to_merge is not None:
-            (mFile, _) = manifest_to_merge.get_file(field_path, Path(full_path_src_file).name)
-        if mFile is not None:
-            if file['sha1'] != mFile['file']['sha1']:
-                logging.warning("! file '%s/%s' changed" % (Path(full_path_src_file).name, field_path))
-                file['lastmod'] = mtime2IsoStr(os.path.getmtime(full_path_src_file))  # last modification date
-            else:
-                file['lastmod'] = mFile['file']['lastmod']
-            file['author(s)'] = mFile['file']['author(s)']
-            file['version'] = mFile['file']['version']
-            file['url'] = mFile['file']['url']
-        else:
-            file['author(s)'] = ''
-            file['version'] = ''
-            file['url'] = ''
-            file['lastmod'] = mtime2IsoStr(os.path.getmtime(full_path_src_file))  # last modification date
+        file['author(s)'] = ''
+        file['version'] = ''
+        file['url'] = ''
+        file['lastmod'] = mtime2IsoStr(os.path.getmtime(full_path_src_file))  # last modification date
 
         field_list = field_path.split('/')
         content = self.__content
@@ -255,7 +256,7 @@ class Manifest:
             return True
         return False
 
-    def get_first_image(self):
+    def get_first_image(self) -> (str, str):
         content = self.__content
         for key, values in content['media'].items():
             if key == 'info': continue
@@ -272,7 +273,6 @@ class Package:
         self.__name = name
         self.__directory = None
         self.__manifest = None
-        self.__mergeManifest = None
 
     @property
     def manifest(self) -> Manifest:
@@ -295,9 +295,9 @@ class Package:
         return self.baseModel.logger
 
     # create empty package
-    def new(self, packageDir):
-        self.__directory = packageDir
-        self.__manifest = Manifest(self.name, self.baseModel.version, self.baseModel.package_version)
+    def new(self, package_dir):
+        self.__directory = package_dir
+        self.__manifest = Manifest(self.name, self.baseModel.package_version)
         self.__manifest.new()  # create empty package
         self.build_tree(self.directory + '/' + self.name, self.manifest.content)
         self.__manifest.save(self.directory)
@@ -310,14 +310,11 @@ class Package:
         if not os.path.exists(base_dir):
             raise PackageException("Package not found at %s" % base_dir)
         self.__directory = base_dir
-        self.__manifest = Manifest(self.__name, self.baseModel.version, self.baseModel.package_version)
+        self.__manifest = Manifest(self.__name, self.baseModel.package_version)
         self.manifest.open(self.__directory)
-        if not self.is_compatible():
-            raise PackageException("Packager version is too old, please update it to use this packages")
-
         self.check_package()
 
-    def check_package(self):
+    def check_package(self) -> None:
         if not os.path.exists(self.directory):
             raise PackageException("Package not found at %s" % self.directory)
 
@@ -329,17 +326,21 @@ class Package:
         self.upgrade_package()
 
     def upgrade_package(self):
-        majorPackagerVersion = int(self.manifest.get_field('info/packager version').split('.')[0])
-        minorPackagerVersion = int(self.manifest.get_field('info/packager version').split('.')[1])
+        major_packager_version = int(self.manifest.get_field('info/package version').split('.')[0])
+        minor_packager_version = int(self.manifest.get_field('info/package version').split('.')[1])
 
-        if majorPackagerVersion == 1 and minorPackagerVersion == 1:
-            self.logger.info("Upgrade Package to 1.1.x (topper/topper videos)")
+        if major_packager_version == 1 and (minor_packager_version == 0 or minor_packager_version == 1):
+            self.logger.info("Upgrade Package to 1.2 (topper/topper videos)")
             self.manifest.content['media']['TopperVideos'] = []
+            self.manifest.content['info']['version'] = ''
             if not os.path.exists(self.directory + '/' + self.name + '/media/TopperVideos'):
                 os.makedirs(self.directory + '/' + self.name + '/media/TopperVideos')
-            self.manifest.set_field('info/packager version', '1.1.0')
+            self.manifest.content['media']['Loading'] = []
+            if not os.path.exists(self.directory + '/' + self.name + '/media/Loading'):
+                os.makedirs(self.directory + '/' + self.name + '/media/Loading')
+            self.manifest.set_field('info/package version', '1.2')
 
-    def check_files(self, content, originPath, filePath):
+    def check_files(self, content, origin_path:str, file_path:str) -> list:
         error_list = []
         if self.__directory is None or self.__manifest is None:
             raise PackageException("Package must be openned")
@@ -348,40 +349,59 @@ class Package:
             if key == 'info':
                 continue
             elif key == 'file':
-                if not os.path.exists(originPath + '/' + filePath + '/' + value['name']):
-                    self.logger.warning('File %s not found in package', filePath + '/' + value['name'])
-                    error_list.append((filePath, value['name']))
+                if not os.path.exists(origin_path + '/' + file_path + '/' + value['name']):
+                    self.logger.warning('File %s not found in package', file_path + '/' + value['name'])
+                    error_list.append((file_path, value['name']))
             elif isinstance(value, dict):
-                error_list = error_list + self.check_files(content[key], originPath, filePath + '/' + key)
+                error_list = error_list + self.check_files(content[key], origin_path, file_path + '/' + key)
             elif type(value) is list:
                 for item in value:
                     if isinstance(item, dict):
-                        error_list = error_list + self.check_files(item, originPath, filePath + '/' + key)
+                        error_list = error_list + self.check_files(item, origin_path, file_path + '/' + key)
 
         return error_list
 
-    def merge(self, installed=False):
+    def merge_files(self, content, origin_path: str, file_path: str) -> list:
+        error_list = []
+        if self.__directory is None or self.__manifest is None:
+            raise PackageException("Package must be opened")
+
+        for key, fields in content.items():
+            if key == 'info':
+                for field_name, value in fields.items():
+                    path = 'info/' + field_name  # TODO:del
+                    print("merge_files: %s=%s" % (path, value))  # TODO:del
+                    if field_name != 'packager version' and field_name != 'package version':
+                        self.manifest.set_field('info/' + field_name,
+                                                value)  # copy all fields except packager version and package version
+            elif key == 'file':
+                file = collections.OrderedDict()
+                for field_name, value in fields.items():
+                    file[field_name] = value
+                self.manifest.add_file_info(file_path, file)  # copy file info to new manifest
+            elif isinstance(fields, dict):
+                error_list = error_list + self.merge_files(content[key], origin_path, file_path + '/' + key)
+            elif type(fields) is list:
+                for item in fields:
+                    if isinstance(item, dict):
+                        error_list = error_list + self.merge_files(item, origin_path, file_path + '/' + key)
+
+        return error_list
+
+    def merge(self, installed: bool = False) -> None:
         # read installed manifest
-        self.__mergeManifest = Manifest(self.__name, self.baseModel.version, self.baseModel.package_version)
-        self.__mergeManifest.open(self.__baseModel.installed_path, installed)
+        installed_manifest = Manifest(self.__name, self.baseModel.package_version)
+        installed_manifest.open(self.__baseModel.installed_path, installed)
 
-        # build new manifest
-        self.manifest.set_field('info/package version', self.__mergeManifest.get_field('info/package version'))
-        self.manifest.set_field('info/creation date', self.__mergeManifest.get_field('info/creation date'))
-        self.manifest.set_field('info/lastmod', utcTime2IsoStr())
+        self.merge_files(installed_manifest.content, self.directory + '/' + self.name, '')
+        self.manifest.set_field('info/lastmod', utcTime2IsoStr())  # update last modification date
 
-        self.manifest.set_field('info/table designer(s)', self.__mergeManifest.get_field('info/table designer(s)'))
-        self.manifest.set_field('info/manufacturer', self.__mergeManifest.get_field('info/manufacturer'))
-        self.manifest.set_field('info/table name', self.__mergeManifest.get_field('info/table name'))
-        self.manifest.set_field('info/year', self.__mergeManifest.get_field('info/year'))
-        self.manifest.set_field('info/theme', self.__mergeManifest.get_field('info/theme'))
-
-    def update(self):
+    def update(self) -> None:
         if not os.path.exists(self.directory):
             raise PackageException("Package not found at %s" % self.directory)
         self.manifest.open(self.__directory)
 
-    def save(self):
+    def save(self) -> None:
         self.manifest.save(self.__directory)
 
     def rename_files(self, new_name, path, content):
@@ -403,7 +423,7 @@ class Package:
                     if isinstance(item, dict):
                         self.rename_files(new_name, path + '/' + key, item)
 
-    def rename_package(self, new_name):
+    def rename_package(self, new_name: str) -> None:
         if not os.path.exists(self.directory):
             raise PackageException("Package not found at %s" % self.directory)
 
@@ -453,22 +473,21 @@ class Package:
 
         return Path(dst_file).name, is_same_file
 
-    def add_file(self, fullPathSrcFile, dst_field_path, dstFile=None):
+    def add_file(self, full_path_src_file: str, dst_field_path, dst_file: str = None):
         try:
-            if not os.path.exists(fullPathSrcFile):
-                raise PackageException("File not found at '%s'" % fullPathSrcFile)
+            if not os.path.exists(full_path_src_file):
+                raise PackageException("File not found at '%s'" % full_path_src_file)
 
-            if dstFile == None:
-                dstFile = Path(fullPathSrcFile).name
-            (dstFile, isSameFile) = self.collision_detector(fullPathSrcFile,
-                                                            self.directory + '/' + self.name + '/' + dst_field_path + '/' + dstFile,
-                                                            check_sha1=True)
-            self.logger.info("+ add '%s' -> '%s'" % (fullPathSrcFile, dst_field_path + '/' + dstFile))
+            if dst_file is None:
+                dst_file = Path(full_path_src_file).name
+            (dst_file, isSameFile) = self.collision_detector(full_path_src_file,
+                                                             self.directory + '/' + self.name + '/' + dst_field_path + '/' + dst_file,
+                                                             check_sha1=True)
+            self.logger.info("+ add '%s' -> '%s'" % (full_path_src_file, dst_field_path + '/' + dst_file))
 
-            shutil.copy(fullPathSrcFile, self.directory + '/' + self.name + '/' + dst_field_path + '/' + dstFile)
+            shutil.copy(full_path_src_file, self.directory + '/' + self.name + '/' + dst_field_path + '/' + dst_file)
             self.manifest.add_file(dst_field_path,
-                                   self.directory + '/' + self.name + '/' + dst_field_path + '/' + dstFile,
-                                   self.__mergeManifest)
+                                   self.directory + '/' + self.name + '/' + dst_field_path + '/' + dst_file)
             self.save()
         except OSError as e:
             self.logger.error(str(e))
@@ -516,13 +535,6 @@ class Package:
         except OSError as e:
             self.logger.error(str(e))
             raise e
-
-    def is_compatible(self) -> bool:
-        major_version = int(self.baseModel.version.split('.')[0])
-        minor_version = int(self.baseModel.version.split('.')[1])
-        major_packager_version = int(self.manifest.get_field('info/packager version').split('.')[0])
-        minor_packager_version = int(self.manifest.get_field('info/packager version').split('.')[1])
-        return major_version >= major_packager_version and minor_version >= minor_packager_version
 
     # zip package
     def pack(self) -> None:

@@ -13,7 +13,6 @@ class Observable:
 
     def attach(self, observer):
         self.__observers.add(observer)
-        print("Attached %s" % observer)
 
     def detach(self, observer):
         self.__observers.remove(observer)

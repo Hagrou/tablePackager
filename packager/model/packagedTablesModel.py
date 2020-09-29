@@ -32,7 +32,7 @@ class PackagedTablesModel(Observable):
         # read Packaged Tables
         self.__packages = []
         for packages_file in Path(self.baseModel.package_path).glob('**/*' + self.baseModel.package_extension):
-            if isReadOnlyFile(packages_file):
+            if is_read_only_file(packages_file):
                 self.__packages.append({'name': packages_file.stem, 'protected': True})
             else:
                 self.__packages.append({'name': packages_file.stem, 'protected': False})
@@ -123,8 +123,8 @@ class PackagedTablesModel(Observable):
 
     def exportPackages(self, viewer, exportPath):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
-        exportThread = AsynRun(self.export_package_begin, self.export_package_end, context={'path': exportPath})
-        exportThread.start()
+        export_thread = AsynRun(self.export_package_begin, self.export_package_end, context={'path': exportPath})
+        export_thread.start()
 
     def export_package_begin(self, context=None):
         if not self.__selectedPackage:  # empty selection
@@ -150,8 +150,8 @@ class PackagedTablesModel(Observable):
 
     def importPackage(self, viewer, packageFile):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
-        importThread = AsynRun(self.import_package_begin, self.import_package_end, context={'package': packageFile})
-        importThread.start()
+        import_thread = AsynRun(self.import_package_begin, self.import_package_end, context={'package': packageFile})
+        import_thread.start()
 
     def import_package_begin(self, context=None):
         try:

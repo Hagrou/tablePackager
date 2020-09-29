@@ -54,7 +54,7 @@ class InstalledTablesView(Frame, Observer):
         self.__btDelTable['state'] = 'normal'
 
     def on_deleteTable(self):
-        self.__installedTablesModel.delete_Tables(self)
+        self.__installedTablesModel.delete_tables(self)
 
     def on_refreshTable(self):
         self.__installedTablesModel.update()

@@ -40,7 +40,7 @@ def setReadWriteFile(file):
             os.chmod(file, stat.S_IWRITE)
 
 
-def isReadOnlyFile(file):
+def is_read_only_file(file):
     if os.path.exists(file):
         fileAtt = os.stat(file)[0]
         return not fileAtt & stat.S_IWRITE
@@ -62,7 +62,7 @@ def copytree(logger, src, dst, symlinks=False, ignore=None):
                 shutil.copy2(src_path, dst_path)
 
 
-def extract_string_from_binary_file(vpx_file:str, pattern: str) -> list:
+def extract_string_from_binary_file(vpx_file: str, pattern: str) -> list:
     roms = []
     p = re.compile(pattern)
     with open(vpx_file, 'rb', 0) as file, mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ) as s:
@@ -121,9 +121,8 @@ def convert_size(size_bytes):
 def utcTime2IsoStr():
     return datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat()
 
-
-# '2019-01-28T22:16:15.631186+00:00' -> datetime
 def strIsoUTCTime2DateTime(strIsoTime):
+    """ '2019-01-28T22:16:15.631186+00:00' -> datetime"""
     # Fix Python 3.6- Iso Date Parsing +00:00 => +0000
     tzInfo = strIsoTime.rsplit(':', 1)
     strIsoTime = ''.join(tzInfo)
@@ -153,9 +152,14 @@ def searchSentenceInString(string, sentence):
 
 def unsuffix(path):
     path = Path(path).stem
-    while (path != Path(path).stem):
+    while path != Path(path).stem:
         path = Path(path).stem
     return path
+
+
+def is_suffix(filename: str, suffix: str) -> bool:
+    """Test if filename contains a suffix"""
+    return suffix in Path(filename).suffixes
 
 
 """

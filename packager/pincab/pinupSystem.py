@@ -26,8 +26,8 @@ class PinUpSystem:
 
     def extract_file(self, package: Package, product: str, media, dataPath, extension='') -> None:
         for file in Path(
-                self.baseModel.pinupSystem_path + "/POPMedia/" + self.get_product_path(product) + '/' + media).glob(
-                '**/%s%s*' % (package.name, extension)):
+                self.baseModel.pinupSystem_path + "/POPMedia/" + self.get_product_path(product) + '/' + media)\
+                .glob('**/%s%s*' % (package.name, extension)):
             package.add_file(file, dataPath)  # Add vpx file
 
     def extract(self, package: Package, product: str) -> None:
@@ -51,6 +51,7 @@ class PinUpSystem:
         self.extract_file(package, product, 'GameInfo', 'media/Flyers Inside', extension='.inside')
         self.extract_file(package, product, 'GameInfo', 'media/Flyers Front', extension='.front')
         self.extract_file(package, product, 'GameInfo', 'media/Flyers Back', extension='.back')
+        self.extract_file(package, product, 'Loading', 'media/Loading')
 
     def deploy(self, package: Package, product: str) -> None:
         self.logger.info("* Deploy PinUp Media")
@@ -110,6 +111,9 @@ class PinUpSystem:
         copytree(self.logger,
                  self.baseModel.tmp_path + "/" + package.name + "/Media/Flyers Back",
                  self.baseModel.pinupSystem_path + "/POPMedia/" + self.get_product_path(product) + '/GameInfo')
+        copytree(self.logger,
+                 self.baseModel.tmp_path + "/" + package.name + "/Media/Loading",
+                 self.baseModel.pinupSystem_path + "/POPMedia/" + self.get_product_path(product) + '/Loading')
 
     def delete(self, table_name: str, product: str):
         self.logger.info("* Delete PinUp Media")
@@ -117,10 +121,10 @@ class PinUpSystem:
         if not os.path.exists(self.pinupSystem_path):
             self.logger.warning('PinupSystem not found(%s)' % self.pinupSystem_path)
             return
-        popMedia = self.baseModel.pinupSystem_path + "/POPMedia/" + self.get_product_path(product)
-        if not Path(popMedia).exists():
-            raise ValueError('Path not found (%s)' % popMedia + "/" + table_name)
+        pop_media = self.baseModel.pinupSystem_path + "/POPMedia/" + self.get_product_path(product)
+        if not Path(pop_media).exists():
+            raise ValueError('Path not found (%s)' % pop_media + "/" + table_name)
 
-        for file in Path(popMedia).glob('**/%s.*' % table_name):
+        for file in Path(pop_media).glob('**/%s.*' % table_name):
             self.logger.info("- delete file %s" % file)
             os.remove(file)

@@ -6,7 +6,7 @@ from packager.tools.logHandler import *
 
 # Major.minor.fix; Minor number++ when package format/info change
 version = '1.1.3'
-package_version = '1.0'
+package_version = '1.2'
 
 
 # https://datastudio.google.com/reporting/13ua5g7jmoyHovP4hrqk48HBYGeQbpJ1Z/page/55yX

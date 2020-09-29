@@ -36,8 +36,8 @@ class PackageEditorModel(Observable):
     def edit_package(self, package):
         self.currentPackage = package
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
-        unpackThread = AsynRun(self.edit_package_begin, self.edit_package_end)
-        unpackThread.start()
+        unpack_thread = AsynRun(self.edit_package_begin, self.edit_package_end)
+        unpack_thread.start()
 
     def edit_package_begin(self, context=None):
         self.logger.info("--[Edit Package '%s']------------------" % (self.currentPackage['name']))
@@ -70,8 +70,8 @@ class PackageEditorModel(Observable):
     def save_package(self, info):
         self.logger.info("--[Save Package]-----------------------")
         self.notify_all(self, events=['<<BEGIN_ACTION>>', '<<HIDE EDITOR>>'])  # update listeners
-        packThread = AsynRun(self.pack_package_begin, self.pack_package_end, context=info)
-        packThread.start()
+        pack_thread = AsynRun(self.pack_package_begin, self.pack_package_end, context=info)
+        pack_thread.start()
 
     def pack_package_begin(self, context=None):
         for key, val in context.items():
@@ -94,12 +94,12 @@ class PackageEditorModel(Observable):
         self.notify_all(self, events=['<<END_ACTION>>', '<<PACKAGE UNSELECTED>>', '<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
 
-    def rename_package(self, newPackageName):
-        self.logger.info("--[Rename Package to '%s']----------" % newPackageName)
+    def rename_package(self, new_package_name):
+        self.logger.info("--[Rename Package to '%s']----------" % new_package_name)
         self.notify_all(self, events=['<<DISABLE_ALL>>'])  # update listeners
-        renameThread = AsynRun(self.rename_package_begin, self.rename_package_end,
-                               context={'newPackageName': newPackageName})
-        renameThread.start()
+        rename_thread = AsynRun(self.rename_package_begin, self.rename_package_end,
+                                context={'newPackageName': new_package_name})
+        rename_thread.start()
 
     def rename_package_begin(self, context=None):
         try:
@@ -129,15 +129,15 @@ class PackageEditorModel(Observable):
         self.package.update()
         self.notify_all(self, events=['<<UPDATE_EDITOR>>'], selection_set=selection)  # update listeners
 
-    def add_ultra_dmd(self, viewer, dataPath, srcDir):
+    def add_ultra_dmd(self, viewer, dataPath, src_dir):
         self.logger.info("* UltraDMD files")
 
-        ultra_dmd_dir = str(Path(srcDir).stem)
+        ultra_dmd_dir = str(Path(src_dir).stem)
         self.package.set_field('visual pinball/info/ultraDMD', ultra_dmd_dir)
-        for file in Path(srcDir).glob('**/*'):
+        for file in Path(src_dir).glob('**/*'):
             self.package.add_file(file, 'UltraDMD/content')
 
-    def add_file(self, viewer, dataPath, srcFile, required_name):
+    def add_file(self, viewer, data_path, srcFile, required_name):
         rename_it = False
         try:
             filename = Path(srcFile).name
@@ -165,12 +165,12 @@ class PackageEditorModel(Observable):
                 target_file = new_name
 
             filename = Path(target_file).name
-            if self.package.exists_file(dataPath, filename):
+            if self.package.exists_file(data_path, filename):
                 if not tkinter.messagebox.askokcancel('File already in Package', 'overwrite it?', parent=viewer):
                     self.logger.info('* add file canceled')
                     return
 
-            self.package.add_file(srcFile, dataPath, dstFile=target_file)
+            self.package.add_file(srcFile, data_path, dst_file=target_file)
             if Path(target_file).suffix == '.vpx' or Path(target_file).suffix == '.vpt':
                 rom_name = self.baseModel.visualPinball.extract_rom_name(srcFile)  # Bug?
                 self.logger.info('+ updating rom name [%s]' % rom_name)
@@ -191,21 +191,17 @@ class PackageEditorModel(Observable):
     def get_fileInfo(self, viewer, dataPath, srcFile):
         return self.package.manifest.get_file(dataPath, srcFile)
 
-    def edit_file(self, viewer, dataPath, srcFile):
-        fileInfo = self.package.manifest.get_file(dataPath, srcFile)
-        print(fileInfo)
+    def up_file(self, viewer, data_path, src_file):
+        dst_data_path = self.package.manifest.prev_file_data_path(data_path, src_file)
+        if dst_data_path != '':
+            self.package.move_file(src_file, data_path, dst_data_path)
+            self.update_package(selection=(dst_data_path, src_file))
 
-    def up_file(self, viewer, dataPath, srcFile):
-        dstDataPath = self.package.manifest.prev_file_data_path(dataPath, srcFile)
-        if dstDataPath != '':
-            self.package.move_file(srcFile, dataPath, dstDataPath)
-            self.update_package(selection=(dstDataPath, srcFile))
-
-    def down_file(self, viewer, dataPath, srcFile):
-        dstDataPath = self.package.manifest.next_file_data_path(dataPath, srcFile)
-        if dstDataPath != '':
-            self.package.move_file(srcFile, dataPath, dstDataPath)
-            self.update_package(selection=(dstDataPath, srcFile))
+    def down_file(self, viewer, data_path, src_file):
+        dst_data_path = self.package.manifest.next_file_data_path(data_path, src_file)
+        if dst_data_path != '':
+            self.package.move_file(src_file, data_path, dst_data_path)
+            self.update_package(selection=(dst_data_path, src_file))
 
     def get_first_image(self):
         return self.package.manifest.get_first_image()
