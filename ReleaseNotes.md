@@ -5,12 +5,12 @@
 
 ### What's New
 - Add Media from POPMedia 
+
 ### Bug Fixes
 
 - Fix bug if PinballX is not installed
 - Fix Package Version and upgrade error
 - Fix extraction suffix error
-
 
 ## What's New in Version 1.1.2
 

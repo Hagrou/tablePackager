@@ -326,10 +326,10 @@ class Package:
         self.upgrade_package()
 
     def upgrade_package(self):
-        major_packager_version = int(self.manifest.get_field('info/package version').split('.')[0])
-        minor_packager_version = int(self.manifest.get_field('info/package version').split('.')[1])
+        major_package_version = int(self.manifest.get_field('info/package version').split('.')[0])
+        minor_package_version = int(self.manifest.get_field('info/package version').split('.')[1])
 
-        if major_packager_version == 1 and (minor_packager_version == 0 or minor_packager_version == 1):
+        if major_package_version == 1 and (minor_package_version == 0 or minor_package_version == 1):
             self.logger.info("Upgrade Package to 1.2 (topper/topper videos)")
             self.manifest.content['media']['TopperVideos'] = []
             self.manifest.content['info']['version'] = ''
