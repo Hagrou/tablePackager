@@ -107,7 +107,7 @@ class InstalledTablesModel(Observable):
                             self.baseModel.package_path)
 
             except Exception as e:
-                messagebox.showerror('Export Package', str(e))
+                messagebox.showerror('Backup Package', str(e))
                 return False
         clean_dir(self.baseModel.tmp_path)
         return True

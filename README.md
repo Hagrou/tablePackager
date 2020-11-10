@@ -222,27 +222,27 @@ You can see that all the media are "green" and ready to work in the "MediaManage
 
 ![alt text](packager/images/export2.png#medium)
 
-## <a name="Import-Export-Package"></a>Export and Import a package
+## <a name="Backup-Restore-Package"></a>Backup and Restore a package
 
-You can export a package to share it with an other "Pinball Maniac" by:
+You can backup a package to save it on a spare disk by:
 
-1. Select a package to export
+1. Select a package to backup
 
-2. Click on Export button 
+2. Click on Backup button 
 
 3. Then select the output dir 
 
 ![alt text](packager/images/export3.png#medium)
 
-In the same way, you can import a package:
+In the same way, you can restore a package:
 
-1. Click on the Import button
+1. Click on the Restore button
 
 2. Then select the package
 
 ![alt text](packager/images/import1.png#medium)
 
-    If the imported package was builded by an older version of TablePackager,
+    If the restored package was builded by an older version of TablePackager,
     the package is automatically upgraded at importation.
     
 ## <a name="Clean-Tables"></a>Cleanup Table Files
@@ -307,6 +307,7 @@ Supported softwares:
 # Liens utiles
 
 https://docs.google.com/spreadsheets/d/1mneCSviXWAZtmQyMBWCFge-FLfZDapdqttQ-8l8oX_k/edit#gid=952993907
+https://docs.google.com/spreadsheets/d/18edFWq2--Yw8iRX_ou3cGeQ3pAJ6zM0kWHYFWZW1fWg/edit?fbclid=IwAR0pkflonsntui1CBSJzzT8W52zPhrhKQYILZsa7T0H2zH736Uj0X_rjjS8#gid=1238562238
 
 # <a name="Donate"></a>Contribute to Table Packager
 

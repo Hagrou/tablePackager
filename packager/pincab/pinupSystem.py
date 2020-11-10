@@ -48,9 +48,9 @@ class PinUpSystem:
         self.extract_file(package, product, 'Wheel', 'media/Wheel')
         self.extract_file(package, product, 'ScreenGrabs', 'media/ScreenGrabs')
         self.extract_file(package, product, 'TableVideos', 'media/TableVideos')
-        self.extract_file(package, product, 'GameInfo', 'media/Flyers Inside', extension='.inside')
-        self.extract_file(package, product, 'GameInfo', 'media/Flyers Front', extension='.front')
-        self.extract_file(package, product, 'GameInfo', 'media/Flyers Back', extension='.back')
+
+        self.extract_file(package, product, 'GameInfo', 'media/Flyers Front') # TOTO:check
+       # self.extract_file(package, product, 'GameInfo', 'media/Flyers Back', extension='.back')
         self.extract_file(package, product, 'Loading', 'media/Loading')
 
     def deploy(self, package: Package, product: str) -> None:

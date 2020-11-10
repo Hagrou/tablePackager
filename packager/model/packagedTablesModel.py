@@ -121,16 +121,16 @@ class PackagedTablesModel(Observable):
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
         self.baseModel.packagedTablesModel.update()
 
-    def exportPackages(self, viewer, exportPath):
+    def backupPackages(self, viewer, backup_path):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
-        export_thread = AsynRun(self.export_package_begin, self.export_package_end, context={'path': exportPath})
-        export_thread.start()
+        backup_package = AsynRun(self.backup_package_begin, self.backup_package_end, context={'path': backup_path})
+        backup_package.start()
 
-    def export_package_begin(self, context=None):
+    def backup_package_begin(self, context=None):
         if not self.__selectedPackage:  # empty selection
             raise ValueError('No selected package')
         try:
-            self.logger.info("--[Export Package]------------------")
+            self.logger.info("--[Backup Package]------------------")
             for packageInfo in self.__selectedPackage:
                 packageFileName = '/' + packageInfo['name'] + self.baseModel.package_extension
                 self.logger.info("+ copy '%s' -> '%s'" % (packageFileName, context['path']))
@@ -138,24 +138,24 @@ class PackagedTablesModel(Observable):
                                 context['path'] + '/' + packageFileName)
             return True
         except Exception as e:
-            tkinter.messagebox.showerror('Export Package', str(e))
+            tkinter.messagebox.showerror('Backup Package', str(e))
             return False
 
-    def export_package_end(self, context=None, success=True):
+    def backup_package_end(self, context=None, success=True):
         if success:
             self.logger.info("--[Done]------------------")
         else:
             self.logger.error("--[Failed]------------------")
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
 
-    def importPackage(self, viewer, packageFile):
+    def restore_package(self, viewer, package_file):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
-        import_thread = AsynRun(self.import_package_begin, self.import_package_end, context={'package': packageFile})
-        import_thread.start()
+        restore_thread = AsynRun(self.restore_package_begin, self.restore_package_end, context={'package': package_file})
+        restore_thread.start()
 
-    def import_package_begin(self, context=None):
+    def restore_package_begin(self, context=None):
         try:
-            self.logger.info("--[Import Package]------------------")
+            self.logger.info("--[Restore Package]------------------")
             unpack(context['package'], self.baseModel.tmp_path)
             package = Package(self.baseModel, Path(context['package']).stem)
             package.open(self.baseModel.tmp_path)
@@ -172,11 +172,11 @@ class PackagedTablesModel(Observable):
             clean_dir(self.baseModel.tmp_path)
             print("ici")
         except Exception as e:
-            tkinter.messagebox.showerror('Import Package', str(e))
+            tkinter.messagebox.showerror('Restore Package', str(e))
             return False
         return True
 
-    def import_package_end(self, context=None, success=True):
+    def restore_package_end(self, context=None, success=True):
         if success:
             self.logger.info("--[Done]------------------")
             self.update()

@@ -1,4 +1,15 @@
 # Table Packager Release Notes
+## What's New in Version 1.1.4
+
+/!\ You must uninstall current version before install a new one /!\
+### What's New
+None 
+
+### Bug Fixes
+
+- Fix typo errors
+- Fix pinup media flyer info file not found #issue 1
+- Fix freeze if rename popup is closed without "apply" or "cancel" button
 
 ## What's New in Version 1.1.3
 

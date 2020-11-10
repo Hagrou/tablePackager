@@ -19,9 +19,10 @@ class RenameFileViewer(Frame,Observable):
         self.__currentPackage=None
 
     def hide(self):
+        self.notify_all(self, events=['<<ENABLE_ALL>>'])  # update listeners
         self.__topLevel.withdraw()
 
-    def show(self,package, dataPath, item):
+    def show(self, package, data_path, item):
         self.notify_all(self, events=['<<DISABLE_ALL>>'])  # update listeners
         self.__topLevel = Toplevel(self.__parent)
         self.__topLevel.wm_title("Rename File")
@@ -29,13 +30,13 @@ class RenameFileViewer(Frame,Observable):
 
         self.__currentPackage=package
         self.__currentFile=item[0]
-        self.__dataPath=dataPath
+        self.__dataPath=data_path
         #=================================================================
         self.__infoFrame=Frame(self.__topLevel)
         self.__fileNameLabel=Label(self.__infoFrame, text="File: ")
         self.__fileNameLabel.grid(column=0, row=0, sticky='W',padx=2, pady=2)
 
-        self.__fileNameValueLabel=Label(self.__infoFrame, text=dataPath+'/'+unsuffix(self.__currentFile['file']['name']))
+        self.__fileNameValueLabel=Label(self.__infoFrame, text=data_path + '/' + unsuffix(self.__currentFile['file']['name']))
         self.__fileNameValueLabel.grid(column=1, row=0,sticky='W',padx=2, pady=2)
 
         self.__fileNewNameEntry = Entry(self.__infoFrame)
