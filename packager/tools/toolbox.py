@@ -13,11 +13,13 @@ import time
 import math
 import datetime
 import time
+from datetime import datetime
+from time import mktime
 
 from pathlib import Path
 
 
-def clean_dir(dir):
+def clean_dir(dir: str):
     try:
         shutil.rmtree(dir, ignore_errors=True)
         os.makedirs(dir, exist_ok=True)
@@ -36,7 +38,7 @@ def setReadOnlyFile(file):
 def setReadWriteFile(file):
     if os.path.exists(file):
         fileAtt = os.stat(file)[0]
-        if (not fileAtt & stat.S_IWRITE):  # File is read-only, so make it writeable
+        if not fileAtt & stat.S_IWRITE:  # File is read-only, so make it writeable
             os.chmod(file, stat.S_IWRITE)
 
 
@@ -121,6 +123,7 @@ def convert_size(size_bytes):
 def utcTime2IsoStr():
     return datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat()
 
+
 def strIsoUTCTime2DateTime(strIsoTime):
     """ '2019-01-28T22:16:15.631186+00:00' -> datetime"""
     # Fix Python 3.6- Iso Date Parsing +00:00 => +0000
@@ -136,9 +139,50 @@ def mtime2IsoStr(mtime):
     return date.replace(tzinfo=datetime.timezone.utc).isoformat()
 
 
-# UtcTime->'2019-01-08T00:09:17'
-def utcTime2Str(utcTime):
+def utcTime2Str(utcTime: datetime) -> str:
+    """
+    Convert utc time to string (UtcTime->'2019-01-08T00:09:17')
+    :param utcTime:
+    :return: string
+    """
     return utcTime.strftime("%Y-%m-%d %H:%M:%S")
+
+
+def try_str_2_struct_time(str_date: str, time_format: str) -> time.struct_time:
+    """
+        Search date format and convert it (struct_time is JSON serializable)
+        :param str_date:
+        :param time_format: expected date format
+        :return: datetime or None if date is not recognised
+        """
+
+    try:
+        return time.strptime(str_date, time_format)
+    except ValueError as e:
+        if time_format == '%Y-%m-%d':
+            return try_str_2_struct_time(str_date, '%m-%d-%Y')
+        if time_format == '%m-%d-%Y':
+            return try_str_2_struct_time(str_date, '%B %d, %Y')
+        return None  # date format unknown
+
+
+def str_2_struct_time(str_date: str) -> time.struct_time:
+    """
+    Search date format and convert it (struct_time is JSON serializable)
+    :param str_date:
+    :return: datetime or None if date is not recognised
+    """
+    return try_str_2_struct_time(str_date, '%Y-%m-%d')
+
+
+def struct_time_2_datetime(date: time.struct_time) -> datetime:
+    """
+    convert struct_time into datetime (not JSON serializable)
+    :param date:
+    :return:
+    """
+    return datetime.fromtimestamp(mktime(date))
+
 
 
 def searchSentenceInString(string, sentence):
@@ -162,37 +206,49 @@ def is_suffix(filename: str, suffix: str) -> bool:
     return suffix in Path(filename).suffixes
 
 
-"""
-#https://stackabuse.com/levenshtein-distance-and-text-similarity-in-python/
-import numpy as np
-import numpy.core._methods
-import numpy.lib.format
+def iterative_levenshtein(s, t, costs=(1, 1, 1)):
+    """
+        thanks to https://www.python-course.eu/levenshtein_distance.php
+        iterative_levenshtein(s, t) -> ldist
+        ldist is the Levenshtein distance between the strings
+        s and t.
+        For all i and j, dist[i,j] will contain the Levenshtein
+        distance between the first i characters of s and the
+        first j characters of t
 
-def levenshtein(seq1, seq2):
-    size_x = len(seq1) + 1
-    size_y = len(seq2) + 1
-    matrix = np.zeros ((size_x, size_y))
-    for x in range(size_x):
-        matrix [x, 0] = x
-    for y in range(size_y):
-        matrix [0, y] = y
+        costs: a tuple or a list with three integers (d, i, s)
+               where d defines the costs for a deletion
+                     i defines the costs for an insertion and
+                     s defines the costs for a substitution
+    """
 
-    for x in range(1, size_x):
-        for y in range(1, size_y):
-            if seq1[x-1] == seq2[y-1]:
-                matrix [x,y] = min(
-                    matrix[x-1, y] + 1,
-                    matrix[x-1, y-1],
-                    matrix[x, y-1] + 1
-                )
+    rows = len(s) + 1
+    cols = len(t) + 1
+    deletes, inserts, substitutes = costs
+
+    dist = [[0 for x in range(cols)] for x in range(rows)]
+
+    # source prefixes can be transformed into empty strings
+    # by deletions:
+    for row in range(1, rows):
+        dist[row][0] = row * deletes
+
+    # target prefixes can be created from an empty source string
+    # by inserting the characters
+    for col in range(1, cols):
+        dist[0][col] = col * inserts
+
+    for col in range(1, cols):
+        for row in range(1, rows):
+            if s[row - 1] == t[col - 1]:
+                cost = 0
             else:
-                matrix [x,y] = min(
-                    matrix[x-1,y] + 1,
-                    matrix[x-1,y-1] + 1,
-                    matrix[x,y-1] + 1
-                )
-    return (matrix[size_x - 1, size_y - 1])
-"""
+                cost = substitutes
+            dist[row][col] = min(dist[row - 1][col] + deletes,
+                                 dist[row][col - 1] + inserts,
+                                 dist[row - 1][col - 1] + cost)  # substitution
+
+    return dist[row][col]
 
 
 class AsynRun(threading.Thread):
