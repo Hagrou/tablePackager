@@ -1,8 +1,8 @@
 from unittest import TestCase
 import tempfile
+import os
 
-from packager.pincab.visualPinball import *
-
+from packager.pincab.visualPinball import VisualPinball
 
 class TestVisualPinball(TestCase):
 

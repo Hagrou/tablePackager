@@ -6,9 +6,10 @@ from packager.pincab.vpinMame import VPinMame
 from packager.pincab.pinballX import PinballX
 from packager.pincab.pinupSystem import PinUpSystem
 from packager.pincab.ultraDMD import UltraDMD
+from packager.pincab.tableDatabase import TableDatabase
 from packager.model.packageEditorModel import PackageEditorModel
 from packager.model.packagedTablesModel import *
-
+from packager.model.search_model import *
 
 class BaseModel:
     def __init__(self, logger: logging, version: str, package_version: str) -> None:
@@ -28,11 +29,13 @@ class BaseModel:
         self.__installedTablesModel = InstalledTablesModel(self)
         self.__packagedTablesModel = PackagedTablesModel(self)
         self.__packageEditorModel = PackageEditorModel(self)
+        self.__searchModel = Search_Model(self)
         self.__visualPinball = VisualPinball(self.logger, self)
         self.__pinupSystem = PinUpSystem(self.logger, self)
         self.__vpinMame = VPinMame(self.logger, self)
         self.__pinballX = PinballX(self.logger, self)
         self.__ultraDMD = UltraDMD(self.logger, self)
+        self.__database = TableDatabase(self.logger, self)
 
     @property
     def config(self):
@@ -49,6 +52,10 @@ class BaseModel:
     @property
     def package_version(self) -> str:
         return self.__package_version
+
+    @property
+    def search_model(self):
+        return self.__searchModel
 
     @property
     def config(self) -> Config:
@@ -125,3 +132,8 @@ class BaseModel:
     @property
     def ultraDMD(self):
         return self.__ultraDMD
+
+    @property
+    def database(self):
+        return self.__database
+
