@@ -10,6 +10,7 @@ from packager.view.packagedTablesView import *
 from packager.view.packageEditorViewer import *
 from packager.view.logViewer import *
 from packager.view.configViewer import *
+from packager.view.searchViewer import *
 
 
 class MainWindow(Observer, Observable):
@@ -32,6 +33,7 @@ class MainWindow(Observer, Observable):
         self.__helpMenu.add_separator()
         self.__helpMenu.add_command(label="About", command=self.on_about_menu)
         self.__menubar.add_cascade(label="Help", menu=self.__helpMenu)
+        self.__menubar.add_command(label='Search', command=self.on_search_menu)
 
         # display the menu
         self.__window.configure(menu=self.__menubar)
@@ -40,6 +42,7 @@ class MainWindow(Observer, Observable):
 
         self.__installedTablesView = InstalledTablesView(self.__window, self.__baseModel)
         self.__configViewer = ConfigViewer(self.__window, self.__baseModel)
+        self.__searchViewer = SearchViewer(self.__window, self.__baseModel)
         self.__progressBar = ttk.Progressbar(self.__window, orient="horizontal", mode="indeterminate")
         self.__progressBar["value"] = 0
         self.__progressBar["maximum"] = 800
@@ -151,6 +154,9 @@ class MainWindow(Observer, Observable):
 
         url = 'file://%s/../help/about.html' % path
         webbrowser.open_new_tab(url)
+
+    def on_search_menu(self):
+        self.__searchViewer.show()
 
     def extractOnClick(self):
         self.__baseModel.installedTablesModel.extract_tables(self.__extractAppChoice)
