@@ -97,7 +97,7 @@ class PackagedTablesView(Frame, Observer):
             self.__packagedTablesModel.backupPackages(self, backup_path)
 
     def refresh_view_on_click(self):
-        self.__packagedTablesModel.update()
+        self.__packagedTablesModel.reload()
 
     def on_select(self, evt):
         selection = self.__listPackages.curselection()
