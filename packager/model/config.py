@@ -1,32 +1,39 @@
 import os
 import json
 
+
 class Config:
     def __init__(self):
-        self.__data={
+        self.__data = {
             'working_dir': os.path.expanduser("~/tablePackager"),
-            'visual_pinball_path':'c:/visual pinball',
-            'pinballX_path':'c:/pinballX',
-            'pinupSystem_path':'c:/PinUPSystem',
-            'font':('Helvetica', 10)
+            'visual_pinball_path': 'c:/visual pinball',
+            'pinballX_path': 'c:/pinballX',
+            'pinupSystem_path': 'c:/PinUPSystem',
+            'db_path': os.path.expanduser("~/tablePackager") + '/pinball_machines.json',
+            'manufacturer_path': os.path.expanduser("~/tablePackager") + '/manufacturer.json',
+            'font': ('Helvetica', 10)
         }
         self.load()
+        if 'db_path' not in self.__data: # for compatibility
+            self.__data['db_path']=os.path.expanduser('~/tablePackager') + '/pinball_machines.json'
+        if 'manufacturer_path' not in self.__data: # for compatibility
+            self.__data['manufacturer_path']=os.path.expanduser('~/tablePackager') + '/manufacturer.json'
 
-    def get(self,var_name):
-        if var_name=='package_extension':
+    def get(self, var_name):
+        if var_name == 'package_extension':
             return '.zip'
         return self.__data[var_name]
 
     def set(self, var_name, value):
-        self.__data[var_name]=value
+        self.__data[var_name] = value
 
     def load(self):
-        working_dir=self.get('working_dir')
+        working_dir = self.get('working_dir')
         if not os.path.exists(working_dir):
             os.makedirs(working_dir, exist_ok=True)
 
         path = working_dir + '/config.json'
-        if not os.path.exists(path): # no config? write it with default values
+        if not os.path.exists(path):  # no config? write it with default values
             self.save()
             return
         try:
@@ -37,8 +44,7 @@ class Config:
 
     def save(self):
         try:
-            with open(self.get('working_dir')+ '/config.json', 'w') as outfile:
+            with open(self.get('working_dir') + '/config.json', 'w') as outfile:
                 json.dump(self.__data, outfile)
         except IOError as e:
             raise Exception("Config write error %s" % str(e))
-
