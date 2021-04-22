@@ -98,7 +98,7 @@ class PackagedTablesModel(Observable):
         else:
             self.logger.error("--[Failed]------------------")
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
-        self.baseModel.installedTablesModel.update()
+        self.baseModel.installedTablesModel.reload()
 
     def deletePackages(self, viewer):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
@@ -119,7 +119,7 @@ class PackagedTablesModel(Observable):
                             self.baseModel.package_path + '/' + packageInfo['name'] + self.baseModel.package_extension))
             self.logger.info("--[Done]------------------")
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'])  # update listeners
-        self.baseModel.packagedTablesModel.update()
+        self.baseModel.packagedTablesModel.reload()
 
     def backupPackages(self, viewer, backup_path):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners

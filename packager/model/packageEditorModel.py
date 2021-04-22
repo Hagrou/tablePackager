@@ -92,7 +92,7 @@ class PackageEditorModel(Observable):
     def pack_package_end(self, context=None, success=True):
         self.logger.info("--[Edition '%s' Done]------------------" % (self.package.name))
         self.notify_all(self, events=['<<END_ACTION>>', '<<PACKAGE UNSELECTED>>', '<<ENABLE_ALL>>'])  # update listeners
-        self.baseModel.packagedTablesModel.update()
+        self.baseModel.packagedTablesModel.reload()
 
     def rename_package(self, new_package_name):
         self.logger.info("--[Rename Package to '%s']----------" % new_package_name)
@@ -115,7 +115,7 @@ class PackageEditorModel(Observable):
         else:
             self.logger.error("--[Rename '%s' Failed]------------------" % (self.package.name))
         self.notify_all(self, events=['<<UPDATE_EDITOR>>', '<<ENABLE_ALL>>'])  # update listeners
-        self.baseModel.packagedTablesModel.update()
+        self.baseModel.packagedTablesModel.reload()
 
     def cancel_edition(self):
         if not self.__currentPackage:  # empty selection

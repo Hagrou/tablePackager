@@ -116,7 +116,7 @@ class InstalledTablesModel(Observable):
         self.logger.info("--[Done]------------------")
         self.notify_all(self, events=['<<END_ACTION>>', '<<ENABLE_ALL>>'],
                         tables=self.__selectedTable)  # update listeners
-        self.baseModel.packagedTablesModel.update()
+        self.baseModel.packagedTablesModel.reload()
 
     def delete_tables(self, viewer):
         self.notify_all(self, events=['<<DISABLE_ALL>>', '<<BEGIN_ACTION>>'])  # update listeners
