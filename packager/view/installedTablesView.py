@@ -57,7 +57,7 @@ class InstalledTablesView(Frame, Observer):
         self.__installedTablesModel.delete_tables(self)
 
     def on_refreshTable(self):
-        self.__installedTablesModel.update()
+        self.__installedTablesModel.reload()
 
     def update(self, observable, *args, **kwargs):
         events = kwargs['events']
