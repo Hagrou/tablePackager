@@ -5,7 +5,7 @@ from packager.model.baseModel import *
 from packager.tools.logHandler import *
 
 # Major.minor.fix; Minor number++ when package format/info change
-version = '1.1.4'
+version = '1.2.0'
 package_version = '1.2'
 
 
@@ -13,7 +13,7 @@ package_version = '1.2'
 
 def main():
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         format="%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s",
         handlers=[
             # logging.FileHandler("{0}/{1}.log".format(logPath, fileName)),
