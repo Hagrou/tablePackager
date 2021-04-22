@@ -13,6 +13,7 @@ import time
 import math
 import datetime
 import time
+import json
 from datetime import datetime
 from time import mktime
 
@@ -162,8 +163,21 @@ def try_str_2_struct_time(str_date: str, time_format: str) -> time.struct_time:
         if time_format == '%Y-%m-%d':
             return try_str_2_struct_time(str_date, '%m-%d-%Y')
         if time_format == '%m-%d-%Y':
+            return try_str_2_struct_time(str_date, '%Y-%m')
+        if time_format == '%Y-%m':
+            return try_str_2_struct_time(str_date, '%B, %Y')
+        if time_format == '%B, %Y':
+            return try_str_2_struct_time(str_date, '%Y')
+        if time_format == '%Y':
             return try_str_2_struct_time(str_date, '%B %d, %Y')
+        if time_format == '%B %d, %Y':
+            return try_str_2_struct_time(str_date, '%b %d %Y %I:%M %p')
+        if time_format == '%b %d %Y %I:%M %p':
+            return try_str_2_struct_time(str_date, '%Y-%m-%dT%H:%M:%SZ')  # '2021-04-03T23:01:06Z'
         return None  # date format unknown
+    except OverflowError as e:
+        print("Overflow %s/%s" % (str_date, time_format))
+        return None
 
 
 def str_2_struct_time(str_date: str) -> time.struct_time:
@@ -181,8 +195,22 @@ def struct_time_2_datetime(date: time.struct_time) -> datetime:
     :param date:
     :return:
     """
+    if date is None:
+        return None
+    if date.tm_year <= 1970:
+        return datetime(date.tm_year, date.tm_mon, date.tm_mday)
     return datetime.fromtimestamp(mktime(date))
 
+
+def extract_text(title: str, txt: str) -> str:
+    """
+    extract value from \n<TITLE>\n\t\t\t\t\t<VALUE>\n\t\t\t\t string
+    :param title:<TITLE>
+    :param txt:the whole string
+    :return: <VALUE>
+    """
+    pos = txt.find(title, 0) + len(title)
+    return txt[pos:].strip('\n\t')
 
 
 def searchSentenceInString(string, sentence):
@@ -249,6 +277,86 @@ def iterative_levenshtein(s, t, costs=(1, 1, 1)):
                                  dist[row - 1][col - 1] + cost)  # substitution
 
     return dist[row][col]
+
+
+def save_data(filepath: str, data: object) -> None:
+    """
+    save python data into json in current dir
+    :param filepath:
+    :return: None
+    """
+    try:
+        with open(filepath, 'w') as outfile:
+            json.dump(data, outfile, indent=4, separators=(',', ': '), default=str)
+    except IOError as e:
+        raise Exception("Database write error %s" % str(e))
+
+
+def load_data(filepath: str) -> object:
+    """
+        load python json from current dir
+        :param filepath: filename + path
+        :return: loaded data
+    """
+    data = None
+    try:
+        with open(filepath, 'r') as file:
+            data = json.load(file)
+    except IOError as e:
+        raise Exception("Database read error %s" % str(e))
+    return data
+
+
+def safe_save_json(filepath: str, data: object) -> None:
+    """
+    Prevent file corrupion if save is interrupt by someone.. (close app/reboot/etc.)
+    hyp: .back file is allways the good file
+    :param filepath:
+    :param data:
+    :return:
+    """
+    if not os.path.exists(filepath + '.back'):  # no backup file, create it
+        os.rename(filepath, filepath + '.back')  # backup file to file.back (rename)
+    save_data(filepath, data)  # save a new file
+    os.remove(filepath + '.back')  # all is good, remove .back file
+
+
+def safe_load_json(filepath: str) -> object:
+    """
+
+    :param filepath:
+    :return:
+    """
+    data = None
+    if not os.path.exists(filepath + '.back'):  # no backup file, create it
+        data = load_data(filepath)
+    else:
+        data = load_data(filepath + '.back')  # if .back exists => we don't know if last save is done...
+        if os.path.exists(filepath):
+            os.remove(filepath)
+        os.rename(filepath + '.back', filepath)
+    return data
+
+
+def justify_text(text: str, tab: int = 0, max_col: int = 30) -> list:
+    """
+    Justify a text
+    :param text: text to justify
+    :param tab:
+    :param max_col:
+    :return:
+    """
+
+    result = []
+    size = len(text)
+    nb_col = max_col - tab
+
+    nb_line = int(size / nb_col)
+    for line in range(0, nb_line):
+        result.append(text[line * nb_col:(line * nb_col) + nb_col])
+    if size % nb_col != 0:
+        result.append(text[nb_line * nb_col:])
+    return result
 
 
 class AsynRun(threading.Thread):
