@@ -26,12 +26,6 @@ shortcut_table = [
      )
     ]
 
-# Now create the table dictionary
-msi_data = {"Shortcut": shortcut_table}
-
-# Change some default MSI options and specify the use of the above defined tables
-bdist_msi_options = {'data': msi_data}
-
 options = {
     'build_exe': {
         "excludes": ["numpy"], # cx_freeze 6.2 crash with numpy 1.19
@@ -41,7 +35,9 @@ options = {
             os.path.join(PYTHON_INSTALL_DIR, 'DLLs', 'tcl86t.dll'),
          ],
     },
-    'bdist_msi': bdist_msi_options,
+    'bdist_msi': {'data': {'Shortcut': shortcut_table},
+                  'upgrade_code': '{006d3301-d595-49e5-81d0-4a906aa48bb8}' # required for msi upgrade
+                 },
 }
 
 executables = [
@@ -55,7 +51,7 @@ executables = [
 if os.path.exists('build'):
     shutil.rmtree('build', ignore_errors=True)
 
-print("Generate packager/help/help.html")
+print('Generate packager/help/help.html')
 gen_help('./README.md','packager/help',version)
 gen_about('./about.md','packager/help',version)
 
