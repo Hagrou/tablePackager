@@ -78,7 +78,7 @@ class MainWindow(Observer, Observable):
         self.__btExtractImage = PhotoImage(file=baseModel.base_dir + "images/btExtract.png")
         self.__btInstallImage = PhotoImage(file=baseModel.base_dir + "images/btInstall.png")
 
-        self.__btExtract = Button(self.__extractFrame, image=self.__btExtractImage, command=self.extractOnClick,
+        self.__btExtract = Button(self.__extractFrame, image=self.__btExtractImage, command=self.extract_on_click,
                                   state=DISABLED)
 
         self.__btExtract.grid(column=1, row=0, rowspan=4, sticky='NW')
@@ -111,7 +111,7 @@ class MainWindow(Observer, Observable):
                                            variable=self.__installAppChoice['pinballX'], onvalue=True, offvalue=False)
         self.__cbInsPinballX.grid(column=0, row=7, sticky='NW')
 
-        self.__btInstall = Button(self.__installFrame, image=self.__btInstallImage, command=self.installOnClick,
+        self.__btInstall = Button(self.__installFrame, image=self.__btInstallImage, command=self.install_on_click,
                                   state=DISABLED)
 
         self.__btInstall.grid(column=1, row=4, rowspan=4, sticky='NW', padx=2, pady=2)
@@ -134,7 +134,7 @@ class MainWindow(Observer, Observable):
         self.attach(self.__packagedTablesView)
         self.attach(self.__installedTablesView)
 
-    def mainLoop(self):
+    def main_loop(self):
         try:
             self.__window.mainloop()
         except Exception as Err:
@@ -158,10 +158,10 @@ class MainWindow(Observer, Observable):
     def on_search_menu(self):
         self.__searchViewer.show()
 
-    def extractOnClick(self):
+    def extract_on_click(self):
         self.__baseModel.installedTablesModel.extract_tables(self.__extractAppChoice)
 
-    def installOnClick(self):
+    def install_on_click(self):
         self.__baseModel.packagedTablesModel.deployPackage(self.__installAppChoice)
 
     def update(self, observable, *args, **kwargs):

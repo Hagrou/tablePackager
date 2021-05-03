@@ -51,7 +51,7 @@ def is_read_only_file(file):
 
 
 # https://stackoverflow.com/questions/1868714/how-do-i-copy-an-entire-directory-of-files-into-an-existing-directory-using-pyth
-def copytree(logger, src, dst, symlinks=False, ignore=None):
+def copytree(logger, src:str, dst:str, symlinks:bool=False, ignore:bool=None):
     if not os.path.exists(dst):
         os.makedirs(dst)
     for item in os.listdir(src):
@@ -78,7 +78,12 @@ def extract_string_from_binary_file(vpx_file: str, pattern: str) -> list:
         return roms
 
 
-def sha1sum(filename):
+def sha1sum(filename: str) -> str:
+    """
+    compute file sha1
+    :param filename:
+    :return:
+    """
     h = hashlib.sha1()
     b = bytearray(128 * 1024)
     mv = memoryview(b)
@@ -88,7 +93,7 @@ def sha1sum(filename):
     return h.hexdigest()
 
 
-def zipdir(path, ziph):
+def zip_dir(path: str, ziph: object) -> None:
     for root, dirs, files in os.walk(path):
         for dir in dirs:
             ziph.write(os.path.join(root, dir),
@@ -98,13 +103,25 @@ def zipdir(path, ziph):
                        Path(os.path.join(root, file)).relative_to(Path(path).parents[0]))
 
 
-def pack(src, dest, pack_name):
-    zipf = zipfile.ZipFile(dest + '/' + pack_name, 'w')
-    zipdir(src, zipf)
+def zip_file(src: str) -> None:
+    zipf = zipfile.ZipFile(src + '.zip', 'w', zipfile.ZIP_DEFLATED)
+    zipf.write(src)
     zipf.close()
 
 
-def unpack(src, dest):
+def pack(src: str, dest: str, pack_name: str) -> None:
+    zipf = zipfile.ZipFile(dest + '/' + pack_name, 'w', zipfile.ZIP_DEFLATED)
+    zip_dir(src, zipf)
+    zipf.close()
+
+
+def unpack(src: str, dest: str) -> None:
+    """
+    unzip src file to dest dire
+    :param src:
+    :param dest:
+    :return:
+    """
     zipf = zipfile.ZipFile(src, 'r')
     zipf.extractall(dest)
     zipf.close()

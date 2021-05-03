@@ -16,7 +16,7 @@ def main():
         level=logging.INFO,
         format="%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s",
         handlers=[
-            # logging.FileHandler("{0}/{1}.log".format(logPath, fileName)),
+            #logging.FileHandler("{0}/{1}.log".format('c:/temp', 'log.txt')),
             logging.StreamHandler()
         ])
     logger = logging.getLogger(__name__)
@@ -26,13 +26,23 @@ def main():
     logHandler.setFormatter(formatter)
     logger.addHandler(logHandler)
 
-    logger.info('Started')
-    base_model = BaseModel(logger, version, package_version)
-    main_window = MainWindow(base_model, logHandler)
-    base_model.installedTablesModel.update()
-    base_model.packagedTablesModel.update()
-    main_window.mainLoop()
+    logger.info('Starting')
+    # run once after installation
+    if os.path.exists('post_install.py'):
+        logger.info('Run post_install script')
+        exec(open('post_install.py').read())
+        os.remove('post_install.py')
 
+    try:
+        logger.info('Started')
+        base_model = BaseModel(logger, version, package_version)
+        main_window = MainWindow(base_model, logHandler)
+        base_model.installedTablesModel.update()
+        base_model.packagedTablesModel.update()
+        main_window.main_loop()
+    except Exception as e:
+        logger.error(e)
+        tkinter.messagebox.showerror(title='Critical', message=e)
 
 if __name__ == '__main__':
     main()

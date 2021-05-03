@@ -35,11 +35,11 @@ class TableDatabase:
         self.__vpforum = Site_vpforum_com(logger)
         self.__vpuniverse = Site_vpuniverse_com(logger)
         self.__dbPath = baseModel.config.get('db_path')
+        self.__manufacturer_dbPath = baseModel.config.get('manufacturer_path')
 
         self.__lock = threading.Lock()
         self.__data = {}
         self.__statistics = Statistics()
-
         self.load()
 
     @property
@@ -74,6 +74,8 @@ class TableDatabase:
         if os.path.exists(self.__dbPath) and os.path.isfile(self.__dbPath):
             os.remove(self.__dbPath)
         self.__data = {}
+
+
 
     def save(self, database: dict = None) -> None:
         """

@@ -9,15 +9,15 @@ class Config:
             'visual_pinball_path': 'c:/visual pinball',
             'pinballX_path': 'c:/pinballX',
             'pinupSystem_path': 'c:/PinUPSystem',
-            'db_path': os.path.expanduser("~/tablePackager") + '/pinball_machines.json',
-            'manufacturer_path': os.path.expanduser("~/tablePackager") + '/manufacturer.json',
+            'db_path': os.path.expanduser("~/tablePackager") + '/database/pinball_machines.json',
+            'manufacturer_path': os.path.expanduser("~/tablePackager") + '/database/manufacturer.json',
             'font': ('Helvetica', 10)
         }
-        self.load()
+        self.load() # TODO: a revoir
         if 'db_path' not in self.__data: # for compatibility
-            self.__data['db_path']=os.path.expanduser('~/tablePackager') + '/pinball_machines.json'
+            self.__data['db_path']=os.path.expanduser('~/tablePackager') + '/database/pinball_machines.json'
         if 'manufacturer_path' not in self.__data: # for compatibility
-            self.__data['manufacturer_path']=os.path.expanduser('~/tablePackager') + '/manufacturer.json'
+            self.__data['manufacturer_path']=os.path.expanduser('~/tablePackager') + '/database/manufacturer.json'
 
     def get(self, var_name):
         if var_name == 'package_extension':
