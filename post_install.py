@@ -17,4 +17,4 @@ if __name__ == "__main__":
         shutil.copyfile(user_dir+'/database/pinball_machines.json', user_dir+'/database/pinball_machines.json.backup')
     shutil.copyfile('lib/packager/database/pinball_machines.json', user_dir + '/database/pinball_machines.json')
 
-    sys.exit(0)
+    
